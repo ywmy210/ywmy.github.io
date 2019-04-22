@@ -184,6 +184,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-change-default-torrent-program" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/22/ubuntu-change-default-torrent-program/">ubuntu change default torrent program</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/22/ubuntu-change-default-torrent-program/" class="archive-article-date">
+  	<time datetime="2019-04-22T02:05:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="更改默认磁力链下载工具"><a href="#更改默认磁力链下载工具" class="headerlink" title="更改默认磁力链下载工具"></a>更改默认磁力链下载工具</h2><p>ubuntu 默认的连接力下载工具为Transmission。后面自己又下载了Deluge，安装后即更改了默认的磁力链下载为Deluge。后面发现，默认的Transmission工具对Tracker服务器的编辑比较方便，准备将默认的下载工具改回Transmission。</p>
+<p>操作如下：</p>
+<h3 id="查看默认注册的磁力链下载工具"><a href="#查看默认注册的磁力链下载工具" class="headerlink" title="查看默认注册的磁力链下载工具"></a>查看默认注册的磁力链下载工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<blockquote>
+<p>Default application for “x-scheme-handler/magnet”: transmission-gtk.desktop<br>已注册的应用程序：<br>transmission-gtk.desktop<br>deluge.desktop<br>webtorrent-desktop.desktop<br>推荐的应用程序：<br>transmission-gtk.desktop<br>deluge.desktop<br>webtorrent-desktop.desktop  </p>
+</blockquote>
+<p>如上图，默认的已经更改为Transmission-gtk.desktop。</p>
+<h3 id="更改默认的磁力链下载工具"><a href="#更改默认的磁力链下载工具" class="headerlink" title="更改默认的磁力链下载工具"></a>更改默认的磁力链下载工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet transmission-gtk.desktop</span><br></pre></td></tr></table></figure>
+<p>如果是更改为Deluge，则更改如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet deluge.desktop</span><br></pre></td></tr></table></figure>
+<p>同理，以上系统注册了三个应用程序，更改为其它的也是一样操作，后面的启动程序文件更改一下就可以了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/22/ubuntu-change-default-torrent-program/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-mysql-常用操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1270,84 +1355,6 @@
 
 
   
-    <article id="post-CentOS-环境变量配置错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/04/09/CentOS-环境变量配置错误/">CentOS 环境变量配置错误</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/04/09/CentOS-环境变量配置错误/" class="archive-article-date">
-  	<time datetime="2019-04-09T02:28:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CentOS-环境变量配置错误"><a href="#CentOS-环境变量配置错误" class="headerlink" title="CentOS 环境变量配置错误"></a>CentOS 环境变量配置错误</h1><p>今天在配置Maven时，写入一条环境变量，在重新应用环境变量后，发现只有cd命令可以用了。其它命令都不可用。解决办法如下：</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/sudo /bin/vim /etc/profile</span><br></pre></td></tr></table></figure>
-<p>把之前配置的环境变量删除</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/sudo reboot</span><br></pre></td></tr></table></figure>
-<p>重启服务器，重启后，应用新的环境变量。命令正常使用。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/04/09/CentOS-环境变量配置错误/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/2/">Next &raquo;</a>
@@ -1441,15 +1448,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1457,15 +1460,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

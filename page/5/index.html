@@ -184,6 +184,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-U盘量产" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2018/12/01/U盘量产/">U盘量产</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2018/12/01/U盘量产/" class="archive-article-date">
+  	<time datetime="2018-12-01T14:04:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>需求回到上一篇文章，惠普服务器的安装中，因为设备比较旧，对启动的支持有限，即尝试了U盘量产，希望能将U盘量产为USB－CDROM以实现从光驱启动的目的。自己手里有两个U盘，一个16GB的金士顿，还有一个小米家的32GB小米U盘。之前有过量产挂盘的经历后，对于这次的量产，还是比较小心的，从16GB的开始，没想，还真的没之前的问题。将16GB的量产结束了，接着对32GB的U盘也做了量产，都没有问题。记录量产过程如下：</p>
+<h2 id="金士顿16GB量产"><a href="#金士顿16GB量产" class="headerlink" title="金士顿16GB量产"></a>金士顿16GB量产</h2><p>量产的前期准备，需求检测U盘的主控芯片，这个有一个通用的工具，叫<strong>芯片精灵</strong>可以检测到U盘主控相关的信息。下载请戳<a href="http://www.upantool.com/test/xinpian/2011/ChipGenius_V4.html" target="_blank" rel="noopener">链接</a>。</p>
+<p>通过芯片精灵检测到主控芯片后，即可以去上面芯片精灵的网站，下载相应的量产工具，如自己16GB的金士顿，主控芯片为群联，即可从网站搜索群联的量产工具，有两个，MPALL和一个傻瓜转换工具ModeConverter。<br>量产方式参考<a href="http://www.upantool.com/jiaocheng/liangchan/Phison/5108.html" target="_blank" rel="noopener">链接</a>。</p>
+<h2 id="小米32GB量产"><a href="#小米32GB量产" class="headerlink" title="小米32GB量产"></a>小米32GB量产</h2><p>同上一样，通过使用芯片精灵，读取相应的主控信息。接下来去量产网站下载相应的量产工具，小米32GB的U盘，采用的是慧荣的主控芯片。量产工具为：SM3267AE_2.5.54。</p>
+<p>量产方式参考<a href="http://www.upantool.com/liangchan/SMI/2016/8732.html" target="_blank" rel="noopener">链接</a>。</p>
+<hr>
+<p>附上两张量产后的图（小米的量产）：</p>
+<p><img src="http://blog.ywmy.xyz/windows/USB_mass_production.png" alt="USB_MASS_PRODUCTION"></p>
+<p><img src="http://blog.ywmy.xyz/disk_manager.png" alt="DISK_MANAGER"></p>
+<p>U盘量产为一个5GB的光驱和一个28GB的数据盘。数据盘又给我做了多启动，通过多启动来实现系统维护，即AIOBOOT和AIO——UEFI两个分区。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2018/12/01/U盘量产/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-HP-DL380-G5安装centos-7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1101,94 +1184,6 @@
 
 
   
-    <article id="post-firewall-cmd" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2018/08/21/firewall-cmd/">firewall-cmd</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2018/08/21/firewall-cmd/" class="archive-article-date">
-  	<time datetime="2018-08-21T15:06:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h1><p>安装firewall防火墙</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install firewalld</span><br></pre></td></tr></table></figure>
-<p>开启服务</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemclt start firewalld.service</span><br></pre></td></tr></table></figure>
-<p>关闭防火墙</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop firewalld.service</span><br></pre></td></tr></table></figure>
-<p>开机自启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> firewalld.service</span><br></pre></td></tr></table></figure>
-<p>关闭开机启动</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemclt <span class="built_in">disable</span> firewalld.service</span><br></pre></td></tr></table></figure>
-<h2 id="使用firewall-cmd命令"><a href="#使用firewall-cmd命令" class="headerlink" title="使用firewall-cmd命令"></a>使用firewall-cmd命令</h2><p>查看状态</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --state</span><br></pre></td></tr></table></figure>
-<p>running表示运行中，not running表示未运行。</p>
-<p>获取活动的区域</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --get-active-zones</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">linux firewall</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2018/08/21/firewall-cmd/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/4/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/6/">Next &raquo;</a>
@@ -1282,15 +1277,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1298,15 +1289,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">
