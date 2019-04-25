@@ -184,6 +184,103 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-18-04-安装wireshark" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/11/ubuntu-18-04-安装wireshark/">ubuntu 18.04 安装wireshark</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/11/ubuntu-18-04-安装wireshark/" class="archive-article-date">
+  	<time datetime="2019-04-11T05:24:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Ubuntu-18-04-安装-wireshark"><a href="#Ubuntu-18-04-安装-wireshark" class="headerlink" title="Ubuntu 18.04 安装 wireshark"></a>Ubuntu 18.04 安装 wireshark</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install wireshark wireshark-common</span><br></pre></td></tr></table></figure>
+<h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>非root用户下的wireshark没有抓包权限</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li>以root用户运行</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wireshark</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>配置非root用户抓包</li>
+</ol>
+<p>安装完成后，wireshark文档中有相应的处理方法。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gzip -d /usr/share/doc/wireshark-common/README.Debian.gz</span><br></pre></td></tr></table></figure>
+<p>解压文档后，可以参考操作方法如下：</p>
+<blockquote>
+<p> sudo usermod -a -G wireshark {username}</p>
+</blockquote>
+<p>或者</p>
+<blockquote>
+<p>sudo gpasswd -a your_name wireshark  </p>
+</blockquote>
+<p>重新配置抓取权限</p>
+<blockquote>
+<p>sudo dpkg-reconfigure wireshark-common<br>“Should non-superusers be able to capture packages?”<br>选择yes(默认是no)</p>
+</blockquote>
+<p>注销用户或重启，再次打开wireshark，正常选取网卡列表。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/11/ubuntu-18-04-安装wireshark/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-华为交换机清除console密码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1200,105 +1297,6 @@
 
 
   
-    <article id="post-centos-7-配置ntp服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/03/31/centos-7-配置ntp服务/">centos 7 配置ntp服务</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/03/31/centos-7-配置ntp服务/" class="archive-article-date">
-  	<time datetime="2019-03-31T06:36:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-31</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CentOS配置ntp-server"><a href="#CentOS配置ntp-server" class="headerlink" title="CentOS配置ntp server"></a>CentOS配置ntp server</h1><p>网络时间协议 - NTP - 是运行在传输层 123 号端口的 UDP 协议，它允许计算机通过网络同步准确时间。随着时间的流逝，计算机内部时间会出现漂移，这会导致时间不一致问题，尤其是对于服务器和客户端日志文件，或者你想要复制服务器的资源或数据库。</p>
-<h2 id="安装和配置ntp-serve"><a href="#安装和配置ntp-serve" class="headerlink" title="安装和配置ntp serve"></a>安装和配置ntp serve</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>可直接通过官方yum安装。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install ntp</span><br></pre></td></tr></table></figure>
-<h3 id="选择NTP-SERVER"><a href="#选择NTP-SERVER" class="headerlink" title="选择NTP SERVER"></a>选择NTP SERVER</h3><p>NTP Public Pool Time Servers，安装NTP后，可以在NTP公共服务器池中选择所在地理位置的服务器列表。服务池链接[请戳][1]。</p>
-<p>如中国的服务器池为：</p>
-<blockquote>
-<p>0.cn.pool.ntp.org<br>1.cn.pool.ntp.org<br>2.cn.pool.ntp.org<br>3.cn.pool.ntp.org  </p>
-</blockquote>
-<h3 id="更改ntp服务配置文件"><a href="#更改ntp服务配置文件" class="headerlink" title="更改ntp服务配置文件"></a>更改ntp服务配置文件</h3><p>配置文件为/etc/ntp.conf：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/ntp.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># For more information about this file, see the man pages</span></span><br><span class="line"><span class="comment"># ntp.conf(5), ntp_acc(5), ntp_auth(5), ntp_clock(5), ntp_misc(5), ntp_mon(5).</span></span><br><span class="line"></span><br><span class="line">driftfile /var/lib/ntp/drift</span><br><span class="line"></span><br><span class="line"><span class="comment"># Permit time synchronization with our time source, but do not</span></span><br><span class="line"><span class="comment"># permit the source to query or modify the service on this system.</span></span><br><span class="line">restrict default nomodify notrap nopeer noquery</span><br><span class="line"></span><br><span class="line"><span class="comment"># Permit all access over the loopback interface.  This could</span></span><br><span class="line"><span class="comment"># be tightened as well, but to do so would effect some of</span></span><br><span class="line"><span class="comment"># the administrative functions.</span></span><br><span class="line">restrict 127.0.0.1 </span><br><span class="line">restrict ::1</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hosts on local network are less restricted.</span></span><br><span class="line"><span class="comment">#restrict 192.168.1.0 mask 255.255.255.0 nomodify notrap</span></span><br><span class="line"></span><br><span class="line">restrict 172.17.10.0 mask 255.255.255.0 nomodify notrap</span><br><span class="line">restrict 52.109.3.0 mask 255.255.255.0 nomodify notrap</span><br><span class="line"></span><br><span class="line"><span class="comment"># Use public servers from the pool.ntp.org project.</span></span><br><span class="line"><span class="comment"># Please consider joining the pool (http://www.pool.ntp.org/join.html).</span></span><br><span class="line">server 0.cn.pool.ntp.org</span><br><span class="line">server 1.cn.pool.ntp.org</span><br><span class="line">server 2.cn.pool.ntp.org</span><br><span class="line">server 3.cn.pool.ntp.org</span><br><span class="line"></span><br><span class="line"><span class="comment">#broadcast 192.168.1.255 autokey        # broadcast server</span></span><br><span class="line"><span class="comment">#broadcastclient                        # broadcast client</span></span><br><span class="line"><span class="comment">#broadcast 224.0.1.1 autokey            # multicast server</span></span><br><span class="line"><span class="comment">#multicastclient 224.0.1.1              # multicast client</span></span><br><span class="line"><span class="comment">#manycastserver 239.255.254.254         # manycast server</span></span><br><span class="line"><span class="comment">#manycastclient 239.255.254.254 autokey # manycast client</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable public key cryptography.</span></span><br><span class="line"><span class="comment">#crypto</span></span><br><span class="line"></span><br><span class="line">includefile /etc/ntp/crypto/pw</span><br><span class="line"></span><br><span class="line"><span class="comment"># Key file containing the keys and key identifiers used when operating</span></span><br><span class="line"><span class="comment"># with symmetric key cryptography. </span></span><br><span class="line">keys /etc/ntp/keys</span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify the key identifiers which are trusted.</span></span><br><span class="line"><span class="comment">#trustedkey 4 8 42</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify the key identifier to use with the ntpdc utility.</span></span><br><span class="line"><span class="comment">#requestkey 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Specify the key identifier to use with the ntpq utility.</span></span><br><span class="line"><span class="comment">#controlkey 8</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Enable writing of statistics records.</span></span><br><span class="line"><span class="comment">#statistics clockstats cryptostats loopstats peerstats</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Disable the monitoring facility to prevent amplification attacks using ntpdc</span></span><br><span class="line"><span class="comment"># monlist command when default restrict does not include the noquery flag. See</span></span><br><span class="line"><span class="comment"># CVE-2013-5211 for more details.</span></span><br><span class="line"><span class="comment"># Note: Monitoring will not be disabled with the limited restriction flag.</span></span><br><span class="line"><span class="built_in">disable</span> monitor</span><br><span class="line"></span><br><span class="line">logfile /var/<span class="built_in">log</span>/ntp.log</span><br></pre></td></tr></table></figure>
-<p>更改如上所示：</p>
-<blockquote>
-<p>restrict 172.17.10.0 mask 255.255.255.0 nomodify notrap</p>
-</blockquote>
-<p>nomodify notrap 语句意味着不允许你的客户端配置服务器或者作为同步时间的节点。</p>
-<blockquote>
-<p>logfile /var/log/ntp.log  </p>
-</blockquote>
-<p>如果需要用于错误处理的额外信息，以防你的 NTP 守护进程出现问题，添加一个 logfile 语句，用于记录所有 NTP 服务器问题到一个指定的日志文件。</p>
-<p>保存配置文件。</p>
-<h2 id="启用服务以及防火墙配置"><a href="#启用服务以及防火墙配置" class="headerlink" title="启用服务以及防火墙配置"></a>启用服务以及防火墙配置</h2><h3 id="开放NTP-SERVE端口"><a href="#开放NTP-SERVE端口" class="headerlink" title="开放NTP SERVE端口"></a>开放NTP SERVE端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo firewall-cmd --add-service=ntp --permanent</span><br><span class="line">sudo firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
-<h3 id="启用NTP-SERVER"><a href="#启用NTP-SERVER" class="headerlink" title="启用NTP SERVER"></a>启用NTP SERVER</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl start ntpd</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> ntpd</span><br><span class="line">sudo systemctl status ntpd</span><br><span class="line"></span><br><span class="line">● ntpd.service - Network Time Service</span><br><span class="line">   Loaded: loaded (/usr/lib/systemd/system/ntpd.service; enabled; vendor preset: disabled)</span><br><span class="line">   Active: active (running) since Sun 2019-03-31 14:33:27 CST; 23min ago</span><br><span class="line"> Main PID: 14926 (ntpd)</span><br><span class="line">   CGroup: /system.slice/ntpd.service</span><br><span class="line">           └─14926 /usr/sbin/ntpd -u ntp:ntp -g</span><br><span class="line"></span><br><span class="line">Mar 31 14:33:27 ntp-server systemd[1]: Starting Network Time Service...</span><br><span class="line">Mar 31 14:33:27 ntp-server systemd[1]: Started Network Time Service.</span><br><span class="line">Mar 31 14:33:27 ntp-server ntpd[14926]: proto: precision = 0.054 usec</span><br><span class="line">Mar 31 14:33:27 ntp-server ntpd[14926]: 0.0.0.0 c01d 0d kern kernel time sync enabled</span><br></pre></td></tr></table></figure>
-<h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@ntp-server ~]<span class="comment"># ntpq -p</span></span><br><span class="line">     remote           refid      st t when poll reach   delay   offset  jitter</span><br><span class="line">==============================================================================</span><br><span class="line"> ntp1.ams1.nl.le 130.133.1.10     2 u  309  128  104  286.324  -30.954   2.799</span><br><span class="line">*electrode.felix 89.231.96.83     2 u   79  128  177  245.661   -4.341  11.315</span><br><span class="line"> 118.190.21.209  .STEP.          16 u    - 1024    0    0.000    0.000   0.000</span><br><span class="line"> biisoni.miuku.n .STEP.          16 u    - 1024    0    0.000    0.000   0.000</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@ntp-server ~]<span class="comment"># date -R</span></span><br><span class="line">Sun, 31 Mar 2019 15:06:12 +0800</span><br></pre></td></tr></table></figure>
-<p>查询ntp服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[root@ntp-server ~]<span class="comment"># ntpdate -q 0.cn.pool.ntp.org</span></span><br><span class="line">server 78.46.102.180, stratum 2, offset -0.004452, delay 0.25752</span><br><span class="line">server 51.15.238.170, stratum 0, offset 0.000000, delay 0.00000</span><br><span class="line">server 199.182.204.197, stratum 0, offset 0.000000, delay 0.00000</span><br><span class="line">server 94.130.49.186, stratum 3, offset -0.021914, delay 0.32487</span><br><span class="line">31 Mar 15:09:05 ntpdate[24663]: adjust time server 78.46.102.180 offset -0.004452 sec</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/03/31/centos-7-配置ntp服务/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="page-number current">2</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/3/">Next &raquo;</a>
@@ -1388,10 +1386,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -1400,7 +1394,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1408,11 +1402,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,7 +1422,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1432,7 +1430,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
               </li>
             
             <div class="clearfix"></div>
