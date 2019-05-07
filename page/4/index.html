@@ -184,6 +184,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-不支持i386" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/03/10/ubuntu-不支持i386/">ubuntu 不支持i386</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/03/10/ubuntu-不支持i386/" class="archive-article-date">
+  	<time datetime="2019-03-10T11:21:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu更新跳过i386体系结构"><a href="#ubuntu更新跳过i386体系结构" class="headerlink" title="ubuntu更新跳过i386体系结构"></a>ubuntu更新跳过i386体系结构</h1><p>前一次，在电脑上安装了google_earth_pro。安装结束后，系统更新就会多出一条更新信息：</p>
+<blockquote>
+<p>N: 鉴于仓库 ‘<a href="http://dl.google.com/linux/earth/deb" target="_blank" rel="noopener">http://dl.google.com/linux/earth/deb</a> stable InRelease’ 不支持 ‘i386’ 体系结构，跳过配置文件 ‘main/binary-i386/Packages’ 的获取。</p>
+</blockquote>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ul>
+<li>打开/etc/apt/sources.list.d/google-earth-pro.list</li>
+</ul>
+<p>－ 修改文件</p>
+<p>原文件内容：</p>
+<p>deb <a href="http://dl.google.com/linux/earth/deb/" target="_blank" rel="noopener">http://dl.google.com/linux/earth/deb/</a> stable main</p>
+<p>更改为：</p>
+<p>deb [arch=amd64] <a href="http://dl.google.com/linux/earth/deb/" target="_blank" rel="noopener">http://dl.google.com/linux/earth/deb/</a> stable main</p>
+<p>好了，更新正常。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/03/10/ubuntu-不支持i386/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-安装mysql-server" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1080,133 +1166,6 @@
 
 
   
-    <article id="post-LVM命令相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2018/12/10/LVM命令相关/">LVM命令相关</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2018/12/10/LVM命令相关/" class="archive-article-date">
-  	<time datetime="2018-12-10T12:59:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-10</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="LVM常用命令："><a href="#LVM常用命令：" class="headerlink" title="LVM常用命令："></a>LVM常用命令：</h1><table>
-<thead>
-<tr>
-<th>功能/命令</th>
-<th>物理卷管理</th>
-<th>卷管理</th>
-<th>逻辑卷管理</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>扫描</td>
-<td>pvscan</td>
-<td>vgscan</td>
-<td>lvscan</td>
-</tr>
-<tr>
-<td>建立</td>
-<td>pvcreate</td>
-<td>vgcreate</td>
-<td>lvcreate</td>
-</tr>
-<tr>
-<td>显示</td>
-<td>pvdisplay</td>
-<td>vgdisplay</td>
-<td>lvdisplay</td>
-</tr>
-<tr>
-<td>删除</td>
-<td>pvremove</td>
-<td>vgremove</td>
-<td>lvremove</td>
-</tr>
-<tr>
-<td>扩展</td>
-<td></td>
-<td>vgextend</td>
-<td>lvextend</td>
-</tr>
-<tr>
-<td>缩小</td>
-<td></td>
-<td>vgreduce</td>
-<td>lvreduce</td>
-</tr>
-</tbody>
-</table>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><ul>
-<li>物理卷Physical volume (PV)：可以在上面建立卷组的媒介，可以是硬盘分区，也可以是硬盘本身或者回环文件（loopback file）。物理卷包括一个特殊的header，其余部分被切割为一块块物理区域（physical extents）。</li>
-<li>卷组Volume group (VG)：将一组物理卷收集为一个管理单元。</li>
-<li>逻辑卷Logical volume (LV)：虚拟分区，由物理区域（physical extents）组成。</li>
-<li>物理区域Physical extent (PE)：硬盘可供指派给逻辑卷的最小单位（通常为4MB）。</li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2018/12/10/LVM命令相关/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/3/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/ywmy/page/5/">5</a><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/5/">Next &raquo;</a>
@@ -1296,19 +1255,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1324,6 +1279,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
@@ -1336,11 +1295,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
               </li>
             
             <div class="clearfix"></div>

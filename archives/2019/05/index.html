@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ywmy210.github.io/ywmy">
-  <title>conky 配置透明度 | 豆豆家</title>
+  <title>Archives: 2019/5 | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="conky 配置透明度配置conky后，桌面上会有一个半透明的窗口，在更换壁纸后，半透明窗口内的显示背景仍然为之前的壁纸部分。更改为全透明，即更换壁纸后，窗口一直透明不受壁纸影响操作如下： conky 可以使用own_window_argb_visual、own_window_argb_value、own_window_transparent来调节透明特性。这需要窗口管理器支持Xorg复合特性，比">
-<meta name="keywords" content="linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="conky 配置透明度">
-<meta property="og:url" content="https://ywmy210.github.io/ywmy/2019/04/24/conky-配置透明度/index.html">
+  <meta name="description" content="网络和美食">
+<meta name="keywords" content="network">
+<meta property="og:type" content="website">
+<meta property="og:title" content="豆豆家">
+<meta property="og:url" content="https://ywmy210.github.io/ywmy/archives/2019/05/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="conky 配置透明度配置conky后，桌面上会有一个半透明的窗口，在更换壁纸后，半透明窗口内的显示背景仍然为之前的壁纸部分。更改为全透明，即更换壁纸后，窗口一直透明不受壁纸影响操作如下： conky 可以使用own_window_argb_visual、own_window_argb_value、own_window_transparent来调节透明特性。这需要窗口管理器支持Xorg复合特性，比">
+<meta property="og:description" content="网络和美食">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-24T09:00:51.593Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="conky 配置透明度">
-<meta name="twitter:description" content="conky 配置透明度配置conky后，桌面上会有一个半透明的窗口，在更换壁纸后，半透明窗口内的显示背景仍然为之前的壁纸部分。更改为全透明，即更换壁纸后，窗口一直透明不受壁纸影响操作如下： conky 可以使用own_window_argb_visual、own_window_argb_value、own_window_transparent来调节透明特性。这需要窗口管理器支持Xorg复合特性，比">
+<meta name="twitter:title" content="豆豆家">
+<meta name="twitter:description" content="网络和美食">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -183,159 +182,60 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-conky-配置透明度" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      conky 配置透明度
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/ywmy/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/ywmy/2019/05/06/windows-10-homebasic-rdp/" class="archive-article-date">
+  	<time datetime="2019-05-06T14:44:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/ywmy/2019/05/06/windows-10-homebasic-rdp/">windows 10 homebasic rdp</a>
     </h1>
   
 
-        
-        <a href="/ywmy/2019/04/24/conky-配置透明度/" class="archive-article-date">
-  	<time datetime="2019-04-24T08:53:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-24</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="conky-配置透明度"><a href="#conky-配置透明度" class="headerlink" title="conky 配置透明度"></a>conky 配置透明度</h2><p>配置conky后，桌面上会有一个半透明的窗口，在更换壁纸后，半透明窗口内的显示背景仍然为之前的壁纸部分。更改为全透明，即更换壁纸后，窗口一直透明不受壁纸影响操作如下：</p>
-<p>conky 可以使用own_window_argb_visual、own_window_argb_value、own_window_transparent来调节透明特性。这需要窗口管理器支持Xorg复合特性，比如使用compiz或者启用metacity复合特性。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">own_window_argb_visual：布尔值。当为<span class="literal">true</span>时启用真透明特性</span><br><span class="line">own_window_argb_value：当启用真透明时设定不透明度。值的范围是0-255。0是0%不透明度，255是100%不透明</span><br><span class="line">own_window_transparent：布尔值。当该值为<span class="literal">true</span>，并且启用真透明时，设置不透明度为0%</span><br></pre></td></tr></table></figure>
-<p>注意：不要和own_window_type override一起使用。根据conky的文档，这在大多数情况下是无效的，我这里尝试的结果也是如此。<br>所以，如果希望得到完全透明的conky，可以这样设置:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">own_window_argb_visual <span class="literal">true</span></span><br><span class="line">own_window_transparent <span class="literal">true</span></span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://ywmy210.github.io/ywmy/2019/04/24/conky-配置透明度/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/ywmy/2019/04/25/lanproxy-配置/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          lanproxy 配置
-        
-      </div>
-    </a>
   
   
-    <a href="/ywmy/2019/04/22/checkpwd-sh/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">checkpwd.sh</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -358,8 +258,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
