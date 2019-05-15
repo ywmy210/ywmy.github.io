@@ -252,6 +252,8 @@
 <p>[edit]-&gt;[Preferenses]-&gt;[IOS on UNIX]-&gt;[IOU devices]-&gt;[new]</p>
 <p>添加IOU镜像，添加后，即可直接通过VM来运行l2 switch l3 router设备。</p>
 <p>IOU和.iourc文件在哪里找，可以度之。</p>
+<p>license gen直接给脚本吧：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/python3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"*********************************************************************"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Cisco IOU License Generator - Kal 2011, python port of 2006 C version"</span>)</span><br><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line">import hashlib</span><br><span class="line">import struct</span><br><span class="line"><span class="comment"># get the host id and host name to calculate the hostkey</span></span><br><span class="line">hostid=os.popen(<span class="string">"hostid"</span>).<span class="built_in">read</span>().strip()</span><br><span class="line">hostname = socket.gethostname()</span><br><span class="line">ioukey=int(hostid,16)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> hostname:</span><br><span class="line"> ioukey = ioukey + ord(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"hostid="</span> + hostid +<span class="string">", hostname="</span>+ hostname + <span class="string">", ioukey="</span> + hex(ioukey)[2:])</span><br><span class="line"><span class="comment"># create the license using md5sum</span></span><br><span class="line">iouPad1 = b<span class="string">'\x4B\x58\x21\x81\x56\x7B\x0D\xF3\x21\x43\x9B\x7E\xAC\x1D\xE6\x8A'</span></span><br><span class="line">iouPad2 = b<span class="string">'\x80'</span> + 39*b<span class="string">'\0'</span></span><br><span class="line">md5input=iouPad1 + iouPad2 + struct.pack(<span class="string">'!i'</span>, ioukey) + iouPad1</span><br><span class="line">iouLicense=hashlib.md5(md5input).hexdigest()[:16]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"\nAdd the following text to ~/.iourc:"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"[license]\n"</span> + hostname + <span class="string">" = "</span> + iouLicense + <span class="string">";\n"</span>)</span><br><span class="line">with open(<span class="string">"iourc.txt"</span>, <span class="string">"wt"</span>) as out_file:</span><br><span class="line">   out_file.write(<span class="string">"[license]\n"</span> + hostname + <span class="string">" = "</span> + iouLicense + <span class="string">";\n"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAlready copy to the file iourc.txt\n "</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"You can disable the phone home feature with something like:"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">" echo '127.0.0.127 xml.cisco.com' &gt;&gt; /etc/hosts\n"</span>)</span><br></pre></td></tr></table></figure>
 <p>好了，操作记录补充结束。</p>
 
       
@@ -1341,10 +1343,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
@@ -1353,7 +1351,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1361,11 +1359,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
