@@ -6,7 +6,7 @@
   <link href="/ywmy/atom.xml" rel="self"/>
   
   <link href="https://ywmy210.github.io/ywmy/"/>
-  <updated>2019-05-06T15:13:22.816Z</updated>
+  <updated>2019-05-15T08:19:31.103Z</updated>
   <id>https://ywmy210.github.io/ywmy/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>GNS3添加网络设备</title>
+    <link href="https://ywmy210.github.io/ywmy/2019/05/14/GNS3%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/"/>
+    <id>https://ywmy210.github.io/ywmy/2019/05/14/GNS3添加网络设备/</id>
+    <published>2019-05-14T13:09:46.000Z</published>
+    <updated>2019-05-15T08:19:31.103Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="GNS3添加网络设备"><a href="#GNS3添加网络设备" class="headerlink" title="GNS3添加网络设备"></a>GNS3添加网络设备</h2><h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><ul><li><p>系统：ubuntu 18.04.2 LTS(Linux 4.15.0-48-generic #51-Ubuntu SMP Wed Apr 3 08:28:49 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux<br>)</p></li><li><p>GNS3 2.1.16</p></li><li><p>虚拟机virtualbox 6.0.4 r128413</p></li></ul><h3 id="GNS3安装"><a href="#GNS3安装" class="headerlink" title="GNS3安装"></a>GNS3安装</h3><p>ubuntu 直接添加PPA源安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:gns3/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gns3-gui</span><br></pre></td></tr></table></figure><p>安装结束后，会出现关于dynamips报错。解决办法：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:gns3/ppa</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install dynamips:i386</span><br></pre></td></tr></table></figure><p>启动后，出现配置向导。</p><h3 id="添加设备"><a href="#添加设备" class="headerlink" title="添加设备"></a>添加设备</h3><p>添加模拟的设备可以通过本地的server，GNS3 VM来完成。</p><p>本地的server中的Dynamips中添加设备。</p><p>[edit]-&gt;[Preferences]-&gt;[Dynamips]-&gt;[IOS routers]</p><p>添加的设备即直接通过本地电脑的Dynapips来模拟。</p><h3 id="添加IOU"><a href="#添加IOU" class="headerlink" title="添加IOU"></a>添加IOU</h3><p>添加GNS3 VM设备，需要先导入GNS3 VM虚拟机。从官网下载GNS3 VM，如本文所示，选择virtualbox版本。</p><p>下载后，选择导入虚拟机，打开virtualbox，操作如下：</p><p>[管理]-&gt;[导入虚拟电脑]-&gt;[选择下载的GNS VM文件]-&gt;[点击导入]</p><p>导入后，在GNS3中选择GNS3 VM。操作如下：</p><p>[edit]-&gt;[Preferences]-&gt;[GNS3 VM]-&gt;[enable GNS3 VM]-&gt;[select Virtualizatiom engine Virtualbox]-&gt;[Settings]-&gt;[select imported VM named GNS3 VM]-&gt;[Apply setting]-&gt;[OK]</p><p>选择启动GNS3 VM，选择虚拟化引擎，选择导入的GNS3 VM。</p><p>尝试启动GNS3 VM，启动后直接报错，vboxnet0相关，无法启动GNS3 VM。</p><p>解决办法，添加网络vboxnet0。操作步骤：</p><p>[管理]-&gt;[主机网络管理器]-&gt;[网络]-&gt;[创建]</p><p>默认创建的网络就是vboxnet0。其余选项保持默认不变，启用DHCP服务。</p><p>再次打开GNS3 VM，正常启动。</p><p>解决GNS3 VM启动问题后，即可添加IOU（IOS ON UNIX）。</p><p>操作步骤：</p><p>[edit]-&gt;[Preferences]-&gt;[IOS on UNIX]-&gt;[type the license key]</p><p>添加IOU需要cisco的许可密钥，本例中的许可密码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[license]</span><br><span class="line">gns3vm = 73635fd3b0a13ad0;</span><br></pre></td></tr></table></figure><p>许可密码可以通过以下方式生成：</p><ol><li><p>打开GNS3 VM，选择Shell菜单</p></li><li><p>下载生成脚本,并生成license:</p></li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.ipvanquish.com/download/CiscoIOUKeygen3f.py</span><br><span class="line">python3 CiscoIOUKeygen3f.py</span><br></pre></td></tr></table></figure><p>生成的文件为.iourc。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Already copy to the file iourc.txt</span><br><span class="line"></span><br><span class="line">You can <span class="built_in">disable</span> the phone home feature with something like:</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'127.0.0.127 xml.cisco.com'</span> &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure><p>把生成的GNS VM license添加到IOU on UNIX中，后，即可添加IOU设备。</p><p>操作方法：</p><p>[edit]-&gt;[Preferenses]-&gt;[IOS on UNIX]-&gt;[IOU devices]-&gt;[new]</p><p>添加IOU镜像，添加后，即可直接通过VM来运行l2 switch l3 router设备。</p><p>IOU和.iourc文件在哪里找，可以度之。</p><p>好了，操作记录补充结束。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;GNS3添加网络设备&quot;&gt;&lt;a href=&quot;#GNS3添加网络设备&quot; class=&quot;headerlink&quot; title=&quot;GNS3添加网络设备&quot;&gt;&lt;/a&gt;GNS3添加网络设备&lt;/h2&gt;&lt;h3 id=&quot;搭建环境&quot;&gt;&lt;a href=&quot;#搭建环境&quot; class=&quot;head
+      
+    
+    </summary>
+    
+    
+      <category term="network" scheme="https://ywmy210.github.io/ywmy/tags/network/"/>
+    
+  </entry>
   
   <entry>
     <title>windows 10 homebasic rdp</title>
@@ -446,29 +469,6 @@
       
       
         &lt;h1 id=&quot;CentOS-7-Open-Vpn-WITH-easyrsa-3&quot;&gt;&lt;a href=&quot;#CentOS-7-Open-Vpn-WITH-easyrsa-3&quot; class=&quot;headerlink&quot; title=&quot;CentOS 7 Open.Vpn WITH easyr
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ttf-mscorefonts-installer ubuntu</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/</id>
-    <published>2019-04-01T07:03:26.000Z</published>
-    <updated>2019-04-01T07:13:53.207Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="ttf-mscorefonts-installer下载额外数据失败"><a href="#ttf-mscorefonts-installer下载额外数据失败" class="headerlink" title="ttf-mscorefonts-installer下载额外数据失败"></a>ttf-mscorefonts-installer下载额外数据失败</h1><p>完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：</p><blockquote><p>下载额外数据文件失败<br>以下软件包要求安装后下载附加数据，但其数据无法下载或无法处理。<br>ttf-mscorefonts-installer<br>稍后系统将自动重试下载，您也可以手工立即重试。执行此命令需要有活动的网络连接。  </p></blockquote><p>点击重试后，实际后台自动既即出。输入密码后无响应了。实际上没有执行操作。虽不影响使用，不过挺经常跳出来挺麻烦。</p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul><li>下载文件</li></ul><p>查看目录/usr/share/package-data-downloads/目录下，有一个文件ttf-mscorefonts-installer，查看内容如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Url: http://downloads.sourceforge.net/corefonts/andale32.exe</span><br><span class="line">Sha256: 0524fe42951adc3a7eb870e32f0920313c71f170c859b5f770d82b4ee111e970</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/arial32.exe</span><br><span class="line">Sha256: 85297a4d146e9c87ac6f74822734bdee5f4b2a722d7eaa584b7f2cbf76f478f6</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/arialb32.exe</span><br><span class="line">Sha256: a425f0ffb6a1a5ede5b979ed6177f4f4f4fdef6ae7c302a7b7720ef332fec0a8</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/comic32.exe</span><br><span class="line">Sha256: 9c6df3feefde26d4e41d4a4fe5db2a89f9123a772594d7f59afd062625cd204e</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/courie32.exe</span><br><span class="line">Sha256: bb511d861655dde879ae552eb86b134d6fae67cb58502e6ff73ec5d9151f3384</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/georgi32.exe</span><br><span class="line">Sha256: 2c2c7dcda6606ea5cf08918fb7cd3f3359e9e84338dc690013f20cd42e930301</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/impact32.exe</span><br><span class="line">Sha256: 6061ef3b7401d9642f5dfdb5f2b376aa14663f6275e60a51207ad4facf2fccfb</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/times32.exe</span><br><span class="line">Sha256: db56595ec6ef5d3de5c24994f001f03b2a13e37cee27bc25c58f6f43e8f807ab</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/trebuc32.exe</span><br><span class="line">Sha256: 5a690d9bb8510be1b8b4fe49f1f2319651fe51bbe54775ddddd8ef0bd07fdac9</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/verdan32.exe</span><br><span class="line">Sha256: c1cb61255e363166794e47664e2f21af8e3a26cb6346eb8d2ae2fa85dd5aad96</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/webdin32.exe</span><br><span class="line">Sha256: 64595b5abc1080fba8610c5c34fab5863408e806aafe84653ca8575bed17d75a</span><br><span class="line"></span><br><span class="line">Script: /usr/lib/msttcorefonts/update-ms-fonts</span><br><span class="line">Should-Download: msttcorefonts/accepted-mscorefonts-eula</span><br></pre></td></tr></table></figure><p>可以看到11个文件的下载链接。直接下载字体文件，放在一个文件夹里。如/home/yourname/ttf-mscorefonts/目录下。</p><ul><li>手动更新</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure ttf-mscorefonts-installer</span><br></pre></td></tr></table></figure><p>指定下载字体的目录，确认安装配置。</p><ul><li>删除下载失败的通知信息</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/package-data-downloads/</span><br><span class="line">sudo rm ttf-mscorefonts-installer</span><br><span class="line"><span class="built_in">cd</span> /var/lib/update-notifier/package-data-downloads/</span><br><span class="line">sudo rm ttf-mscorefonts-installer</span><br><span class="line"><span class="built_in">cd</span> /var/lib/update-notifier/user.d/</span><br><span class="line">sudo rm data-downloads-failed</span><br></pre></td></tr></table></figure><p>至此更新结束。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;ttf-mscorefonts-installer下载额外数据失败&quot;&gt;&lt;a href=&quot;#ttf-mscorefonts-installer下载额外数据失败&quot; class=&quot;headerlink&quot; title=&quot;ttf-mscorefonts-installer下
       
     
     </summary>

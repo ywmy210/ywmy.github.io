@@ -184,6 +184,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-18-04-安装-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/12/ubuntu-18-04-安装-nginx/">ubuntu 18.04 安装 nginx</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/12/ubuntu-18-04-安装-nginx/" class="archive-article-date">
+  	<time datetime="2019-04-12T03:25:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu-18-04-安装-nginx"><a href="#ubuntu-18-04-安装-nginx" class="headerlink" title="ubuntu 18.04 安装 nginx"></a>ubuntu 18.04 安装 nginx</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>服务器上安装了两个服务。通过外网加端口访问。需求通过nginx代理访问两个服务。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>ubuntu 18.04,非root，常规用户账户。</p>
+<h2 id="Step1-Installing-Nginx"><a href="#Step1-Installing-Nginx" class="headerlink" title="Step1-Installing Nginx"></a>Step1-Installing Nginx</h2><p>Ubuntu 18.04默认软件库中包含Nginx包。所以可以直接通过apt包管理工具进行安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
+<h2 id="Step2-Adjusting-the-Firewall"><a href="#Step2-Adjusting-the-Firewall" class="headerlink" title="Step2-Adjusting the Firewall"></a>Step2-Adjusting the Firewall</h2><p>在进行Nginx测试之前，需求调整防火墙设置放通Nginx服务。</p>
+<p>相看ufw应用列表。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw app list</span><br></pre></td></tr></table></figure>
+<p>输出内容:</p>
+<blockquote>
+<p>Available applications:<br>Nginx Full<br>Nginx HTTP<br>Nginx HTTPS</p>
+</blockquote>
+<p>如所见，Nginx Full即放通80和443，Nginx HTTP即放通80，Nginx HTTPS即放通443。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow <span class="string">'Nginx FULL'</span></span><br></pre></td></tr></table></figure>
+<h2 id="Step3-Checking-your-Web-Server"><a href="#Step3-Checking-your-Web-Server" class="headerlink" title="Step3-Checking your Web Server"></a>Step3-Checking your Web Server</h2><p>安装结束，程序服务就会启用。通过systemctl查看Nginx相关的进程信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status nginx </span><br><span class="line"></span><br><span class="line">● nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sat 2019-04-13 09:41:04 UTC; 10s ago</span><br><span class="line">     Docs: man:nginx(8)</span><br><span class="line">  Process: 4576 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code=exited, status=2)</span><br><span class="line">  Process: 4586 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 4577 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 4589 (nginx)</span><br><span class="line">    Tasks: 2 (<span class="built_in">limit</span>: 1110)</span><br><span class="line">   CGroup: /system.slice/nginx.service</span><br><span class="line">           ├─4589 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─4593 nginx: worker process</span><br><span class="line"></span><br><span class="line">Apr 13 09:41:04 vultr_vps_server systemd[1]: Starting A high performance web server and a reverse proxy server...</span><br></pre></td></tr></table></figure>
+<p>安装程序结束。</p>
+<p>一个小问题：启动后的nginx有一个状态问题：</p>
+<blockquote>
+<p>nginx.service: Failed to parse PID from file /run/nginx.pid: Invalid argument</p>
+</blockquote>
+<p>解决方法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Workaround:</span><br><span class="line"></span><br><span class="line"> mkdir /etc/systemd/system/nginx.service.d</span><br><span class="line"> <span class="built_in">printf</span> <span class="string">"[Service]\nExecStartPost=/bin/sleep 0.1\n"</span> &gt; /etc/systemd/system/nginx.service.d/override.conf</span><br><span class="line"> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/12/ubuntu-18-04-安装-nginx/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-18-04-安装-lanproxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1225,100 +1320,6 @@
 
 
   
-    <article id="post-ttf-mscorefonts-installer-ubuntu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/">ttf-mscorefonts-installer ubuntu</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/" class="archive-article-date">
-  	<time datetime="2019-04-01T07:03:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ttf-mscorefonts-installer下载额外数据失败"><a href="#ttf-mscorefonts-installer下载额外数据失败" class="headerlink" title="ttf-mscorefonts-installer下载额外数据失败"></a>ttf-mscorefonts-installer下载额外数据失败</h1><p>完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：</p>
-<blockquote>
-<p>下载额外数据文件失败<br>以下软件包要求安装后下载附加数据，但其数据无法下载或无法处理。<br>ttf-mscorefonts-installer<br>稍后系统将自动重试下载，您也可以手工立即重试。执行此命令需要有活动的网络连接。  </p>
-</blockquote>
-<p>点击重试后，实际后台自动既即出。输入密码后无响应了。实际上没有执行操作。虽不影响使用，不过挺经常跳出来挺麻烦。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
-<li>下载文件</li>
-</ul>
-<p>查看目录/usr/share/package-data-downloads/目录下，有一个文件ttf-mscorefonts-installer，查看内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Url: http://downloads.sourceforge.net/corefonts/andale32.exe</span><br><span class="line">Sha256: 0524fe42951adc3a7eb870e32f0920313c71f170c859b5f770d82b4ee111e970</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/arial32.exe</span><br><span class="line">Sha256: 85297a4d146e9c87ac6f74822734bdee5f4b2a722d7eaa584b7f2cbf76f478f6</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/arialb32.exe</span><br><span class="line">Sha256: a425f0ffb6a1a5ede5b979ed6177f4f4f4fdef6ae7c302a7b7720ef332fec0a8</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/comic32.exe</span><br><span class="line">Sha256: 9c6df3feefde26d4e41d4a4fe5db2a89f9123a772594d7f59afd062625cd204e</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/courie32.exe</span><br><span class="line">Sha256: bb511d861655dde879ae552eb86b134d6fae67cb58502e6ff73ec5d9151f3384</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/georgi32.exe</span><br><span class="line">Sha256: 2c2c7dcda6606ea5cf08918fb7cd3f3359e9e84338dc690013f20cd42e930301</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/impact32.exe</span><br><span class="line">Sha256: 6061ef3b7401d9642f5dfdb5f2b376aa14663f6275e60a51207ad4facf2fccfb</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/times32.exe</span><br><span class="line">Sha256: db56595ec6ef5d3de5c24994f001f03b2a13e37cee27bc25c58f6f43e8f807ab</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/trebuc32.exe</span><br><span class="line">Sha256: 5a690d9bb8510be1b8b4fe49f1f2319651fe51bbe54775ddddd8ef0bd07fdac9</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/verdan32.exe</span><br><span class="line">Sha256: c1cb61255e363166794e47664e2f21af8e3a26cb6346eb8d2ae2fa85dd5aad96</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/webdin32.exe</span><br><span class="line">Sha256: 64595b5abc1080fba8610c5c34fab5863408e806aafe84653ca8575bed17d75a</span><br><span class="line"></span><br><span class="line">Script: /usr/lib/msttcorefonts/update-ms-fonts</span><br><span class="line">Should-Download: msttcorefonts/accepted-mscorefonts-eula</span><br></pre></td></tr></table></figure>
-<p>可以看到11个文件的下载链接。直接下载字体文件，放在一个文件夹里。如/home/yourname/ttf-mscorefonts/目录下。</p>
-<ul>
-<li>手动更新</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure ttf-mscorefonts-installer</span><br></pre></td></tr></table></figure>
-<p>指定下载字体的目录，确认安装配置。</p>
-<ul>
-<li>删除下载失败的通知信息</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/package-data-downloads/</span><br><span class="line">sudo rm ttf-mscorefonts-installer</span><br><span class="line"><span class="built_in">cd</span> /var/lib/update-notifier/package-data-downloads/</span><br><span class="line">sudo rm ttf-mscorefonts-installer</span><br><span class="line"><span class="built_in">cd</span> /var/lib/update-notifier/user.d/</span><br><span class="line">sudo rm data-downloads-failed</span><br></pre></td></tr></table></figure>
-<p>至此更新结束。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="page-number current">2</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/3/">Next &raquo;</a>
@@ -1408,11 +1409,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">code</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1424,15 +1425,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

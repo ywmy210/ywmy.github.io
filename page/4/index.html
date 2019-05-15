@@ -184,6 +184,101 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-18-04-开启TCP-BBR拥塞控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/03/15/ubuntu-18-04-开启TCP-BBR拥塞控制/">ubuntu 18.04 开启TCP BBR拥塞控制</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/03/15/ubuntu-18-04-开启TCP-BBR拥塞控制/" class="archive-article-date">
+  	<time datetime="2019-03-15T14:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="启用TCP-BBR拥塞算法"><a href="#启用TCP-BBR拥塞算法" class="headerlink" title="启用TCP BBR拥塞算法"></a>启用TCP BBR拥塞算法</h1><p>TCP BBR是Google给出的一个改良版的tcp拥塞控制算法，其目的在于最大化利用网络链路。TCP BBR要解决的问题：</p>
+<ul>
+<li>充分利用存在一定丢包率直的网络qlkh；</li>
+<li>降低网络延迟</li>
+</ul>
+<h2 id="查看系统内核"><a href="#查看系统内核" class="headerlink" title="查看系统内核"></a>查看系统内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4.15.0-46-generic</span><br></pre></td></tr></table></figure>
+<h2 id="修改系统变量"><a href="#修改系统变量" class="headerlink" title="修改系统变量"></a>修改系统变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"net.core.default_qdisc=fq"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"net.ipv4.tcp_congestion_control=bbr"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
+<h2 id="保存生效，配置内核"><a href="#保存生效，配置内核" class="headerlink" title="保存生效，配置内核"></a>保存生效，配置内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.neigh.default.base_reachable_time_ms = 600000</span><br><span class="line">net.ipv4.neigh.default.macast_solicit = 20</span><br><span class="line">net.ipv4.neigh.default.retrans_time_ms = 250</span><br><span class="line">net.core.default_qdisc = fq</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure>
+<h2 id="查看内核是否开启BBR"><a href="#查看内核是否开启BBR" class="headerlink" title="查看内核是否开启BBR"></a>查看内核是否开启BBR</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_available_congestion_control = reno cubic bbr</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_congestion_control</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure>
+<h2 id="验证BBR是否已经启动"><a href="#验证BBR是否已经启动" class="headerlink" title="验证BBR是否已经启动"></a>验证BBR是否已经启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp_bbr         20480 2</span><br></pre></td></tr></table></figure>
+<p>BBR已启用，BBR协议在linux4.9内核开始集成</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/03/15/ubuntu-18-04-开启TCP-BBR拥塞控制/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-不支持i386" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -730,6 +825,7 @@
 <p>进入程序后，按回国，终端回显登录信息，如下图：</p>
 <p><img src="http://blog.ywmy.xyz/network/login_device.png" alt="login_device"></p>
 <p>接下来就是愉快的调试了。</p>
+<p>串口的配置文件保存在家目录下的隐藏文件，名称为.minirc.filename。如默认的.minirc.dfl。</p>
 <h3 id="使用pococom调试"><a href="#使用pococom调试" class="headerlink" title="使用pococom调试"></a>使用pococom调试</h3><h4 id="安装pococom"><a href="#安装pococom" class="headerlink" title="安装pococom"></a>安装pococom</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install picocom</span><br></pre></td></tr></table></figure>
 <p>连接操作：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo picocom -b 9600 /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
@@ -1064,108 +1160,6 @@
 
 
   
-    <article id="post-H3C-SNMP配置举例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2018/12/27/H3C-SNMP配置举例/">H3C SNMP配置举例</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2018/12/27/H3C-SNMP配置举例/" class="archive-article-date">
-  	<time datetime="2018-12-27T13:54:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="配置举例"><a href="#配置举例" class="headerlink" title="配置举例"></a>配置举例</h1><p>基于H3C V7版本，举例包含SNMP V2。</p>
-<h2 id="组网需求"><a href="#组网需求" class="headerlink" title="组网需求"></a>组网需求</h2><p><img src="http://blog.ywmy.xyz/network/network_topology.png" alt="network_topology"></p>
-<h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h3 id="snmp-v2c-agent"><a href="#snmp-v2c-agent" class="headerlink" title="snmp v2c agent"></a>snmp v2c agent</h3><ul>
-<li>设置 Agent 使用的 SNMP 版本为 v2c、只读团体名为 readtest,读写团体名为 writetest。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;Agent&gt; system-view</span><br><span class="line">[Agent] snmp-agent sys-info version v2c</span><br><span class="line">[Agent] snmp-agent community <span class="built_in">read</span> readtest</span><br><span class="line">[Agent] snmp-agent community write writetest</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置设备的联系人和位置信息,以方便维护。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[Agent] snmp-agent sys-info contact Mr.Wang-Tel:3306</span><br><span class="line">[Agent] snmp-agent sys-info location telephone-closet,3rd-floor</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置允许向 NMS 发送告警信息,使用的团体名为 traptest。</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[Agent] snmp-agent <span class="built_in">trap</span> <span class="built_in">enable</span></span><br><span class="line">[Agent] snmp-agent target-host <span class="built_in">trap</span> address udp-domain 192.168.100.4 params securityname</span><br><span class="line">traptest</span><br></pre></td></tr></table></figure>
-<h3 id="NMS-zabbix"><a href="#NMS-zabbix" class="headerlink" title="NMS zabbix"></a>NMS zabbix</h3><ul>
-<li>添加设备</li>
-</ul>
-<p>登录zabbix后台 -&gt; Configuration -&gt; Hosts -&gt; Create host，操作如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/network/hosts_list.png" alt="hosts_list"></p>
-<p>点击创建后 -&gt; 输入监控设备相关的信息 -&gt; Host name -&gt; Visable name -&gt; Groups (选择已有的组或创建新的组) -&gt; 移除默认的Agent interface -&gt; 添加SNMP interface 勾选 Use bulk requests</p>
-<p><img src="http://blog.ywmy.xyz/network/create_host.png" alt="create_host"></p>
-<p>点击 Templates -&gt; 选择系统创建的SNMP模版 (zabbix内置了一些常用的模版，可以直接选择来使用)</p>
-<p><img src="http://blog.ywmy.xyz/network/add_templates.png" alt="add_selected"></p>
-<p>因默认模版中并未包含H3C相关的模版，所以，选用了通用的SNMP V2模版。</p>
-<p><img src="http://blog.ywmy.xyz/template_selected.png" alt="template_selected"></p>
-<p>最后点击add。完成添加主机，这时的主机监控也可能还不能用。取决于上例中Agent中community的设置，在默认的模版里，已经有对一些常用变量的，一些继承全局变量的值，需要在主机的宏变量中更改。</p>
-<p>点击创建的主机 -&gt; Macros -&gt; Inherited and host macros -&gt; change -&gt; 输入设备上配置的名称 (建议只读共同体的值)</p>
-<p><img src="http://blog.ywmy.xyz/network/Macros.png" alt="Macros"></p>
-<p>更改完成后，可以看到已经添加的设备列表后面的SNMP标识已经变成绿色，说明监控模版已经在起作用。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2018/12/27/H3C-SNMP配置举例/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/3/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/ywmy/page/5/">5</a><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/5/">Next &raquo;</a>
@@ -1255,11 +1249,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">code</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1271,15 +1265,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

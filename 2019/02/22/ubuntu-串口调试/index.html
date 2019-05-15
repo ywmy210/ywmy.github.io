@@ -23,7 +23,7 @@
 <meta property="og:image" content="http://blog.ywmy.xyz/network/login_device.png">
 <meta property="og:image" content="http://blog.ywmy.xyz/network/picocom_startup.png">
 <meta property="og:image" content="http://blog.ywmy.xyz/network/help_screen.png">
-<meta property="og:updated_time" content="2019-02-25T01:26:22.685Z">
+<meta property="og:updated_time" content="2019-05-15T06:51:04.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu 串口调试">
 <meta name="twitter:description" content="ubuntu 18.04串口调试工具环境系统：ubuntu 18.04 工具：USB转串口 设备：H3C FIREWARE 使用命令命令行工具：picocom、minicom 查看系统是否加载usb_serial模块1lsmod | grep usbserial 输出结果：  usbserial              45056  3 ftdi_sio  查看系统是否启用USB_serial">
@@ -258,6 +258,7 @@
 <p>进入程序后，按回国，终端回显登录信息，如下图：</p>
 <p><img src="http://blog.ywmy.xyz/network/login_device.png" alt="login_device"></p>
 <p>接下来就是愉快的调试了。</p>
+<p>串口的配置文件保存在家目录下的隐藏文件，名称为.minirc.filename。如默认的.minirc.dfl。</p>
 <h3 id="使用pococom调试"><a href="#使用pococom调试" class="headerlink" title="使用pococom调试"></a>使用pococom调试</h3><h4 id="安装pococom"><a href="#安装pococom" class="headerlink" title="安装pococom"></a>安装pococom</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install picocom</span><br></pre></td></tr></table></figure>
 <p>连接操作：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo picocom -b 9600 /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
@@ -479,11 +480,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">code</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -495,15 +496,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">
