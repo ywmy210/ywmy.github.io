@@ -184,6 +184,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-小新700-触摸板双击右键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/05/30/小新700-触摸板双击右键/">小新700 触摸板双击右键</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/05/30/小新700-触摸板双击右键/" class="archive-article-date">
+  	<time datetime="2019-05-30T14:23:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="联想小新700触摸板双击右键设置"><a href="#联想小新700触摸板双击右键设置" class="headerlink" title="联想小新700触摸板双击右键设置"></a>联想小新700触摸板双击右键设置</h2><p>之前买的联想小新电脑，在设置触摸板时，双击右键的设置是不生效的。在windows下的触摸板设置，如单指、双指、三指、四指操作，使用习惯后，操作起来也是非常高效和舒服的。不过小新的这个synaptics装置，在安装最新驱动后，双击右键依然是不起作用的。在使用过程中就比较尴尬。</p>
+<h3 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h3><p>打开注册表编辑器，修改注册表值，路径如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WIN＋R 运行 regedit，展开路径：</span><br><span class="line">计算机\HKEY_CURRENT_USER\Software\Synaptics\SynTP\</span><br></pre></td></tr></table></figure>
+<p>展开路径，找到TouchPadPS2TM开头的项，如自己的小新为TouchPadPS2TM3105，点击该项，右边的键值，找到2FingerTapAction，双击将默认数据0修改为2。确定修改，重启系统，双击右键设置生效。操作结束。记录备用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/05/30/小新700-触摸板双击右键/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-GNS3添加网络设备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1160,100 +1237,6 @@
 
 
   
-    <article id="post-记一些ubuntu-18-04的小毛病" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/04/13/记一些ubuntu-18-04的小毛病/">记一些ubuntu 18.04的小毛病</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/04/13/记一些ubuntu-18-04的小毛病/" class="archive-article-date">
-  	<time datetime="2019-04-13T10:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Ubuntu-18-04个人使用问题汇总"><a href="#Ubuntu-18-04个人使用问题汇总" class="headerlink" title="Ubuntu 18.04个人使用问题汇总"></a>Ubuntu 18.04个人使用问题汇总</h1><p>使用桌面版的ubuntu，总会有一些小问题，也经常会疑惑，好好的用着，怎么突然就不行了呢。本着能折腾就折腾的原则，记录一下，目前遇到的，比较深刻的小问题。</p>
-<h2 id="启动后无法进入X-org环境"><a href="#启动后无法进入X-org环境" class="headerlink" title="启动后无法进入X.org环境"></a>启动后无法进入X.org环境</h2><p>在一次更新操作后，重启了，选择X.org进入后，只有桌面壁纸，鼠标键盘无反应。</p>
-<p>但是进入Wayland环境没有问题，正常操作。</p>
-<p>记录以下操作：</p>
-<p>因为也确实不清楚原因。大概能猜到和桌面环境有关系。</p>
-<p>操作尝试：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ubuntu-desktop</span><br><span class="line">sudo apt install xserver-xong-input-all</span><br><span class="line">sudo apt install input-utils</span><br></pre></td></tr></table></figure>
-<p>结束后，重启，进入X.org桌面，好了。正常操作了。</p>
-<h2 id="QT5程序缩放不正常"><a href="#QT5程序缩放不正常" class="headerlink" title="QT5程序缩放不正常"></a>QT5程序缩放不正常</h2><p>同样在一次电脑启动后，发现一个常用的程序，QT5界面本来运行时，正常的图标，变小了，窗口变大了，字体变模糊了，而且，窗口调整还不正常。</p>
-<p>试了一下另外一个QT5写的程序，stacer。打开发现，比例倒是正常的，缩放比正常大了两倍左右，字体显示倒是正常。</p>
-<p>还有一个也是天天用的。网易云音乐，打开后，也是比正常缩放大了两倍左右，字体也模糊。系统程序都是正常的，想了一下，应该是QT5程序的问题。</p>
-<p>百度关键字，QT5 缩放，还真有和QT 5相关各种缩放问题，再想到是不是和屏幕分辨训练场有关，自己屏幕是1080P的，检索关键字：QT5 HiDPI scaling gonme 3，比如这篇<a href="https://unix.stackexchange.com/questions/433385/scaling-hidpi-issue-for-qt5-applications-under-gnome" target="_blank" rel="noopener">请戳</a>。还有一篇，也是写到高分辨率下的缩放问题，据说是一个多年没人管的BUG，链接<a href="https://my.oschina.net/flywuya/blog/1797527" target="_blank" rel="noopener">请戳</a>。</p>
-<p>好了，这次明白了，思路就是启动程序时手动调整绽放比例，或者是调字体DPI。</p>
-<p>最后给个直接改启动参数的方法。效果是出来了，也算是正常使用了。</p>
-<p>参考网易云音乐的启动参数，字体显示正常，缩放不正常的：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/share/applications/netease-cloud-music.desktop</span><br><span class="line"></span><br><span class="line">[Desktop Entry]</span><br><span class="line">Version=1.0</span><br><span class="line">Type=Application</span><br><span class="line">Name=NetEase Cloud Music</span><br><span class="line">Name[zh_CN]=网易云音乐</span><br><span class="line">Name[zh_TW]=網易雲音樂</span><br><span class="line">Comment=NetEase Cloud Music</span><br><span class="line">Comment[zh_CN]=网易云音乐</span><br><span class="line">Comment[zh_TW]=網易雲音樂</span><br><span class="line">Icon=netease-cloud-music</span><br><span class="line">Exec=sh -c <span class="string">"unset SESSION_MANAGER &amp;&amp; netease-cloud-music %U"</span></span><br><span class="line">Categories=AudioVideo;Player;</span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">StartupNotify=<span class="literal">true</span></span><br><span class="line">StartupWMClass=netease-cloud-music</span><br><span class="line">MimeType=audio/aac;audio/flac;audio/mp3;audio/mp4;audio/mpeg;audio/ogg;audio/x-ape;audio/x-flac;audio/x-mp3;audio/x-mpeg;audio/x-ms-wma;audio/x-vorbis;audio/x-vorbis+ogg;audio/x-wav;</span><br><span class="line">Exec=env QT_SCALE_FACTOR=0.5 /usr/bin/netease-cloud-music   <span class="comment">#这一行，启动时调整绽放比例</span></span><br></pre></td></tr></table></figure>
-<p>参考stacer启动参数，绽放和字体都不正常的：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /usr/share/applications/stacer.desktop </span><br><span class="line"></span><br><span class="line">[Desktop Entry]</span><br><span class="line">Name=Stacer</span><br><span class="line">Exec=stacer</span><br><span class="line">Comment=Linux System Optimizer and Monitoring</span><br><span class="line">Icon=stacer</span><br><span class="line">Type=Application</span><br><span class="line">Terminal=<span class="literal">false</span></span><br><span class="line">Encoding=UTF-8</span><br><span class="line">Categories=Utility;</span><br><span class="line">Exec=env QT_SCALE_FACTOR=0.5 QT_FONT_DPI=180 /usr/share/stacer/stacer  <span class="comment">#这一行，既调比例，也调DPI</span></span><br></pre></td></tr></table></figure>
-<p>缩放比例和字体渲染，看自已屏幕分辨率，调整完后，试一下程序启动后的效果。好了，这个问题也算是处理结束。</p>
-<p>再一次回到第一个问题上，Wayland环境上，基本自己使用的程序都能正常使用。有一点，自己买了一块wacom的手绘板，github上有一个linux wacom project的项目，可以支持linux使用手绘板。不过一个小问题，手绘板在wayland上使用的时候，手绘笔没办法选取程序的菜单项，暂时应该无解。所以默认就X.org环境启动系统使用了。</p>
-<p>小记结束。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/04/13/记一些ubuntu-18-04的小毛病/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/2/">Next &raquo;</a>
@@ -1347,11 +1330,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1363,11 +1346,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">

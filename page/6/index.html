@@ -184,6 +184,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-webmin安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2018/10/21/webmin安装/">webadmin安装</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2018/10/21/webmin安装/" class="archive-article-date">
+  	<time datetime="2018-10-21T03:46:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="centos-7-安装webadmin"><a href="#centos-7-安装webadmin" class="headerlink" title="centos 7 安装webadmin"></a>centos 7 安装webadmin</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>webadmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect</span><br></pre></td></tr></table></figure>
+<h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>程序安装位置：/usr/libexec/webmin</p>
+<p>程序默认通过https访问，端口10000 TCP，按访问需求放通。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2018/10/21/webmin安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-centos-samba配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1035,141 +1114,6 @@
 
 
   
-    <article id="post-ubuntu-16-04上安装openvpn服务器-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2018/08/08/ubuntu-16-04上安装openvpn服务器-2/">ubuntu-16-04上安装openvpn服务器(二)</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2018/08/08/ubuntu-16-04上安装openvpn服务器-2/" class="archive-article-date">
-  	<time datetime="2018-08-08T13:34:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ubuntu-16-04上安装openvpn-二"><a href="#ubuntu-16-04上安装openvpn-二" class="headerlink" title="ubuntu 16.04上安装openvpn(二)"></a>ubuntu 16.04上安装openvpn(二)</h1><h2 id="step-twelve-安装客户端配置"><a href="#step-twelve-安装客户端配置" class="headerlink" title="step twelve: 安装客户端配置"></a>step twelve: 安装客户端配置</h2><p>现在我们会讨论如何在windows、os x、iso和安卓上安装客户端vpn配置文件。这些客户端上的指令之间是独立的，所以可以跑到适用你的任一条。</p>
-<h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>openvpn的<a href="https://openvpn.net/index.php/open-source/downloads.html" target="_blank" rel="noopener">下载页面</a>可以找到windows的openvpn客户端程序。为你的windows选择适合安装的程序版本。<br><em>注意：openvpn需要管理员权限才能安装</em></p>
-<p>在安装openvpn之后，把.ovpn文件拷贝到：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C:\Progrem Files\OpenVPN\config</span><br></pre></td></tr></table></figure>
-<p>当你启动openvpn时，它会自动查看配置文件。</p>
-<p>每次使用openvpn时必须以管理身份运行。为了不必在每次使用vpn时右击选择使用管理员权限运行，你可以进行预设置，但是必须通过管理员账号完成。这也就意味着标准用户需要输入管理员密码才能使用openvpn。别一方面，除非客户端上的openvpn程序有管理权限，否则标准用户也无法正确链接到服务器，所以必须提升权限。</p>
-<p>要将openvpn程序设置为始终以管理员身份运行，右键单击其快捷方式图标，然后点击属性，在兼容性先项的底部，点击更改所有用户的设备。在新窗口中，先中以管理员身份运行此程序。</p>
-<h4 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h4><p>每次启动openvpn gui时，windows都会底部是否允许程序对你的计算机进行修改，选择是。启动openvpn客户端只是把applet放入到系统托盘中，以便根据需要连接和断开vpn，它实际上并没有创建vpn连接。</p>
-<p>一旦启动openvpn，右击系统托盘中的openvpn图标，这会打开一个菜单。选择菜单的顶部的client1（这是我们的client1.ovpn配置文件）并选择connect。</p>
-<p>这会打开一个状态窗口，显示建立连接时的日志输出，一旦客户端边上会显示一条消息。</p>
-<p>断开与vpn的连接：右击系统托盘中的openvpn图标，选择客户端配置文件，并单击disconnect。</p>
-<h3 id="MAC-OS-X"><a href="#MAC-OS-X" class="headerlink" title="MAC OS X"></a>MAC OS X</h3><p>####　安装</p>
-<p>tunnelbick是一款适用于mac os x的免费、开源openvpn客户端。你可以从<a href="https://tunnelblick.net/downloads.html" target="_blank" rel="noopener">tunnelblick</a>下载.dmg文件，并按照提示进行安装。在安装过程结束时，tunnelblick会问你是否有任何配置文件。打开finder窗口，双击client1.ovpn。tunnelblick会安装客户端配置文件。</p>
-<p>####　连接</p>
-<p>通过双击applications文件夹中的tunnelblick来启动tunnelblick。一旦tunnelblick启动，屏幕右上角的菜单栏会出现一个tunnelblick图标来控制连接。然后点击connect来启动连接。连接client连接。</p>
-<h3 id="inux"><a href="#inux" class="headerlink" title="inux"></a>inux</h3><p>####　安装</p>
-<p>如果你使用的是linux，根据你的发行版本可以使用各种工具。你的桌面环境或窗口管理器也可能包含连接程序。最普遍的方式是使用openvpn软件。在ubuntu或者是debian上，你可以像服务器上一样安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openvpn</span><br></pre></td></tr></table></figure>
-<p>在centos上，你可以启动epel库，然后通过以下命令来安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release</span><br><span class="line">sudo yum install openvpn</span><br></pre></td></tr></table></figure>
-<p>####　配置</p>
-<p>检查你的发行版本是否包含/etc/openvpn/update-resolov-conf脚本</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /etc/openvpn</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">update-resolv-conf</span><br></pre></td></tr></table></figure>
-<p>如果发现有update-resolv-config文件，那么取消我们添加的三行来调整DNS调：client1.ovpn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">script-security 2</span><br><span class="line">up /etc/openvpn/update-resolv-conf</span><br><span class="line">down /etc/openvpn/update-resolv-conf</span><br></pre></td></tr></table></figure>
-<p>如果你使用的是centos，把group从nogroup改为nobody，以匹配发行版本的可用组：client1.ovpn</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">group nobody</span><br></pre></td></tr></table></figure>
-<p>保存并关闭文件。</p>
-<p>现在你只需要把openvpn命令指向客户端配置文件即可连接到vpn：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo openvpn --config client1.ovpn</span><br></pre></td></tr></table></figure>
-<h3 id="android"><a href="#android" class="headerlink" title="android"></a>android</h3><p>####　安装</p>
-<p>从f-droid中搜索openvpn并安装，把电脑上的client1.ovpn配置文件拷贝到手机上。</p>
-<p>启动openvpn应用，点击菜单导入配置文件，找到已经存在手机上的client1.ovpn文件。点击导入即可。</p>
-<p>####　连接</p>
-<p>只需要点击connect按钮，就可以进行连接。你会被问到是否信任openvpn程序，选择确定以启动连接。要断开vpn连接，返回到openvpn应用，然后选择断开连接。</p>
-<h2 id="step-thirteen-测试连接"><a href="#step-thirteen-测试连接" class="headerlink" title="step thirteen: 测试连接"></a>step thirteen: 测试连接</h2><p>一旦安装了所有东西，一个简单的检查可以确认一切正常。现在断开vpn连接，然后打开浏览器访问<a href="https://www.dnsleaktest.com/" target="_blank" rel="noopener">DNSLeakTest</a>。</p>
-<p>这个网站会返回由你互联网服务提供商分配的ip地址。为了用这个网站检查你的dns设备，点击extended test,它会告诉你你在使用哪个dns服务器。</p>
-<p>现在把openvpn客户端连接到你的vpn服务器上，然后刷新浏览器。现在应该出现你的vpn服务器的ip地址。再一次,extended test会检查出你的dns设置。</p>
-<h2 id="step-fourteen-撤销客户证书"><a href="#step-fourteen-撤销客户证书" class="headerlink" title="step fourteen: 撤销客户证书"></a>step fourteen: 撤销客户证书</h2><p>有时候，你可能需要撤销一个客户证书以防止进一步访问openvpn服务器。</p>
-<p>为此，输入你的ca目录，并重新source var文件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/openvpn-ca</span><br><span class="line"><span class="built_in">source</span> vars</span><br></pre></td></tr></table></figure>
-<p>然后，使用你想要撤销的客户端名称调用revoke-full命令：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./revoke-full client3</span><br></pre></td></tr></table></figure>
-<p>这会显示一些输出并以error 23结束，这是正常的并且应该已经成功生成了必要的信息。这些信息保存在keys目录下的一个名为crl.pem文件中。</p>
-<p>把这个文件放到/etc/openvpn配置目录中。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp ~/openvpn-ca/keys/crl.pem /etc/openvpn</span><br></pre></td></tr></table></figure>
-<p>然后打开openvpn服务器配置文件：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
-<p>在文件底部，增加crl-varify选项，便得openvpn服务器在试图建立连接时检查证书撤销列表：/etc/openvpn/servser.conf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
-<p>保存并关闭文件。</p>
-<p>最后，重启openvpn以实现证书撤销：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart openvpn@server</span><br></pre></td></tr></table></figure>
-<p>现在客户端应该不可以再用旧的证书成功连接到服务器。</p>
-<p>要撤销其它用户，按照以下过程进行操作：</p>
-<ul>
-<li>source ~/openvpn-ca目录下的vars文件，然后使用客户端名称调用revoke-full脚本，生成一个新的证书撤销列表。</li>
-<li>拷贝新证书撤销列表到/etc/openvpn目录以覆盖旧的列表。</li>
-<li>重启openvpn服务。</li>
-</ul>
-<p><strong>来自</strong><br><a href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-openvpn-server-on-ubuntu-16-04" target="_blank" rel="noopener">how to set up an openvpn server on ubuntu 16.04</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2018/08/08/ubuntu-16-04上安装openvpn服务器-2/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/5/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/4/">4</a><a class="page-number" href="/ywmy/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/7/">Next &raquo;</a>
@@ -1263,11 +1207,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1279,11 +1223,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
