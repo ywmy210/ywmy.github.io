@@ -184,6 +184,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-python-pip" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/06/17/python-pip/">python pip</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/06/17/python-pip/" class="archive-article-date">
+  	<time datetime="2019-06-17T02:27:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ubuntu-pip相关小问题"><a href="#ubuntu-pip相关小问题" class="headerlink" title="ubuntu pip相关小问题"></a>ubuntu pip相关小问题</h2><h3 id="ImportError-No-module-named-‘setuptools’"><a href="#ImportError-No-module-named-‘setuptools’" class="headerlink" title="ImportError: No module named ‘setuptools’"></a>ImportError: No module named ‘setuptools’</h3><p>解决办法：安装setuptools</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python 2.x:    sudo apt-get install python-setuptools</span><br><span class="line">Python 3.x:    sudo apt-get install python3-setuptools</span><br></pre></td></tr></table></figure>
+<p>如果安装出现错误：AttributeError: module ‘setuptools.dist’ has no attribute ‘check_specifier’</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Python 2.x:</span><br><span class="line">pip install --upgrade pip</span><br><span class="line"><span class="built_in">hash</span> -r pip</span><br><span class="line"></span><br><span class="line">Python 3.x:</span><br><span class="line">pip3 install --upgrade pip</span><br><span class="line"><span class="built_in">hash</span> -r pip3</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> (Mask RCNN root folder)</span><br><span class="line">sudo python3 setup.py install</span><br></pre></td></tr></table></figure>
+<h3 id="pip升级"><a href="#pip升级" class="headerlink" title="pip升级"></a>pip升级</h3><p>pip升级后出现错误：Import Error:cannot import name main</p>
+<p>解决办法：</p>
+<ul>
+<li>方法1</li>
+</ul>
+<p>更改from pip import main</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更改下面行内容</span></span><br><span class="line">from pip import main</span><br><span class="line"><span class="comment"># 更改为</span></span><br><span class="line">from pip._internal import main</span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法2</li>
+</ul>
+<p>更改sys.exit</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原内容：</span></span><br><span class="line">from pip import main</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sys.exit(main())</span><br><span class="line"><span class="comment"># 更改后内容</span></span><br><span class="line">from pip import __main__</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sys.exit(__main__._main())</span><br></pre></td></tr></table></figure>
+<p>注意<strong>main</strong>左右的下划线是两个下划线。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/06/17/python-pip/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-小新700-触摸板双击右键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1131,112 +1221,6 @@
 
 
   
-    <article id="post-ubuntu下的一些小折腾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/04/17/ubuntu下的一些小折腾/">ubuntu下的一些小折腾</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/04/17/ubuntu下的一些小折腾/" class="archive-article-date">
-  	<time datetime="2019-04-17T02:08:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h1><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul>
-<li>问题描述</li>
-</ul>
-<p>默认的ibus输入法，在输入中文的时候，会出现候选词为方块的现象，原因大致为输入法码表与系统字体渲染的问题。即码表中字符在系统的字体库中找不到对应的字体。虽然不影响使用，且码表中匹配的字大都为繁体或生僻字，看到方块，总有一种要干掉方块字的冲动。尝试把系统字体更改为思源黑体，不过输入法候选词中仍然存在方块。更改输入法显示字体：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ibus-setup</span><br></pre></td></tr></table></figure>
-<p>更改如图：</p>
-<p><img src="http://blog.ywmy.xyz/linux/ibus_setup.png" alt="ibus-setup"></p>
-<p>尝试安装更多字符集的字体库，如明朝花园Ｂ。</p>
-<p>下载链接<a href="https://github.com/tony/dot-fonts" target="_blank" rel="noopener">请戳</a></p>
-<p>补充CJK字体在不同程序之间输入显示的一个小问题，比如码表同[IDRN]源下加心，𢢵.这个字在VS CODE中可以显示，谷歌浏览器中也可以正常显示，在WPS中则显示为潮。</p>
-<h2 id="vs-code-power-line-font"><a href="#vs-code-power-line-font" class="headerlink" title="vs code power-line font"></a>vs code power-line font</h2><ul>
-<li>问题描述</li>
-</ul>
-<p>在昨天没事的时候，把系统的默认的bash更改为zsh，并配置了美化，oh my zsh。</p>
-<p>终端上可以很赏心悦目了，不过在打开vs code的时候，调用zsh会出现power-line字体不显示的问题，具体可看下图：</p>
-<p><img src="http://blog.ywmy.xyz/linux/vs_code_powerline.png" alt="vs_code_powerline"></p>
-<ul>
-<li>解决办法</li>
-</ul>
-<ol>
-<li>安装power-line字体</li>
-</ol>
-<p>下载<a href="https://github.com/abertsch/Menlo-for-Powerline" target="_blank" rel="noopener">请戳</a></p>
-<ol start="2">
-<li>配置vs code</li>
-</ol>
-<p>操作步骤：设置－&gt;打开json设置-&gt;输入以下调用字体信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"terminal.integrated.fontFamily"</span>: <span class="string">"Menlo for Powerline"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>参考下图：</p>
-<p><img src="http://blog.ywmy.xyz/linux/vs_code_powerline_set.png" alt="vs_code_powerline_set"></p>
-<p>完成设置后，显示效果生效，参考下图：</p>
-<p><img src="http://blog.ywmy.xyz/linux/vs_code_json_set.png" alt="vs_code_json_ser"></p>
-<p><a href="https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7" target="_blank" rel="noopener">参考链接</a></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/04/17/ubuntu下的一些小折腾/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/2/">Next &raquo;</a>
@@ -1350,10 +1334,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
@@ -1371,6 +1351,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
             
             <div class="clearfix"></div>

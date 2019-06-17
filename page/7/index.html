@@ -184,6 +184,106 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-H3C-MSR-3640配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2018/08/12/H3C-MSR-3640配置/">H3C MSR 3640配置</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2018/08/12/H3C-MSR-3640配置/" class="archive-article-date">
+  	<time datetime="2018-08-12T12:17:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-12</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="H3C-MSR-路由器操作小记"><a href="#H3C-MSR-路由器操作小记" class="headerlink" title="H3C MSR 路由器操作小记"></a>H3C MSR 路由器操作小记</h1><h2 id="0x001-系统信息及升级"><a href="#0x001-系统信息及升级" class="headerlink" title="0x001:系统信息及升级"></a>0x001:系统信息及升级</h2><h3 id="查看硬件信息"><a href="#查看硬件信息" class="headerlink" title="查看硬件信息"></a>查看硬件信息</h3><p>console口登录设备</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;XH-route&gt;display device manuinfo</span><br><span class="line"> Slot 0:</span><br><span class="line">DEVICE_NAME          : MSR 36-40</span><br><span class="line">DEVICE_SERIAL_NUMBER : 210235A0W8B166000422</span><br><span class="line">MAC_ADDRESS          : 84D9-31DE-01FD</span><br><span class="line">MANUFACTURING_DATE   : 2016-06-24</span><br><span class="line">VENDOR_NAME          : H3C</span><br></pre></td></tr></table></figure>
+<h3 id="更改设备名称"><a href="#更改设备名称" class="headerlink" title="更改设备名称"></a>更改设备名称</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;XH-route&gt;system-view</span><br><span class="line">System View: return to User View with Ctrl+Z.</span><br><span class="line">[XH-route]sysname XH-route</span><br></pre></td></tr></table></figure>
+<h3 id="重置设备"><a href="#重置设备" class="headerlink" title="重置设备"></a>重置设备</h3><p>退出特权模式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;XH-route&gt;restore factory-default</span><br></pre></td></tr></table></figure>
+<h3 id="固件升级"><a href="#固件升级" class="headerlink" title="固件升级"></a>固件升级</h3><p>固件升级所需要的文件，可以通过h3c售后服务提供h3c设备序列号以设备信息由于h3c售后提供下载链接。同意下载许可后，将新的版本文件通过tftp服务上传至路由器设备。并将新的固件设定为下一次启动的默认启动项。</p>
+<h4 id="tftp服务"><a href="#tftp服务" class="headerlink" title="tftp服务"></a>tftp服务</h4><p>在电脑上安装tfpt服务器软件，可以使用一个小巧简单的服务器软件<a href="http://tftpd32.jounin.net/tftpd32_download.html" target="_blank" rel="noopener">tftp32</a>。选择对应的系统版本和下载方式。安装结束后，运行tfpt32程序，设定tfpt服务器的目录，即已经下载的固件目录。如图所示：</p>
+<p><img src="http://blog.ywmy.xyz/tftp.jpg" alt="tfpt设定">。</p>
+<p>通过tfpt将固件上传到路由器目录下，操作在路由器上完成。命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;route&gt;tftp tftp-ip get 固件文件名</span><br></pre></td></tr></table></figure>
+<p>操作如下图所示：</p>
+<p><img src="http://blog.ywmy.xyz/ywmy/networktfpt_upload.png" alt="上传固件">。</p>
+<p>上传固件名称为MSR36-CMW710-RO615P13.IPE。</p>
+<p>上传结束后，通过命令可以查看上传固件的目录及目录下的文件，上传前也可以查看设备剩余存储空间是否满足固件大小。操作如下图所示：</p>
+<p><img src="http://blog.ywmy.xyz/ywmy/network_dir.png" alt="查看目录内容">。</p>
+<p>设定启动固件为新上传的固件。操作如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;route&gt;boot-loader file cfa0:/MSR36-CMW710-R0615P13.IPE main</span><br></pre></td></tr></table></figure>
+<p><img src="http://blog.ywmy.xyz/ywmy/network_upgrade_commit.png" alt="设定启动项">。</p>
+<p>确认启动项的信息，并提交确认，重新启动设备。</p>
+<p><img src="http://blog.ywmy.xyz/ywmy/network_set_bootup_version.png" alt="砍提交信息">。</p>
+<p>重启后，新的固件生效。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;route&gt;reboot</span><br></pre></td></tr></table></figure>
+<h2 id="0x002-基本配置"><a href="#0x002-基本配置" class="headerlink" title="0x002:基本配置"></a>0x002:基本配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;XH-route&gt;system-view</span><br><span class="line">System View: return to User View with Ctrl+Z.</span><br><span class="line">[XH-route]local-user admin     #设定本地用户</span><br><span class="line">[XH-route-luser-manage-admin]password simple [password]     #设定密码</span><br><span class="line">[XH-route-luser-manage-admin]authorization-attribute user-role network-admin      #设定用户级别</span><br><span class="line">[XH-route-luser-manage-admin]server-type telnet https　　　　　#设定登录方式</span><br></pre></td></tr></table></figure>
+<p>启用https登录，更改默认登录端口：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[XH-route]ip https enable    #启用https服务</span><br><span class="line">[XH-route]ip https port [number]　　　#更变https端口</span><br></pre></td></tr></table></figure>
+<p>基本配置如下所示（固定ip上网＋nat端口映射）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br></pre></td><td class="code"><pre><span class="line">&lt;XH-route&gt;display current-configuration</span><br><span class="line">#</span><br><span class="line"> version 7.1.064, Release 0615P13</span><br><span class="line">#</span><br><span class="line"> sysname XH-route</span><br><span class="line">#</span><br><span class="line"> telnet server enable</span><br><span class="line">#</span><br><span class="line">nat address-group 1</span><br><span class="line"> address 112.17.128.126 112.17.128.126</span><br><span class="line">#</span><br><span class="line"> password-recovery enable</span><br><span class="line">#</span><br><span class="line">vlan 1</span><br><span class="line">#</span><br><span class="line">dhcp server ip-pool test</span><br><span class="line"> gateway-list 172.16.100.1</span><br><span class="line"> network 172.16.100.0 mask 255.255.255.0</span><br><span class="line"> dns-list 211.140.13.18 211.140.188.188</span><br><span class="line">#</span><br><span class="line">controller Cellular0/0</span><br><span class="line">#</span><br><span class="line">controller Cellular0/1</span><br><span class="line">#</span><br><span class="line">interface Aux0</span><br><span class="line">#</span><br><span class="line">interface Virtual-Template0</span><br><span class="line">#</span><br><span class="line">interface NULL0</span><br><span class="line">#</span><br><span class="line">interface Vlan-interface1</span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/0</span><br><span class="line"> port link-mode route</span><br><span class="line"> combo enable copper</span><br><span class="line"> ip address 112.17.128.126 255.255.255.128</span><br><span class="line"> nat outbound 3000 address-group 1</span><br><span class="line"> nat server protocol tcp global 112.17.128.126 655 inside 172.16.60.200 655</span><br><span class="line"> nat server protocol tcp global 112.17.128.126 5100 5700 inside 172.16.60.200 5100 5700</span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/1</span><br><span class="line"> port link-mode route</span><br><span class="line"> combo enable copper</span><br><span class="line"> ip address 172.16.100.1 255.255.255.0</span><br><span class="line">#</span><br><span class="line">interface GigabitEthernet0/2</span><br><span class="line"> port link-mode route</span><br><span class="line">#</span><br><span class="line"> scheduler logfile size 16</span><br><span class="line">#</span><br><span class="line">line class aux</span><br><span class="line"> user-role network-admin</span><br><span class="line">#</span><br><span class="line">line class tty</span><br><span class="line"> user-role network-operator</span><br><span class="line">#</span><br><span class="line">line class vty</span><br><span class="line"> user-role network-operator</span><br><span class="line">#</span><br><span class="line">line aux 0</span><br><span class="line"> user-role network-admin</span><br><span class="line">#</span><br><span class="line">line vty 0 4</span><br><span class="line"> authentication-mode scheme</span><br><span class="line"> user-role network-operator</span><br><span class="line">#</span><br><span class="line">line vty 5 63</span><br><span class="line"> user-role network-operator</span><br><span class="line">#</span><br><span class="line"> ip route-static 0.0.0.0 0 112.17.128.1</span><br><span class="line"> ip route-static 172.16.60.0 24 172.16.100.100</span><br><span class="line"> ip route-static 192.168.35.0 24 172.16.100.100</span><br><span class="line">#</span><br><span class="line">acl advanced 3000</span><br><span class="line"> rule 0 permit ip</span><br><span class="line">#</span><br><span class="line">domain system</span><br><span class="line">#</span><br><span class="line"> domain default enable system</span><br><span class="line">#</span><br><span class="line">role name level-0</span><br><span class="line"> description Predefined level-0 role</span><br><span class="line">#</span><br><span class="line">role name level-1</span><br><span class="line"> description Predefined level-1 role</span><br><span class="line">#</span><br><span class="line">role name level-2</span><br><span class="line"> description Predefined level-2 role</span><br><span class="line">#</span><br><span class="line">role name level-3</span><br><span class="line"> description Predefined level-3 role</span><br><span class="line">#</span><br><span class="line">role name level-4</span><br><span class="line"> description Predefined level-4 role</span><br><span class="line">#</span><br><span class="line">role name level-5</span><br><span class="line"> description Predefined level-5 role</span><br><span class="line">#</span><br><span class="line">role name level-6</span><br><span class="line"> description Predefined level-6 role</span><br><span class="line">#</span><br><span class="line">role name level-7</span><br><span class="line"> description Predefined level-7 role</span><br><span class="line">#</span><br><span class="line">role name level-8</span><br><span class="line"> description Predefined level-8 role</span><br><span class="line">#</span><br><span class="line">role name level-9</span><br><span class="line"> description Predefined level-9 role</span><br><span class="line">#</span><br><span class="line">role name level-10</span><br><span class="line"> description Predefined level-10 role</span><br><span class="line">#</span><br><span class="line">role name level-11</span><br><span class="line"> description Predefined level-11 role</span><br><span class="line">#</span><br><span class="line">role name level-12</span><br><span class="line"> description Predefined level-12 role</span><br><span class="line">#</span><br><span class="line">role name level-13</span><br><span class="line"> description Predefined level-13 role</span><br><span class="line">#</span><br><span class="line">role name level-14</span><br><span class="line"> description Predefined level-14 role</span><br><span class="line">#</span><br><span class="line">user-group system</span><br><span class="line">#</span><br><span class="line">local-user admin class manage</span><br><span class="line"> password hash $h$6$imclxi6OjTWpT1cz$bFZaC5tFEwAq2RSrsHrdtzzYy3GrpqnPqcFcaWe/iYO4JlF6LgJp7zWMUf6tQAZdd4o8xLQtfMvHhhgqkkSADQ==</span><br><span class="line"> service-type telnet http https</span><br><span class="line"> authorization-attribute user-role network-admin</span><br><span class="line">#</span><br><span class="line">local-user test class manage</span><br><span class="line"> password hash $h$6$yYBLqOb6kZzPCsJG$05S4ylePhCojyow+/HyG6wzxFkn9YI9PHEuRlHo82BDS7ZK7FL0uptb8ojicRVZ++lgYOQc2F+lN/eO6jb7eWA==</span><br><span class="line"> service-type http</span><br><span class="line"> authorization-attribute user-role network-operator</span><br><span class="line">#</span><br><span class="line"> ip https port [number]</span><br><span class="line"> ip http enable</span><br><span class="line"> ip https enable</span><br><span class="line">#</span><br><span class="line">wlan global-configuration</span><br><span class="line">#</span><br><span class="line">wlan ap-group default-group</span><br><span class="line">#</span><br><span class="line">return</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2018/08/12/H3C-MSR-3640配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-16-04上安装openvpn服务器-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1272,10 +1372,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
@@ -1293,6 +1389,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
             
             <div class="clearfix"></div>
