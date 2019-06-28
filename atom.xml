@@ -6,7 +6,7 @@
   <link href="/ywmy/atom.xml" rel="self"/>
   
   <link href="https://ywmy210.github.io/ywmy/"/>
-  <updated>2019-06-17T02:44:40.365Z</updated>
+  <updated>2019-06-28T15:24:26.779Z</updated>
   <id>https://ywmy210.github.io/ywmy/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>centos 6 ssr</title>
+    <link href="https://ywmy210.github.io/ywmy/2019/06/28/centos-6-ssr/"/>
+    <id>https://ywmy210.github.io/ywmy/2019/06/28/centos-6-ssr/</id>
+    <published>2019-06-28T15:09:05.000Z</published>
+    <updated>2019-06-28T15:24:26.779Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="centos-6-ssr"><a href="#centos-6-ssr" class="headerlink" title="centos 6 ssr"></a>centos 6 ssr</h2><h3 id="更换内核"><a href="#更换内核" class="headerlink" title="更换内核"></a>更换内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum update 更新系统</span><br><span class="line">rpm -ivh http://www.aloneray.com/wp-content/uploads/2017/03/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm</span><br><span class="line"><span class="comment"># 更新内核</span></span><br><span class="line">rpm -ivh http://www.aloneray.com/wp-content/uploads/2017/03/kernel-2.6.32-504.3.3.el6.x86_64.rpm --force</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure><h3 id="安装SSR服务端"><a href="#安装SSR服务端" class="headerlink" title="安装SSR服务端"></a>安装SSR服务端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate http://www.aloneray.com/wp-content/uploads/2019/01/shadowsocksR_CN.sh &amp;&amp; chmod +x shadowsocksR_CN.sh &amp;&amp; ./shadowsocksR_CN.sh</span><br></pre></td></tr></table></figure><p>按提示和步骤操作。</p><h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>锐速是一款非常不错的TCP底层加速软件。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh &amp;&amp; bash serverspeeder-all.sh</span><br></pre></td></tr></table></figure><h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop </span><br><span class="line">chkconfig iptables off</span><br></pre></td></tr></table></figure><h3 id="锐速常用命令"><a href="#锐速常用命令" class="headerlink" title="锐速常用命令"></a>锐速常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重启锐速：/serverspeeder/bin/serverSpeeder.sh restart</span><br><span class="line">启动锐速：/serverspeeder/bin/serverSpeeder.sh start</span><br><span class="line">停止锐速：/serverspeeder/bin/serverSpeeder.sh stop</span><br><span class="line">锐速状态：/serverspeeder/bin/serverSpeeder.sh status</span><br></pre></td></tr></table></figure><h3 id="多端口配置"><a href="#多端口配置" class="headerlink" title="多端口配置"></a>多端口配置</h3><p>服务端更改配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"server"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line"><span class="string">"server_ipv6"</span>: <span class="string">"[::]"</span>,</span><br><span class="line"><span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line"><span class="string">"local_port"</span>: 1080,</span><br><span class="line"><span class="string">"port_password"</span>:</span><br><span class="line"><span class="comment"># 多端口配置开始</span></span><br><span class="line">&#123;<span class="string">"8090"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"8089"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"459"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"456"</span>:<span class="string">"password"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment"># 多端口配置结束</span></span><br><span class="line"><span class="string">"timeout"</span>: 120,</span><br><span class="line"><span class="string">"udp_timeout"</span>: 60,</span><br><span class="line"><span class="string">"method"</span>: <span class="string">"aes-256-cfb"</span>,</span><br><span class="line"><span class="string">"protocol"</span>: <span class="string">"auth_aes128_md5"</span>,</span><br><span class="line"><span class="string">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"obfs"</span>: <span class="string">"http_simple"</span>,</span><br><span class="line"><span class="string">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"connect_verbose_info"</span>: 1,</span><br><span class="line"><span class="string">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"fast_open"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"workers"</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>重启服务：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure><p>多端口配置结束</p><p>常用操作：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启动：/etc/init.d/shadowsocks start</span><br><span class="line">停止：/etc/init.d/shadowsocks stop</span><br><span class="line">重启：/etc/init.d/shadowsocks restart</span><br><span class="line">状态：/etc/init.d/shadowsocks status</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;centos-6-ssr&quot;&gt;&lt;a href=&quot;#centos-6-ssr&quot; class=&quot;headerlink&quot; title=&quot;centos 6 ssr&quot;&gt;&lt;/a&gt;centos 6 ssr&lt;/h2&gt;&lt;h3 id=&quot;更换内核&quot;&gt;&lt;a href=&quot;#更换内核&quot; cla
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>python pip</title>
@@ -444,29 +467,6 @@
       
       
         &lt;h1 id=&quot;ubuntu-shadow-socket&quot;&gt;&lt;a href=&quot;#ubuntu-shadow-socket&quot; class=&quot;headerlink&quot; title=&quot;ubuntu shadow-socket&quot;&gt;&lt;/a&gt;ubuntu shadow-socket&lt;/h1&gt;&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>centos 7 zabbix proxy</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/04/centos-7-zabbix-proxy/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/04/centos-7-zabbix-proxy/</id>
-    <published>2019-04-04T00:47:36.000Z</published>
-    <updated>2019-04-04T16:05:35.031Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="CentOS-7-安装配置Zabbix-Proxy"><a href="#CentOS-7-安装配置Zabbix-Proxy" class="headerlink" title="CentOS 7 安装配置Zabbix Proxy"></a>CentOS 7 安装配置Zabbix Proxy</h1><h2 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h2><ul><li>安装mariadb </li></ul><p>可以参考链接[centos 安装 mariadb][1]。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mariadb mariadb-server</span><br></pre></td></tr></table></figure><ul><li>启用服务</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mariadb</span><br><span class="line">systemctl status mariadb </span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb    //开机自启动</span><br></pre></td></tr></table></figure><h2 id="安装zabbix-proxy-zabbix-agent"><a href="#安装zabbix-proxy-zabbix-agent" class="headerlink" title="安装zabbix_proxy,zabbix_agent"></a>安装zabbix_proxy,zabbix_agent</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.2/rhel/7/x86_64/zabbix-release-4.2-1.el7.noarch.rpm</span><br><span class="line">yum clean all </span><br><span class="line">yum install zabbix-proxy zabbix-agent</span><br></pre></td></tr></table></figure><h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><ul><li>初始化配置</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql -uroot -p</span></span><br><span class="line">password</span><br><span class="line">mysql&gt; create database zabbix character <span class="built_in">set</span> utf8 collate utf8_bin;</span><br><span class="line">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost identified by <span class="string">'password'</span>;</span><br><span class="line">mysql&gt; quit;</span><br></pre></td></tr></table></figure><ul><li>导入数据库</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zcat /usr/share/doc/zabbix-proxy-mysql-4.2.0/schema.sql.gz | mysql -uzabbix -p zabbix_proxy</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;CentOS-7-安装配置Zabbix-Proxy&quot;&gt;&lt;a href=&quot;#CentOS-7-安装配置Zabbix-Proxy&quot; class=&quot;headerlink&quot; title=&quot;CentOS 7 安装配置Zabbix Proxy&quot;&gt;&lt;/a&gt;CentOS 7 安装
       
     
     </summary>

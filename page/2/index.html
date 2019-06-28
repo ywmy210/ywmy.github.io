@@ -184,6 +184,85 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux下的病毒防护" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/18/linux下的病毒防护/">linux下的病毒防护</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/18/linux下的病毒防护/" class="archive-article-date">
+  	<time datetime="2019-04-18T00:49:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Linux-下的病毒防护"><a href="#Linux-下的病毒防护" class="headerlink" title="Ｌinux 下的病毒防护"></a>Ｌinux 下的病毒防护</h2><p>没有绝对安全的系统，linux下也存在病毒及安全后门。记录linux下的杀毒引擎clamav的安装及使用。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>CentOS直接通过yum安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release -y</span><br><span class="line">sudo yum install clamav -y</span><br></pre></td></tr></table></figure>
+<p>Ubuntu直接通过atp安装。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install clamav</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>安装后，更新病毒库。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># freshclam</span></span><br><span class="line"><span class="comment"># 输出如下：</span></span><br><span class="line">...............</span><br><span class="line">ClamAV update process started at Sun Apr  7 11:10:18 2019</span><br><span class="line">Downloading main.cvd [100%]</span><br><span class="line">main.cvd updated (version: 58, sigs: 4566249, f-level: 60, builder: sigmgr)</span><br><span class="line">Downloading daily.cvd [100%]</span><br><span class="line">daily.cvd updated (version: 25422, sigs: 1552110, f-level: 63, builder: raynman)</span><br><span class="line">Downloading bytecode.cvd [100%]</span><br><span class="line">bytecode.cvd updated (version: 328, sigs: 94, f-level: 63, builder: neo)</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">[LibClamAV] ***      Virus database timestamp <span class="keyword">in</span> the future!   ***</span><br><span class="line">[LibClamAV] ***  Please check the timezone and clock settings  ***</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">Database updated (6118453 signatures) from database.clamav.net (IP: 104.16.219.84)</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/18/linux下的病毒防护/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu下的一些小折腾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1144,97 +1223,6 @@
 
 
   
-    <article id="post-centos-7-zabbix-proxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/04/04/centos-7-zabbix-proxy/">centos 7 zabbix proxy</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/04/04/centos-7-zabbix-proxy/" class="archive-article-date">
-  	<time datetime="2019-04-04T00:47:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CentOS-7-安装配置Zabbix-Proxy"><a href="#CentOS-7-安装配置Zabbix-Proxy" class="headerlink" title="CentOS 7 安装配置Zabbix Proxy"></a>CentOS 7 安装配置Zabbix Proxy</h1><h2 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h2><ul>
-<li>安装mariadb </li>
-</ul>
-<p>可以参考链接[centos 安装 mariadb][1]。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mariadb mariadb-server</span><br></pre></td></tr></table></figure>
-<ul>
-<li>启用服务</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mariadb</span><br><span class="line">systemctl status mariadb </span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb    //开机自启动</span><br></pre></td></tr></table></figure>
-<h2 id="安装zabbix-proxy-zabbix-agent"><a href="#安装zabbix-proxy-zabbix-agent" class="headerlink" title="安装zabbix_proxy,zabbix_agent"></a>安装zabbix_proxy,zabbix_agent</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.2/rhel/7/x86_64/zabbix-release-4.2-1.el7.noarch.rpm</span><br><span class="line">yum clean all </span><br><span class="line">yum install zabbix-proxy zabbix-agent</span><br></pre></td></tr></table></figure>
-<h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><ul>
-<li>初始化配置</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql -uroot -p</span></span><br><span class="line">password</span><br><span class="line">mysql&gt; create database zabbix character <span class="built_in">set</span> utf8 collate utf8_bin;</span><br><span class="line">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost identified by <span class="string">'password'</span>;</span><br><span class="line">mysql&gt; quit;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>导入数据库</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zcat /usr/share/doc/zabbix-proxy-mysql-4.2.0/schema.sql.gz | mysql -uzabbix -p zabbix_proxy</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/04/04/centos-7-zabbix-proxy/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="page-number current">2</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/3/">Next &raquo;</a>
@@ -1348,6 +1336,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
@@ -1365,10 +1357,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
             
             <div class="clearfix"></div>

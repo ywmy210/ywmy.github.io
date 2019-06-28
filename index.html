@@ -184,6 +184,93 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-centos-6-ssr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/06/28/centos-6-ssr/">centos 6 ssr</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/06/28/centos-6-ssr/" class="archive-article-date">
+  	<time datetime="2019-06-28T15:09:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="centos-6-ssr"><a href="#centos-6-ssr" class="headerlink" title="centos 6 ssr"></a>centos 6 ssr</h2><h3 id="更换内核"><a href="#更换内核" class="headerlink" title="更换内核"></a>更换内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum update 更新系统</span><br><span class="line">rpm -ivh http://www.aloneray.com/wp-content/uploads/2017/03/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm</span><br><span class="line"><span class="comment"># 更新内核</span></span><br><span class="line">rpm -ivh http://www.aloneray.com/wp-content/uploads/2017/03/kernel-2.6.32-504.3.3.el6.x86_64.rpm --force</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
+<h3 id="安装SSR服务端"><a href="#安装SSR服务端" class="headerlink" title="安装SSR服务端"></a>安装SSR服务端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate http://www.aloneray.com/wp-content/uploads/2019/01/shadowsocksR_CN.sh &amp;&amp; chmod +x shadowsocksR_CN.sh &amp;&amp; ./shadowsocksR_CN.sh</span><br></pre></td></tr></table></figure>
+<p>按提示和步骤操作。</p>
+<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>锐速是一款非常不错的TCP底层加速软件。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh &amp;&amp; bash serverspeeder-all.sh</span><br></pre></td></tr></table></figure>
+<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop </span><br><span class="line">chkconfig iptables off</span><br></pre></td></tr></table></figure>
+<h3 id="锐速常用命令"><a href="#锐速常用命令" class="headerlink" title="锐速常用命令"></a>锐速常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重启锐速：/serverspeeder/bin/serverSpeeder.sh restart</span><br><span class="line">启动锐速：/serverspeeder/bin/serverSpeeder.sh start</span><br><span class="line">停止锐速：/serverspeeder/bin/serverSpeeder.sh stop</span><br><span class="line">锐速状态：/serverspeeder/bin/serverSpeeder.sh status</span><br></pre></td></tr></table></figure>
+<h3 id="多端口配置"><a href="#多端口配置" class="headerlink" title="多端口配置"></a>多端口配置</h3><p>服务端更改配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"server"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line"><span class="string">"server_ipv6"</span>: <span class="string">"[::]"</span>,</span><br><span class="line"><span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line"><span class="string">"local_port"</span>: 1080,</span><br><span class="line"><span class="string">"port_password"</span>:</span><br><span class="line"><span class="comment"># 多端口配置开始</span></span><br><span class="line">&#123;<span class="string">"8090"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"8089"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"459"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"456"</span>:<span class="string">"password"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment"># 多端口配置结束</span></span><br><span class="line"><span class="string">"timeout"</span>: 120,</span><br><span class="line"><span class="string">"udp_timeout"</span>: 60,</span><br><span class="line"><span class="string">"method"</span>: <span class="string">"aes-256-cfb"</span>,</span><br><span class="line"><span class="string">"protocol"</span>: <span class="string">"auth_aes128_md5"</span>,</span><br><span class="line"><span class="string">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"obfs"</span>: <span class="string">"http_simple"</span>,</span><br><span class="line"><span class="string">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"connect_verbose_info"</span>: 1,</span><br><span class="line"><span class="string">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"fast_open"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"workers"</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重启服务：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
+<p>多端口配置结束</p>
+<p>常用操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启动：/etc/init.d/shadowsocks start</span><br><span class="line">停止：/etc/init.d/shadowsocks stop</span><br><span class="line">重启：/etc/init.d/shadowsocks restart</span><br><span class="line">状态：/etc/init.d/shadowsocks status</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/06/28/centos-6-ssr/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-python-pip" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1142,85 +1229,6 @@
 
 
   
-    <article id="post-linux下的病毒防护" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/04/18/linux下的病毒防护/">linux下的病毒防护</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/04/18/linux下的病毒防护/" class="archive-article-date">
-  	<time datetime="2019-04-18T00:49:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Linux-下的病毒防护"><a href="#Linux-下的病毒防护" class="headerlink" title="Ｌinux 下的病毒防护"></a>Ｌinux 下的病毒防护</h2><p>没有绝对安全的系统，linux下也存在病毒及安全后门。记录linux下的杀毒引擎clamav的安装及使用。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>CentOS直接通过yum安装。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release -y</span><br><span class="line">sudo yum install clamav -y</span><br></pre></td></tr></table></figure>
-<p>Ubuntu直接通过atp安装。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install clamav</span><br></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>安装后，更新病毒库。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># freshclam</span></span><br><span class="line"><span class="comment"># 输出如下：</span></span><br><span class="line">...............</span><br><span class="line">ClamAV update process started at Sun Apr  7 11:10:18 2019</span><br><span class="line">Downloading main.cvd [100%]</span><br><span class="line">main.cvd updated (version: 58, sigs: 4566249, f-level: 60, builder: sigmgr)</span><br><span class="line">Downloading daily.cvd [100%]</span><br><span class="line">daily.cvd updated (version: 25422, sigs: 1552110, f-level: 63, builder: raynman)</span><br><span class="line">Downloading bytecode.cvd [100%]</span><br><span class="line">bytecode.cvd updated (version: 328, sigs: 94, f-level: 63, builder: neo)</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">[LibClamAV] ***      Virus database timestamp <span class="keyword">in</span> the future!   ***</span><br><span class="line">[LibClamAV] ***  Please check the timezone and clock settings  ***</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">Database updated (6118453 signatures) from database.clamav.net (IP: 104.16.219.84)</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/04/18/linux下的病毒防护/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/2/">Next &raquo;</a>
@@ -1334,6 +1342,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
@@ -1351,10 +1363,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
             
             <div class="clearfix"></div>

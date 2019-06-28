@@ -184,6 +184,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-centos-安装增强功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/02/20/centos-安装增强功能/">centos 安装增强功能</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/02/20/centos-安装增强功能/" class="archive-article-date">
+  	<time datetime="2019-02-20T14:31:49.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-20</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="virtualbox-centos-安装增强功能"><a href="#virtualbox-centos-安装增强功能" class="headerlink" title="virtualbox centos 安装增强功能"></a>virtualbox centos 安装增强功能</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04<br>虚拟机：virtualbox</p>
+<h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="挂载虚拟增强工具包镜像"><a href="#挂载虚拟增强工具包镜像" class="headerlink" title="挂载虚拟增强工具包镜像"></a>挂载虚拟增强工具包镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir vbox_tool</span><br><span class="line">mount /dev/cdrom ./vbox_tool</span><br></pre></td></tr></table></figure>
+<h3 id="安装信赖关系"><a href="#安装信赖关系" class="headerlink" title="安装信赖关系"></a>安装信赖关系</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update kernel //升级内核</span><br><span class="line">sudo yum update</span><br><span class="line">sudo yum install bzip2 tar gcc make perl kernel-devel kernel-headers</span><br></pre></td></tr></table></figure>
+<p>最小化安装的centos安装增强功能时，会提示依赖如下图所示：</p>
+<p><img src="http://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png" alt="centos_vbox_install_adition"></p>
+<p>注意内核版本的匹配问题，安装完成后，重启虚拟机。参考:<a href="1">链接</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br><span class="line">yum install kernel-devel-`uname -r`</span><br><span class="line">yum install kernel-headers-`uname -r`</span><br><span class="line">rpm -qa | grep -e kernel-devel -e kernel-headers</span><br></pre></td></tr></table></figure>
+<p>如果遇到内核版本与header版本不一致的，可以直接导出内核的环境变量：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> KERN_DIR=/usr/src/kernels/$(uname -r)</span><br></pre></td></tr></table></figure>
+<p>建议重启虚拟机。</p>
+<h3 id="安装增强功能"><a href="#安装增强功能" class="headerlink" title="安装增强功能"></a>安装增强功能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./VBoxLinuxAdditions.run</span><br></pre></td></tr></table></figure>
+<p>完成安装：</p>
+<p><img src="http://blog.ywmy.xyz/linuxadditions_installed.png" alt="additions_installed"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/02/20/centos-安装增强功能/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-vim查找与替换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1136,185 +1222,6 @@
 
 
   
-    <article id="post-snmpwalk-用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2018/11/01/snmpwalk-用法/">snmpwalk 用法</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2018/11/01/snmpwalk-用法/" class="archive-article-date">
-  	<time datetime="2018-11-01T14:46:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="snmpwalk-SNMP-V1-V2-SNMP-V3"><a href="#snmpwalk-SNMP-V1-V2-SNMP-V3" class="headerlink" title="snmpwalk (SNMP V1 / V2 / SNMP V3)"></a>snmpwalk (SNMP V1 / V2 / SNMP V3)</h1><h2 id="安装snmp"><a href="#安装snmp" class="headerlink" title="安装snmp"></a>安装snmp</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install net-snmp-utils</span><br></pre></td></tr></table></figure>
-<p>or</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install snmp</span><br></pre></td></tr></table></figure>
-<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snmpwalk [选项] agent [OID]</span><br></pre></td></tr></table></figure>
-<h3 id="常用参数"><a href="#常用参数" class="headerlink" title="常用参数"></a>常用参数</h3><table>
-<thead>
-<tr>
-<th>序号</th>
-<th>参数</th>
-<th>帮助</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>-h</td>
-<td>显示帮助</td>
-</tr>
-<tr>
-<td>2</td>
-<td>-v 1/2c/3</td>
-<td>指定snmp版本</td>
-</tr>
-<tr>
-<td>3</td>
-<td>-V</td>
-<td>显示当前SNMP命令行版本</td>
-</tr>
-<tr>
-<td>4</td>
-<td>-r RETRIES</td>
-<td>指定重试次数，默认为0次</td>
-</tr>
-<tr>
-<td>5</td>
-<td>-t TIMEOUT</td>
-<td>指定每次请求等待超时时间，单位为秒，默认为3秒</td>
-</tr>
-<tr>
-<td>6</td>
-<td>-Cc</td>
-<td>指定在当前WALK时，如果发现OID负增长将是否继续WALK</td>
-</tr>
-<tr>
-<td>7</td>
-<td>-c COMMUNITY</td>
-<td>[snmp v1/v2c选项]指定共同体字符串</td>
-</tr>
-</tbody>
-</table>
-<p>V3选项</p>
-<table>
-<thead>
-<tr>
-<th>序号</th>
-<th>参数</th>
-<th>帮助</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>-l LEVEL</td>
-<td>指定安全级别(noAuthNoPriv/authNoPriv/authPriv)</td>
-</tr>
-<tr>
-<td>2</td>
-<td>-u USER-NAME</td>
-<td>安全名字</td>
-</tr>
-<tr>
-<td>3</td>
-<td>-a PROTOCOL</td>
-<td>验证协议：MD5/SHA。-l指定为authNopriv或authPriv时需要</td>
-</tr>
-<tr>
-<td>4</td>
-<td>-A PASSPHRASE</td>
-<td>验证字符串。如果-l指定为authNoPriv或authPriv时才需要</td>
-</tr>
-<tr>
-<td>5</td>
-<td>-x PROTOCOL</td>
-<td>加密协议：DES。如果-l指定为authPriv时才需要</td>
-</tr>
-<tr>
-<td>6</td>
-<td>-X PASSPHARSE</td>
-<td>加密字符串：如果-l指定为authPriv时才需要</td>
-</tr>
-</tbody>
-</table>
-<h3 id="应用示例"><a href="#应用示例" class="headerlink" title="应用示例"></a>应用示例</h3><h4 id="SNMP-V3-应用示例"><a href="#SNMP-V3-应用示例" class="headerlink" title="SNMP V3 应用示例"></a>SNMP V3 应用示例</h4><ul>
-<li>指定验证协议和加密协义示例：</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">snmpwalk -v 3 -u <span class="built_in">test</span> -a sha -A abcdefg -x AES -X hijklmnopq -l authPriv 192.168.1.1 interfaces.ifTable.ifEntry.ifOutOctets（或者使用OID号）</span><br><span class="line">其中-v选择版本号</span><br><span class="line">-u用户名</span><br><span class="line">-a认证算法为SHA-1</span><br><span class="line">-A认证密码为abcdefg</span><br><span class="line">-x加密协议为AES</span><br><span class="line">-X加密密码为hijklmnopq</span><br><span class="line">-l authPriv启用认证和加密功能</span><br><span class="line">interfaces.ifTable.ifEntry.ifOutOctets（查看接口出去的流量）</span><br></pre></td></tr></table></figure>
-<ul>
-<li>不认证也不加密示例</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snmpvalk -v 3 -u <span class="built_in">test</span> -l noAuthNoPriv -u <span class="built_in">test</span> 192.168.1.1 interfaces.ifTable.ifEntry.ifOutOctets（或者使用OID号）</span><br></pre></td></tr></table></figure>
-<ul>
-<li>认证不加密示例</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snmpvalk -v 3 -u <span class="built_in">test</span> -l authNoPriv -u <span class="built_in">test</span> -a sha -A abcdefg 192.168.1.1 interfaces.ifTable.ifEntry.ifOutOctets（或者使用OID号）</span><br></pre></td></tr></table></figure>
-<h4 id="SNMP-V2-应用示例"><a href="#SNMP-V2-应用示例" class="headerlink" title="SNMP V2 应用示例"></a>SNMP V2 应用示例</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SNMP V2认证使用方法</span><br><span class="line">snmpwalk -v 2c -c public 10.103.33.1 .1.3.6.1.2.1.25.1</span><br><span class="line">snmpwalk -v 2c -c mysecretsnmp 10.20.30.1 SNMPv2-MIB::sysContact.0</span><br></pre></td></tr></table></figure>
-<h4 id="SNMP-V1-应用示例"><a href="#SNMP-V1-应用示例" class="headerlink" title="SNMP V1 应用示例"></a>SNMP V1 应用示例</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">snmpwalk -v 2c -c public 10.103.33.1 .1.3.6.1.2.1.25.1</span><br></pre></td></tr></table></figure>
-<h2 id="常用的OID信息"><a href="#常用的OID信息" class="headerlink" title="常用的ＯＩＤ信息"></a>常用的ＯＩＤ信息</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line">Variable Descriptor Object Identifier</span><br><span class="line">System Group</span><br><span class="line">sysDescr 1.3.6.1.2.1.1.1</span><br><span class="line">sysObjectID 1.3.6.1.2.1.1.2</span><br><span class="line">sysUpTime 1.3.6.1.2.1.1.3</span><br><span class="line">sysContact 1.3.6.1.2.1.1.4</span><br><span class="line">sysName 1.3.6.1.2.1.1.5</span><br><span class="line">sysLocation 1.3.6.1.2.1.1.6</span><br><span class="line">sysServices 1.3.6.1.2.1.1.7</span><br><span class="line"></span><br><span class="line">interfaces Group</span><br><span class="line">ifNumber 1.3.6.1.2.1.2.1</span><br><span class="line">ifTable 1.3.6.1.2.1.2.2</span><br><span class="line">ifEntry 1.3.6.1.2.1.2.2.1</span><br><span class="line">ifIndex 1.3.6.1.2.1.2.2.1.1</span><br><span class="line">ifDescr 1.3.6.1.2.1.2.2.1.2</span><br><span class="line">ifType 1.3.6.1.2.1.2.2.1.3</span><br><span class="line">ifMtu 1.3.6.1.2.1.2.2.1.4</span><br><span class="line">ifSpeed 1.3.6.1.2.1.2.2.1.5</span><br><span class="line">ifPhysAddress 1.3.6.1.2.1.2.2.1.6</span><br><span class="line">ifAdminStatus 1.3.6.1.2.1.2.2.1.7</span><br><span class="line">ifOperStatus 1.3.6.1.2.1.2.2.1.8</span><br><span class="line">ifLastChange 1.3.6.1.2.1.2.2.1.9</span><br><span class="line">ifInOctets 1.3.6.1.2.1.2.2.1.10</span><br><span class="line">ifInUcastPkts 1.3.6.1.2.1.2.2.1.11</span><br><span class="line">ifInNUcastPkts 1.3.6.1.2.1.2.2.1.12</span><br><span class="line">ifInDiscards 1.3.6.1.2.1.2.2.1.13</span><br><span class="line">ifInErrors 1.3.6.1.2.1.2.2.1.14</span><br><span class="line">ifInUnknownProtos 1.3.6.1.2.1.2.2.1.15</span><br><span class="line">ifOutOctets 1.3.6.1.2.1.2.2.1.16</span><br><span class="line">ifOutUcastPkts 1.3.6.1.2.1.2.2.1.17</span><br><span class="line">ifOutNUcastPkts 1.3.6.1.2.1.2.2.1.18</span><br><span class="line">ifOutDiscards 1.3.6.1.2.1.2.2.1.19</span><br><span class="line">ifOutErrors 1.3.6.1.2.1.2.2.1.20</span><br><span class="line">ifOutQLen 1.3.6.1.2.1.2.2.1.21</span><br><span class="line">ifSpecific 1.3.6.1.2.1.2.2.1.22</span><br><span class="line"></span><br><span class="line">IP Group</span><br><span class="line">ipForwarding 1.3.6.1.2.1.4.1</span><br><span class="line">ipDefaultTTL 1.3.6.1.2.1.4.2</span><br><span class="line">ipInReceives 1.3.6.1.2.1.4.3</span><br><span class="line">ipInHdrErrors 1.3.6.1.2.1.4.4</span><br><span class="line">ipInAddrErrors 1.3.6.1.2.1.4.5</span><br><span class="line">ipForwDatagrams 1.3.6.1.2.1.4.6</span><br><span class="line">ipInUnknownProtos 1.3.6.1.2.1.4.7</span><br><span class="line">ipInDiscards 1.3.6.1.2.1.4.8</span><br><span class="line">ipInDelivers 1.3.6.1.2.1.4.9</span><br><span class="line">ipOutRequests 1.3.6.1.2.1.4.10</span><br><span class="line">ipOutDiscards 1.3.6.1.2.1.4.11</span><br><span class="line">ipOutNoRoutes 1.3.6.1.2.1.4.12</span><br><span class="line">ipReasmTimeout 1.3.6.1.2.1.4.13</span><br><span class="line">ipReasmReqds 1.3.6.1.2.1.4.14</span><br><span class="line">ipReasmOKs 1.3.6.1.2.1.4.15</span><br><span class="line">ipReasmFails 1.3.6.1.2.1.4.16</span><br><span class="line">ipFragsOKs 1.3.6.1.2.1.4.17</span><br><span class="line">ipFragsFails 1.3.6.1.2.1.4.18</span><br><span class="line">ipFragCreates 1.3.6.1.2.1.4.19</span><br><span class="line">ipAddrTable 1.3.6.1.2.1.4.20</span><br><span class="line">ipAddrEntry 1.3.6.1.2.1.4.20.1</span><br><span class="line">ipAdEntAddr 1.3.6.1.2.1.4.20.1.1</span><br><span class="line">ipAdEntIfIndex 1.3.6.1.2.1.4.20.1.2</span><br><span class="line">ipAdEntNetMask 1.3.6.1.2.1.4.20.1.3</span><br><span class="line">ipAdEntBcastAddr 1.3.6.1.2.1.4.20.1.4</span><br><span class="line">ipAdEntReasmMaxSize 1.3.6.1.2.1.4.20.1.5</span><br><span class="line"></span><br><span class="line">ICMP Group</span><br><span class="line">icmpInMsgs 1.3.6.1.2.1.5.1</span><br><span class="line">icmpInErrors 1.3.6.1.2.1.5.2</span><br><span class="line">icmpInDestUnreachs 1.3.6.1.2.1.5.3</span><br><span class="line">icmpInTimeExcds 1.3.6.1.2.1.5.4</span><br><span class="line">icmpInParmProbs 1.3.6.1.2.1.5.5</span><br><span class="line">icmpInSrcQuenchs 1.3.6.1.2.1.5.6</span><br><span class="line">icmpInRedirects 1.3.6.1.2.1.5.7</span><br><span class="line">icmpInEchos 1.3.6.1.2.1.5.8</span><br><span class="line">icmpInEchoReps 1.3.6.1.2.1.5.9</span><br><span class="line">icmpInTimestamps 1.3.6.1.2.1.5.10</span><br><span class="line">icmpInTimestampReps 1.3.6.1.2.1.5.11</span><br><span class="line">icmpInAddrMasks 1.3.6.1.2.1.5.12</span><br><span class="line">icmpInAddrMaskReps 1.3.6.1.2.1.5.13</span><br><span class="line">icmpOutMsgs 1.3.6.1.2.1.5.14</span><br><span class="line">icmpOutErrors 1.3.6.1.2.1.5.15</span><br><span class="line">icmpOutDestUnreachs 1.3.6.1.2.1.5.16</span><br><span class="line">icmpOutTimeExcds 1.3.6.1.2.1.5.17</span><br><span class="line">icmpOutParmProbs 1.3.6.1.2.1.5.18</span><br><span class="line">icmpOutSrcQuenchs 1.3.6.1.2.1.5.19</span><br><span class="line">icmpOutRedirects 1.3.6.1.2.1.5.20</span><br><span class="line">icmpOutEchos 1.3.6.1.2.1.5.21</span><br><span class="line">icmpOutEchoReps 1.3.6.1.2.1.5.22</span><br><span class="line">icmpOutTimestamps 1.3.6.1.2.1.5.23</span><br><span class="line">icmpOutTimestampReps 1.3.6.1.2.1.5.24</span><br><span class="line">icmpOutAddrMasks 1.3.6.1.2.1.5.25</span><br><span class="line">icmpOutAddrMaskReps 1.3.6.1.2.1.5.26</span><br><span class="line"></span><br><span class="line">TCP Group</span><br><span class="line">tcpRtoAlgorithm 1.3.6.1.2.1.6.1</span><br><span class="line">tcpRtoMin 1.3.6.1.2.1.6.2</span><br><span class="line">tcpRtoMax 1.3.6.1.2.1.6.3</span><br><span class="line">tcpMaxConn 1.3.6.1.2.1.6.4</span><br><span class="line">tcpActiveOpens 1.3.6.1.2.1.6.5</span><br><span class="line">tcpPassiveOpens 1.3.6.1.2.1.6.6</span><br><span class="line">tcpAttemptFails 1.3.6.1.2.1.6.7</span><br><span class="line">tcpEstabResets 1.3.6.1.2.1.6.8</span><br><span class="line">tcpCurrEstab 1.3.6.1.2.1.6.9</span><br><span class="line">tcpInSegs 1.3.6.1.2.1.6.10</span><br><span class="line">tcpOutSegs 1.3.6.1.2.1.6.11</span><br><span class="line">tcpRetransSegs 1.3.6.1.2.1.6.12</span><br><span class="line">tcpConnTable 1.3.6.1.2.1.6.13</span><br><span class="line">tcpConnEntry 1.3.6.1.2.1.6.13.1</span><br><span class="line">tcpConnState 1.3.6.1.2.1.6.13.1.1</span><br><span class="line">tcpConnLocalAddress 1.3.6.1.2.1.6.13.1.2</span><br><span class="line">tcpConnLocalPort 1.3.6.1.2.1.6.13.1.3</span><br><span class="line">tcpConnRemAddress 1.3.6.1.2.1.6.13.1.4</span><br><span class="line">tcpConnRemPort 1.3.6.1.2.1.6.13.1.5</span><br><span class="line">tcpInErrs 1.3.6.1.2.1.6.14</span><br><span class="line">tcpOutRsts 1.3.6.1.2.1.6.15</span><br><span class="line"></span><br><span class="line">UDP Group</span><br><span class="line">udpInDatagrams 1.3.6.1.2.1.7.1</span><br><span class="line">udpNoPorts 1.3.6.1.2.1.7.2</span><br><span class="line">udpInErrors 1.3.6.1.2.1.7.3</span><br><span class="line">udpOutDatagrams 1.3.6.1.2.1.7.4</span><br><span class="line">udpTable 1.3.6.1.2.1.7.5</span><br><span class="line">udpEntry 1.3.6.1.2.1.7.5.1</span><br><span class="line">udpLocalAddress 1.3.6.1.2.1.7.5.1.1</span><br><span class="line">udpLocalPort 1.3.6.1.2.1.7.5.1.2</span><br><span class="line"></span><br><span class="line">SNMP Group</span><br><span class="line">snmpInPkts 1.3.6.1.2.1.11.1</span><br><span class="line">snmpOutPkts 1.3.6.1.2.1.11.2</span><br><span class="line">snmpInBadVersions 1.3.6.1.2.1.11.3</span><br><span class="line">snmpInBadCommunityNames 1.3.6.1.2.1.11.4</span><br><span class="line">snmpInBadCommunityUses 1.3.6.1.2.1.11.5</span><br><span class="line">snmpInASNParseErrs 1.3.6.1.2.1.11.6</span><br><span class="line">NOT USED 1.3.6.1.2.1.11.7</span><br><span class="line">snmpInTooBigs 1.3.6.1.2.1.11.8</span><br><span class="line">snmpInNoSuchNames 1.3.6.1.2.1.11.9</span><br><span class="line">snmpInBadValues 1.3.6.1.2.1.11.10</span><br><span class="line">snmpInReadOnlys 1.3.6.1.2.1.11.11</span><br><span class="line">snmpInGenErrs 1.3.6.1.2.1.11.12</span><br><span class="line">snmpInTotalReqVars 1.3.6.1.2.1.11.13</span><br><span class="line">snmpInTotalSetVars 1.3.6.1.2.1.11.14</span><br><span class="line">snmpInGetRequests 1.3.6.1.2.1.11.15</span><br><span class="line">snmpInGetNexts 1.3.6.1.2.1.11.16</span><br><span class="line">snmpInSetRequests 1.3.6.1.2.1.11.17</span><br><span class="line">snmpInGetResponses 1.3.6.1.2.1.11.18</span><br><span class="line">snmpInTraps 1.3.6.1.2.1.11.19</span><br><span class="line">snmpOutTooBigs 1.3.6.1.2.1.11.20</span><br><span class="line">snmpOutNoSuchNames 1.3.6.1.2.1.11.21</span><br><span class="line">snmpOutBadValues 1.3.6.1.2.1.11.22</span><br><span class="line">NOT USED 1.3.6.1.2.1.11.23</span><br><span class="line">snmpOutGenErrs 1.3.6.1.2.1.11.24</span><br><span class="line">snmpOutGetRequests 1.3.6.1.2.1.11.25</span><br><span class="line">snmpOutGetNexts 1.3.6.1.2.1.11.26</span><br><span class="line">snmpOutSetRequests 1.3.6.1.2.1.11.27</span><br><span class="line">snmpOutGetResponses 1.3.6.1.2.1.11.28</span><br><span class="line">snmpOutTraps 1.3.6.1.2.1.11.29</span><br><span class="line">snmpEnableAuthenTraps 1.3.6.1.2.1.11.30</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2018/11/01/snmpwalk-用法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/4/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/6/">Next &raquo;</a>
@@ -1428,6 +1335,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
@@ -1445,10 +1356,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
             
             <div class="clearfix"></div>

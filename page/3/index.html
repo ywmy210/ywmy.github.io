@@ -184,6 +184,97 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-centos-7-zabbix-proxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/04/centos-7-zabbix-proxy/">centos 7 zabbix proxy</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/04/centos-7-zabbix-proxy/" class="archive-article-date">
+  	<time datetime="2019-04-04T00:47:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CentOS-7-安装配置Zabbix-Proxy"><a href="#CentOS-7-安装配置Zabbix-Proxy" class="headerlink" title="CentOS 7 安装配置Zabbix Proxy"></a>CentOS 7 安装配置Zabbix Proxy</h1><h2 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h2><ul>
+<li>安装mariadb </li>
+</ul>
+<p>可以参考链接[centos 安装 mariadb][1]。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mariadb mariadb-server</span><br></pre></td></tr></table></figure>
+<ul>
+<li>启用服务</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mariadb</span><br><span class="line">systemctl status mariadb </span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb    //开机自启动</span><br></pre></td></tr></table></figure>
+<h2 id="安装zabbix-proxy-zabbix-agent"><a href="#安装zabbix-proxy-zabbix-agent" class="headerlink" title="安装zabbix_proxy,zabbix_agent"></a>安装zabbix_proxy,zabbix_agent</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.2/rhel/7/x86_64/zabbix-release-4.2-1.el7.noarch.rpm</span><br><span class="line">yum clean all </span><br><span class="line">yum install zabbix-proxy zabbix-agent</span><br></pre></td></tr></table></figure>
+<h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><ul>
+<li>初始化配置</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql -uroot -p</span></span><br><span class="line">password</span><br><span class="line">mysql&gt; create database zabbix character <span class="built_in">set</span> utf8 collate utf8_bin;</span><br><span class="line">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost identified by <span class="string">'password'</span>;</span><br><span class="line">mysql&gt; quit;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>导入数据库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zcat /usr/share/doc/zabbix-proxy-mysql-4.2.0/schema.sql.gz | mysql -uzabbix -p zabbix_proxy</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/04/centos-7-zabbix-proxy/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-华为GPON配置说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1051,102 +1142,6 @@
 
 
   
-    <article id="post-centos-7-双网卡共享上网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/03/27/centos-7-双网卡共享上网/">centos 7 双网卡共享上网</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/03/27/centos-7-双网卡共享上网/" class="archive-article-date">
-  	<time datetime="2019-03-27T10:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="centos-7-为私网提共nat网关服务"><a href="#centos-7-为私网提共nat网关服务" class="headerlink" title="centos 7 为私网提共nat网关服务"></a>centos 7 为私网提共nat网关服务</h1><p>前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的四口交换机连内网。</p>
-<h2 id="配置如下"><a href="#配置如下" class="headerlink" title="配置如下"></a>配置如下</h2><h3 id="服务器一"><a href="#服务器一" class="headerlink" title="服务器一"></a>服务器一</h3><h4 id="IP配置："><a href="#IP配置：" class="headerlink" title="IP配置："></a>IP配置：</h4><ul>
-<li>em1:218.108.88.88     项目公网地址     </li>
-<li>em2:10.10.100.10      项目私网网段</li>
-</ul>
-<h4 id="配置IP转发"><a href="#配置IP转发" class="headerlink" title="配置IP转发"></a>配置IP转发</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line"><span class="comment"># 追加一行内容</span></span><br><span class="line"><span class="comment"># Controls IP packet forwarding</span></span><br><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure>
-<h4 id="启用转发配置"><a href="#启用转发配置" class="headerlink" title="启用转发配置"></a>启用转发配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
-<h4 id="防火墙域控制"><a href="#防火墙域控制" class="headerlink" title="防火墙域控制"></a>防火墙域控制</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=external --add-interface=em0 --permanent</span><br><span class="line">firewall-cmd --zone=internal --add-interface=em1 --permanent</span><br></pre></td></tr></table></figure>
-<p>分别把公网的网卡添加到external域，私网网卡添加到internal域。</p>
-<h4 id="更新防火墙配置"><a href="#更新防火墙配置" class="headerlink" title="更新防火墙配置"></a>更新防火墙配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
-<h4 id="添加IP伪装"><a href="#添加IP伪装" class="headerlink" title="添加IP伪装"></a>添加IP伪装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=external --add-masquerade --permanent</span><br></pre></td></tr></table></figure>
-<p>启用公网IP伪装。</p>
-<h4 id="启用NAT规则"><a href="#启用NAT规则" class="headerlink" title="启用NAT规则"></a>启用NAT规则</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o em0 -j MASQUERADE -s 10.10.100.0/24</span><br></pre></td></tr></table></figure>
-<p>启用私网段IP NAT转发。</p>
-<h4 id="放通服务器上必要的端口"><a href="#放通服务器上必要的端口" class="headerlink" title="放通服务器上必要的端口"></a>放通服务器上必要的端口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=internal --add-service=tftp</span><br><span class="line">firewall-cmd --permanent --zone=internal --add-service=ssh</span><br></pre></td></tr></table></figure>
-<p>如tftp，ssh等。</p>
-<h4 id="更新防火墙配置-1"><a href="#更新防火墙配置-1" class="headerlink" title="更新防火墙配置"></a>更新防火墙配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
-<p>至此nat配置结束。</p>
-<h3 id="服务器二配置"><a href="#服务器二配置" class="headerlink" title="服务器二配置"></a>服务器二配置</h3><p>配置服务器网串口IP为私网IP，如10.10.10.9。</p>
-<blockquote>
-<p>TYPE=Ethernet<br>PROXY_METHOD=none<br>BROWSER_ONLY=no<br>BOOTPROTO=static<br>DEFROUTE=yes<br>IPV4_FAILURE_FATAL=no<br>IPV6INIT=yes<br>IPV6_AUTOCONF=yes<br>IPV6_DEFROUTE=yes<br>IPV6_FAILURE_FATAL=no<br>IPV6_ADDR_GEN_MODE=stable-privacy<br>NAME=em1<br>UUID=09560695-2f1b-4052-854d-3d0840c00d6a<br>DEVICE=em1<br>ONBOOT=yes<br>IPADDR=10.10.100.9<br>NETMASK=255.255.255.0<br>GATEWAY=10.10.100.10<br>DNS1=223.5.5.5.5<br>DNS2=114.114.114.114<br>PREFIX=24<br>ZONE=internal  </p>
-</blockquote>
-<h3 id="服务器三配置"><a href="#服务器三配置" class="headerlink" title="服务器三配置"></a>服务器三配置</h3><p>参考服务器二，配置网关指向服务器一的私网IP。至此，三台服务器均可上网，服务器配置公司业务。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/03/27/centos-7-双网卡共享上网/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/2/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><a class="page-number" href="/ywmy/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/ywmy/page/4/">4</a><a class="page-number" href="/ywmy/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/4/">Next &raquo;</a>
@@ -1260,6 +1255,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
@@ -1277,10 +1276,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
             
             <div class="clearfix"></div>
