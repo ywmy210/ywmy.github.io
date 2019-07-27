@@ -184,6 +184,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-windows-脚本自动登录交换机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/03/27/windows-脚本自动登录交换机/">windows 脚本自动登录交换机</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/03/27/windows-脚本自动登录交换机/" class="archive-article-date">
+  	<time datetime="2019-03-27T14:02:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="windows-脚本telnet登录交换机"><a href="#windows-脚本telnet登录交换机" class="headerlink" title="windows 脚本telnet登录交换机"></a>windows 脚本telnet登录交换机</h1><p>前言，公司的另外一个项目中的一个小问题，网络中的LED显示屏，会经常从服务端到终端不通。从网关上ping一下之前，又可以从服务端正常操作。一直也没找到这个问题的根源，就想到了一个暂时解决方法，能不能写一个脚本自动登录交换机，执行ping命令。再写一个计划任务，每天定时执行一次脚本。</p>
+<p>这个想法还真可以操作。脚本代码如下：</p>
+<h2 id="自动登录脚本"><a href="#自动登录脚本" class="headerlink" title="自动登录脚本"></a>自动登录脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">set</span> sh=WScript.CreateObject(<span class="string">"WScript.Shell"</span>) &gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"open 10.10.10.2"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys “USERNAME&#123;ENTER&#125;” &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WSCript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"PASSWORD&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"ping 192.0.5.120&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line">......</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"exit&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 30 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line">start telnet</span><br><span class="line">cscript //nologo telnet_tmp.vbs</span><br><span class="line">taskkill /f /im cmd.exe</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span></span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"quit&#123;ENTER&#125;"</span></span><br><span class="line"><span class="built_in">echo</span> del telnet_tmp.vbs</span><br></pre></td></tr></table></figure>
+<p>TODO：以上脚本可以实现登录和自动PING，仍然存在一个问题，就是telnet退出后，有一个任意键退出。此问题暂无思路。留后。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/03/27/windows-脚本自动登录交换机/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-centos-7-双网卡共享上网" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1151,136 +1228,6 @@
 
 
   
-    <article id="post-ubuntu-串口调试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/02/22/ubuntu-串口调试/">ubuntu 串口调试</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/02/22/ubuntu-串口调试/" class="archive-article-date">
-  	<time datetime="2019-02-22T07:34:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ubuntu-18-04串口调试工具"><a href="#ubuntu-18-04串口调试工具" class="headerlink" title="ubuntu 18.04串口调试工具"></a>ubuntu 18.04串口调试工具</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04</p>
-<p>工具：USB转串口</p>
-<p>设备：H3C FIREWARE</p>
-<h2 id="使用命令"><a href="#使用命令" class="headerlink" title="使用命令"></a>使用命令</h2><p>命令行工具：picocom、minicom</p>
-<h3 id="查看系统是否加载usb-serial模块"><a href="#查看系统是否加载usb-serial模块" class="headerlink" title="查看系统是否加载usb_serial模块"></a>查看系统是否加载usb_serial模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep usbserial</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<blockquote>
-<p>usbserial              45056  3 ftdi_sio</p>
-</blockquote>
-<p>查看系统是否启用USB_serial</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmesg | grep usbserial</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<blockquote>
-<p>[ 2909.513568] usbcore: registered new interface driver usbserial_generic</p>
-<p>[ 2909.513581] usbserial: USB Serial support registered for generic</p>
-<p>[ 2909.532690] usbserial: USB Serial support registered for FTDI USB Serial Device</p>
-</blockquote>
-<p>查看设备挂载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /dev/ttyUSB*</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<blockquote>
-<p>crw-rw—- 1 root dialout 188, 0 2月  22 16:18 /dev/ttyUSB0</p>
-</blockquote>
-<p>系统已经挂载了ttyUSB0设备，即为串口转USB口连接线。</p>
-<h3 id="使用minicom调试设备"><a href="#使用minicom调试设备" class="headerlink" title="使用minicom调试设备"></a>使用minicom调试设备</h3><h4 id="安装minicom"><a href="#安装minicom" class="headerlink" title="安装minicom"></a>安装minicom</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install minicom lrzsz</span><br></pre></td></tr></table></figure>
-<p>从上面挂载结果可以得出设备所属root，dialout组。所以，在我们使用minicom时，需要使用root权限。</p>
-<h4 id="配置串口信息"><a href="#配置串口信息" class="headerlink" title="配置串口信息"></a>配置串口信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo minicom</span><br></pre></td></tr></table></figure>
-<p>输出欢迎信息如下：</p>
-<p><img src="http://blog.ywmy.xyz/networkstartup.png" alt="startup"></p>
-<p>包含欢迎信息，字符集，端口信息。</p>
-<p>由图可以看出转义字符为CTRL-A，输入Z查看帮助。</p>
-<p>按下CTRL－A，后输入Z。得到帮助页面如下：</p>
-<p><img src="http://blog.ywmy.xyz/networkhelp_screen.png" alt="help_screen"></p>
-<p>如图所示：</p>
-<p>D：排号目录<br>S：发送文件<br>F：发送断开帧<br>T：终端设置<br>G：运行脚本<br>O：配置minicom<br>X：退出minicom等</p>
-<p>这里，我们想要连接串口，首先配置minicom。按O键。</p>
-<p>得到如下配置项：</p>
-<p><img src="http://blog.ywmy.xyz/network/config_minicom.png" alt="config_minicom"></p>
-<p>使用方向键选择serial port setup</p>
-<p>配置如下：</p>
-<p><img src="http://blog.ywmy.xyz/network/serial_setup.png" alt="serial_setup"></p>
-<p>如图上图所示，按A，更改默认tty8为已挂载串口设备ttyUSB0，按F键更改默认Hardware Floww Control为no，默认硬件控制，即不接受串口输入信息，连接后，从键盘的输入就没有响应。改为no，后，按esc键退出菜单，将配置另存，或者直接保存默认dfl文件，然后退出配置。按X键退出minicom。</p>
-<p>重新进入minicom程序</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo minicom your_config_file</span><br></pre></td></tr></table></figure>
-<p>进入程序后，按回国，终端回显登录信息，如下图：</p>
-<p><img src="http://blog.ywmy.xyz/network/login_device.png" alt="login_device"></p>
-<p>接下来就是愉快的调试了。</p>
-<p>串口的配置文件保存在家目录下的隐藏文件，名称为.minirc.filename。如默认的.minirc.dfl。</p>
-<h3 id="使用pococom调试"><a href="#使用pococom调试" class="headerlink" title="使用pococom调试"></a>使用pococom调试</h3><h4 id="安装pococom"><a href="#安装pococom" class="headerlink" title="安装pococom"></a>安装pococom</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install picocom</span><br></pre></td></tr></table></figure>
-<p>连接操作：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo picocom -b 9600 /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
-<p>输出如下：</p>
-<p><img src="http://blog.ywmy.xyz/network/picocom_startup.png" alt="picocom_startup"></p>
-<p>转义字符为CTRL－A，CTRL-H为查看帮助；</p>
-<p><img src="http://blog.ywmy.xyz/network/help_screen.png" alt="help_screen"></p>
-<p>配置项如上图所示，CTRL-A-&gt;CTRL-X退出picocom。</p>
-<p>terminal ready。按回车直接进入终端。开始调试吧。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/02/22/ubuntu-串口调试/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/3/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/ywmy/page/5/">5</a><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/5/">Next &raquo;</a>
@@ -1374,11 +1321,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -184,6 +184,136 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-串口调试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/02/22/ubuntu-串口调试/">ubuntu 串口调试</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/02/22/ubuntu-串口调试/" class="archive-article-date">
+  	<time datetime="2019-02-22T07:34:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu-18-04串口调试工具"><a href="#ubuntu-18-04串口调试工具" class="headerlink" title="ubuntu 18.04串口调试工具"></a>ubuntu 18.04串口调试工具</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04</p>
+<p>工具：USB转串口</p>
+<p>设备：H3C FIREWARE</p>
+<h2 id="使用命令"><a href="#使用命令" class="headerlink" title="使用命令"></a>使用命令</h2><p>命令行工具：picocom、minicom</p>
+<h3 id="查看系统是否加载usb-serial模块"><a href="#查看系统是否加载usb-serial模块" class="headerlink" title="查看系统是否加载usb_serial模块"></a>查看系统是否加载usb_serial模块</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep usbserial</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<blockquote>
+<p>usbserial              45056  3 ftdi_sio</p>
+</blockquote>
+<p>查看系统是否启用USB_serial</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dmesg | grep usbserial</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<blockquote>
+<p>[ 2909.513568] usbcore: registered new interface driver usbserial_generic</p>
+<p>[ 2909.513581] usbserial: USB Serial support registered for generic</p>
+<p>[ 2909.532690] usbserial: USB Serial support registered for FTDI USB Serial Device</p>
+</blockquote>
+<p>查看设备挂载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -l /dev/ttyUSB*</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<blockquote>
+<p>crw-rw—- 1 root dialout 188, 0 2月  22 16:18 /dev/ttyUSB0</p>
+</blockquote>
+<p>系统已经挂载了ttyUSB0设备，即为串口转USB口连接线。</p>
+<h3 id="使用minicom调试设备"><a href="#使用minicom调试设备" class="headerlink" title="使用minicom调试设备"></a>使用minicom调试设备</h3><h4 id="安装minicom"><a href="#安装minicom" class="headerlink" title="安装minicom"></a>安装minicom</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install minicom lrzsz</span><br></pre></td></tr></table></figure>
+<p>从上面挂载结果可以得出设备所属root，dialout组。所以，在我们使用minicom时，需要使用root权限。</p>
+<h4 id="配置串口信息"><a href="#配置串口信息" class="headerlink" title="配置串口信息"></a>配置串口信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo minicom</span><br></pre></td></tr></table></figure>
+<p>输出欢迎信息如下：</p>
+<p><img src="http://blog.ywmy.xyz/networkstartup.png" alt="startup"></p>
+<p>包含欢迎信息，字符集，端口信息。</p>
+<p>由图可以看出转义字符为CTRL-A，输入Z查看帮助。</p>
+<p>按下CTRL－A，后输入Z。得到帮助页面如下：</p>
+<p><img src="http://blog.ywmy.xyz/networkhelp_screen.png" alt="help_screen"></p>
+<p>如图所示：</p>
+<p>D：排号目录<br>S：发送文件<br>F：发送断开帧<br>T：终端设置<br>G：运行脚本<br>O：配置minicom<br>X：退出minicom等</p>
+<p>这里，我们想要连接串口，首先配置minicom。按O键。</p>
+<p>得到如下配置项：</p>
+<p><img src="http://blog.ywmy.xyz/network/config_minicom.png" alt="config_minicom"></p>
+<p>使用方向键选择serial port setup</p>
+<p>配置如下：</p>
+<p><img src="http://blog.ywmy.xyz/network/serial_setup.png" alt="serial_setup"></p>
+<p>如图上图所示，按A，更改默认tty8为已挂载串口设备ttyUSB0，按F键更改默认Hardware Floww Control为no，默认硬件控制，即不接受串口输入信息，连接后，从键盘的输入就没有响应。改为no，后，按esc键退出菜单，将配置另存，或者直接保存默认dfl文件，然后退出配置。按X键退出minicom。</p>
+<p>重新进入minicom程序</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo minicom your_config_file</span><br></pre></td></tr></table></figure>
+<p>进入程序后，按回国，终端回显登录信息，如下图：</p>
+<p><img src="http://blog.ywmy.xyz/network/login_device.png" alt="login_device"></p>
+<p>接下来就是愉快的调试了。</p>
+<p>串口的配置文件保存在家目录下的隐藏文件，名称为.minirc.filename。如默认的.minirc.dfl。</p>
+<h3 id="使用pococom调试"><a href="#使用pococom调试" class="headerlink" title="使用pococom调试"></a>使用pococom调试</h3><h4 id="安装pococom"><a href="#安装pococom" class="headerlink" title="安装pococom"></a>安装pococom</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install picocom</span><br></pre></td></tr></table></figure>
+<p>连接操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo picocom -b 9600 /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<p><img src="http://blog.ywmy.xyz/network/picocom_startup.png" alt="picocom_startup"></p>
+<p>转义字符为CTRL－A，CTRL-H为查看帮助；</p>
+<p><img src="http://blog.ywmy.xyz/network/help_screen.png" alt="help_screen"></p>
+<p>配置项如上图所示，CTRL-A-&gt;CTRL-X退出picocom。</p>
+<p>terminal ready。按回车直接进入终端。开始调试吧。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/02/22/ubuntu-串口调试/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-centos-安装增强功能" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1139,89 +1269,6 @@
 
 
   
-    <article id="post-ubuntu-18-04有道词典安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2018/11/25/ubuntu-18-04有道词典安装/">ubuntu 18.04有道词典安装</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2018/11/25/ubuntu-18-04有道词典安装/" class="archive-article-date">
-  	<time datetime="2018-11-24T16:40:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-25</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="安装有道词典"><a href="#安装有道词典" class="headerlink" title="安装有道词典"></a>安装有道词典</h1><p>前言</p>
-<p>在ubuntu下，本地词典，有goldendict。可以使用本地词典，屏幕取词，引用网络词典等功能也是应有尽有，但因使用习惯问题，还是比较喜欢使用windows下的词典软件，比如有道词典。良心的是，有道词典和deepin合作开发了linux版本，在ubuntu 16.04上也是正常使用。也是linux用户的福音。ubuntu本身版本已经到18.04了，而linux版本的词典更新日期仍然是2015年的1.1.0版本。想要使用的话，关于QT相关的各种信赖就是问题。完成安装后，曾经尝试根据报错也手动解决，结果能力有限，无可奈何。转而寻找其它大神是否有编译可用的版本，还真的找到了。有的方案是自己写个程序来调用有道词典的API，返回给程序对应的参数。此方案，尝试后，还是有些问题，依然是依赖关系。最终找到一个根据官方包重新编译的，按照其方法操作，安装和运行正常，记录备查。</p>
-<h2 id="下载编译过的安装包"><a href="#下载编译过的安装包" class="headerlink" title="下载编译过的安装包"></a>下载编译过的安装包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/yomun/youdaodict_5.5/raw/master/youdao-dict_1.1.1-0~ubuntu_amd64.deb</span><br></pre></td></tr></table></figure>
-<p>编译的安装包需要3D加速</p>
-<h2 id="查询并卸载QT5"><a href="#查询并卸载QT5" class="headerlink" title="查询并卸载QT5"></a>查询并卸载QT5</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如有显示 PyQt5 (5.10.1), 卸载之..</span><br><span class="line">pip3 list | grep PyQt5</span><br><span class="line">pip3 uninstall pyqt5</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root 用户也一样要</span><br><span class="line">sudo sudo pip3 list | grep PyQt5</span><br><span class="line">sudo sudo pip3 uninstall pyqt5</span><br></pre></td></tr></table></figure>
-<h2 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python3</span><br><span class="line"></span><br><span class="line">sudo apt install python3-dbus python3-lxml python3-pil python3-requests python3-xdg python3-xlib</span><br><span class="line">sudo apt install python3-pyqt5 python3-pyqt5.qtmultimedia python3-pyqt5.qtquick python3-pyqt5.qtwebkit</span><br><span class="line"></span><br><span class="line">sudo apt install gir1.2-appindicator3-0.1 qml-module-qtgraphicaleffects qml-module-qtquick-controls</span><br><span class="line">sudo apt install libqt5multimedia5-plugins ttf-wqy-microhei</span><br><span class="line">sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim tesseract-ocr-chi-tra</span><br><span class="line"></span><br><span class="line">sudo apt install ubuntu-restricted-extras</span><br><span class="line"></span><br><span class="line">Ubuntu 18.04 用 fonts-wqy-microhei 取代了 ttf-wqy-microhei</span><br></pre></td></tr></table></figure>
-<p>＃ 安装有道词典</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i youdao-dict_1.1.1-0?ubuntu_amd64.deb</span><br></pre></td></tr></table></figure>
-<p>安装之后，完美运行。参考<a href="https://github.com/yomun/youdaodict_5.5" target="_blank" rel="noopener">链接</a>，谢大神。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux dict</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2018/11/25/ubuntu-18-04有道词典安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/4/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/6/">Next &raquo;</a>
@@ -1315,11 +1362,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">

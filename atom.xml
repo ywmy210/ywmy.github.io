@@ -6,7 +6,7 @@
   <link href="/ywmy/atom.xml" rel="self"/>
   
   <link href="https://ywmy210.github.io/ywmy/"/>
-  <updated>2019-06-28T15:24:26.779Z</updated>
+  <updated>2019-07-27T04:22:53.584Z</updated>
   <id>https://ywmy210.github.io/ywmy/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>cisco 设备配置文件的保存和恢复</title>
+    <link href="https://ywmy210.github.io/ywmy/2019/07/27/cisco-%E8%AE%BE%E5%A4%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E6%81%A2%E5%A4%8D/"/>
+    <id>https://ywmy210.github.io/ywmy/2019/07/27/cisco-设备配置文件的保存和恢复/</id>
+    <published>2019-07-27T04:00:03.000Z</published>
+    <updated>2019-07-27T04:22:53.584Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="cisco-配置文件的保存和恢复"><a href="#cisco-配置文件的保存和恢复" class="headerlink" title="cisco 配置文件的保存和恢复"></a>cisco 配置文件的保存和恢复</h2><h3 id="保存配置文件"><a href="#保存配置文件" class="headerlink" title="保存配置文件"></a>保存配置文件</h3><p>思科保存配置文件目录结构大概如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#dir</span></span><br><span class="line">Directory of nvram:/</span><br><span class="line"></span><br><span class="line">  508  -rw-        2190                    &lt;no date&gt;  startup-config</span><br><span class="line">  509  ----          24                         &lt;no date&gt;  private-config</span><br><span class="line">  510  -rw-        2190                    &lt;no date&gt;  underlying-config</span><br><span class="line">    1  ----             34                         &lt;no date&gt;  persistent-data</span><br><span class="line">    2  -rw-           4                          &lt;no date&gt;  rf_cold_starts</span><br><span class="line">    3  -rw-           0                         &lt;no date&gt;  ifIndex-table</span><br></pre></td></tr></table></figure><p>启动配置文件为start-config</p><p>要保存当前配置文件的逻辑是先备份当前的启动文件startup-config </p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#copy startup-config nvram:20190826.backup</span></span><br><span class="line">Destination filename [20190826.backup]? </span><br><span class="line"></span><br><span class="line">2190 bytes copied <span class="keyword">in</span> 1.136 secs (1928 bytes/sec)</span><br></pre></td></tr></table></figure><p>保存的配置文件如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#dir</span></span><br><span class="line">Directory of nvram:/</span><br><span class="line"></span><br><span class="line">  508  -rw-        2190                    &lt;no date&gt;  startup-config</span><br><span class="line">  509  ----          24                         &lt;no date&gt;  private-config</span><br><span class="line">  510  -rw-        2190                    &lt;no date&gt;  underlying-config</span><br><span class="line">    1  ----             34                         &lt;no date&gt;  persistent-data</span><br><span class="line">    2  -rw-           4                           &lt;no date&gt;  rf_cold_starts</span><br><span class="line">    3  -rw-           0                           &lt;no date&gt;  ifIndex-table</span><br><span class="line">    4  -rw-           2190                    &lt;no date&gt;  20190826.backup</span><br><span class="line"></span><br><span class="line">522232 bytes total (513822 bytes free)</span><br></pre></td></tr></table></figure><p>将当前配置保存为启动配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#copy running-config nvram:startup-config</span></span><br><span class="line">Destination filename [startup-config]?</span><br><span class="line">Building configuration...</span><br><span class="line">[OK]</span><br></pre></td></tr></table></figure><h3 id="恢复配置文件"><a href="#恢复配置文件" class="headerlink" title="恢复配置文件"></a>恢复配置文件</h3><p>例如恢复到20190826的配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#copy nvram:/20190826.backup startup-config</span></span><br><span class="line">Destination filename [startup-config]? y</span><br><span class="line"></span><br><span class="line">2190 bytes copied <span class="keyword">in</span> 1.108 secs (1977 bytes/sec)</span><br></pre></td></tr></table></figure><p>重启交换机，不需要保存运行中的配置：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#reload </span></span><br><span class="line">Proceed with reload? [confirm]y</span><br><span class="line">*Jul 27 02:14:18.199: %SYS-5-RELOAD: Reload requested by console. Reload Reason: Reload Command.</span><br><span class="line"></span><br><span class="line">                ROM: reload requested...</span><br></pre></td></tr></table></figure><h3 id="H3C-化为的操作思路"><a href="#H3C-化为的操作思路" class="headerlink" title="H3C 化为的操作思路"></a>H3C 化为的操作思路</h3><p>保存文件，选用配置</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;F1070&gt;save 20190828.cfg</span><br><span class="line">The current configuration will be saved to flash:/20190828.cfg. Continue? [Y/N]:y</span><br><span class="line">Now saving current configuration to the device.</span><br><span class="line">Saving configuration flash:/20190828.cfg.Please <span class="built_in">wait</span>...</span><br><span class="line">Configuration is saved to device successfully.</span><br></pre></td></tr></table></figure><p>配置启动项：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;F1070&gt;startup saved-configuration 20190828.cfg </span><br><span class="line">Please <span class="built_in">wait</span>...... Done.</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;cisco-配置文件的保存和恢复&quot;&gt;&lt;a href=&quot;#cisco-配置文件的保存和恢复&quot; class=&quot;headerlink&quot; title=&quot;cisco 配置文件的保存和恢复&quot;&gt;&lt;/a&gt;cisco 配置文件的保存和恢复&lt;/h2&gt;&lt;h3 id=&quot;保存配置文件&quot;&gt;&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="network" scheme="https://ywmy210.github.io/ywmy/tags/network/"/>
+    
+  </entry>
   
   <entry>
     <title>centos 6 ssr</title>
@@ -444,29 +467,6 @@
       
       
         &lt;h1 id=&quot;ssh-signing-faild&quot;&gt;&lt;a href=&quot;#ssh-signing-faild&quot; class=&quot;headerlink&quot; title=&quot;ssh signing faild&quot;&gt;&lt;/a&gt;ssh signing faild&lt;/h1&gt;&lt;p&gt;前言，自己电脑重装后
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu shadow-socket</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/04/ubuntu-shadow-socket/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/04/ubuntu-shadow-socket/</id>
-    <published>2019-04-04T03:19:21.000Z</published>
-    <updated>2019-04-04T03:33:52.134Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="ubuntu-shadow-socket"><a href="#ubuntu-shadow-socket" class="headerlink" title="ubuntu shadow-socket"></a>ubuntu shadow-socket</h1><h2 id="0x01-install"><a href="#0x01-install" class="headerlink" title="0x01 install"></a>0x01 install</h2><ul><li>ubuntu</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install python-pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure><p>or </p><p>install pip</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.ip/get-pip.py</span><br><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo easy_install shadowsocks</span><br></pre></td></tr></table></figure><ul><li>centos</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install python-setuptool &amp;&amp; easy_install pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure><h2 id="0x02-config-file"><a href="#0x02-config-file" class="headerlink" title="0x02 config_file"></a>0x02 config_file</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line">   <span class="string">"server"</span>:<span class="string">"my_server_ip"</span>, </span><br><span class="line">   <span class="string">"server_port"</span>:25, </span><br><span class="line">   <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>, </span><br><span class="line">   <span class="string">"local_port"</span>:1080, </span><br><span class="line">   <span class="string">"password"</span>:<span class="string">"mypassword"</span>,</span><br><span class="line">   <span class="string">"timeout"</span>:300, </span><br><span class="line">   <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>, </span><br><span class="line">   <span class="string">"fast_open"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="0x03-start-server"><a href="#0x03-start-server" class="headerlink" title="0x03 start server"></a>0x03 start server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json</span><br></pre></td></tr></table></figure><p>后台启动和停止服务</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start </span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop</span><br></pre></td></tr></table></figure><h2 id="0X04-download"><a href="#0X04-download" class="headerlink" title="0X04 download"></a>0X04 download</h2><p>下载<a href="https://github.com/shadowsocks" target="_blank" rel="noopener">请戳</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;ubuntu-shadow-socket&quot;&gt;&lt;a href=&quot;#ubuntu-shadow-socket&quot; class=&quot;headerlink&quot; title=&quot;ubuntu shadow-socket&quot;&gt;&lt;/a&gt;ubuntu shadow-socket&lt;/h1&gt;&lt;
       
     
     </summary>

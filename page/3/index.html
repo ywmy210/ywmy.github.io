@@ -184,6 +184,96 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-shadow-socket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/04/ubuntu-shadow-socket/">ubuntu shadow-socket</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/04/ubuntu-shadow-socket/" class="archive-article-date">
+  	<time datetime="2019-04-04T03:19:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu-shadow-socket"><a href="#ubuntu-shadow-socket" class="headerlink" title="ubuntu shadow-socket"></a>ubuntu shadow-socket</h1><h2 id="0x01-install"><a href="#0x01-install" class="headerlink" title="0x01 install"></a>0x01 install</h2><ul>
+<li>ubuntu</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install python-pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<p>or </p>
+<p>install pip</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.ip/get-pip.py</span><br><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo easy_install shadowsocks</span><br></pre></td></tr></table></figure>
+<ul>
+<li>centos</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install python-setuptool &amp;&amp; easy_install pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-config-file"><a href="#0x02-config-file" class="headerlink" title="0x02 config_file"></a>0x02 config_file</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line">   <span class="string">"server"</span>:<span class="string">"my_server_ip"</span>, </span><br><span class="line">   <span class="string">"server_port"</span>:25, </span><br><span class="line">   <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>, </span><br><span class="line">   <span class="string">"local_port"</span>:1080, </span><br><span class="line">   <span class="string">"password"</span>:<span class="string">"mypassword"</span>,</span><br><span class="line">   <span class="string">"timeout"</span>:300, </span><br><span class="line">   <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>, </span><br><span class="line">   <span class="string">"fast_open"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x03-start-server"><a href="#0x03-start-server" class="headerlink" title="0x03 start server"></a>0x03 start server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
+<p>后台启动和停止服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start </span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop</span><br></pre></td></tr></table></figure>
+<h2 id="0X04-download"><a href="#0X04-download" class="headerlink" title="0X04 download"></a>0X04 download</h2><p>下载<a href="https://github.com/shadowsocks" target="_blank" rel="noopener">请戳</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/04/ubuntu-shadow-socket/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-centos-7-zabbix-proxy" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1065,83 +1155,6 @@
 
 
   
-    <article id="post-windows-脚本自动登录交换机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/03/27/windows-脚本自动登录交换机/">windows 脚本自动登录交换机</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/03/27/windows-脚本自动登录交换机/" class="archive-article-date">
-  	<time datetime="2019-03-27T14:02:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="windows-脚本telnet登录交换机"><a href="#windows-脚本telnet登录交换机" class="headerlink" title="windows 脚本telnet登录交换机"></a>windows 脚本telnet登录交换机</h1><p>前言，公司的另外一个项目中的一个小问题，网络中的LED显示屏，会经常从服务端到终端不通。从网关上ping一下之前，又可以从服务端正常操作。一直也没找到这个问题的根源，就想到了一个暂时解决方法，能不能写一个脚本自动登录交换机，执行ping命令。再写一个计划任务，每天定时执行一次脚本。</p>
-<p>这个想法还真可以操作。脚本代码如下：</p>
-<h2 id="自动登录脚本"><a href="#自动登录脚本" class="headerlink" title="自动登录脚本"></a>自动登录脚本</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">set</span> sh=WScript.CreateObject(<span class="string">"WScript.Shell"</span>) &gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"open 10.10.10.2"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys “USERNAME&#123;ENTER&#125;” &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WSCript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"PASSWORD&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"ping 192.0.5.120&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line">......</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"exit&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 30 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line">start telnet</span><br><span class="line">cscript //nologo telnet_tmp.vbs</span><br><span class="line">taskkill /f /im cmd.exe</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"&#123;ENTER&#125;"</span></span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">"quit&#123;ENTER&#125;"</span></span><br><span class="line"><span class="built_in">echo</span> del telnet_tmp.vbs</span><br></pre></td></tr></table></figure>
-<p>TODO：以上脚本可以实现登录和自动PING，仍然存在一个问题，就是telnet退出后，有一个任意键退出。此问题暂无思路。留后。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/03/27/windows-脚本自动登录交换机/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/2/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><a class="page-number" href="/ywmy/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/ywmy/page/4/">4</a><a class="page-number" href="/ywmy/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/4/">Next &raquo;</a>
@@ -1235,11 +1248,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
