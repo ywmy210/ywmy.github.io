@@ -184,6 +184,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-配置tftp服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/03/28/ubuntu-配置tftp服务/">ubuntu 配置tftp服务</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/03/28/ubuntu-配置tftp服务/" class="archive-article-date">
+  	<time datetime="2019-03-28T11:29:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu-18-04-启用TFTP服务"><a href="#ubuntu-18-04-启用TFTP服务" class="headerlink" title="ubuntu 18.04 启用TFTP服务"></a>ubuntu 18.04 启用TFTP服务</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
+<li>创建tftp服务目录</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir tftproot</span><br><span class="line">chmod 777 tftproot</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改配置文件</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/default/tftpd-hpa /etc/default/tftpd-hpa_backup   //备份配置文件</span><br><span class="line">sudo vim /etc/default/tftpd-hpa         //修改配置文件</span><br><span class="line"></span><br><span class="line">//配置如下</span><br><span class="line"></span><br><span class="line"><span class="comment"># /etc/default/tftpd-hpa</span></span><br><span class="line"></span><br><span class="line">TFTP_USERNAME=<span class="string">"tftp"</span></span><br><span class="line">TFTP_DIRECTORY=<span class="string">"/home/abcd/tftproot"</span></span><br><span class="line">TFTP_ADDRESS=<span class="string">":69"</span></span><br><span class="line">TFTP_OPTIONS=<span class="string">"-l -c -s"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>启用tftp服务</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sudo service tftpd-hpa restart</span><br><span class="line">sudo systemctl status tftpd-hpa //查看服务状态</span><br><span class="line"></span><br><span class="line">● tftpd-hpa.service - LSB: HPA<span class="string">'s tftp server</span></span><br><span class="line"><span class="string">   Loaded: loaded (/etc/init.d/tftpd-hpa; generated)</span></span><br><span class="line"><span class="string">   Active: active (running) since Thu 2019-03-28 19:44:48 CST; 16s ago</span></span><br><span class="line"><span class="string">     Docs: man:systemd-sysv-generator(8)</span></span><br><span class="line"><span class="string">  Process: 11088 ExecStop=/etc/init.d/tftpd-hpa stop (code=exited, status=0/SUCC</span></span><br><span class="line"><span class="string">  Process: 11093 ExecStart=/etc/init.d/tftpd-hpa start (code=exited, status=0/SU</span></span><br><span class="line"><span class="string">    Tasks: 1 (limit: 4915)</span></span><br><span class="line"><span class="string">   CGroup: /system.slice/tftpd-hpa.service</span></span><br><span class="line"><span class="string">           └─11101 /usr/sbin/in.tftpd --listen --user tftp --address :69 -l -c -</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Starting LSB: HPA'</span>s tftp server...</span><br><span class="line">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:  * Starting HPA<span class="string">'s tftpd in.tftpd</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:    ...done.</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Started LSB: HPA'</span>s tftp server.</span><br><span class="line">lines 1-14/14 (END)</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/03/28/ubuntu-配置tftp服务/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-windows-脚本自动登录交换机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1152,85 +1237,9 @@
 
 
   
-    <article id="post-ubuntu-18-04-安装-GoogleEarth" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/03/02/ubuntu-18-04-安装-GoogleEarth/">ubuntu 18.04 安装 GoogleEarth</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/03/02/ubuntu-18-04-安装-GoogleEarth/" class="archive-article-date">
-  	<time datetime="2019-03-02T04:25:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ubuntu-18-04-安装-GoogleEarthPro"><a href="#ubuntu-18-04-安装-GoogleEarthPro" class="headerlink" title="ubuntu 18.04 安装 GoogleEarthPro"></a>ubuntu 18.04 安装 GoogleEarthPro</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04 LTS</p>
-<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install update</span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install gdebi-core wget</span><br></pre></td></tr></table></figure>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gdebi google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/03/02/ubuntu-18-04-安装-GoogleEarth/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/ywmy/page/3/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/ywmy/page/5/">5</a><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="extend next" rel="next" href="/ywmy/page/5/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/ywmy/page/3/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/ywmy/page/5/">5</a><a class="page-number" href="/ywmy/page/6/">6</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/5/">Next &raquo;</a>
     </nav>
   
 
@@ -1317,6 +1326,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
@@ -1325,7 +1338,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1333,15 +1346,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">

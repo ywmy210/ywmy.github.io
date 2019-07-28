@@ -6,13 +6,13 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ywmy210.github.io/ywmy">
-  <title>Archives: 2019/4 | 豆豆家</title>
+  <title>豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="网络和美食">
 <meta name="keywords" content="network">
 <meta property="og:type" content="website">
 <meta property="og:title" content="豆豆家">
-<meta property="og:url" content="https://ywmy210.github.io/ywmy/archives/2019/04/page/2/index.html">
+<meta property="og:url" content="https://ywmy210.github.io/ywmy/page/8/index.html">
 <meta property="og:site_name" content="豆豆家">
 <meta property="og:description" content="网络和美食">
 <meta property="og:locale" content="zh-Hans">
@@ -184,72 +184,100 @@
           <div id="js-content" class="content-ll">
             
   
-  
+    <article id="post-iproute2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/ywmy/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/11/ubuntu-18-04-安装wireshark/" class="archive-article-date">
-  	<time datetime="2019-04-11T05:24:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
     <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/11/ubuntu-18-04-安装wireshark/">ubuntu 18.04 安装wireshark</a>
+      <a class="article-title" href="/ywmy/2018/08/05/iproute2/">iproute2</a>
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/11/华为交换机清除console密码/" class="archive-article-date">
-  	<time datetime="2019-04-11T01:14:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
+        
+        <a href="/ywmy/2018/08/05/iproute2/" class="archive-article-date">
+  	<time datetime="2018-08-05T14:56:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-05</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/11/华为交换机清除console密码/">华为交换机清除console密码</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="iproute2常用"><a href="#iproute2常用" class="headerlink" title="iproute2常用"></a>iproute2常用</h1><ul>
+<li>显示所有已连接的接口</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link show</span><br></pre></td></tr></table></figure>
+<ul>
+<li>停用或启用接口</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip link <span class="built_in">set</span> down wlp4s0</span><br><span class="line">sudo ip link <span class="built_in">set</span> up wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为网络接口分配IPv4地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo ip addr add 192.168.31.123/24 dev wlp4s0</span><br><span class="line"><span class="comment"># 可以同时给一个接口分配多个IP(ifconfig IP别名)例如</span></span><br><span class="line">sudo ip addr add 192.168.31.124/24 dev wlp4s0</span><br><span class="line">sudo ip addr add 192.168.31.125/24 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>移除网络接口IPv4地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip addr del 192.168.31.123/24 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>显示网络接口的IPv4地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为网络接口分配IPv6地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip -6 addr add 2003:0db5:0:f102::1/64 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<p>添加多条同上</p>
+<ul>
+<li>显示网络接口的IPv6地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip -6 addr show dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>移除网络设备的IPv6地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip -6 addr del 2003:0db5:0:f102::1/64 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<p>删除多条同上</p>
+<ul>
+<li>更改网络接口的MAC地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip link <span class="built_in">set</span> dev wlp4s0 address 08:00:27:75:2a:67</span><br></pre></td></tr></table></figure>
+<p>适用范围，如更换计算网络或主板等情况下，需要更改MAC地址，更改请需要停用网络接口，操作参考第二条内容</p>
+<ul>
+<li>查看IP路由表</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route show</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更改默认路由</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip route add defautl via 192.168.31.1 wlp4s0</span><br><span class="line">sudo ip route replace default via 192.168.31.2 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加静态路由和移除静态路由</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip route add 172.16.32.0/24 via 172.16.32.1 dev wlp4s0</span><br><span class="line">sudo ip route del 172.16.32.0/24</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看管套字统计信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ss</span><br><span class="line">ss -l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看arp表</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip neigh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加或删除静态arp表</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip neigh add 192.168.1.100 lladdr 00:0c:29:c0:5a:ef dev wlp4s0</span><br><span class="line">sudo ip neigh del 192.168.1.100 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加或删除多播地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ip maddr add 33:44:00:00:00:01 dev wlp4s0</span><br><span class="line">sudo ip maddr del 33:44:00:00:00:01 dev wlp4s0</span><br><span class="line">ip maddr list dev wlp4s0</span><br></pre></td></tr></table></figure>
+      
 
-        <div class="article-info info-on-right">
-          
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -261,287 +289,43 @@
 		</ul>
 	</div>
 
-          
+      
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2018/08/05/iproute2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/09/CentOS-环境变量配置错误/" class="archive-article-date">
-  	<time datetime="2019-04-09T02:28:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/09/CentOS-环境变量配置错误/">CentOS 环境变量配置错误</a>
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/04/ssh-signing-failed/" class="archive-article-date">
-  	<time datetime="2019-04-04T08:15:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/04/ssh-signing-failed/">ssh signing failed</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/04/ubuntu-shadow-socket/" class="archive-article-date">
-  	<time datetime="2019-04-04T03:19:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/04/ubuntu-shadow-socket/">ubuntu shadow-socket</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/04/centos-7-zabbix-proxy/" class="archive-article-date">
-  	<time datetime="2019-04-04T00:47:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/04/centos-7-zabbix-proxy/">centos 7 zabbix proxy</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/02/华为GPON配置说明/" class="archive-article-date">
-  	<time datetime="2019-04-02T02:13:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/02/华为GPON配置说明/">华为GPON配置说明</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/02/install-Open-Vpn-on-CentOS-7-with-easy-rsa-3/" class="archive-article-date">
-  	<time datetime="2019-04-01T16:01:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/02/install-Open-Vpn-on-CentOS-7-with-easy-rsa-3/">install Open.Vpn on CentOS 7 with easy-rsa 3</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/" class="archive-article-date">
-  	<time datetime="2019-04-01T07:03:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-01</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/">ttf-mscorefonts-installer ubuntu</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
-  
-
-    
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/ywmy/archives/2019/04/">&laquo; Prev</a><a class="page-number" href="/ywmy/archives/2019/04/">1</a><span class="page-number current">2</span>
+      <a class="extend prev" rel="prev" href="/ywmy/page/7/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><span class="page-number current">8</span>
     </nav>
   
 
@@ -565,9 +349,9 @@
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: false,
+		isHome: true,
 		isPost: false,
-		isArchive: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
