@@ -184,6 +184,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-CentOS-环境变量配置错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/09/CentOS-环境变量配置错误/">CentOS 环境变量配置错误</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/09/CentOS-环境变量配置错误/" class="archive-article-date">
+  	<time datetime="2019-04-09T02:28:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="CentOS-环境变量配置错误"><a href="#CentOS-环境变量配置错误" class="headerlink" title="CentOS 环境变量配置错误"></a>CentOS 环境变量配置错误</h1><p>今天在配置Maven时，写入一条环境变量，在重新应用环境变量后，发现只有cd命令可以用了。其它命令都不可用。解决办法如下：</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/sudo /bin/vim /etc/profile</span><br></pre></td></tr></table></figure>
+<p>把之前配置的环境变量删除</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/sudo reboot</span><br></pre></td></tr></table></figure>
+<p>重启服务器，重启后，应用新的环境变量。命令正常使用。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/09/CentOS-环境变量配置错误/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ssh-signing-failed" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1047,84 +1125,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/ywmy/2019/03/29/华为获取诊断信息文件/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-更改windows默认3389端口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/03/29/更改windows默认3389端口/">更改windows默认3389端口</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/03/29/更改windows默认3389端口/" class="archive-article-date">
-  	<time datetime="2019-03-29T08:45:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="windows远程端口更改"><a href="#windows远程端口更改" class="headerlink" title="windows远程端口更改"></a>windows远程端口更改</h1><p>windows默认远程协议RDP端口为3389，更改默认端口操作如下：</p>
-<h2 id="通过注册表更改默认RDP端口"><a href="#通过注册表更改默认RDP端口" class="headerlink" title="通过注册表更改默认RDP端口"></a>通过注册表更改默认RDP端口</h2><p>WIN+R运行程序regedit。注册表编辑器。</p>
-<p>HKEY_LOCAL_MACHINE -&gt; SYSTEM -&gt; CurrentControlSet -&gt; Control -&gt; Terminal Server -&gt; Wds -&gt; rdpwd -&gt; Tds -tcp -&gt; PortNumber -&gt; 基数用十进制方式显示 -&gt; 更改为想要的端口号</p>
-<p>HKEY_LOCAL_MACHINE -&gt; SYSTEM -&gt; CurrentControlSet -&gt; Control -&gt; Terminal Server -&gt; WinStations -&gt; RDP-Tcp -&gt; PortNumber -&gt; 基数用十进制方式显示 -&gt; 更改为想要的端口号</p>
-<p>重启系统后，使用新的端口号进行远程连接。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/03/29/更改windows默认3389端口/">展开全文 >></a>
         </p>
       
 

@@ -184,6 +184,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-更改windows默认3389端口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/03/29/更改windows默认3389端口/">更改windows默认3389端口</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/03/29/更改windows默认3389端口/" class="archive-article-date">
+  	<time datetime="2019-03-29T08:45:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="windows远程端口更改"><a href="#windows远程端口更改" class="headerlink" title="windows远程端口更改"></a>windows远程端口更改</h1><p>windows默认远程协议RDP端口为3389，更改默认端口操作如下：</p>
+<h2 id="通过注册表更改默认RDP端口"><a href="#通过注册表更改默认RDP端口" class="headerlink" title="通过注册表更改默认RDP端口"></a>通过注册表更改默认RDP端口</h2><p>WIN+R运行程序regedit。注册表编辑器。</p>
+<p>HKEY_LOCAL_MACHINE -&gt; SYSTEM -&gt; CurrentControlSet -&gt; Control -&gt; Terminal Server -&gt; Wds -&gt; rdpwd -&gt; Tds -tcp -&gt; PortNumber -&gt; 基数用十进制方式显示 -&gt; 更改为想要的端口号</p>
+<p>HKEY_LOCAL_MACHINE -&gt; SYSTEM -&gt; CurrentControlSet -&gt; Control -&gt; Terminal Server -&gt; WinStations -&gt; RDP-Tcp -&gt; PortNumber -&gt; 基数用十进制方式显示 -&gt; 更改为想要的端口号</p>
+<p>重启系统后，使用新的端口号进行远程连接。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/03/29/更改windows默认3389端口/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-配置tftp服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1112,102 +1190,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/ywmy/2019/03/04/C-语言数的表示（二）/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-C-语言数的表示（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/03/02/C-语言数的表示（一）/">C 语言数的表示（一）</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/03/02/C-语言数的表示（一）/" class="archive-article-date">
-  	<time datetime="2019-03-02T06:21:44.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="c语言整数表示"><a href="#c语言整数表示" class="headerlink" title="c语言整数表示"></a>c语言整数表示</h1><p>写文章的目的在于整理c语言整数溢出时出现的知识。</p>
-<h2 id="数据类型与表示方法"><a href="#数据类型与表示方法" class="headerlink" title="数据类型与表示方法"></a>数据类型与表示方法</h2><p>c语言中基本数据类型的表示有整型和浮点型，整型有short，int，long，还有一个修饰词，unsigned，即无符号。声明一个变量，即向内存申请一段数据类型相对应的存储地址，申请的变量类型及分配的内存大小，可以通过sizeof函数来得出。输出结果如下列表所示：</p>
-<blockquote>
-<p>Type short has a size of 2 bytes.<br>Type int has a size of 4 bytes.<br>Type long has a size of 8 bytes.<br>Type float has a size of 4 bytes.<br>Type double has a size of 8 bytes.<br>Type long long has size of 8 bytes  </p>
-</blockquote>
-<p>由此可看到各个不同类型数在系统申请内存的字节数。内存中存储的二进制值为机器数，其通过表示方法对应为十进制的真值。</p>
-<h2 id="机器数和真值"><a href="#机器数和真值" class="headerlink" title="机器数和真值"></a>机器数和真值</h2><p>机器数和真值，在上面所列出的数据类型中，如short类，在内存申请的存储空间为2字节，即16bit位。在表示中，高位为符号位，0为正数，1为负数。</p>
-<p>假定8位表示一个数，如数字7，为正数，转换为二进制为00000111，如果是-3，负数首位为1，转换为二进制为10000111。</p>
-<p>如上3，－3为真值，00000111／10000111为其对应的机器数。</p>
-<h2 id="原码、反码、补码"><a href="#原码、反码、补码" class="headerlink" title="原码、反码、补码"></a>原码、反码、补码</h2><h3 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h3><p>原码为符号位＋真值的绝对值，如[+1]原＝00000001，[-1]原＝10000001，则8位二进制原码取值范围为：[11111111-011111111]，即[-127~+127]。</p>
-<h3 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h3><p>反码为正数的反码为其原码，负数的反码为在其原码的基础上，符号位不变，其余位依次取反。如[+1]反＝00000001，[-1]反＝11111110。</p>
-<h3 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h3><p>正数的被码为其原码，负数的补码为反码＋1，如[+1]补＝00000001，[-1]补＝11111111。</p>
-<h3 id="采用不同编码方式的原因"><a href="#采用不同编码方式的原因" class="headerlink" title="采用不同编码方式的原因"></a>采用不同编码方式的原因</h3><p>计算机中，因保持电路简单的设计，计算机只能执行简单的加法运算，减法运算，可以让参数符号位参与运算，即＋负数。</p>
-<p>如上描述中，计算1－1＝0，对应的机器数原码操作为：</p>
-<p>[00000001]原+[10000001]原=[10000010]原＝[－2]真，对应的真值为－2。即参与负数计算的真值中不正确的。</p>
-<p>如使用反码参与减法计算，1-1则对应的机器数反码操作为：</p>
-<p>[00000001]反＋[11111110]反＝[11111111]反＝[10000000]原＝[－0]真，让符号位参与运算，得到为－0的真值，即反码操作中，存在一个为－0的问题，－0是没有意义的，而原码和反码本身即都存在±0的表示。</p>
-<p>为了解决±0的问题，即补码出现：</p>
-<p>1－1＝1＋（－1）=》[00000001]原＋[10000001]原＝》[00000001]补+[11111111]补＝》[00000000]补=[00000000]原=[0]真。</p>
-<p>即[00000000]表示0，同时可以使用[10000000]表示[-128]</p>
-<p>即[-1]+[-127]=》[10000001]原＋[111111111]原=》[11111111]补＋[10000001]补=》[10000000]原。即使用-0的原码表示-128的补码。</p>
-<p>实际-128没有原码和反码的对应值，使用补码不仅修复了原码和反码中存在0和计算的问题，还可以多使用一个低位数值，8位原码和反码的表示范围为[-127~+127]，补码的表示范围为[-128~+128]。</p>
-<p>即采用补码计算中，数值的取值范围为[-2^(n-1)~2^(n-1)-1]。(n为位数)</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">code</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/03/02/C-语言数的表示（一）/">展开全文 >></a>
         </p>
       
 
