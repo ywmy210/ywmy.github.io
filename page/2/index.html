@@ -184,6 +184,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-conky-配置透明度" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/24/conky-配置透明度/">conky 配置透明度</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/24/conky-配置透明度/" class="archive-article-date">
+  	<time datetime="2019-04-24T08:53:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="conky-配置透明度"><a href="#conky-配置透明度" class="headerlink" title="conky 配置透明度"></a>conky 配置透明度</h2><p>配置conky后，桌面上会有一个半透明的窗口，在更换壁纸后，半透明窗口内的显示背景仍然为之前的壁纸部分。更改为全透明，即更换壁纸后，窗口一直透明不受壁纸影响操作如下：</p>
+<p>conky 可以使用own_window_argb_visual、own_window_argb_value、own_window_transparent来调节透明特性。这需要窗口管理器支持Xorg复合特性，比如使用compiz或者启用metacity复合特性。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">own_window_argb_visual：布尔值。当为<span class="literal">true</span>时启用真透明特性</span><br><span class="line">own_window_argb_value：当启用真透明时设定不透明度。值的范围是0-255。0是0%不透明度，255是100%不透明</span><br><span class="line">own_window_transparent：布尔值。当该值为<span class="literal">true</span>，并且启用真透明时，设置不透明度为0%</span><br></pre></td></tr></table></figure>
+<p>注意：不要和own_window_type override一起使用。根据conky的文档，这在大多数情况下是无效的，我这里尝试的结果也是如此。<br>所以，如果希望得到完全透明的conky，可以这样设置:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">own_window_argb_visual <span class="literal">true</span></span><br><span class="line">own_window_transparent <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/24/conky-配置透明度/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-checkpwd-sh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1145,226 +1223,6 @@
 
 
   
-    <article id="post-华为交换机清除console密码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/04/11/华为交换机清除console密码/">华为交换机清除console密码</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/04/11/华为交换机清除console密码/" class="archive-article-date">
-  	<time datetime="2019-04-11T01:14:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-11</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="华为交换机清除console密码"><a href="#华为交换机清除console密码" class="headerlink" title="华为交换机清除console密码"></a>华为交换机清除console密码</h1><p>昨天下午在准备查看一台交换机配置的时候，发现原来给的登录信息已经不正确了。就想着用console登录试试，发现console登录也设置了用户名和密码，于是只能想到通过启动菜单来尝试清除密码了。</p>
-<p>操作如下：</p>
-<h2 id="启动菜单默认密码"><a href="#启动菜单默认密码" class="headerlink" title="启动菜单默认密码"></a>启动菜单默认密码</h2><ul>
-<li>Console/telnet登录(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>V1R3C00</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V1R6C00－V1R6C05</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V2R2C00－V2R6C00</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>Web登录(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>V1R3C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R6C05</td>
-<td>admin</td>
-<td><a href="mailto:admin@huawei.com" target="_blank" rel="noopener">admin@huawei.com</a></td>
-<td>0</td>
-</tr>
-<tr>
-<td>V2R1C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V2R3C00-V2R6C00</td>
-<td>admin</td>
-<td><a href="mailto:admin@huawei.com" target="_blank" rel="noopener">admin@huawei.com</a></td>
-<td>0</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>BootROM(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>V1R3C00</td>
-<td>N/A</td>
-<td>9300</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>N/A</td>
-<td>huawei</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>N/A</td>
-<td>9300(框式)</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>N/A</td>
-<td>huawei(盒式)</td>
-<td>无</td>
-</tr>
-</tbody>
-</table>
-<h2 id="恢复console密码"><a href="#恢复console密码" class="headerlink" title="恢复console密码"></a>恢复console密码</h2><ol>
-<li>设备断电</li>
-<li>重新加电</li>
-<li>电脑连CONSOLE口</li>
-<li><p>按CTRL＋B键加载BOOT MENU<br>加载图如下：</p>
-<p><img src="http://blog.ywmy.xyz/network/huawei_boot_menu.png" alt="huawei_boot_memu"></p>
-</li>
-<li><p>清除console密码</p>
-<p> 加载图如下：</p>
-<p> <img src="http://blog.ywmy.xyz/network/clean_password_for_console_user.png" alt="clean_passwrod_for_console_user"></p>
-</li>
-<li><p>恢复默认启动项</p>
-<p>加载图如下：</p>
-<p><img src="http://blog.ywmy.xyz/network/boot_with_default_mode.png" alt="boot_with_default_mode"></p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/04/11/华为交换机清除console密码/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="page-number current">2</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/3/">Next &raquo;</a>
@@ -1454,7 +1312,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1462,11 +1320,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1474,15 +1328,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">

@@ -184,6 +184,115 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-C-语言数的表示（二）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/03/04/C-语言数的表示（二）/">C 语言数的表示（二）</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/03/04/C-语言数的表示（二）/" class="archive-article-date">
+  	<time datetime="2019-03-04T07:48:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="C语言小数的表示"><a href="#C语言小数的表示" class="headerlink" title="C语言小数的表示"></a>C语言小数的表示</h1><h2 id="十进制与二进制的转换"><a href="#十进制与二进制的转换" class="headerlink" title="十进制与二进制的转换"></a>十进制与二进制的转换</h2><p>先记工式，任意一个二进制浮点数V可以表示成下面的形式；</p>
+<p>V = (-1)^s<em>M</em>2^E</p>
+<ol>
+<li><p>(-1)^s表示符号位，当s=0时，V为正数，当s=1时，V为负数。</p>
+</li>
+<li><p>M表示有效数字，大于等于1，小于2。</p>
+</li>
+<li><p>2^E表示指数位。</p>
+</li>
+</ol>
+<p>举例说明，十进制的5.0，写成二进制是101.0，相当于-1.01*2^2，那么，s=1，M=1.01，E＝2。</p>
+<p>32位浮点数，最高1位是符号位S，接着8位是指数E，剩下23位为有效数字M。</p>
+<p>64位浮点数，最高1位是符号位S，接着11位是指数E，剩下52位为有效数字M。</p>
+<p>IEEE 754对有效数字M和指数E还有一些特别的规定：</p>
+<h3 id="对于有效数字M"><a href="#对于有效数字M" class="headerlink" title="对于有效数字M"></a>对于有效数字M</h3><p>1&lt;=M&lt;2，也就是说M可以写成1.XXXX的形式，其中XXXX表示小数部分。在计算机内部保存M时，默认这个数的第一位总是1，因此可以被舍去，只保存后面的XXXX部分。比如保存1.01的时候，只存在01，等到读取的时候，再把第一位的1加上去。这样的目的，是节省1位有效数字。以32位浮点数为例留给M只有23位，将第1位舍去以后，等于可以保存24位有效数字。</p>
+<h3 id="对于指数E"><a href="#对于指数E" class="headerlink" title="对于指数E"></a>对于指数E</h3><p>首先，E为一个无符号数(unsignedint)，如果E为8位，它的取值范围为[0,255]；如果E为11位，它的取值范围为[0,2047]。但是，我们知道，科学计数法中E是可以出负数的，所以IEEE 754规定，E的真实值必须再减去一个中间数，对于8位的E，这个中间数是127，对于11位的E，这个中间数是1023。</p>
+<p>E－中间数得到的值即为指数领衔值(exponent bias),是指浮点数表示法中的指数域的编码值为实际值加上某个固定值，IEEE 754规定该固定值为2^(e-1)-1，其中e为存储指数的比特的长度。</p>
+<p>比如2^10的E是10，保存的成32位的浮点数时，必须保存成10＋127＝137，即10001001。</p>
+<p>采用指数的实际值加上固定领衔值的办法表示浮点数的指数，好处是可以用长度为e个比特的无符号数表示所有的指数取值，这使得两个浮点数的指数大小的比较更为容易，实际上可以按照字典充比较两个浮点数的大小，这种移码表示指数部分，中文称为阶码。</p>
+<p>以单精度型阶码表示示例如下：</p>
+<h4 id="例1"><a href="#例1" class="headerlink" title="例1"></a>例1</h4><p>如果我们要表示0，则有0＋127＝127，二进制表示为：0000 0000＋0111 1111＝0111 1111；</p>
+<h4 id="例2"><a href="#例2" class="headerlink" title="例2"></a>例2</h4><p>如果我们要表示1，则有1＋127＝128，二进制表示为：0000 0001＋0111 1111＝1000 0000；</p>
+<h4 id="例3"><a href="#例3" class="headerlink" title="例3"></a>例3</h4><p>如果我们要表示2，则有2＋127＝129，二进制表示为：0000 0010＋0111 1111＝1000 0001；</p>
+<h4 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h4><p>如果我们要表示128，则有128＋127＝255，二进制表示为：1000 0000＋0111 1111＝1111 1111；</p>
+<p>移码128即为8位二进制移位存储表示的最大正数。</p>
+<p>我们再来看一下负数：</p>
+<h4 id="例5"><a href="#例5" class="headerlink" title="例5"></a>例5</h4><p>如果我们要表示－1，则有－1＋127＝126，二进制表示为</p>
+<p>然后，指数E还分三种情况：</p>
+<ol>
+<li><p>E不全为0或不全为1时，浮点数就彩上面的规则表示，即指数E的计算值减去127(或1023)，得到真实值，再奖有效数字M前加上第一位的1。</p>
+</li>
+<li><p>E全为0时，浮点数的指数E等于1－127(1-1023)，有效数字M不再加上第一位的1，而是还为0.XXXX的小数，这样作是为了表示±0，以及接近0的很小的数值。</p>
+</li>
+<li><p>E全为1时，如果有效数字M全为0，表示±无穷大(正负取决于符号s)；如果有效数字M不全为0，表示这个数不是一个数(NaN)。</p>
+</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">code</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/03/04/C-语言数的表示（二）/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-C-语言数的表示（一）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1100,168 +1209,6 @@
 
 
   
-    <article id="post-U盘多启动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2018/12/01/U盘多启动/">U盘多启动</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2018/12/01/U盘多启动/" class="archive-article-date">
-  	<time datetime="2018-12-01T15:31:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接着前面U盘量产的工作，既然都已经到了量产了，好像不多做一点事情，总觉得对不起自己的折腾，于是再找关于U盘多启动方面的作法。以前想给自己的系统做维护，基本上就是做一个PE盘。里面集成PE工具，现在已经对U盘做了量产，即在数据盘上做一个PE，那就是两个启动了。是否可以多启动呢？想了两个方案：</p>
-<ol>
-<li>是否可以量产多个光驱？</li>
-<li>单盘多引导</li>
-</ol>
-<p>关于第一个想法，自己网上能找到的基本上都是关于三启动的，即量产为一个USB－CDROM，USB－ZIP，USB－HDD。不过量产为多光驱的还真的有一个，参考<a href="1">链接</a>;教程中把一个慧荣主控的U盘量产为7个光驱。而刚好自己的小米U盘为慧荣的主控，按教程上的说法，也是可以通过更变参数改为其它的量产参数的，不过文中提到了有风险，即数据分区通常在格式化上会出现问题。参考自己也只有一个慧荣的U盘，还有以前量产失败的经验，就先不尝试此方法。可以查看上面的链接中的教程内容，里面有详细的更变参数，以及U盘的各参数的说明。</p>
-<p>关于第二个相法，有过双系统（windows + linux）的经验，自然想到了GRUB2。按照这个思路，找到两个工具，EASY2BOOT和AIO BOOT CREATOR。通过名字就知道了，这会是两个多系统引导的好工具。特别是第二个，all in one。</p>
-<h2 id="EASY2BOOT启动引导"><a href="#EASY2BOOT启动引导" class="headerlink" title="EASY2BOOT启动引导"></a>EASY2BOOT启动引导</h2><h3 id="操作步骤如下："><a href="#操作步骤如下：" class="headerlink" title="操作步骤如下："></a>操作步骤如下：</h3><ol>
-<li>下载<a href="2">链接</a></li>
-<li>安装</li>
-<li><p>打开程序（插入U盘后）如下图所示</p>
-<p> <img src="http://blog.ywmy.xyz/windows/easy2boot.png" alt="easy2boot"></p>
-<p> 选择语言，选择U盘，创建启动盘。</p>
-</li>
-<li><p>在弹出的CMD窗口选择已经识别的U盘，如图所示：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/erase-usb-drive.png" alt="erase-usb-drive"></p>
-<p> 如图实别的USB设备编号为1，所选择1。</p>
-</li>
-<li><p>是否格式化，选择Y，此处忘记截图。</p>
-</li>
-<li><p>选择格式化的磁盘分区类型</p>
-<p> <img src="http://blog.ywmy.xyz/windows/format-partition.png" alt="format-partition"></p>
-<p> 此处选择了FAT32，即F。<br> 参考这一句：</p>
-<p> <strong>For UEFI-booting, convert the ISO using the MPI_FAT32 Desktop shortcut.</strong></p>
-<p> 就是说，如果你需要UEFI启动模式的话，那么转换ISO的时候，需要使用MPI_FAT32的快捷工具。</p>
-</li>
-<li><p>确认格式化，参考下图：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/confirm_action.png" alt="confirm_active"></p>
-</li>
-<li><p>选择语言</p>
-<p> <img src="http://blog.ywmy.xyz/windows/select-language.png" alt="select_language"></p>
-</li>
-<li><p>选择键盘</p>
-<p> <img src="http://blog.ywmy.xyz/windows/choose_keyboard_type.png" alt="choose_keyboard_type"></p>
-</li>
-<li><p>选择是否显示扩展名</p>
-<p><img src="http://blog.ywmy.xyz/windows/show-filename-extensions.png" alt="show-filename-extensions"></p>
-</li>
-<li><p>显示E2B图标样式</p>
-<p><img src="http://blog.ywmy.xyz/windows/display-icon.png" alt="display-icon"></p>
-</li>
-<li><p>是否写入配置文件</p>
-<p><img src="http://blog.ywmy.xyz/windows/write-configure-file.png" alt="write-configure-file"></p>
-</li>
-<li><p>填充linux镜像</p>
-<p><img src="http://blog.ywmy.xyz/windows/create-iso-file.png" alt="create-iso-file"></p>
-<p>这里需求填充一个3.9GB的镜像文件，输入数值0为不填充，或者输入一个大于3.9GB的数据，小于4GB，大于4096会报错，参考数据盘格式化为FAT32。</p>
-</li>
-<li><p>完成制作</p>
-<p><img src="http://blog.ywmy.xyz/windows/completed-configure.png" alt="completed-configure"></p>
-<p>至此，完成E2B U盘多启动的操作。</p>
-</li>
-</ol>
-<h3 id="UEFI启动支持"><a href="#UEFI启动支持" class="headerlink" title="UEFI启动支持"></a>UEFI启动支持</h3><p>操作步骤：</p>
-<ol>
-<li>下载MTI工具，链接<a href="3">请戳</a></li>
-<li><p>解压缩下载的工具包，进入ImDisk目录，安装ImDisk程序，参考图片：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/install_imDisk_virtual_driver.png" alt="install_imDisk_virtual_driver"></p>
-</li>
-<li><p>然后回到上级目录，运行 MPI_Tool_Pack_Plus_CloverLite_086\CreateDesktopShortcuts.cmd，这个CMD命令会在你的桌面上创建三个快捷方式，不过需要注意的是，需要用右键点击，然后使用管理员模式运行，参考下图：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/CreateDesktopShortcuts.png" alt="CreateDesktopShortcuts"></p>
-<p> 此命令会在桌面上创建三个快捷方式，即MakePartImage，MPI_FAT32，MPI_NTFS，三个程序的快捷方式。</p>
-</li>
-<li><p>将你需要创建的 UEFI 启动镜像，拖拽到 MPI_FAT32 这个快捷方式上，就会自动创建出 .imgPTN 格式的镜像文件了。在创建大小的时候按回车确认即可。参考下图：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/mpi_option_2.png" alt="mpi_option"></p>
-</li>
-<li><p>将ISO或者imgPTN文件拷贝到U盘中的对应目录即可，或者直接都扔到了 _ISO\MAINMENU 这个文件夹中。</p>
-</li>
-<li><p>完成操作后，从U盘启动，成果如下（默认UEFI支持的，可能需要关闭BIOS中的默认secret启动）：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/E2B_BOOT_UP.jpg" alt="E2B_BOOT_UP"></p>
-</li>
-</ol>
-<h2 id="AIO-BOOT-启动引导"><a href="#AIO-BOOT-启动引导" class="headerlink" title="AIO BOOT 启动引导"></a>AIO BOOT 启动引导</h2><h3 id="操作如下："><a href="#操作如下：" class="headerlink" title="操作如下："></a>操作如下：</h3><p>这个是一个真神器，绿色，不用安装，还自带中文，如名称所说，AIO all in one。</p>
-<ol>
-<li>下载工具，链接<a href="4">请戳</a></li>
-<li><p>运行，操作如下图所示：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/choose-usb-drive.png" alt="choose-usb-drive"></p>
-<p> 切换语言，选择U盘，勾选自动安装bootloader，点击OK，完成操作。</p>
-</li>
-<li><p>接下来就是在U盘的目录下操作了，操作大致如下图所示：</p>
-<p> <img src="http://blog.ywmy.xyz/AIOcreator.png" alt="AIOcreator"></p>
-<p> <img src="http://blog.ywmy.xyz/windows/boot_creator.jpg" alt="boot_creator"></p>
-<p> <img src="http://blog.ywmy.xyz/windows/tool_bar.jpg" alt="tool_bar"></p>
-</li>
-<li><p>最后，给一张U盘启动后的图片，这是一个相当结力的工具。</p>
-<p> <img src="http://blog.ywmy.xyz/windows/AIO_BOOT_UP.jpg" alt="AIO_BOOT_UP"></p>
-</li>
-</ol>
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>EASY2BOOT和AIO BOOT CREATOR这两款工具都是基于grub2和grub4dos工具为基础的，easy2boot基本以命令行操作为主，linux系统下也可以使用。AIO BOOT CREATOR这个工具，基本满足了我的所有需求，简单，功能强大，操作方便。一个绿色包，直接运行，还自带中文，这个就非常方便了。后面直接使用了AIO把我想要集成的多启动系统都集成在了U盘，包括ANDROID（phoenixos），linux（Kail, ubuntu），windows（windows 7, windows server 2016）等。系统安装，live环境应有尽有，可以说是一步到位了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">windows usb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2018/12/01/U盘多启动/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/4/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/6/">Next &raquo;</a>
@@ -1351,7 +1298,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1359,11 +1306,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,15 +1314,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">

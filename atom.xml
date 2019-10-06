@@ -6,7 +6,7 @@
   <link href="/ywmy/atom.xml" rel="self"/>
   
   <link href="https://ywmy210.github.io/ywmy/"/>
-  <updated>2019-08-10T08:26:28.899Z</updated>
+  <updated>2019-10-06T15:14:03.182Z</updated>
   <id>https://ywmy210.github.io/ywmy/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>How to Deploy Google BBRon CentOS 7</title>
+    <link href="https://ywmy210.github.io/ywmy/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/"/>
+    <id>https://ywmy210.github.io/ywmy/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/</id>
+    <published>2019-10-06T14:33:05.000Z</published>
+    <updated>2019-10-06T15:14:03.182Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="How-to-Deploy-Google-BBR-on-CentOS-7"><a href="#How-to-Deploy-Google-BBR-on-CentOS-7" class="headerlink" title="How to Deploy Google BBR on CentOS 7"></a>How to Deploy Google BBR on CentOS 7</h2><p>BBR (Bottleneck Bandwidth and RTT) is a new congestion control algorithm which is contributed to the Linux kernel TCP stack by Google. With BBR in place, a Linux server can get significantly increased throughput and reduced latency for connections. Besides, it’s easy to deploy BBR because this algorithm requires only updates on the sender side, not in the network or on the receiver side.</p><p>In this article, I will show you how to deploy BBR on a Vultr CentOS 7 KVM server instance.</p><h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul><li>A Vultr CentOS 7 x64 server instance.</li><li>A sudo user.</li></ul><h4 id="Step-1-Upgrade-the-kernel-using-the-ELRepo-RPM-repository"><a href="#Step-1-Upgrade-the-kernel-using-the-ELRepo-RPM-repository" class="headerlink" title="Step 1: Upgrade the kernel using the ELRepo RPM repository"></a>Step 1: Upgrade the kernel using the ELRepo RPM repository</h4><p>In order to use BBR, you need to upgrade the kernel of your CentOS 7 machine to 4.9.0. You can easily get that done using the ELRepo RPM repository.</p><p>Before the upgrade, you can take a look at the current kernel:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure><p>This command should output a string which resembles:</p><blockquote><p>3.10.0-514.2.2.el7.x86_64</p></blockquote><p>As you see, the current kernel is 3.10.0.</p><p>update and install the ELRepo repo:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line">sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</span><br><span class="line">sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br></pre></td></tr></table></figure><p>Install the 4.9.0 kernel using the ELRepo repo:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum --enablerepo=elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure><p>Confirm the result:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep kernel</span><br></pre></td></tr></table></figure><p>If the installation is successful, you should see kernel-ml-4.9.0-1.el7.elrepo.x86_64 among the output list:</p><blockquote><p>kernel-ml-4.9.0-1.el7.elrepo.x86_64<br>kernel-3.10.0-514.el7.x86_64<br>kernel-tools-libs-3.10.0-514.2.2.el7.x86_64<br>kernel-tools-3.10.0-514.2.2.el7.x86_64<br>kernel-3.10.0-514.2.2.el7.x86_64<br>Now, you need to enable the 4.9.0 kernel by setting up the default grub2 boot entry.</p></blockquote><p>Show all entries in the grub2 menu:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \<span class="string">'</span></span><br></pre></td></tr></table></figure><p>The result should resemble:</p><blockquote><p>CentOS Linux 7 Rescue a0cbf86a6ef1416a8812657bb4f2b860 (4.9.0-1.el7.elrepo.x86_64)<br>CentOS Linux (4.9.0-1.el7.elrepo.x86_64) 7 (Core)<br>CentOS Linux (3.10.0-514.2.2.el7.x86_64) 7 (Core)<br>CentOS Linux (3.10.0-514.el7.x86_64) 7 (Core)<br>CentOS Linux (0-rescue-bf94f46c6bd04792a6a42c91bae645f7) 7 (Core)  </p></blockquote><p>Since the line count starts at 0 and the 4.9.0 kernel entry is on the second line, set the default boot entry as 1:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo grub2-set-default 1</span><br></pre></td></tr></table></figure><p>Reboot the system:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo shutdown -r now</span><br></pre></td></tr></table></figure><p>When the server is back online, log back in and rerun the uname command to confirm that you are using the correct Kernel:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure><p>You should see the result as below:</p><blockquote><p>4.9.0-1.el7.elrepo.x86_64</p></blockquote><h4 id="Step-2-Enable-BBR"><a href="#Step-2-Enable-BBR" class="headerlink" title="Step 2: Enable BBR"></a>Step 2: Enable BBR</h4><p>In order to enable the BBR algorithm, you need to modify the sysctl configuration as follows:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">'net.core.default_qdisc=fq'</span> | sudo tee -a /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">'net.ipv4.tcp_congestion_control=bbr'</span> | sudo tee -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure><p>Now, you can use the following commands to confirm that BBR is enabled:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure><p>The output should resemble:</p><blockquote><p>net.ipv4.tcp_available_congestion_control = bbr cubic reno</p></blockquote><p>Next, verify with:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -n net.ipv4.tcp_congestion_control</span><br></pre></td></tr></table></figure><p>The output should be:</p><blockquote><p>bbr</p></blockquote><p>Finally, check that the kernel module was loaded:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure><p>The output will be similar to:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp_bbr                16384  0</span><br></pre></td></tr></table></figure><p><a href="https://baicy.blogspot.com/2017/03/how-to-deploy-google-bbr-on-centos-7.html" target="_blank" rel="noopener">reference 1</a></p><p><a href="https://www.linuxrumen.com/fwqdj/875.html" target="_blank" rel="noopener">reference 2</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;How-to-Deploy-Google-BBR-on-CentOS-7&quot;&gt;&lt;a href=&quot;#How-to-Deploy-Google-BBR-on-CentOS-7&quot; class=&quot;headerlink&quot; title=&quot;How to Deploy Google
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>centos+rsyslog+loganalyzer</title>
@@ -450,29 +473,6 @@
     
     
       <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>华为交换机清除console密码</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/11/%E5%8D%8E%E4%B8%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%B8%85%E9%99%A4console%E5%AF%86%E7%A0%81/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/11/华为交换机清除console密码/</id>
-    <published>2019-04-11T01:14:56.000Z</published>
-    <updated>2019-04-11T04:59:33.949Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="华为交换机清除console密码"><a href="#华为交换机清除console密码" class="headerlink" title="华为交换机清除console密码"></a>华为交换机清除console密码</h1><p>昨天下午在准备查看一台交换机配置的时候，发现原来给的登录信息已经不正确了。就想着用console登录试试，发现console登录也设置了用户名和密码，于是只能想到通过启动菜单来尝试清除密码了。</p><p>操作如下：</p><h2 id="启动菜单默认密码"><a href="#启动菜单默认密码" class="headerlink" title="启动菜单默认密码"></a>启动菜单默认密码</h2><ul><li>Console/telnet登录(框式/盒式)</li></ul><table><thead><tr><th>版本</th><th>缺省用户名</th><th>缺省密码</th><th>缺省级别</th></tr></thead><tbody><tr><td>V1R3C00</td><td>N/A</td><td>N/A</td><td>N/A</td></tr><tr><td>V1R5C01</td><td>N/A</td><td>N/A</td><td>N/A</td></tr><tr><td>V1R6C00－V1R6C05</td><td>N/A</td><td>N/A</td><td>N/A</td></tr><tr><td>V2R2C00－V2R6C00</td><td>N/A</td><td>N/A</td><td>N/A</td></tr></tbody></table><ul><li>Web登录(框式/盒式)</li></ul><table><thead><tr><th>版本</th><th>缺省用户名</th><th>缺省密码</th><th>缺省级别</th></tr></thead><tbody><tr><td>V1R3C00</td><td>admin</td><td>admin</td><td>0</td></tr><tr><td>V1R5C01</td><td>admin</td><td>admin</td><td>0</td></tr><tr><td>V1R6C00</td><td>admin</td><td>admin</td><td>0</td></tr><tr><td>V1R6C05</td><td>admin</td><td><a href="mailto:admin@huawei.com" target="_blank" rel="noopener">admin@huawei.com</a></td><td>0</td></tr><tr><td>V2R1C00</td><td>admin</td><td>admin</td><td>0</td></tr><tr><td>V2R3C00-V2R6C00</td><td>admin</td><td><a href="mailto:admin@huawei.com" target="_blank" rel="noopener">admin@huawei.com</a></td><td>0</td></tr></tbody></table><ul><li>BootROM(框式/盒式)</li></ul><table><thead><tr><th>版本</th><th>缺省用户名</th><th>缺省密码</th><th>缺省级别</th></tr></thead><tbody><tr><td>V1R3C00</td><td>N/A</td><td>9300</td><td>无</td></tr><tr><td>V1R5C01</td><td>N/A</td><td>huawei</td><td>无</td></tr><tr><td>V1R6C00</td><td>N/A</td><td>9300(框式)</td><td>无</td></tr><tr><td>V1R6C00</td><td>N/A</td><td>huawei(盒式)</td><td>无</td></tr></tbody></table><h2 id="恢复console密码"><a href="#恢复console密码" class="headerlink" title="恢复console密码"></a>恢复console密码</h2><ol><li>设备断电</li><li>重新加电</li><li>电脑连CONSOLE口</li><li><p>按CTRL＋B键加载BOOT MENU<br>加载图如下：</p><p><img src="http://blog.ywmy.xyz/network/huawei_boot_menu.png" alt="huawei_boot_memu"></p></li><li><p>清除console密码</p><p> 加载图如下：</p><p> <img src="http://blog.ywmy.xyz/network/clean_password_for_console_user.png" alt="clean_passwrod_for_console_user"></p></li><li><p>恢复默认启动项</p><p>加载图如下：</p><p><img src="http://blog.ywmy.xyz/network/boot_with_default_mode.png" alt="boot_with_default_mode"></p></li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;华为交换机清除console密码&quot;&gt;&lt;a href=&quot;#华为交换机清除console密码&quot; class=&quot;headerlink&quot; title=&quot;华为交换机清除console密码&quot;&gt;&lt;/a&gt;华为交换机清除console密码&lt;/h1&gt;&lt;p&gt;昨天下午在准备查看一台交换机
-      
-    
-    </summary>
-    
-    
-      <category term="network" scheme="https://ywmy210.github.io/ywmy/tags/network/"/>
     
   </entry>
   

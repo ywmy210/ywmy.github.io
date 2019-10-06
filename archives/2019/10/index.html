@@ -6,20 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ywmy210.github.io/ywmy">
-  <title>linux常用命令 | 豆豆家</title>
+  <title>Archives: 2019/10 | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用命令一、硬件篇 cpu相关  lscpu #查看cpu的统计信息 cat /proc/cpuinfo #查看cpu的详细信息，如cpu的核心相关信息等  内存相关  free -m #概要查看内存情况，这里的单位是MB cat /proc/meminfo ＃查看内存的详细信息  磁盘相关  lsblk #查看硬盘的分区分布 df -lh #查看各分区的情况 cat /proc/partitio">
-<meta name="keywords" content="linux">
-<meta property="og:type" content="article">
-<meta property="og:title" content="linux常用命令">
-<meta property="og:url" content="https://ywmy210.github.io/ywmy/2018/08/05/linux常用命令/index.html">
+  <meta name="description" content="网络和美食">
+<meta name="keywords" content="network">
+<meta property="og:type" content="website">
+<meta property="og:title" content="豆豆家">
+<meta property="og:url" content="https://ywmy210.github.io/ywmy/archives/2019/10/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="常用命令一、硬件篇 cpu相关  lscpu #查看cpu的统计信息 cat /proc/cpuinfo #查看cpu的详细信息，如cpu的核心相关信息等  内存相关  free -m #概要查看内存情况，这里的单位是MB cat /proc/meminfo ＃查看内存的详细信息  磁盘相关  lsblk #查看硬盘的分区分布 df -lh #查看各分区的情况 cat /proc/partitio">
+<meta property="og:description" content="网络和美食">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-01-11T14:26:42.539Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="linux常用命令">
-<meta name="twitter:description" content="常用命令一、硬件篇 cpu相关  lscpu #查看cpu的统计信息 cat /proc/cpuinfo #查看cpu的详细信息，如cpu的核心相关信息等  内存相关  free -m #概要查看内存情况，这里的单位是MB cat /proc/meminfo ＃查看内存的详细信息  磁盘相关  lsblk #查看硬盘的分区分布 df -lh #查看各分区的情况 cat /proc/partitio">
+<meta name="twitter:title" content="豆豆家">
+<meta name="twitter:description" content="网络和美食">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -183,74 +182,36 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-linux常用命令" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      linux常用命令
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/ywmy/archives/2019" class="archive-year">2019</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/ywmy/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/" class="archive-article-date">
+  	<time datetime="2019-10-06T14:33:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-06</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/ywmy/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/">How to Deploy Google BBRon CentOS 7</a>
     </h1>
   
 
-        
-        <a href="/ywmy/2018/08/05/linux常用命令/" class="archive-article-date">
-  	<time datetime="2018-08-05T15:24:51.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><h2 id="一、硬件篇"><a href="#一、硬件篇" class="headerlink" title="一、硬件篇"></a>一、硬件篇</h2><ol>
-<li><p>cpu相关</p>
-<p> <code>lscpu #查看cpu的统计信息</code><br> <code>cat /proc/cpuinfo #查看cpu的详细信息，如cpu的核心相关信息等</code></p>
-</li>
-<li><p>内存相关</p>
-<p> <code>free -m #概要查看内存情况，这里的单位是MB</code><br> <code>cat /proc/meminfo ＃查看内存的详细信息</code></p>
-</li>
-<li><p>磁盘相关</p>
-<p> <code>lsblk #查看硬盘的分区分布</code><br> <code>df -lh #查看各分区的情况</code><br> <code>cat /proc/partitions #查看硬盘的分区</code><br> <code>mount | column -t #查看挂载的分区状态</code></p>
-</li>
-<li><p>网卡相关</p>
-<p> <code>lspci | grep -i &#39;eth&#39;</code><br> <code>ip addr #查看系统的所有网络接口</code></p>
-</li>
-</ol>
-<h2 id="二、软件篇"><a href="#二、软件篇" class="headerlink" title="二、软件篇"></a>二、软件篇</h2><ol>
-<li><p>内核相关</p>
-<p> <code>uname -a #查看版本当前操作系统内核信息</code><br> <code>cat /proc/version #相看当前操作系统版本信息</code><br> <code>cat /etc/redhat-release #readhat系，结果同上</code><br> <code>cat /etc/suse-release #suse系，结果同上</code><br> <code>lsb_release -a #用来查看linux兼容性的发行版本信息</code><br> <code>lsmod #列出加载的内核模块</code></p>
-</li>
-<li><p>网络相关</p>
-<p> <code>ifconf #查看所有网络接口的属性</code><br> <code>iptables -L #查看防火墙设置</code><br> <code>service iptables (start|stop|restart|status) #服务管理命令</code><br> <code>route -n #查看路由表</code><br> <code>netstat -tnlp #查看所有监听的端口</code><br> <code>netstat -antp #查看所有已经建立的连接</code><br> <code>netstat -s #查看网络统计信息进程</code><br> <code>netstat -at #列出所有tcp端口</code><br> <code>netstat -au #列出所有udp端口</code><br> <code>netstat -lt #只列出所有监听tcp端口</code></p>
-<p> 以上命令只适用于旧的network-tool工具集。新的ip命令集不再适用</p>
-</li>
-<li><p>系统相关</p>
-<p> <code>top #查看系统所有进程的详细信息，如cpu、内存等信息</code><br> <code>mount #挂载远程目录、NFS、本地共享目录到linux下</code><br> <code>hostname #查看/修改计算机名</code><br> <code>w #查看活动用户</code><br> <code>id #查看指定用户信息</code><br> <code>last #查看用户登录日志</code><br> <code>crontab -l #查看当前用户的计划任务</code><br> <code>chkconfig --list #列出所有系统服务</code><br> <code>rpm -qa #查看所有安装的软件包</code><br> <code>uptime #查看系统运行时间、用户娄、负载</code></p>
-</li>
-<li><p>文件相关</p>
-<p> <code>ls -lht #列出一个文件夹下所有文件及大小、访问权限</code><br> <code>du -sh &lt;dir#查看指定目录的大小</code><br> <code>du -sh &lt;dir#查看指定目录的大小</code><br> <code>du -lh &lt;dir#查看指定目录各文件的大小</code><br> <code>ln -s #建立软连接</code></p>
-</li>
-<li><p>进程相关</p>
-<p> <code>pstree -p pid #查看一个进程的所有线程</code><br> <code>pstree -a #显示所有进程的所有详细信息，遇到相同进程名可以压缩显示</code><br> <code>ps -ef #查看所有进程</code><br> <code>kill -9 pid #杀死进程</code><br> <code>kill all test #杀死进程</code></p>
-</li>
-<li><p>压缩解压缩相关</p>
-<p> <code>zip -r dir file #净目录dir、文件file等压缩到zip包</code><br> <code>zip -re dir.zip dir file #创建zip包，并加密</code><br> <code>unzip dir zip #解压</code><br> <code>tar -zcvf dir tat.gz dir file #将目录dir、文件file等压缩到tar包</code><br> <code>tar -xf dir.tar.gz #解压</code></p>
-</li>
-<li><p>scp命令</p>
-<p> <code>scp local_file remote_username@remote_ip:remode_dir #拷贝本地文件到远程机器上</code></p>
-<p> <code>scp -f local_dir remote_username@remote_ip:remote_dir #拷贝本地目录至远程机器上</code></p>
-<p> <code>－P 参数为指定远程主机的端口号</code></p>
-</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -262,115 +223,19 @@
 		</ul>
 	</div>
 
-      
+          
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://ywmy210.github.io/ywmy/2018/08/05/linux常用命令/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/ywmy/2018/08/05/windows常用命令/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          windows常用命令
-        
-      </div>
-    </a>
   
   
-    <a href="/ywmy/2018/08/05/OSI/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">OSI</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -393,8 +258,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
