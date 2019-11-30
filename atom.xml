@@ -6,7 +6,7 @@
   <link href="/ywmy/atom.xml" rel="self"/>
   
   <link href="https://ywmy210.github.io/ywmy/"/>
-  <updated>2019-10-06T15:14:03.182Z</updated>
+  <updated>2019-11-30T08:42:06.259Z</updated>
   <id>https://ywmy210.github.io/ywmy/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux nc command</title>
+    <link href="https://ywmy210.github.io/ywmy/2019/11/30/linux-nc-command/"/>
+    <id>https://ywmy210.github.io/ywmy/2019/11/30/linux-nc-command/</id>
+    <published>2019-11-30T08:25:01.000Z</published>
+    <updated>2019-11-30T08:42:06.259Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="linux-nc-命令"><a href="#linux-nc-命令" class="headerlink" title="linux nc 命令"></a>linux nc 命令</h2><h3 id="netcat-安装"><a href="#netcat-安装" class="headerlink" title="netcat 安装"></a>netcat 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu 18.04</span></span><br><span class="line">sudo apt install netcat</span><br><span class="line"><span class="comment"># centos  7</span></span><br><span class="line">sudo yum install nc</span><br></pre></td></tr></table></figure><h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><ul><li>端口扫描</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -z -v  10.10.0.103 3389  <span class="comment">#查看主机3389端口是否启用</span></span><br></pre></td></tr></table></figure><p>回显示例：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3389端口</span></span><br><span class="line">Connection to 10.10.0.103 3389 port [tcp/*] succeeded!</span><br><span class="line"><span class="comment"># 80端口</span></span><br><span class="line">Connection to 10.10.0.103 80 port [tcp/http] succeeded!</span><br><span class="line"><span class="comment"># 22端口</span></span><br><span class="line">Connection to 10.10.0.100 22 port [tcp/ssh] succeeded!</span><br></pre></td></tr></table></figure><p>无回显，则端口无法通信。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;linux-nc-命令&quot;&gt;&lt;a href=&quot;#linux-nc-命令&quot; class=&quot;headerlink&quot; title=&quot;linux nc 命令&quot;&gt;&lt;/a&gt;linux nc 命令&lt;/h2&gt;&lt;h3 id=&quot;netcat-安装&quot;&gt;&lt;a href=&quot;#netcat-安
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>centos 7 ssr</title>
+    <link href="https://ywmy210.github.io/ywmy/2019/10/07/centos-7-ssr/"/>
+    <id>https://ywmy210.github.io/ywmy/2019/10/07/centos-7-ssr/</id>
+    <published>2019-10-07T09:44:52.000Z</published>
+    <updated>2019-10-07T13:10:09.101Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>How to Deploy Google BBRon CentOS 7</title>
@@ -421,52 +460,6 @@
       
       
         &lt;h1 id=&quot;ubuntu-18-04-安装-nginx&quot;&gt;&lt;a href=&quot;#ubuntu-18-04-安装-nginx&quot; class=&quot;headerlink&quot; title=&quot;ubuntu 18.04 安装 nginx&quot;&gt;&lt;/a&gt;ubuntu 18.04 安装 nginx&lt;/
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu 18.04 安装 lanproxy</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/11/ubuntu-18-04-%E5%AE%89%E8%A3%85-lanproxy/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/11/ubuntu-18-04-安装-lanproxy/</id>
-    <published>2019-04-11T07:13:18.000Z</published>
-    <updated>2019-04-11T08:36:28.845Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Ubuntu-18-04-安装-lanproxy"><a href="#Ubuntu-18-04-安装-lanproxy" class="headerlink" title="Ubuntu 18.04 安装 lanproxy"></a>Ubuntu 18.04 安装 lanproxy</h1><p>lanproxy git-hub地址<a href="https://github.com/ffay/lanproxy" target="_blank" rel="noopener">请戳</a></p><h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>lanproxy依赖于java。服务端安装java通过包管理工具实现如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install default-jdk</span><br><span class="line"></span><br><span class="line">java --version</span><br><span class="line">openjdk 10.0.2 2018-07-17</span><br><span class="line">OpenJDK Runtime Environment (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.4)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.4, mixed mode)</span><br></pre></td></tr></table></figure><h3 id="下载服务端"><a href="#下载服务端" class="headerlink" title="下载服务端"></a>下载服务端</h3><p>本文直接是先下载到自己电脑，然后上传至服务器，方式随意。下载地址<a href="https://github.com/ffay/lanproxy/releases" target="_blank" rel="noopener">请戳</a></p><p>上传通过sftp</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sftp -i identify_file -P port user@host</span><br><span class="line">....</span><br><span class="line">&gt; put local_file remote_host_directory  <span class="comment">#上传至远程目录</span></span><br><span class="line">....</span><br><span class="line">退出sftp程序</span><br></pre></td></tr></table></figure><h3 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h3><p>登录远程主机，将程序包解压，把程序文件移动到你想要放置的路径如/usr/bin/</p><blockquote><p>/usr/bin/proxy-server  </p></blockquote><p>大概以上路径。</p><p>配置文件在程序的config目录下，名字为：config.properties</p><p>内容如下：</p><blockquote><p>server.bind=0.0.0.0<br>server.port=4900</p><p>server.ssl.enable=true<br>server.ssl.bind=0.0.0.0<br>server.ssl.port=4993<br>server.ssl.jksPath=test.jks<br>server.ssl.keyStorePassword=123456<br>server.ssl.keyManagerPassword=123456<br>server.ssl.needsClientAuth=false  </p><p>config.server.bind=0.0.0.0<br>config.server.port=8090<br>config.admin.username=admin<br>config.admin.password=admin  </p></blockquote><p>按需要更改。</p><h3 id="防火墙放通端口"><a href="#防火墙放通端口" class="headerlink" title="防火墙放通端口"></a>防火墙放通端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 8090/tcp </span><br><span class="line">sudo ufw reload</span><br></pre></td></tr></table></figure><h3 id="服务器测试"><a href="#服务器测试" class="headerlink" title="服务器测试"></a>服务器测试</h3><p>运行服务端，启动程序脚本在程序目录bin文件夹下。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./startup.sh</span><br></pre></td></tr></table></figure><p>打开IP:8090。程序运行。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Ubuntu-18-04-安装-lanproxy&quot;&gt;&lt;a href=&quot;#Ubuntu-18-04-安装-lanproxy&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 18.04 安装 lanproxy&quot;&gt;&lt;/a&gt;Ubuntu 18.04 安
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu 18.04 安装wireshark</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/11/ubuntu-18-04-%E5%AE%89%E8%A3%85wireshark/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/11/ubuntu-18-04-安装wireshark/</id>
-    <published>2019-04-11T05:24:21.000Z</published>
-    <updated>2019-04-11T05:34:57.568Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Ubuntu-18-04-安装-wireshark"><a href="#Ubuntu-18-04-安装-wireshark" class="headerlink" title="Ubuntu 18.04 安装 wireshark"></a>Ubuntu 18.04 安装 wireshark</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install wireshark wireshark-common</span><br></pre></td></tr></table></figure><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>非root用户下的wireshark没有抓包权限</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol><li>以root用户运行</li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo wireshark</span><br></pre></td></tr></table></figure><ol start="2"><li>配置非root用户抓包</li></ol><p>安装完成后，wireshark文档中有相应的处理方法。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo gzip -d /usr/share/doc/wireshark-common/README.Debian.gz</span><br></pre></td></tr></table></figure><p>解压文档后，可以参考操作方法如下：</p><blockquote><p> sudo usermod -a -G wireshark {username}</p></blockquote><p>或者</p><blockquote><p>sudo gpasswd -a your_name wireshark  </p></blockquote><p>重新配置抓取权限</p><blockquote><p>sudo dpkg-reconfigure wireshark-common<br>“Should non-superusers be able to capture packages?”<br>选择yes(默认是no)</p></blockquote><p>注销用户或重启，再次打开wireshark，正常选取网卡列表。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Ubuntu-18-04-安装-wireshark&quot;&gt;&lt;a href=&quot;#Ubuntu-18-04-安装-wireshark&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 18.04 安装 wireshark&quot;&gt;&lt;/a&gt;Ubuntu 18.0
       
     
     </summary>
