@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ywmy210.github.io/ywmy">
-  <title>centos 7 双网卡共享上网 | 豆豆家</title>
+  <title>centos 6 更换网卡 | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="centos 7 为私网提共nat网关服务前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的">
+  <meta name="description" content="CentOS 6 更换网卡开年上班了，到公司第一件事情就是处理过年期间挂掉的几台服务器。其中一台在自己尝试BIOS电池放电、换内存、换电源都没办法点亮后，就只能想着找一块一样的主板换上，试试能不能正常启来。还好主板是有的，换上后，正常开机了。启动后的一个问题，换主板了，网卡信息就变更了，这样新的网卡就没办法正常启用。  备份udev下的70-persistent-net.rules文件  1mv">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
-<meta property="og:title" content="centos 7 双网卡共享上网">
-<meta property="og:url" content="https://ywmy210.github.io/ywmy/2019/03/27/centos-7-双网卡共享上网/index.html">
+<meta property="og:title" content="centos 6 更换网卡">
+<meta property="og:url" content="https://ywmy210.github.io/ywmy/2020/02/22/centos-6-更换网卡/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="centos 7 为私网提共nat网关服务前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的">
+<meta property="og:description" content="CentOS 6 更换网卡开年上班了，到公司第一件事情就是处理过年期间挂掉的几台服务器。其中一台在自己尝试BIOS电池放电、换内存、换电源都没办法点亮后，就只能想着找一块一样的主板换上，试试能不能正常启来。还好主板是有的，换上后，正常开机了。启动后的一个问题，换主板了，网卡信息就变更了，这样新的网卡就没办法正常启用。  备份udev下的70-persistent-net.rules文件  1mv">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-27T12:54:21.508Z">
+<meta property="og:updated_time" content="2020-02-22T10:34:55.373Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="centos 7 双网卡共享上网">
-<meta name="twitter:description" content="centos 7 为私网提共nat网关服务前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的">
+<meta name="twitter:title" content="centos 6 更换网卡">
+<meta name="twitter:description" content="CentOS 6 更换网卡开年上班了，到公司第一件事情就是处理过年期间挂掉的几台服务器。其中一台在自己尝试BIOS电池放电、换内存、换电源都没办法点亮后，就只能想着找一块一样的主板换上，试试能不能正常启来。还好主板是有的，换上后，正常开机了。启动后的一个问题，换主板了，网卡信息就变更了，这样新的网卡就没办法正常启用。  备份udev下的70-persistent-net.rules文件  1mv">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -183,49 +183,48 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-centos-7-双网卡共享上网" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-centos-6-更换网卡" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      centos 7 双网卡共享上网
+      centos 6 更换网卡
     </h1>
   
 
         
-        <a href="/ywmy/2019/03/27/centos-7-双网卡共享上网/" class="archive-article-date">
-  	<time datetime="2019-03-27T10:32:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-27</time>
+        <a href="/ywmy/2020/02/22/centos-6-更换网卡/" class="archive-article-date">
+  	<time datetime="2020-02-22T09:48:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="centos-7-为私网提共nat网关服务"><a href="#centos-7-为私网提共nat网关服务" class="headerlink" title="centos 7 为私网提共nat网关服务"></a>centos 7 为私网提共nat网关服务</h1><p>前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的四口交换机连内网。</p>
-<h2 id="配置如下"><a href="#配置如下" class="headerlink" title="配置如下"></a>配置如下</h2><h3 id="服务器一"><a href="#服务器一" class="headerlink" title="服务器一"></a>服务器一</h3><h4 id="IP配置："><a href="#IP配置：" class="headerlink" title="IP配置："></a>IP配置：</h4><ul>
-<li>em1:218.108.88.88     项目公网地址     </li>
-<li>em2:10.10.100.10      项目私网网段</li>
+        <h2 id="CentOS-6-更换网卡"><a href="#CentOS-6-更换网卡" class="headerlink" title="CentOS 6 更换网卡"></a>CentOS 6 更换网卡</h2><p>开年上班了，到公司第一件事情就是处理过年期间挂掉的几台服务器。其中一台在自己尝试BIOS电池放电、换内存、换电源都没办法点亮后，就只能想着找一块一样的主板换上，试试能不能正常启来。还好主板是有的，换上后，正常开机了。启动后的一个问题，换主板了，网卡信息就变更了，这样新的网卡就没办法正常启用。</p>
+<ul>
+<li>备份udev下的70-persistent-net.rules文件</li>
 </ul>
-<h4 id="配置IP转发"><a href="#配置IP转发" class="headerlink" title="配置IP转发"></a>配置IP转发</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line"><span class="comment"># 追加一行内容</span></span><br><span class="line"><span class="comment"># Controls IP packet forwarding</span></span><br><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure>
-<h4 id="启用转发配置"><a href="#启用转发配置" class="headerlink" title="启用转发配置"></a>启用转发配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -w net.ipv4.ip_forward=1</span><br></pre></td></tr></table></figure>
-<h4 id="防火墙域控制"><a href="#防火墙域控制" class="headerlink" title="防火墙域控制"></a>防火墙域控制</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=external --add-interface=em0 --permanent</span><br><span class="line">firewall-cmd --zone=internal --add-interface=em1 --permanent</span><br></pre></td></tr></table></figure>
-<p>分别把公网的网卡添加到external域，私网网卡添加到internal域。</p>
-<h4 id="更新防火墙配置"><a href="#更新防火墙配置" class="headerlink" title="更新防火墙配置"></a>更新防火墙配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
-<h4 id="添加IP伪装"><a href="#添加IP伪装" class="headerlink" title="添加IP伪装"></a>添加IP伪装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=external --add-masquerade --permanent</span><br></pre></td></tr></table></figure>
-<p>启用公网IP伪装。</p>
-<h4 id="启用NAT规则"><a href="#启用NAT规则" class="headerlink" title="启用NAT规则"></a>启用NAT规则</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --direct --passthrough ipv4 -t nat -I POSTROUTING -o em0 -j MASQUERADE -s 10.10.100.0/24</span><br></pre></td></tr></table></figure>
-<p>启用私网段IP NAT转发。</p>
-<h4 id="放通服务器上必要的端口"><a href="#放通服务器上必要的端口" class="headerlink" title="放通服务器上必要的端口"></a>放通服务器上必要的端口</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --zone=internal --add-service=tftp</span><br><span class="line">firewall-cmd --permanent --zone=internal --add-service=ssh</span><br></pre></td></tr></table></figure>
-<p>如tftp，ssh等。</p>
-<h4 id="更新防火墙配置-1"><a href="#更新防火墙配置-1" class="headerlink" title="更新防火墙配置"></a>更新防火墙配置</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
-<p>至此nat配置结束。</p>
-<h3 id="服务器二配置"><a href="#服务器二配置" class="headerlink" title="服务器二配置"></a>服务器二配置</h3><p>配置服务器网串口IP为私网IP，如10.10.10.9。</p>
-<blockquote>
-<p>TYPE=Ethernet<br>PROXY_METHOD=none<br>BROWSER_ONLY=no<br>BOOTPROTO=static<br>DEFROUTE=yes<br>IPV4_FAILURE_FATAL=no<br>IPV6INIT=yes<br>IPV6_AUTOCONF=yes<br>IPV6_DEFROUTE=yes<br>IPV6_FAILURE_FATAL=no<br>IPV6_ADDR_GEN_MODE=stable-privacy<br>NAME=em1<br>UUID=09560695-2f1b-4052-854d-3d0840c00d6a<br>DEVICE=em1<br>ONBOOT=yes<br>IPADDR=10.10.100.9<br>NETMASK=255.255.255.0<br>GATEWAY=10.10.100.10<br>DNS1=223.5.5.5.5<br>DNS2=114.114.114.114<br>PREFIX=24<br>ZONE=internal  </p>
-</blockquote>
-<h3 id="服务器三配置"><a href="#服务器三配置" class="headerlink" title="服务器三配置"></a>服务器三配置</h3><p>参考服务器二，配置网关指向服务器一的私网IP。至此，三台服务器均可上网，服务器配置公司业务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/udev/rules.d/70-persistent-net.rules /etc/udev/rules.d/70-persistent-net.rules_backup</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重启服务器</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init 6</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改新生成的70-persistent-net.rules文件，将NAME硬件名称更改为eth0 </li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules</span><br><span class="line"></span><br><span class="line"><span class="comment"># This file was automatically generated by the /lib/udev/write_net_rules</span></span><br><span class="line"><span class="comment"># program, run by the persistent-net-generator.rules rules file.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You can modify it, as long as you keep each rule on a single</span></span><br><span class="line"><span class="comment"># line, and change only the value of the NAME= key.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PCI device 0x10ec:0x8168 (r8169)</span></span><br><span class="line">SUBSYSTEM==<span class="string">"net"</span>, ACTION==<span class="string">"add"</span>, DRIVERS==<span class="string">"?*"</span>, ATTR&#123;address&#125;==<span class="string">"c8:60:00:aa:bb:cc"</span>, ATTR&#123;<span class="built_in">type</span>&#125;==<span class="string">"1"</span>, KERNEL==<span class="string">"eth*"</span>, NAME=<span class="string">"eth0"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改network-script下的ifcfg-eth0文件，将mac地址更改为新的网卡mac地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line"></span><br><span class="line">DEVICE=eth0</span><br><span class="line">HWADDR=C8:60:00:aa:bb:cc</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">UUID=21e445f2-209e-4a80-aa32-8c06bde93917</span><br><span class="line">ONBOOT=yes</span><br><span class="line">NM_CONTROLLED=yes</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">IPADDR=192.168.121.121</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.121.1</span><br><span class="line">DNS1=221.12.1.227</span><br></pre></td></tr></table></figure>
+<ul>
+<li>重启</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot 或 init 6</span><br></pre></td></tr></table></figure>
+<p>重启后，网卡正常工作，结束 。</p>
 
       
 
@@ -295,7 +294,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://ywmy210.github.io/ywmy/2019/03/27/centos-7-双网卡共享上网/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ywmy210.github.io/ywmy/2020/02/22/centos-6-更换网卡/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -309,18 +308,9 @@
   
 <nav id="article-nav">
   
-    <a href="/ywmy/2019/03/27/windows-脚本自动登录交换机/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          windows 脚本自动登录交换机
-        
-      </div>
-    </a>
   
-  
-    <a href="/ywmy/2019/03/26/ubuntu-安装打印机驱动/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">ubuntu 安装打印机驱动</div>
+    <a href="/ywmy/2020/02/05/linux-终端生成随机密码/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux 终端生成随机密码</div>
       <i class="icon-circle-right"></i>
     </a>
   

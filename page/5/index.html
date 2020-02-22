@@ -184,6 +184,217 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-18-04-使用小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/03/24/ubuntu-18-04-使用小结/">ubuntu 18.04 使用小结</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/03/24/ubuntu-18-04-使用小结/" class="archive-article-date">
+  	<time datetime="2019-03-24T13:32:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-24</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ubuntu-18-04安装配置小结"><a href="#ubuntu-18-04安装配置小结" class="headerlink" title="ubuntu 18.04安装配置小结"></a>ubuntu 18.04安装配置小结</h1><p>起因，从自己毕业以来，自己的电脑就一直在使用ubuntu。最早的长期使用就是从12.04LTS用起。基本到每一个LTS版本自己就升级一次版本。到18.04时，自己重装了系统，各种小折腾后，基本上就比较符合自己需求了。一些小瑕疵还是有的，比如有一些自己之前常用的软件，某些依赖不再被支持，无法安装或启动。在自己尝试无果后，还因为不知道安装了某些依赖，导致系统重启后，每次都会跳出系统错误，询问是否发送报告。虽然实际使用中是没什么问题，不过这个让人比较难受。</p>
+<p>另外一个比较让人纠结的问题，去年的时候，自己买了一块手绘板，尝试安装linux wacom project后，经常性的在重启后，无法使用。这让我不得不在重新启动电脑后，再一次的尝试重新安装wacom project相关的依赖，或者不关／重启计算机。</p>
+<p>鉴于对自己笔记本硬件已经不太满意，前一段时间，花了点钱，给自己的电脑加了一根固态。后面，就又一次重装了系统。</p>
+<p>接下来梳理一下自已安装系统后的经过。记录一下常用的程序，及各个程序相关的插件。备用。</p>
+<h2 id="系统安装"><a href="#系统安装" class="headerlink" title="系统安装"></a>系统安装</h2><p>由于自己的笔记本有一个NGFF 2242的插槽支持NVME协议，所以，直接买了一根NGFF的小固态。装上去后，直接开始安装全新系统。电脑上已经双硬盘SSD＋HDD布局，所以安装分区的时候，考虑到固态的容量和个人资料的安全性，分区思路如下：</p>
+<p>固态硬盘：EFFI＋/分区</p>
+<p>机械硬盘：/home分区</p>
+<p>安装时，直接连网并更新系统，以及第三方插件。安装结束后，重新启动。接下来就是属于安装结束后要做的事情了。</p>
+<h2 id="安装后做的事情"><a href="#安装后做的事情" class="headerlink" title="安装后做的事情"></a>安装后做的事情</h2><h3 id="切换源"><a href="#切换源" class="headerlink" title="切换源"></a>切换源</h3><p>在安装后，第一件事，更换源。打开应用程序“软件和更新”–&gt;ubuntu软件–&gt;选择下拉列表中的其它站点(默认为中国的服务器)–&gt;点击选择最佳服务器。程序会做一系列连通性测试，并给出一个最快的系统源，在我自己的使用中，一般都是CN99的源(所说是网易的源)。应用后，系统会重新加载软件更新缓存，再安装程序或更新的时候，就从最近的源中提供更新了。</p>
+<h3 id="输入法"><a href="#输入法" class="headerlink" title="输入法"></a>输入法</h3><p>ubuntu 18.04默认的输入法，又从之前的fictx换回了ibus。安装时，选择了中文语言后，ibus默认会安装拼音输入法。而很巧的是，我自己是五笔的使用者，因为在手机上五笔打字这个绝对是很糟糕的体验，自己又学习了双拼。所以，自己电脑上是五毛，手机上是双拼，使用的是微软双拼的方案。</p>
+<p>所以在ubuntu上，同时使用了双拼和五笔的输入法。</p>
+<h4 id="双拼"><a href="#双拼" class="headerlink" title="双拼"></a>双拼</h4><p>双拼输入法的设置，直接在面板上点击输入法图标–&gt;首选项–&gt;拼间模式–&gt;选择双拼(微软双拼)–&gt;关闭标签面即可。</p>
+<h4 id="五笔"><a href="#五笔" class="headerlink" title="五笔"></a>五笔</h4><p>五笔输入法，我们需要安装五笔输入法框架。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ibus-table-wubi</span><br></pre></td></tr></table></figure>
+<p>安装结束后，终端运行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ibus-setup</span><br></pre></td></tr></table></figure>
+<p>输入法设置中选择输入法标签页–&gt;添加–&gt;汉语–&gt;汉语(海峰五笔86)–&gt;关闭标签页</p>
+<p>另外一个比较好玩的是，ubuntu已经支持输入法已经支持emoje了。在系统自带的gedit中，输入时，右击–&gt;插入绘文字–&gt;选择emoje即可。除了自带的gedit，其余的应用暂未测试，至少自己写文档的vs code中右击是没有的。</p>
+<h3 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h3><h4 id="firefox"><a href="#firefox" class="headerlink" title="firefox"></a>firefox</h4><p>firefox浏览器作为系统自带的默认浏览器，自然是非常优秀，但自己通常来说在安装结束后，基本就将firefox作为备用了。因为一些众所周知的原因。firefox我是不会放弃的。firefox上也有一些自己经常用到的插件记录如下：</p>
+<ol>
+<li>Gnome-shell(18.04必备了)</li>
+<li>Firefox-Lightbeam</li>
+<li>Proxy-SwitchyOmege</li>
+<li>Tab2QR</li>
+</ol>
+<p>Gonme-shell通过命令安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install gnome-shell-extensions</span><br></pre></td></tr></table></figure>
+<p>后三个通过附件管理器中搜索安装。</p>
+<p>Gnome-shell-extensions为了使ubuntu桌面更符合自己的使用需求，会配合gnome-tweak-tool一起使用。</p>
+<p>Gnome-shell-etensions控件，使用列表如下：</p>
+<ol>
+<li>Dash to Panel(Dash、Pancel合并和设置)</li>
+<li>Hide Top Bar </li>
+<li>Open Weather</li>
+<li>Removable Drive Menu</li>
+<li>Sound Input &amp; Ootput Device Chooser </li>
+</ol>
+<p>Firefox控件可以在登录后同步。</p>
+<h4 id="Chrome"><a href="#Chrome" class="headerlink" title="Chrome"></a>Chrome</h4><p>对于Chrome，可以直接使用apt安装源里的Chromium，Chrome也中基于开源的Chromium而来。两者在使用的时候，很少能感知到差别，同样也是使得google的账号同步。之前一直通过源里安装Chromium安装，在后面有一次打开google earth时，提示，使用的非chrome浏览器，后面我就直接安装chrome浏览器了。</p>
+<p>chrome使用的插件：</p>
+<ol>
+<li>GSConnect</li>
+<li>Momentum</li>
+<li>PanicButton</li>
+<li>Proxy SwitchyOmega</li>
+<li>Google翻译</li>
+<li>Neater Bookmarks</li>
+<li>Secure Shell Extension</li>
+<li>Unsplash Instant</li>
+<li>Full Page Screen Capture</li>
+</ol>
+<p>同样的，只要你能登录，那你的设置和习惯就跑不了。同步后，就都有了。</p>
+<h3 id="文档码字或者代码"><a href="#文档码字或者代码" class="headerlink" title="文档码字或者代码"></a>文档码字或者代码</h3><h4 id="vim"><a href="#vim" class="headerlink" title="vim"></a>vim</h4><p>在之前的vim中，我会折腾代码补全、目录浏览等，参考各路大神的配置，尝试打造成一个自己用得顺手的IDE。在有了space vim之后，我已经什么都不想动了。</p>
+<p>一条命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sLf https://spacevim.org/cn/install.sh | bash</span><br></pre></td></tr></table></figure>
+<p>回车后，打开vim，相关的插件会自动的安装上去。</p>
+<p>好了，剩下的只有享受了。</p>
+<h4 id="VS-CODE"><a href="#VS-CODE" class="headerlink" title="VS CODE"></a>VS CODE</h4><p>微软家开源的，质量没得说。结果自己主要的用途居然是markdown。先说安装，再说插件。</p>
+<p>下载地址，<a href="https://code.visualstudio.com/" target="_blank" rel="noopener">请戳</a>。</p>
+<p>插件如下：</p>
+<ul>
+<li>Chinese(simplified)LanguadePack for Visual Studio Code</li>
+<li>Gitlens</li>
+<li>LeetCode</li>
+<li>Markdown All in One</li>
+<li>Markdown+Math</li>
+<li>Mysql</li>
+<li>Mysql Syntax</li>
+<li>One Dark Pro</li>
+<li>PowerShell</li>
+<li>Python</li>
+<li>Vim</li>
+<li>Vscode-icons</li>
+<li>C/C++</li>
+</ul>
+<h4 id="Gitkraken"><a href="#Gitkraken" class="headerlink" title="Gitkraken"></a>Gitkraken</h4><p>下载<a href="https://www.gitkraken.com/" target="_blank" rel="noopener">请戳</a></p>
+<h3 id="远程管理，调试"><a href="#远程管理，调试" class="headerlink" title="远程管理，调试"></a>远程管理，调试</h3><p>在linux上似乎很难找到一个和xshell相当的顺手的设备调试和管理工具，虽然说，有命令行通过配置文件一样非常高效，但是，GUI也自有其优势。在自己使用的工具中，关于串口调试：</p>
+<ul>
+<li>minicom</li>
+<li>picocom</li>
+</ul>
+<p>远程管理工具：</p>
+<ul>
+<li>termius</li>
+</ul>
+<p>全平台(windows, mac os, linux, android)，可以购买许可，多端同步。当然，也可以不买许可。单机用。</p>
+<p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo snap install termius-app</span><br></pre></td></tr></table></figure>
+<ul>
+<li>anydesk   方便访问本机</li>
+</ul>
+<h3 id="多媒体"><a href="#多媒体" class="headerlink" title="多媒体"></a>多媒体</h3><h4 id="播放器"><a href="#播放器" class="headerlink" title="播放器"></a>播放器</h4><ul>
+<li>vlc</li>
+<li>kodi</li>
+<li>网易去音乐(必装了)</li>
+<li>Cpod      网络收音机</li>
+</ul>
+<h4 id="画图、图片"><a href="#画图、图片" class="headerlink" title="画图、图片"></a>画图、图片</h4><ul>
+<li>GIMP</li>
+<li>Krita</li>
+<li>Mypaint</li>
+<li>Peek  gif录屏</li>
+<li>OBS   录屏、串流</li>
+<li>OpenTooz     简单的动画制作</li>
+<li>Openshot     视频剪辑</li>
+</ul>
+<h3 id="虚拟机和模拟器"><a href="#虚拟机和模拟器" class="headerlink" title="虚拟机和模拟器"></a>虚拟机和模拟器</h3><ul>
+<li>virtualbox</li>
+<li>playonlinux</li>
+</ul>
+<h3 id="游戏"><a href="#游戏" class="headerlink" title="游戏"></a>游戏</h3><ul>
+<li>steam</li>
+<li>gog</li>
+</ul>
+<h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><ul>
+<li>uget </li>
+<li>transmission</li>
+<li>filezilla</li>
+</ul>
+<h3 id="词典"><a href="#词典" class="headerlink" title="词典"></a>词典</h3><ul>
+<li>goldendict    本地</li>
+<li>有道词典</li>
+</ul>
+<h3 id="聊天"><a href="#聊天" class="headerlink" title="聊天"></a>聊天</h3><ul>
+<li>skype</li>
+<li>gitter</li>
+</ul>
+<h3 id="系统"><a href="#系统" class="headerlink" title="系统"></a>系统</h3><ul>
+<li>stacer    优化工具，下载<a href="https://github.com/oguzhaninan/Stacer" target="_blank" rel="noopener">请戳</a></li>
+<li>avast     杀毒(给个心理安慰，基本不用系列)</li>
+<li>etcher    U盘镜像写入工具，下载<a href="https://www.balena.io/etcher/" target="_blank" rel="noopener">请戳</a></li>
+</ul>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><h4 id="文泉驿"><a href="#文泉驿" class="headerlink" title="文泉驿"></a>文泉驿</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install font-wqy-microhei   //文泉驿米黑</span><br><span class="line">sudo apt install font-wqy-zhenhei    //文泉驿正黑</span><br></pre></td></tr></table></figure>
+<h4 id="ubuntu-font-family"><a href="#ubuntu-font-family" class="headerlink" title="ubuntu-font-family"></a>ubuntu-font-family</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ttf-ubuntu-font-family</span><br></pre></td></tr></table></figure>
+<h4 id="google-Noto"><a href="#google-Noto" class="headerlink" title="google Noto"></a>google Noto</h4><p>下载地址<a href="https://fonts.google.com/" target="_blank" rel="noopener">请戳</a>，如果可以访问得到的话。</p>
+<h4 id="dejavu"><a href="#dejavu" class="headerlink" title="dejavu"></a>dejavu</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install ttf-dejavu ttf-dejavu-core ttf-dejavu-extra</span><br></pre></td></tr></table></figure>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在完成这次的重装后，因为上了固态这个大保健，电脑似乎又能再战三年。全新安装后的系统也没有报错，之前因为自己折腾而导致各种不明依赖造成的手绘板不可用也正常使用了。算是已经接近自己完美使用的需要了。</p>
+<p>自然，也还有一些问题，在我自己搭建的过程中，也给解决掉了。其中有一个因为系统更新后，键盘鼠标不可用的。也在自己搜索后得到解决的办法，会单独写一篇记录，实在是值得记住，差点想要放弃重新再安装。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/03/24/ubuntu-18-04-使用小结/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-18-04-开启TCP-BBR拥塞控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1081,85 +1292,6 @@
 
 
   
-    <article id="post-centos-7上安装webadmin" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/01/15/centos-7上安装webadmin/">centos 7上安装webmin</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/01/15/centos-7上安装webadmin/" class="archive-article-date">
-  	<time datetime="2019-01-15T13:44:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-01-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>webmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect</span><br></pre></td></tr></table></figure>
-<h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p>程序安装位置：/usr/libexec/webmin</p>
-<p>程序默认通过https访问，端口10000 TCP，按访问需求放通。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/01/15/centos-7上安装webadmin/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/4/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/6/">Next &raquo;</a>
@@ -1249,15 +1381,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1277,15 +1409,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
