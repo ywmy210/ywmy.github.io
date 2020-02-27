@@ -184,6 +184,112 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu下的一些小折腾" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/04/17/ubuntu下的一些小折腾/">ubuntu下的一些小折腾</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/04/17/ubuntu下的一些小折腾/" class="archive-article-date">
+  	<time datetime="2019-04-17T02:08:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-17</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h1><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul>
+<li>问题描述</li>
+</ul>
+<p>默认的ibus输入法，在输入中文的时候，会出现候选词为方块的现象，原因大致为输入法码表与系统字体渲染的问题。即码表中字符在系统的字体库中找不到对应的字体。虽然不影响使用，且码表中匹配的字大都为繁体或生僻字，看到方块，总有一种要干掉方块字的冲动。尝试把系统字体更改为思源黑体，不过输入法候选词中仍然存在方块。更改输入法显示字体：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ibus-setup</span><br></pre></td></tr></table></figure>
+<p>更改如图：</p>
+<p><img src="http://blog.ywmy.xyz/linux/ibus_setup.png" alt="ibus-setup"></p>
+<p>尝试安装更多字符集的字体库，如明朝花园Ｂ。</p>
+<p>下载链接<a href="https://github.com/tony/dot-fonts" target="_blank" rel="noopener">请戳</a></p>
+<p>补充CJK字体在不同程序之间输入显示的一个小问题，比如码表同[IDRN]源下加心，𢢵.这个字在VS CODE中可以显示，谷歌浏览器中也可以正常显示，在WPS中则显示为潮。</p>
+<h2 id="vs-code-power-line-font"><a href="#vs-code-power-line-font" class="headerlink" title="vs code power-line font"></a>vs code power-line font</h2><ul>
+<li>问题描述</li>
+</ul>
+<p>在昨天没事的时候，把系统的默认的bash更改为zsh，并配置了美化，oh my zsh。</p>
+<p>终端上可以很赏心悦目了，不过在打开vs code的时候，调用zsh会出现power-line字体不显示的问题，具体可看下图：</p>
+<p><img src="http://blog.ywmy.xyz/linux/vs_code_powerline.png" alt="vs_code_powerline"></p>
+<ul>
+<li>解决办法</li>
+</ul>
+<ol>
+<li>安装power-line字体</li>
+</ol>
+<p>下载<a href="https://github.com/abertsch/Menlo-for-Powerline" target="_blank" rel="noopener">请戳</a></p>
+<ol start="2">
+<li>配置vs code</li>
+</ol>
+<p>操作步骤：设置－&gt;打开json设置-&gt;输入以下调用字体信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"terminal.integrated.fontFamily"</span>: <span class="string">"Menlo for Powerline"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>参考下图：</p>
+<p><img src="http://blog.ywmy.xyz/linux/vs_code_powerline_set.png" alt="vs_code_powerline_set"></p>
+<p>完成设置后，显示效果生效，参考下图：</p>
+<p><img src="http://blog.ywmy.xyz/linux/vs_code_json_set.png" alt="vs_code_json_ser"></p>
+<p><a href="https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7" target="_blank" rel="noopener">参考链接</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/04/17/ubuntu下的一些小折腾/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-记一些ubuntu-18-04的小毛病" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1129,131 +1235,6 @@
 
 
   
-    <article id="post-华为GPON配置说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/04/02/华为GPON配置说明/">华为GPON配置说明</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/04/02/华为GPON配置说明/" class="archive-article-date">
-  	<time datetime="2019-04-02T02:13:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>#华为GPON配置说明</p>
-<h2 id="名词说明"><a href="#名词说明" class="headerlink" title="名词说明"></a>名词说明</h2><ol>
-<li>DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整中ONU上行进行限速的。一个PON口上行带宽为1G，实际能用到的只有900M，所以要对ONU的上行进行合理分配。</li>
-<li>Tcont：tcont是连接dba和gemport的通道，也就是说emport是通过和tcont联系，才把dba的作用引用过来的。</li>
-<li>Gemport：gemport是OLT线程工作的最小单元，前面的dba，tcont都是最终给gemport用。</li>
-<li>线路模板ont-lineprofile：ONU注册时要选择相应的线路模板，里面包含tcont，gem等信息。</li>
-<li>DBA模板，线路模板，可以创建多个；一个线路模板中：tcont有八个（0－7），gem可以创建128个（0－127）；一个gem中可有映射8个：gem mapping 1 0；gem mapping 1 1；一直到gem mapping 1 7；但是一个线路模板中最多只能创建128条gem mapping，超出会报错。</li>
-</ol>
-<h2 id="数据规划"><a href="#数据规划" class="headerlink" title="数据规划"></a>数据规划</h2><p>以花都狮岭数据规划为例：</p>
-<p>OLT：网管VLAN 22；</p>
-<pre><code>IP：172.17.21.132；网关：172.17.21.129；语音VLAN 100；语音IP：172.16.0.11
-</code></pre><p>ONU：所属OLT的PON串口0/18/3<br>    ONUID：1<br>    ONU网管IP：172.17.21.134；网关：172.17.21.129；<br>    语音VLAN 100；语音IP：172.16.0.21</p>
-<p>数据配置</p>
-<ol>
-<li><p>数据配置</p>
-<ul>
-<li><p>创建DBA模板</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br></pre></td><td class="code"><pre><span class="line">dba-profile add profile-id 102 profile-name DBA_2M type3 assure 2048 max 10240   //保证（assure）2M，最大10M</span><br><span class="line"></span><br><span class="line">查看DBA模板信息</span><br><span class="line"></span><br><span class="line">display dba-profile all </span><br><span class="line"></span><br><span class="line">//以上命令，关于type：</span><br><span class="line">type1                 Fixed bandwidth       //固定带宽</span><br><span class="line">type2                 Assured bandwidth             //保证带宽</span><br><span class="line">type3                 Assured bandwidth, Maximum bandwidth          //保证带宽，最大峰值带宽</span><br><span class="line">type4                 Maximum bandwidth         //最大带宽</span><br><span class="line">type5                 Fixed bandwidth, Assured bandwidth, Maximum bandwidth             //固定带宽，保证带宽，最大带宽</span><br><span class="line"></span><br><span class="line">dba-profile add profile-id 105 profile-name DBA_5M type3 assure 5210 max 20480</span><br><span class="line">dba-profile add profile-id 120 profile-name DBA_20M type3 assure 20480 max 102400</span><br><span class="line">dba-profile add profile-ed 150 profile-anem DBA_50M type3 assure 51200 max 512000</span><br><span class="line"></span><br><span class="line">创建线路模板</span><br><span class="line"></span><br><span class="line">创建线路模板101：供ONU ID 1到5 用；由于一个线路模板中gem mapping最多只能创建128条；故一个线路模板不要被过多的ONU调用。</span><br><span class="line"></span><br><span class="line">ont-lineprofile gpon profile-id 101 profile-name MA561-_1_5</span><br><span class="line"></span><br><span class="line">查看线路信息：</span><br><span class="line"></span><br><span class="line">display ont-lineprofile gpon all</span><br><span class="line"></span><br><span class="line">查看具体线路信息</span><br><span class="line"></span><br><span class="line">BJ-BaiGongShi-JingQu-MA5608T(config)#display ont-lineprofile gpon profile-id 122 </span><br><span class="line">-----------------------------------------------------------------------------</span><br><span class="line">Profile-ID          :122</span><br><span class="line">Profile-name        :PWGB_10G</span><br><span class="line">Access-type         :GPON</span><br><span class="line">-----------------------------------------------------------------------------</span><br><span class="line">FEC upstream switch :Disable </span><br><span class="line">OMCC encrypt switch :Off</span><br><span class="line">Qos mode            :GEM-CAR</span><br><span class="line">Mapping mode        :VLAN</span><br><span class="line">TR069 management    :Disable</span><br><span class="line">TR069 IP index      :0</span><br><span class="line">-----------------------------------------------------------------------------</span><br><span class="line">&lt;T-CONT   0&gt;          DBA Profile-ID:1</span><br><span class="line">&lt;T-CONT   1&gt;          DBA Profile-ID:90</span><br><span class="line">&lt;Gem Index 1&gt;</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">|Serv-Type:ETH |Encrypt:off |Cascade:off |GEM-CAR:6            |</span><br><span class="line">|Upstream-priority-queue:-  |Downstream-priority-queue:-       |</span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">Mapping VLAN  Priority Port    Port  Bundle  Flow  Transparent</span><br><span class="line">index                  type    ID    ID      CAR   </span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">0       30    -        -       -     -       -     -          </span><br><span class="line">1       10    -        -       -     -       -     -          </span><br><span class="line">--------------------------------------------------------------------</span><br><span class="line">-----------------------------------------------------------------------------</span><br><span class="line">Notes: Run the display traffic table ip command to query </span><br><span class="line">     traffic table configuration</span><br><span class="line">-----------------------------------------------------------------------------</span><br><span class="line">Binding times       :0</span><br><span class="line">-----------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">线路模板的编号为101，模板名称MA5610_1_5</span><br><span class="line"></span><br><span class="line">tcont 1 dba-profile-id 120</span><br><span class="line">//tcont1绑定120的DBA模板</span><br><span class="line">tcont 2 dba-profile-id 105</span><br><span class="line">//tcont2绑定105的DBA模板</span><br><span class="line">tcont 3 dba-profile-id 102</span><br><span class="line">//tcont3绑定102的DBA模板</span><br><span class="line"></span><br><span class="line">gem add 1 eth1 tcont 1</span><br><span class="line">//gem 1 绑定tcont1</span><br><span class="line">gem add 2 eth2 tcont 2</span><br><span class="line">//gem 2 绑定tont1</span><br><span class="line">gem add 126 eth tcont 2</span><br><span class="line">//gem 126 绑定 tcont2</span><br><span class="line">gem add 127 eth tcont 3 </span><br><span class="line">//gem 126 绑定 tcont3</span><br><span class="line">gem mapping 126 0 vlan 100</span><br><span class="line">//gem 126 与 vlan 100 映射</span><br><span class="line">gem mapping 127 0 vlan 22</span><br><span class="line">//gem 的 127 与 vlan 22 映射</span><br><span class="line"></span><br><span class="line">commit</span><br><span class="line">//提交，保存线路模板</span><br><span class="line"></span><br><span class="line">quit</span><br><span class="line"></span><br><span class="line">创建线路模板102：供ONU ID 6到10 用</span><br><span class="line">ont-lineprofile gpon profile-id 102 profile-nanme MA5610_6_10</span><br><span class="line"></span><br><span class="line">tcont 1 dba-profile-id 120</span><br><span class="line">tcont 2 dba-profile-id 105</span><br><span class="line">tcont 3 dba-profile-id 102</span><br><span class="line">gem add 1 eth tcont 1</span><br><span class="line">gem add 2 eth tcont 1</span><br><span class="line">gem add 126 eth tcont 2</span><br><span class="line">gem add 127 eth tcont 3</span><br><span class="line">gem mapping 126 0 vlan 100</span><br><span class="line">gem mapping 127 0 vlan 22</span><br><span class="line">commit </span><br><span class="line">quit </span><br><span class="line"></span><br><span class="line">创建线路模板103：供 ONU ID 11到15 用</span><br><span class="line">ont-lineprofile gpon profile-id 103 profile-name MA5610_11_15</span><br><span class="line">tcont 1 dba-profile-id 120</span><br><span class="line">tcont 2 dba-profile-id 105</span><br><span class="line">tcont 3 dba-profile-id 102</span><br><span class="line"></span><br><span class="line">gem add 1 eth tcont 1</span><br><span class="line">gem add 2 eth tcont 1</span><br><span class="line">gem add 126 eth tcont 2</span><br><span class="line">gem add 127 eth tcont 3</span><br><span class="line">gem mapping 126 0 vlan 100</span><br><span class="line">gem mapping 127 0 vlan 22</span><br><span class="line">commit</span><br><span class="line">quit</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">创建线路模板104：供ONU ID 16到20 用</span><br><span class="line">ont-line-profile gpen profile-id 104 profile-name MA5610_16_20</span><br><span class="line">tcont 1 dba-profile-id 120</span><br><span class="line">tcont 2 dba-profile-id 105</span><br><span class="line">tcont 3 dba-profile-id 102</span><br><span class="line">gem add 1 eth tcont 1</span><br><span class="line">gem add 2 eth tcont 1</span><br><span class="line">gem add 126 eth tcont 2</span><br><span class="line">gem add 127 eth tcont 3</span><br><span class="line">gem mapping 126 0 vlan 100</span><br><span class="line">gem mapping 127 0 vlan 22</span><br><span class="line">commit </span><br><span class="line">quit</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-</ol>
-<ul>
-<li>注册ONU</li>
-</ul>
-<p>进入0/18槽口的PON板</p>
-<p>intface gpon 0/18</p>
-<p>ont add 3 1 sn-auth 48575443FFE2329A snap ont-lineprofile-id 101</p>
-<p>给ONU注册，第三个PON口，ONU编号1，SN号：48575443FFE2329A</p>
-<p>ont ipconfig 3 1 static ip-address 172.17.21.134 mask 255.255.255.128 gateway 172.17.21.129 vlan 22</p>
-<p>给刚刚注册的ONU，下发管理IP地址，网关掩码，ONU上会自动生成一条缺少路由。</p>
-<ul>
-<li>OLT上透传ONU上来的VLAN</li>
-</ul>
-<p>service-port vlan 22 gpon 1/18/3 ont 1 gemport 127 multi-service user-vlan 22 </p>
-<p>//给ONU透传网管VLAN22</p>
-<p>service-port vlan 100 gpon 0/18/3 ont 1 gemport 126 multi-service user-vlan 100</p>
-<p>//ONU透传语音VLAN100</p>
-<p>ONU上语音数据配置</p>
-<p>telnet 172.17.21.134 登入到ONU上配置数据</p>
-<p>board confim 0</p>
-<p>//单板确认</p>
-<p>fax-modem parameters rfc2198-start-mode disable Rfc21985SmartStartup</p>
-<p>//关闭2198自启动功能</p>
-<p>vlan 100 smart </p>
-<p>//创建语音VLAN 100</p>
-<p>port vlan 100 0/0 1</p>
-<p>//透传VLAN 100</p>
-<p>interface vlanif 100</p>
-<p>ip address 172.16.0.23 255.255.254.0</p>
-<p>//配置语音地址</p>
-<p>quit</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/04/02/华为GPON配置说明/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/2/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><a class="page-number" href="/ywmy/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/ywmy/page/4/">4</a><a class="page-number" href="/ywmy/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/4/">Next &raquo;</a>
@@ -1347,11 +1328,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1371,15 +1352,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">

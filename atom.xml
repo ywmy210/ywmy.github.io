@@ -6,7 +6,7 @@
   <link href="/ywmy/atom.xml" rel="self"/>
   
   <link href="https://ywmy210.github.io/ywmy/"/>
-  <updated>2020-02-22T10:34:55.373Z</updated>
+  <updated>2020-02-27T16:48:11.211Z</updated>
   <id>https://ywmy210.github.io/ywmy/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>zabbix 忘记admin密码</title>
+    <link href="https://ywmy210.github.io/ywmy/2020/02/28/zabbix-%E5%BF%98%E8%AE%B0admin%E5%AF%86%E7%A0%81/"/>
+    <id>https://ywmy210.github.io/ywmy/2020/02/28/zabbix-忘记admin密码/</id>
+    <published>2020-02-27T16:07:53.000Z</published>
+    <updated>2020-02-27T16:48:11.211Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="zabbix忘记admin密码"><a href="#zabbix忘记admin密码" class="headerlink" title="zabbix忘记admin密码"></a>zabbix忘记admin密码</h2><p>好长时间 没有使用admin登录zabbix了，尝试了几次没登录上去，虽然有其它用户 暂不影响使用，但问题一直在，也不是办法。</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="1-连接zabbix数据库"><a href="#1-连接zabbix数据库" class="headerlink" title="1.连接zabbix数据库"></a>1.连接zabbix数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure><h3 id="2-查询user表信息"><a href="#2-查询user表信息" class="headerlink" title="2.查询user表信息"></a>2.查询user表信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 7191</span><br><span class="line">Server version: 5.5.64-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use zabbix;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [zabbix]&gt; show tables;</span><br><span class="line">+----------------------------+</span><br><span class="line">| Tables_in_zabbix           |</span><br><span class="line">+----------------------------+</span><br><span class="line">| acknowledges               |</span><br><span class="line">| actions                              |</span><br><span class="line">| alerts                                 |</span><br><span class="line">|.......</span><br><span class="line">+----------------------------+</span><br><span class="line">140 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt; select userid,<span class="built_in">alias</span>,passwd from users;</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">| userid | <span class="built_in">alias</span> | passwd                           |</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">|      1 | Admin | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">|      2 | guest   | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">|      4 | abc       | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt;</span><br></pre></td></tr></table></figure><h3 id="3-生成新的密码的md5信息"><a href="#3-生成新的密码的md5信息" class="headerlink" title="3.生成新的密码的md5信息"></a>3.生成新的密码的md5信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[abc@abc-pc ~]  <span class="built_in">echo</span> -n lucky | openssl md5</span><br><span class="line">(stdin)= 339a65e93299ad8d72c42b263aa23117</span><br><span class="line"></span><br><span class="line"><span class="comment"># luck为新的密码</span></span><br></pre></td></tr></table></figure><h3 id="4-update表数据，userid-1的这个用户"><a href="#4-update表数据，userid-1的这个用户" class="headerlink" title="4.update表数据，userid=1的这个用户"></a>4.update表数据，userid=1的这个用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [zabbix]&gt; update users <span class="built_in">set</span> passwd=<span class="string">'339a65e93299ad8d72c42b263aa23117'</span> <span class="built_in">where</span> userid = <span class="string">'1'</span>;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt;</span><br></pre></td></tr></table></figure><h3 id="5-刷新重新加载权限表"><a href="#5-刷新重新加载权限表" class="headerlink" title="5.刷新重新加载权限表"></a>5.刷新重新加载权限表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;zabbix忘记admin密码&quot;&gt;&lt;a href=&quot;#zabbix忘记admin密码&quot; class=&quot;headerlink&quot; title=&quot;zabbix忘记admin密码&quot;&gt;&lt;/a&gt;zabbix忘记admin密码&lt;/h2&gt;&lt;p&gt;好长时间 没有使用admin登录za
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>centos 6 更换网卡</title>
@@ -437,29 +460,6 @@
       
       
         &lt;h2 id=&quot;Linux-下的病毒防护&quot;&gt;&lt;a href=&quot;#Linux-下的病毒防护&quot; class=&quot;headerlink&quot; title=&quot;Ｌinux 下的病毒防护&quot;&gt;&lt;/a&gt;Ｌinux 下的病毒防护&lt;/h2&gt;&lt;p&gt;没有绝对安全的系统，linux下也存在病毒及安全后门。记录l
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu下的一些小折腾</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/17/ubuntu%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%98%E8%85%BE/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/17/ubuntu下的一些小折腾/</id>
-    <published>2019-04-17T02:08:56.000Z</published>
-    <updated>2019-04-24T05:01:49.122Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h1><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul><li>问题描述</li></ul><p>默认的ibus输入法，在输入中文的时候，会出现候选词为方块的现象，原因大致为输入法码表与系统字体渲染的问题。即码表中字符在系统的字体库中找不到对应的字体。虽然不影响使用，且码表中匹配的字大都为繁体或生僻字，看到方块，总有一种要干掉方块字的冲动。尝试把系统字体更改为思源黑体，不过输入法候选词中仍然存在方块。更改输入法显示字体：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ibus-setup</span><br></pre></td></tr></table></figure><p>更改如图：</p><p><img src="http://blog.ywmy.xyz/linux/ibus_setup.png" alt="ibus-setup"></p><p>尝试安装更多字符集的字体库，如明朝花园Ｂ。</p><p>下载链接<a href="https://github.com/tony/dot-fonts" target="_blank" rel="noopener">请戳</a></p><p>补充CJK字体在不同程序之间输入显示的一个小问题，比如码表同[IDRN]源下加心，𢢵.这个字在VS CODE中可以显示，谷歌浏览器中也可以正常显示，在WPS中则显示为潮。</p><h2 id="vs-code-power-line-font"><a href="#vs-code-power-line-font" class="headerlink" title="vs code power-line font"></a>vs code power-line font</h2><ul><li>问题描述</li></ul><p>在昨天没事的时候，把系统的默认的bash更改为zsh，并配置了美化，oh my zsh。</p><p>终端上可以很赏心悦目了，不过在打开vs code的时候，调用zsh会出现power-line字体不显示的问题，具体可看下图：</p><p><img src="http://blog.ywmy.xyz/linux/vs_code_powerline.png" alt="vs_code_powerline"></p><ul><li>解决办法</li></ul><ol><li>安装power-line字体</li></ol><p>下载<a href="https://github.com/abertsch/Menlo-for-Powerline" target="_blank" rel="noopener">请戳</a></p><ol start="2"><li>配置vs code</li></ol><p>操作步骤：设置－&gt;打开json设置-&gt;输入以下调用字体信息：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"terminal.integrated.fontFamily"</span>: <span class="string">"Menlo for Powerline"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>参考下图：</p><p><img src="http://blog.ywmy.xyz/linux/vs_code_powerline_set.png" alt="vs_code_powerline_set"></p><p>完成设置后，显示效果生效，参考下图：</p><p><img src="http://blog.ywmy.xyz/linux/vs_code_json_set.png" alt="vs_code_json_ser"></p><p><a href="https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7" target="_blank" rel="noopener">参考链接</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;Ubuntu-18-04-小问题&quot;&gt;&lt;a href=&quot;#Ubuntu-18-04-小问题&quot; class=&quot;headerlink&quot; title=&quot;Ubuntu 18.04 小问题&quot;&gt;&lt;/a&gt;Ubuntu 18.04 小问题&lt;/h1&gt;&lt;h2 id=&quot;ibus候选词方块
       
     
     </summary>

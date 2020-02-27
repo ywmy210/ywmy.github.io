@@ -184,6 +184,84 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-zabbix-忘记admin密码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2020/02/28/zabbix-忘记admin密码/">zabbix 忘记admin密码</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2020/02/28/zabbix-忘记admin密码/" class="archive-article-date">
+  	<time datetime="2020-02-27T16:07:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="zabbix忘记admin密码"><a href="#zabbix忘记admin密码" class="headerlink" title="zabbix忘记admin密码"></a>zabbix忘记admin密码</h2><p>好长时间 没有使用admin登录zabbix了，尝试了几次没登录上去，虽然有其它用户 暂不影响使用，但问题一直在，也不是办法。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="1-连接zabbix数据库"><a href="#1-连接zabbix数据库" class="headerlink" title="1.连接zabbix数据库"></a>1.连接zabbix数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<h3 id="2-查询user表信息"><a href="#2-查询user表信息" class="headerlink" title="2.查询user表信息"></a>2.查询user表信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 7191</span><br><span class="line">Server version: 5.5.64-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use zabbix;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [zabbix]&gt; show tables;</span><br><span class="line">+----------------------------+</span><br><span class="line">| Tables_in_zabbix           |</span><br><span class="line">+----------------------------+</span><br><span class="line">| acknowledges               |</span><br><span class="line">| actions                              |</span><br><span class="line">| alerts                                 |</span><br><span class="line">|.......</span><br><span class="line">+----------------------------+</span><br><span class="line">140 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt; select userid,<span class="built_in">alias</span>,passwd from users;</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">| userid | <span class="built_in">alias</span> | passwd                           |</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">|      1 | Admin | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">|      2 | guest   | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">|      4 | abc       | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-生成新的密码的md5信息"><a href="#3-生成新的密码的md5信息" class="headerlink" title="3.生成新的密码的md5信息"></a>3.生成新的密码的md5信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[abc@abc-pc ~]  <span class="built_in">echo</span> -n lucky | openssl md5</span><br><span class="line">(stdin)= 339a65e93299ad8d72c42b263aa23117</span><br><span class="line"></span><br><span class="line"><span class="comment"># luck为新的密码</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-update表数据，userid-1的这个用户"><a href="#4-update表数据，userid-1的这个用户" class="headerlink" title="4.update表数据，userid=1的这个用户"></a>4.update表数据，userid=1的这个用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [zabbix]&gt; update users <span class="built_in">set</span> passwd=<span class="string">'339a65e93299ad8d72c42b263aa23117'</span> <span class="built_in">where</span> userid = <span class="string">'1'</span>;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="5-刷新重新加载权限表"><a href="#5-刷新重新加载权限表" class="headerlink" title="5.刷新重新加载权限表"></a>5.刷新重新加载权限表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2020/02/28/zabbix-忘记admin密码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-centos-6-更换网卡" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1034,96 +1112,6 @@
 
 
   
-    <article id="post-python-pip" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/06/17/python-pip/">python pip</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/06/17/python-pip/" class="archive-article-date">
-  	<time datetime="2019-06-17T02:27:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-17</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="ubuntu-pip相关小问题"><a href="#ubuntu-pip相关小问题" class="headerlink" title="ubuntu pip相关小问题"></a>ubuntu pip相关小问题</h2><h3 id="ImportError-No-module-named-‘setuptools’"><a href="#ImportError-No-module-named-‘setuptools’" class="headerlink" title="ImportError: No module named ‘setuptools’"></a>ImportError: No module named ‘setuptools’</h3><p>解决办法：安装setuptools</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python 2.x:    sudo apt-get install python-setuptools</span><br><span class="line">Python 3.x:    sudo apt-get install python3-setuptools</span><br></pre></td></tr></table></figure>
-<p>如果安装出现错误：AttributeError: module ‘setuptools.dist’ has no attribute ‘check_specifier’</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Python 2.x:</span><br><span class="line">pip install --upgrade pip</span><br><span class="line"><span class="built_in">hash</span> -r pip</span><br><span class="line"></span><br><span class="line">Python 3.x:</span><br><span class="line">pip3 install --upgrade pip</span><br><span class="line"><span class="built_in">hash</span> -r pip3</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> (Mask RCNN root folder)</span><br><span class="line">sudo python3 setup.py install</span><br></pre></td></tr></table></figure>
-<h3 id="pip升级"><a href="#pip升级" class="headerlink" title="pip升级"></a>pip升级</h3><p>pip升级后出现错误：Import Error:cannot import name main</p>
-<p>解决办法：</p>
-<ul>
-<li>方法1</li>
-</ul>
-<p>更改from pip import main</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更改下面行内容</span></span><br><span class="line">from pip import main</span><br><span class="line"><span class="comment"># 更改为</span></span><br><span class="line">from pip._internal import main</span><br></pre></td></tr></table></figure>
-<ul>
-<li>方法2</li>
-</ul>
-<p>更改sys.exit</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原内容：</span></span><br><span class="line">from pip import main</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sys.exit(main())</span><br><span class="line"><span class="comment"># 更改后内容</span></span><br><span class="line">from pip import __main__</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    sys.exit(__main__._main())</span><br></pre></td></tr></table></figure>
-<p>注意<strong>main</strong>左右的下划线是两个下划线。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/06/17/python-pip/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/2/">Next &raquo;</a>
@@ -1217,11 +1205,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1241,15 +1229,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">

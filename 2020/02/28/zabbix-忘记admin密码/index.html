@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ywmy210.github.io/ywmy">
-  <title>Archives: 2019 | 豆豆家</title>
+  <title>zabbix 忘记admin密码 | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网络和美食">
-<meta name="keywords" content="network">
-<meta property="og:type" content="website">
-<meta property="og:title" content="豆豆家">
-<meta property="og:url" content="https://ywmy210.github.io/ywmy/archives/2019/page/2/index.html">
+  <meta name="description" content="zabbix忘记admin密码好长时间 没有使用admin登录zabbix了，尝试了几次没登录上去，虽然有其它用户 暂不影响使用，但问题一直在，也不是办法。 解决方法1.连接zabbix数据库1mysql -u root -p 2.查询user表信息1234567891011121314151617181920212223242526272829303132333435Welcome to the">
+<meta name="keywords" content="linux">
+<meta property="og:type" content="article">
+<meta property="og:title" content="zabbix 忘记admin密码">
+<meta property="og:url" content="https://ywmy210.github.io/ywmy/2020/02/28/zabbix-忘记admin密码/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="网络和美食">
+<meta property="og:description" content="zabbix忘记admin密码好长时间 没有使用admin登录zabbix了，尝试了几次没登录上去，虽然有其它用户 暂不影响使用，但问题一直在，也不是办法。 解决方法1.连接zabbix数据库1mysql -u root -p 2.查询user表信息1234567891011121314151617181920212223242526272829303132333435Welcome to the">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2020-02-27T16:48:11.211Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="豆豆家">
-<meta name="twitter:description" content="网络和美食">
+<meta name="twitter:title" content="zabbix 忘记admin密码">
+<meta name="twitter:description" content="zabbix忘记admin密码好长时间 没有使用admin登录zabbix了，尝试了几次没登录上去，虽然有其它用户 暂不影响使用，但问题一直在，也不是办法。 解决方法1.连接zabbix数据库1mysql -u root -p 2.查询user表信息1234567891011121314151617181920212223242526272829303132333435Welcome to the">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -182,74 +183,39 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-zabbix-忘记admin密码" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      zabbix 忘记admin密码
+    </h1>
+  
+
+        
+        <a href="/ywmy/2020/02/28/zabbix-忘记admin密码/" class="archive-article-date">
+  	<time datetime="2020-02-27T16:07:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-28</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="zabbix忘记admin密码"><a href="#zabbix忘记admin密码" class="headerlink" title="zabbix忘记admin密码"></a>zabbix忘记admin密码</h2><p>好长时间 没有使用admin登录zabbix了，尝试了几次没登录上去，虽然有其它用户 暂不影响使用，但问题一直在，也不是办法。</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><h3 id="1-连接zabbix数据库"><a href="#1-连接zabbix数据库" class="headerlink" title="1.连接zabbix数据库"></a>1.连接zabbix数据库</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br></pre></td></tr></table></figure>
+<h3 id="2-查询user表信息"><a href="#2-查询user表信息" class="headerlink" title="2.查询user表信息"></a>2.查询user表信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Welcome to the MariaDB monitor.  Commands end with ; or \g.</span><br><span class="line">Your MariaDB connection id is 7191</span><br><span class="line">Server version: 5.5.64-MariaDB MariaDB Server</span><br><span class="line"></span><br><span class="line">Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.</span><br><span class="line"></span><br><span class="line">Type <span class="string">'help;'</span> or <span class="string">'\h'</span> <span class="keyword">for</span> <span class="built_in">help</span>. Type <span class="string">'\c'</span> to clear the current input statement.</span><br><span class="line"></span><br><span class="line">MariaDB [(none)]&gt; use zabbix;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">MariaDB [zabbix]&gt; show tables;</span><br><span class="line">+----------------------------+</span><br><span class="line">| Tables_in_zabbix           |</span><br><span class="line">+----------------------------+</span><br><span class="line">| acknowledges               |</span><br><span class="line">| actions                              |</span><br><span class="line">| alerts                                 |</span><br><span class="line">|.......</span><br><span class="line">+----------------------------+</span><br><span class="line">140 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt; select userid,<span class="built_in">alias</span>,passwd from users;</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">| userid | <span class="built_in">alias</span> | passwd                           |</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">|      1 | Admin | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">|      2 | guest   | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">|      4 | abc       | fa062259ac376b119949f55de4f4c420|</span><br><span class="line">+--------+-------+----------------------------------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="3-生成新的密码的md5信息"><a href="#3-生成新的密码的md5信息" class="headerlink" title="3.生成新的密码的md5信息"></a>3.生成新的密码的md5信息</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[abc@abc-pc ~]  <span class="built_in">echo</span> -n lucky | openssl md5</span><br><span class="line">(stdin)= 339a65e93299ad8d72c42b263aa23117</span><br><span class="line"></span><br><span class="line"><span class="comment"># luck为新的密码</span></span><br></pre></td></tr></table></figure>
+<h3 id="4-update表数据，userid-1的这个用户"><a href="#4-update表数据，userid-1的这个用户" class="headerlink" title="4.update表数据，userid=1的这个用户"></a>4.update表数据，userid=1的这个用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [zabbix]&gt; update users <span class="built_in">set</span> passwd=<span class="string">'339a65e93299ad8d72c42b263aa23117'</span> <span class="built_in">where</span> userid = <span class="string">'1'</span>;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="5-刷新重新加载权限表"><a href="#5-刷新重新加载权限表" class="headerlink" title="5.刷新重新加载权限表"></a>5.刷新重新加载权限表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/ywmy/archives/2019" class="archive-year">2019</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/05/06/windows-10-homebasic-rdp/" class="archive-article-date">
-  	<time datetime="2019-05-06T14:44:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/05/06/windows-10-homebasic-rdp/">windows 10 homebasic rdp</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/25/lanproxy-配置/" class="archive-article-date">
-  	<time datetime="2019-04-25T06:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/25/lanproxy-配置/">lanproxy 配置</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -261,326 +227,105 @@
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ywmy210.github.io/ywmy/2020/02/28/zabbix-忘记admin密码/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/24/conky-配置透明度/" class="archive-article-date">
-  	<time datetime="2019-04-24T08:53:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-24</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/ywmy/2020/02/22/centos-6-更换网卡/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">centos 6 更换网卡</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/24/conky-配置透明度/">conky 配置透明度</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/22/checkpwd-sh/" class="archive-article-date">
-  	<time datetime="2019-04-22T02:45:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/22/checkpwd-sh/">checkpwd.sh</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/22/ubuntu-change-default-torrent-program/" class="archive-article-date">
-  	<time datetime="2019-04-22T02:05:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/22/ubuntu-change-default-torrent-program/">ubuntu change default torrent program</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/21/mysql-常用操作/" class="archive-article-date">
-  	<time datetime="2019-04-21T08:17:48.167Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-21</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/21/mysql-常用操作/">mysql 常用操作</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">database</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/18/linux下的病毒防护/" class="archive-article-date">
-  	<time datetime="2019-04-18T00:49:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/18/linux下的病毒防护/">linux下的病毒防护</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/17/ubuntu下的一些小折腾/" class="archive-article-date">
-  	<time datetime="2019-04-17T02:08:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-17</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/17/ubuntu下的一些小折腾/">ubuntu下的一些小折腾</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/13/记一些ubuntu-18-04的小毛病/" class="archive-article-date">
-  	<time datetime="2019-04-13T10:28:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-13</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/13/记一些ubuntu-18-04的小毛病/">记一些ubuntu 18.04的小毛病</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/ywmy/2019/04/12/ubuntu-18-04-安装-nginx/" class="archive-article-date">
-  	<time datetime="2019-04-12T03:25:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/ywmy/2019/04/12/ubuntu-18-04-安装-nginx/">ubuntu 18.04 安装 nginx</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/ywmy/archives/2019/">&laquo; Prev</a><a class="page-number" href="/ywmy/archives/2019/">1</a><span class="page-number current">2</span><a class="page-number" href="/ywmy/archives/2019/page/3/">3</a><a class="page-number" href="/ywmy/archives/2019/page/4/">4</a><a class="page-number" href="/ywmy/archives/2019/page/5/">5</a><a class="extend next" rel="next" href="/ywmy/archives/2019/page/3/">Next &raquo;</a>
-    </nav>
   
 
 
@@ -604,8 +349,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

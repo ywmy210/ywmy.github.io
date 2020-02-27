@@ -184,6 +184,92 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-安装打印机驱动" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2019/03/26/ubuntu-安装打印机驱动/">ubuntu 安装打印机驱动</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2019/03/26/ubuntu-安装打印机驱动/" class="archive-article-date">
+  	<time datetime="2019-03-25T22:54:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-26</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="EPSON-L455驱动安装"><a href="#EPSON-L455驱动安装" class="headerlink" title="EPSON L455驱动安装"></a>EPSON L455驱动安装</h1><p>自己在多年前买了一个打印复印一体机，EPSON L455，4色喷墨打印机。也是长时间没有在ubuntu下使用，重装系统后，准备用起来。安装驱动如下：</p>
+<h2 id="驱动下载"><a href="#驱动下载" class="headerlink" title="驱动下载"></a>驱动下载</h2><p>EPSON L455有linux驱动支持。下载页面<a href="http://download.ebz.epson.net/dsc/search/01/search/searchModule" target="_blank" rel="noopener">请戳</a>，在驱动页面选择型号，L455，选择操作系统LINUX。有三个下载项，两个打印驱动和一个扫描驱动：</p>
+<ul>
+<li>Epson Printer Utility 1.0.2</li>
+<li>Epson Printer Utility 1.0.0</li>
+<li>Scanner Driver 1.3.44</li>
+</ul>
+<p>两个打印驱动任选一个，进入下载页面，点击同意，出现下载链接。点击下载deb包。扫描安装，选择ubuntu版本。</p>
+<h2 id="打印驱动依赖安装"><a href="#打印驱动依赖安装" class="headerlink" title="打印驱动依赖安装"></a>打印驱动依赖安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install lsb</span><br></pre></td></tr></table></figure>
+<h2 id="安装打印机"><a href="#安装打印机" class="headerlink" title="安装打印机"></a>安装打印机</h2><p>双南打印机驱动安装包，安装驱动程序。安装结束后，打开系统设置，打印机，已经自动连接和添加了打印机。</p>
+<h2 id="扫描安装"><a href="#扫描安装" class="headerlink" title="扫描安装"></a>扫描安装</h2><p>解压下载的驱动安装包。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod u+x install.sh</span><br><span class="line">./install.sh</span><br></pre></td></tr></table></figure>
+<p>安装结束后，打开扫描易，已经自动添加EPSON扫描设备了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2019/03/26/ubuntu-安装打印机驱动/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-18-04-使用小结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1185,113 +1271,6 @@
 
 
   
-    <article id="post-vim查找与替换" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/02/16/vim查找与替换/">vim查找与替换</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/02/16/vim查找与替换/" class="archive-article-date">
-  	<time datetime="2019-02-16T01:56:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-02-16</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vim中使用查找和替换"><a href="#vim中使用查找和替换" class="headerlink" title="vim中使用查找和替换"></a>vim中使用查找和替换</h1><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>在normal模式下按下”/“即可进入查找模式，输入要查找的字符串并按下回车，Vim会跳到第一个匹配。按下”n”查找下一个，按下”N”查找上一个。</p>
-<p>Vim查找支持正则表达式，例如/vim$匹配行尾的”vim”。需要查找特殊字符，需要黑底，例如/vim\$匹配“vim$”。</p>
-<p><code>注意查找回车应用\n，而替换为回车应当用\r(相当于&lt;CR&gt;)。</code></p>
-<h3 id="大小写第三查找"><a href="#大小写第三查找" class="headerlink" title="大小写第三查找"></a>大小写第三查找</h3><p>在查找模式中加入\c表示大小写不敏感查找，\C表示大小写敏感查找。例如：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/foo\c</span><br></pre></td></tr></table></figure>
-<p>将会查找所有的“foo”,”FOO”,”Foo”等字符串。</p>
-<p>大小写敏感配置</p>
-<p>Vim默认采用大小写敏感查找，为了方便我们常常将配置为大小写不敏感：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">" 设置默认进行大小写敏感查找</span></span><br><span class="line"><span class="string">set ignorecase</span></span><br><span class="line"><span class="string">"</span> 如果有一个大写字母，则切换到大小敏感查找</span><br><span class="line"><span class="built_in">set</span> smartcase</span><br></pre></td></tr></table></figure>
-<p><code>将上述设置粘贴到你的~/.vimrc，重新打开Vim即可生效</code></p>
-<h3 id="查找当前单词"><a href="#查找当前单词" class="headerlink" title="查找当前单词"></a>查找当前单词</h3><p>在normal模式下，按下”\<em>“即可查找光标所在的单词(word)，要求每次出现的前后为空白或标点符号。例如当前为foo，可以匹配foo bar中的foo，但不可匹配foobar中的foo。这在查找函数名、变量名时非常有用。按下”\g</em>“即可查找光标所在的单词的字符序列，每次出现前后字符无要求。即foo bar和foobar中的foo均可以被匹配到。</p>
-<h2 id="查找与替换"><a href="#查找与替换" class="headerlink" title="查找与替换"></a>查找与替换</h2><p>:s (substitude) 命令用来查找和替换字符串，语法如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:&#123;作用范围&#125;s/&#123;目标&#125;/&#123;替换值&#125;/&#123;替换标志&#125;</span><br></pre></td></tr></table></figure>
-<p>例如:”%s/foo/bar/g”会在全局范围(%)查找foo并替换为bar，所有出现都会被替换(g)。</p>
-<h3 id="作用范围"><a href="#作用范围" class="headerlink" title="作用范围"></a>作用范围</h3><p>作用范围分为当前行，全文，选区等。</p>
-<p>当前行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:s/foo/bar/g</span><br></pre></td></tr></table></figure>
-<p>全文：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%s/foo/bar/g</span><br></pre></td></tr></table></figure>
-<p>选区，在Visual模式下选择区域后输入:，Vim即自动补全为:’&lt;,’&gt;s/foo/bar/g</p>
-<p>2-11行：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:5,12s/foo/bar/g</span><br></pre></td></tr></table></figure>
-<p>当前行.与接下来两行+2：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:.,+2s/foo/bar/g</span><br></pre></td></tr></table></figure>
-<h3 id="替换标志"><a href="#替换标志" class="headerlink" title="替换标志"></a>替换标志</h3><p>上文中命令结尾g即是替换标志之一，表示全局global替换(即替换目标的所有出现)。还有很多其它有用的替换标志：</p>
-<p>空替换标志表示只替换从光标位置开始，目标第一次出现：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/foo/bar</span><br></pre></td></tr></table></figure>
-<p><strong>i</strong>表示大小写不敏感查找，<strong>I</strong>表示大写小敏感：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">:%s/foo/bar/i</span><br><span class="line">＃ 等效于模式中\c(不敏感)或\C(敏感)</span><br><span class="line">:%s/foo\c/bar</span><br></pre></td></tr></table></figure>
-<p><strong>c</strong>表示确认，例如全局查找“<strong>foo</strong>”替换为”<strong>bar</strong>“并且需要确认：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">:%s/foo/bar/gc</span><br></pre></td></tr></table></figure>
-<p>回车后Vim会将光标移动到每一次”<strong>foo</strong>“出现的位置，并提示：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">replace with bar (y/n/a/q/l^E/^Y)?</span><br></pre></td></tr></table></figure>
-<p>按下<strong>y</strong>表示替换，<strong>n</strong>表示不替换，<strong>a</strong>表示替换所有，<strong>q</strong>表示退出查找模式，<strong>l</strong>表示替换当前位置并退出。<strong>^E</strong>与<strong>^Y</strong>是光标移动快捷键。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/02/16/vim查找与替换/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/4/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/3/">3</a><a class="page-number" href="/ywmy/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/ywmy/page/6/">6</a><a class="page-number" href="/ywmy/page/7/">7</a><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/6/">Next &raquo;</a>
@@ -1385,11 +1364,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1409,15 +1388,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
