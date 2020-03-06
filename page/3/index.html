@@ -1164,24 +1164,36 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="CentOS-7-安装配置Zabbix-Proxy"><a href="#CentOS-7-安装配置Zabbix-Proxy" class="headerlink" title="CentOS 7 安装配置Zabbix Proxy"></a>CentOS 7 安装配置Zabbix Proxy</h1><h2 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h2><ul>
-<li>安装mariadb </li>
-</ul>
+        <h2 id="CentOS-7-安装配置Zabbix-Proxy"><a href="#CentOS-7-安装配置Zabbix-Proxy" class="headerlink" title="CentOS 7 安装配置Zabbix Proxy"></a>CentOS 7 安装配置Zabbix Proxy</h2><p>最近想重新搭建一台zabbix代理，发现zabbix官方的源已经没有办法访问了，试了一下，把zabbix源换成阿里云的，结果安装的时候部分依赖的还是有问题。想想还是直接下载源码包安装省事。之前搭建的zabbix是3.4.15版本的，就下载了3.4.15的源码。安装如下操作，备忘。</p>
+<h3 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h3><p>  安装mariadb </p>
 <p>可以参考链接[centos 安装 mariadb][1]。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mariadb mariadb-server</span><br></pre></td></tr></table></figure>
 <ul>
 <li>启用服务</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mariadb</span><br><span class="line">systemctl status mariadb </span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb    //开机自启动</span><br></pre></td></tr></table></figure>
-<h2 id="安装zabbix-proxy-zabbix-agent"><a href="#安装zabbix-proxy-zabbix-agent" class="headerlink" title="安装zabbix_proxy,zabbix_agent"></a>安装zabbix_proxy,zabbix_agent</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">rpm -Uvh https://repo.zabbix.com/zabbix/4.2/rhel/7/x86_64/zabbix-release-4.2-1.el7.noarch.rpm</span><br><span class="line">yum clean all </span><br><span class="line">yum install zabbix-proxy zabbix-agent</span><br></pre></td></tr></table></figure>
-<h2 id="配置数据库"><a href="#配置数据库" class="headerlink" title="配置数据库"></a>配置数据库</h2><ul>
-<li>初始化配置</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql -uroot -p</span></span><br><span class="line">password</span><br><span class="line">mysql&gt; create database zabbix character <span class="built_in">set</span> utf8 collate utf8_bin;</span><br><span class="line">mysql&gt; grant all privileges on zabbix.* to zabbix@localhost identified by <span class="string">'password'</span>;</span><br><span class="line">mysql&gt; quit;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>导入数据库</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">zcat /usr/share/doc/zabbix-proxy-mysql-4.2.0/schema.sql.gz | mysql -uzabbix -p zabbix_proxy</span><br></pre></td></tr></table></figure>
+<h3 id="安装zabbix守护进程"><a href="#安装zabbix守护进程" class="headerlink" title="安装zabbix守护进程"></a>安装zabbix守护进程</h3><p>1 下载源代码归档</p>
+<p>下载地址[zabbix proxy download page][2]，下载，解压源码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxvf zabbix-3.4.15.tar.gz</span><br></pre></td></tr></table></figure>
+<p>2 创建用户</p>
+<p>对于zabbix的守护进程，需要一个无特权的用户。如果zabbix守护进程以一个无特权的用户启动，那么它会使用该用户运行。<br>然而，如果守护进程以root用户启动，它会切换为zabbix用户账户，且这个用户必须存在。创建如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd --system zabbix</span><br><span class="line">useradd --system -g zabbix -d /usr/lib/zabbix -s /sbin/nologin -C <span class="string">"Zabbix Monitoring System"</span>  zabbix</span><br></pre></td></tr></table></figure>
+<p>3 创建数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">password</span><br><span class="line">mysql &gt; create database zabbix_proxy character <span class="built_in">set</span> utf8 collate utf8_bin;</span><br><span class="line">mysql &gt; grant all privileges on zabbix_proxy.* to zabbix@localhost identified by <span class="string">'password'</span>;</span><br><span class="line">mysql &gt; quit;</span><br></pre></td></tr></table></figure>
+<p>4 导入数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u zabbix -p</span><br><span class="line">password:</span><br><span class="line">mysql &gt; use zabbix_proxy;</span><br><span class="line">mysql &gt; <span class="built_in">source</span> zabbix源码数据库文件路径/schema.sql</span><br><span class="line">mysql &gt; quit;</span><br></pre></td></tr></table></figure>
+<p>zabbix proxy只需要导入schemas.sql就可以了。</p>
+<p>5 安装信赖程序 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y curl wget gcc gcc-c++ vim curl-devel net-snmp-devel nc libxml2 ssh2libssh2 libssh2-devel</span><br></pre></td></tr></table></figure>
+<p>6 编译安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --enalbe-proxy eeenable-aent --with-mysql --enable0ipv6 --with-net-snmp --with-libcurl --with-libxml2 --prefix=/usr/<span class="built_in">local</span>/zabbix</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>7 配置zabbix proxy配置文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grep -Ev <span class="string">"^$ | ^[#,;]"</span> zabbix_proxy.conf</span><br><span class="line">Server=A.B.C.D  <span class="comment">#zabbix server ip</span></span><br><span class="line">Hostname=zabbix_proxy</span><br><span class="line">LogFile=/tmp/zabbix_proxy.log</span><br><span class="line">PidFile=/tmp/zabbix_proxy.pid</span><br><span class="line">DBName=zabbix_proxy</span><br><span class="line">DBPassword=your_password</span><br><span class="line">SNMPTrapperFile=/tmp/zabbix_traps.tmp</span><br><span class="line">Timeout=4</span><br><span class="line">lOGsLOWqUERIES=3000</span><br></pre></td></tr></table></figure>
+<p>8 防火墙配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=10050/tcp</span><br><span class="line">firelwall-cmd --permanent --add-port=10051/tcp</span><br><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
+<p>9 启动服务 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/lib/systemd/system</span><br><span class="line">vi zabbix-proxy.service</span><br><span class="line"></span><br><span class="line">自定义服务</span><br><span class="line">[Unit]</span><br><span class="line">Description=Zabbix Proxy</span><br><span class="line">After=rsyslog.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=zabbix</span><br><span class="line">Group=zabbix</span><br><span class="line">Environment=<span class="string">"CONFFILE=/usr/local/zabbix/etc/zabbix_proxy.conf"</span></span><br><span class="line">Type=forking</span><br><span class="line">Restart=on-failure</span><br><span class="line">PIDFile=/tmp/zabbix_proxy.pid</span><br><span class="line">KillMode=control-group</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/zabbix/sbin/zabbix_proxy -c <span class="variable">$CONFFILE</span></span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -SIGTERM <span class="variable">$MAINPID</span></span><br><span class="line">RestartSec=10s</span><br><span class="line">TimeoutSec=0</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-proxy</span><br><span class="line">systemctl start zabbix-proxy</span><br></pre></td></tr></table></figure>
+<p>最后就简单了。zabbix server上面添加代理程序就可以了。好了，结束。</p>
 
       
 
@@ -1328,11 +1340,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1364,11 +1376,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
               </li>
             
             <div class="clearfix"></div>
