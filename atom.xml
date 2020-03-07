@@ -3,11 +3,11 @@
   <title>豆豆家</title>
   
   <subtitle>network &amp; delicacy</subtitle>
-  <link href="/ywmy/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
-  <link href="https://ywmy210.github.io/ywmy/"/>
+  <link href="http://yoursite.com/"/>
   <updated>2020-03-07T06:41:48.380Z</updated>
-  <id>https://ywmy210.github.io/ywmy/</id>
+  <id>http://yoursite.com/</id>
   
   <author>
     <name>Ian &amp; Doudou</name>
@@ -18,8 +18,8 @@
   
   <entry>
     <title>mysql ibdata 数据迁移</title>
-    <link href="https://ywmy210.github.io/ywmy/2020/03/07/mysql-ibdata-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/"/>
-    <id>https://ywmy210.github.io/ywmy/2020/03/07/mysql-ibdata-数据迁移/</id>
+    <link href="http://yoursite.com/2020/03/07/mysql-ibdata-%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB/"/>
+    <id>http://yoursite.com/2020/03/07/mysql-ibdata-数据迁移/</id>
     <published>2020-03-07T06:25:17.000Z</published>
     <updated>2020-03-07T06:41:48.380Z</updated>
     
@@ -35,14 +35,14 @@
     </summary>
     
     
-      <category term="database" scheme="https://ywmy210.github.io/ywmy/tags/database/"/>
+      <category term="database" scheme="http://yoursite.com/tags/database/"/>
     
   </entry>
   
   <entry>
     <title>zabbix 3.4 中文乱码</title>
-    <link href="https://ywmy210.github.io/ywmy/2020/03/07/zabbix-3-4-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/"/>
-    <id>https://ywmy210.github.io/ywmy/2020/03/07/zabbix-3-4-中文乱码/</id>
+    <link href="http://yoursite.com/2020/03/07/zabbix-3-4-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/"/>
+    <id>http://yoursite.com/2020/03/07/zabbix-3-4-中文乱码/</id>
     <published>2020-03-07T03:37:52.000Z</published>
     <updated>2020-03-07T03:57:32.766Z</updated>
     
@@ -58,14 +58,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>zabbix 忘记admin密码</title>
-    <link href="https://ywmy210.github.io/ywmy/2020/02/28/zabbix-%E5%BF%98%E8%AE%B0admin%E5%AF%86%E7%A0%81/"/>
-    <id>https://ywmy210.github.io/ywmy/2020/02/28/zabbix-忘记admin密码/</id>
+    <link href="http://yoursite.com/2020/02/28/zabbix-%E5%BF%98%E8%AE%B0admin%E5%AF%86%E7%A0%81/"/>
+    <id>http://yoursite.com/2020/02/28/zabbix-忘记admin密码/</id>
     <published>2020-02-27T16:07:53.000Z</published>
     <updated>2020-02-27T16:48:11.211Z</updated>
     
@@ -81,14 +81,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>centos 6 更换网卡</title>
-    <link href="https://ywmy210.github.io/ywmy/2020/02/22/centos-6-%E6%9B%B4%E6%8D%A2%E7%BD%91%E5%8D%A1/"/>
-    <id>https://ywmy210.github.io/ywmy/2020/02/22/centos-6-更换网卡/</id>
+    <link href="http://yoursite.com/2020/02/22/centos-6-%E6%9B%B4%E6%8D%A2%E7%BD%91%E5%8D%A1/"/>
+    <id>http://yoursite.com/2020/02/22/centos-6-更换网卡/</id>
     <published>2020-02-22T09:48:25.000Z</published>
     <updated>2020-02-22T10:34:55.373Z</updated>
     
@@ -104,14 +104,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>linux 终端生成随机密码</title>
-    <link href="https://ywmy210.github.io/ywmy/2020/02/05/linux-%E7%BB%88%E7%AB%AF%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/"/>
-    <id>https://ywmy210.github.io/ywmy/2020/02/05/linux-终端生成随机密码/</id>
+    <link href="http://yoursite.com/2020/02/05/linux-%E7%BB%88%E7%AB%AF%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/"/>
+    <id>http://yoursite.com/2020/02/05/linux-终端生成随机密码/</id>
     <published>2020-02-05T04:56:17.000Z</published>
     <updated>2020-02-05T05:52:06.808Z</updated>
     
@@ -127,14 +127,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>linux nc command</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/11/30/linux-nc-command/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/11/30/linux-nc-command/</id>
+    <link href="http://yoursite.com/2019/11/30/linux-nc-command/"/>
+    <id>http://yoursite.com/2019/11/30/linux-nc-command/</id>
     <published>2019-11-30T08:25:01.000Z</published>
     <updated>2019-11-30T08:58:35.936Z</updated>
     
@@ -150,14 +150,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>centos 7 ssr</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/10/07/centos-7-ssr/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/10/07/centos-7-ssr/</id>
+    <link href="http://yoursite.com/2019/10/07/centos-7-ssr/"/>
+    <id>http://yoursite.com/2019/10/07/centos-7-ssr/</id>
     <published>2019-10-07T09:44:52.000Z</published>
     <updated>2019-10-07T13:10:09.101Z</updated>
     
@@ -166,14 +166,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>How to Deploy Google BBRon CentOS 7</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/</id>
+    <link href="http://yoursite.com/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/"/>
+    <id>http://yoursite.com/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/</id>
     <published>2019-10-06T14:33:05.000Z</published>
     <updated>2019-10-06T15:14:03.182Z</updated>
     
@@ -189,14 +189,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>centos+rsyslog+loganalyzer</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/08/07/centos-rsyslog-loganalyzer/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/08/07/centos-rsyslog-loganalyzer/</id>
+    <link href="http://yoursite.com/2019/08/07/centos-rsyslog-loganalyzer/"/>
+    <id>http://yoursite.com/2019/08/07/centos-rsyslog-loganalyzer/</id>
     <published>2019-08-07T09:25:40.000Z</published>
     <updated>2019-08-10T08:26:28.899Z</updated>
     
@@ -212,14 +212,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>终端录制与回放</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/07/28/%E7%BB%88%E7%AB%AF%E5%BD%95%E5%88%B6%E4%B8%8E%E5%9B%9E%E6%94%BE/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/07/28/终端录制与回放/</id>
+    <link href="http://yoursite.com/2019/07/28/%E7%BB%88%E7%AB%AF%E5%BD%95%E5%88%B6%E4%B8%8E%E5%9B%9E%E6%94%BE/"/>
+    <id>http://yoursite.com/2019/07/28/终端录制与回放/</id>
     <published>2019-07-28T14:07:50.000Z</published>
     <updated>2019-07-28T14:56:45.453Z</updated>
     
@@ -235,14 +235,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>cisco 设备配置文件的保存和恢复</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/07/27/cisco-%E8%AE%BE%E5%A4%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E6%81%A2%E5%A4%8D/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/07/27/cisco-设备配置文件的保存和恢复/</id>
+    <link href="http://yoursite.com/2019/07/27/cisco-%E8%AE%BE%E5%A4%87%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E7%9A%84%E4%BF%9D%E5%AD%98%E5%92%8C%E6%81%A2%E5%A4%8D/"/>
+    <id>http://yoursite.com/2019/07/27/cisco-设备配置文件的保存和恢复/</id>
     <published>2019-07-27T04:00:03.000Z</published>
     <updated>2019-07-27T04:22:53.584Z</updated>
     
@@ -258,14 +258,14 @@
     </summary>
     
     
-      <category term="network" scheme="https://ywmy210.github.io/ywmy/tags/network/"/>
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
   <entry>
     <title>centos 6 ssr</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/06/28/centos-6-ssr/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/06/28/centos-6-ssr/</id>
+    <link href="http://yoursite.com/2019/06/28/centos-6-ssr/"/>
+    <id>http://yoursite.com/2019/06/28/centos-6-ssr/</id>
     <published>2019-06-28T15:09:05.000Z</published>
     <updated>2019-06-28T15:24:26.779Z</updated>
     
@@ -281,14 +281,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>python pip</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/06/17/python-pip/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/06/17/python-pip/</id>
+    <link href="http://yoursite.com/2019/06/17/python-pip/"/>
+    <id>http://yoursite.com/2019/06/17/python-pip/</id>
     <published>2019-06-17T02:27:48.000Z</published>
     <updated>2019-06-17T02:44:40.365Z</updated>
     
@@ -304,14 +304,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>小新700 触摸板双击右键</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/05/30/%E5%B0%8F%E6%96%B0700-%E8%A7%A6%E6%91%B8%E6%9D%BF%E5%8F%8C%E5%87%BB%E5%8F%B3%E9%94%AE/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/05/30/小新700-触摸板双击右键/</id>
+    <link href="http://yoursite.com/2019/05/30/%E5%B0%8F%E6%96%B0700-%E8%A7%A6%E6%91%B8%E6%9D%BF%E5%8F%8C%E5%87%BB%E5%8F%B3%E9%94%AE/"/>
+    <id>http://yoursite.com/2019/05/30/小新700-触摸板双击右键/</id>
     <published>2019-05-30T14:23:17.000Z</published>
     <updated>2019-05-30T14:37:32.704Z</updated>
     
@@ -327,14 +327,14 @@
     </summary>
     
     
-      <category term="windows" scheme="https://ywmy210.github.io/ywmy/tags/windows/"/>
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
     
   </entry>
   
   <entry>
     <title>GNS3添加网络设备</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/05/14/GNS3%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/05/14/GNS3添加网络设备/</id>
+    <link href="http://yoursite.com/2019/05/14/GNS3%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/"/>
+    <id>http://yoursite.com/2019/05/14/GNS3添加网络设备/</id>
     <published>2019-05-14T13:09:46.000Z</published>
     <updated>2019-05-15T08:22:21.516Z</updated>
     
@@ -350,14 +350,14 @@
     </summary>
     
     
-      <category term="network" scheme="https://ywmy210.github.io/ywmy/tags/network/"/>
+      <category term="network" scheme="http://yoursite.com/tags/network/"/>
     
   </entry>
   
   <entry>
     <title>windows 10 homebasic rdp</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/05/06/windows-10-homebasic-rdp/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/05/06/windows-10-homebasic-rdp/</id>
+    <link href="http://yoursite.com/2019/05/06/windows-10-homebasic-rdp/"/>
+    <id>http://yoursite.com/2019/05/06/windows-10-homebasic-rdp/</id>
     <published>2019-05-06T14:44:07.000Z</published>
     <updated>2019-05-06T15:13:22.816Z</updated>
     
@@ -373,14 +373,14 @@
     </summary>
     
     
-      <category term="windows" scheme="https://ywmy210.github.io/ywmy/tags/windows/"/>
+      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
     
   </entry>
   
   <entry>
     <title>lanproxy 配置</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/25/lanproxy-%E9%85%8D%E7%BD%AE/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/25/lanproxy-配置/</id>
+    <link href="http://yoursite.com/2019/04/25/lanproxy-%E9%85%8D%E7%BD%AE/"/>
+    <id>http://yoursite.com/2019/04/25/lanproxy-配置/</id>
     <published>2019-04-25T06:29:37.000Z</published>
     <updated>2019-04-25T08:11:29.968Z</updated>
     
@@ -396,14 +396,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>conky 配置透明度</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/24/conky-%E9%85%8D%E7%BD%AE%E9%80%8F%E6%98%8E%E5%BA%A6/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/24/conky-配置透明度/</id>
+    <link href="http://yoursite.com/2019/04/24/conky-%E9%85%8D%E7%BD%AE%E9%80%8F%E6%98%8E%E5%BA%A6/"/>
+    <id>http://yoursite.com/2019/04/24/conky-配置透明度/</id>
     <published>2019-04-24T08:53:21.000Z</published>
     <updated>2019-04-24T09:00:51.593Z</updated>
     
@@ -419,14 +419,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>checkpwd.sh</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/22/checkpwd-sh/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/22/checkpwd-sh/</id>
+    <link href="http://yoursite.com/2019/04/22/checkpwd-sh/"/>
+    <id>http://yoursite.com/2019/04/22/checkpwd-sh/</id>
     <published>2019-04-22T02:45:05.000Z</published>
     <updated>2019-04-22T03:17:18.766Z</updated>
     
@@ -442,14 +442,14 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
   <entry>
     <title>ubuntu change default torrent program</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/22/ubuntu-change-default-torrent-program/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/22/ubuntu-change-default-torrent-program/</id>
+    <link href="http://yoursite.com/2019/04/22/ubuntu-change-default-torrent-program/"/>
+    <id>http://yoursite.com/2019/04/22/ubuntu-change-default-torrent-program/</id>
     <published>2019-04-22T02:05:35.000Z</published>
     <updated>2019-04-22T02:23:18.699Z</updated>
     
@@ -465,7 +465,7 @@
     </summary>
     
     
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
     
   </entry>
   
