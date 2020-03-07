@@ -184,6 +184,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-18-04有道词典安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2018/11/25/ubuntu-18-04有道词典安装/">ubuntu 18.04有道词典安装</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2018/11/25/ubuntu-18-04有道词典安装/" class="archive-article-date">
+  	<time datetime="2018-11-24T16:40:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="安装有道词典"><a href="#安装有道词典" class="headerlink" title="安装有道词典"></a>安装有道词典</h1><p>前言</p>
+<p>在ubuntu下，本地词典，有goldendict。可以使用本地词典，屏幕取词，引用网络词典等功能也是应有尽有，但因使用习惯问题，还是比较喜欢使用windows下的词典软件，比如有道词典。良心的是，有道词典和deepin合作开发了linux版本，在ubuntu 16.04上也是正常使用。也是linux用户的福音。ubuntu本身版本已经到18.04了，而linux版本的词典更新日期仍然是2015年的1.1.0版本。想要使用的话，关于QT相关的各种信赖就是问题。完成安装后，曾经尝试根据报错也手动解决，结果能力有限，无可奈何。转而寻找其它大神是否有编译可用的版本，还真的找到了。有的方案是自己写个程序来调用有道词典的API，返回给程序对应的参数。此方案，尝试后，还是有些问题，依然是依赖关系。最终找到一个根据官方包重新编译的，按照其方法操作，安装和运行正常，记录备查。</p>
+<h2 id="下载编译过的安装包"><a href="#下载编译过的安装包" class="headerlink" title="下载编译过的安装包"></a>下载编译过的安装包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/yomun/youdaodict_5.5/raw/master/youdao-dict_1.1.1-0~ubuntu_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>编译的安装包需要3D加速</p>
+<h2 id="查询并卸载QT5"><a href="#查询并卸载QT5" class="headerlink" title="查询并卸载QT5"></a>查询并卸载QT5</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">如有显示 PyQt5 (5.10.1), 卸载之..</span><br><span class="line">pip3 list | grep PyQt5</span><br><span class="line">pip3 uninstall pyqt5</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">root 用户也一样要</span><br><span class="line">sudo sudo pip3 list | grep PyQt5</span><br><span class="line">sudo sudo pip3 uninstall pyqt5</span><br></pre></td></tr></table></figure>
+<h2 id="安装依赖包"><a href="#安装依赖包" class="headerlink" title="安装依赖包"></a>安装依赖包</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python3</span><br><span class="line"></span><br><span class="line">sudo apt install python3-dbus python3-lxml python3-pil python3-requests python3-xdg python3-xlib</span><br><span class="line">sudo apt install python3-pyqt5 python3-pyqt5.qtmultimedia python3-pyqt5.qtquick python3-pyqt5.qtwebkit</span><br><span class="line"></span><br><span class="line">sudo apt install gir1.2-appindicator3-0.1 qml-module-qtgraphicaleffects qml-module-qtquick-controls</span><br><span class="line">sudo apt install libqt5multimedia5-plugins ttf-wqy-microhei</span><br><span class="line">sudo apt install tesseract-ocr tesseract-ocr-eng tesseract-ocr-chi-sim tesseract-ocr-chi-tra</span><br><span class="line"></span><br><span class="line">sudo apt install ubuntu-restricted-extras</span><br><span class="line"></span><br><span class="line">Ubuntu 18.04 用 fonts-wqy-microhei 取代了 ttf-wqy-microhei</span><br></pre></td></tr></table></figure>
+<p>＃ 安装有道词典</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i youdao-dict_1.1.1-0?ubuntu_amd64.deb</span><br></pre></td></tr></table></figure>
+<p>安装之后，完美运行。参考<a href="https://github.com/yomun/youdaodict_5.5" target="_blank" rel="noopener">链接</a>，谢大神。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux dict</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2018/11/25/ubuntu-18-04有道词典安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-snmpwalk-用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1083,90 +1166,6 @@
 
 
   
-    <article id="post-centos安装mariadb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2018/08/20/centos安装mariadb/">centos安装mariadb</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2018/08/20/centos安装mariadb/" class="archive-article-date">
-  	<time datetime="2018-08-20T15:32:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="centos安装mariadb操作小记"><a href="#centos安装mariadb操作小记" class="headerlink" title="centos安装mariadb操作小记"></a>centos安装mariadb操作小记</h1><h2 id="0x01-安装"><a href="#0x01-安装" class="headerlink" title="0x01:安装"></a>0x01:安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># yum install mariadb mariadb-server</span></span><br></pre></td></tr></table></figure>
-<p>安装过程中输入y确认安装mariadb相关的包。</p>
-<h2 id="0x02-启用"><a href="#0x02-启用" class="headerlink" title="0x02:启用"></a>0x02:启用</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start mariadb</span></span><br><span class="line"><span class="comment"># systemclt enable mariadb</span></span><br><span class="line"><span class="comment"># systemctl status mariadb</span></span><br></pre></td></tr></table></figure>
-<p>启用后的状态应如下图所示内容：</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linuxmariadb.png" alt="mariadb status"></p>
-<h2 id="0x03-安全配置"><a href="#0x03-安全配置" class="headerlink" title="0x03:安全配置"></a>0x03:安全配置</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql_secure_installation</span></span><br></pre></td></tr></table></figure>
-<p>配置参考下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/mysql_secure_installation.png" alt="mysql_secure_installation"></p>
-<p>以上图中，设置 MariaDB 的 root 账户密码（选y设置），禁用 root 远程登录，删除测试数据库以及测试帐号，最后需要使用下面的命令重新加载权限。</p>
-<h2 id="0x04-登录数据库"><a href="#0x04-登录数据库" class="headerlink" title="0x04:登录数据库"></a>0x04:登录数据库</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mysql -u root -p</span></span><br></pre></td></tr></table></figure>
-<p>连接登录后，如下图所示：<br><img src="http://blog.ywmy.xyz/ywmy/linux_login_database.png" alt="登录数据库"></p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">database</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2018/08/20/centos安装mariadb/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/ywmy/page/6/">&laquo; Prev</a><a class="page-number" href="/ywmy/">1</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/5/">5</a><a class="page-number" href="/ywmy/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/8/">Next &raquo;</a>
@@ -1256,10 +1255,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -1268,7 +1263,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+                <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1276,7 +1271,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1284,7 +1283,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">

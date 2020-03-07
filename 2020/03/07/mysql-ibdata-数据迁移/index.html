@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="https://ywmy210.github.io/ywmy">
-  <title>ttf-mscorefonts-installer ubuntu | 豆豆家</title>
+  <title>mysql ibdata 数据迁移 | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ttf-mscorefonts-installer下载额外数据失败完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：  下载额外数据文件失败以下软件包要求安装后下载附加数据，但其数据无法下载或无法处理。ttf-mscorefonts-installer稍后系统将自动重试下载，您也可以手工立即重试。执行此命令需要有活动的网络连接。    点击重试后，实际后台自动既即出。输入密码后">
-<meta name="keywords" content="linux">
+  <meta name="description" content="mysql ibdata1数据迁移这两天zabbix上提示一台数据库的空间要满了。mariadb是直接yum安装的，查了一下，/var/lib/mysql/下的文件ibdata1太大了，34G+，根目录下已经快撑满 了。看了一下硬盘的其它分区，还有一个目录挂载的还有500多个G，是肯定够用的。迁移操作如下： 1 备份数据库 1234cd /homemkdri mysql chown mysql:m">
+<meta name="keywords" content="database">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ttf-mscorefonts-installer ubuntu">
-<meta property="og:url" content="https://ywmy210.github.io/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/index.html">
+<meta property="og:title" content="mysql ibdata 数据迁移">
+<meta property="og:url" content="https://ywmy210.github.io/ywmy/2020/03/07/mysql-ibdata-数据迁移/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="ttf-mscorefonts-installer下载额外数据失败完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：  下载额外数据文件失败以下软件包要求安装后下载附加数据，但其数据无法下载或无法处理。ttf-mscorefonts-installer稍后系统将自动重试下载，您也可以手工立即重试。执行此命令需要有活动的网络连接。    点击重试后，实际后台自动既即出。输入密码后">
+<meta property="og:description" content="mysql ibdata1数据迁移这两天zabbix上提示一台数据库的空间要满了。mariadb是直接yum安装的，查了一下，/var/lib/mysql/下的文件ibdata1太大了，34G+，根目录下已经快撑满 了。看了一下硬盘的其它分区，还有一个目录挂载的还有500多个G，是肯定够用的。迁移操作如下： 1 备份数据库 1234cd /homemkdri mysql chown mysql:m">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-04-01T07:13:53.207Z">
+<meta property="og:updated_time" content="2020-03-07T06:41:48.380Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ttf-mscorefonts-installer ubuntu">
-<meta name="twitter:description" content="ttf-mscorefonts-installer下载额外数据失败完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：  下载额外数据文件失败以下软件包要求安装后下载附加数据，但其数据无法下载或无法处理。ttf-mscorefonts-installer稍后系统将自动重试下载，您也可以手工立即重试。执行此命令需要有活动的网络连接。    点击重试后，实际后台自动既即出。输入密码后">
+<meta name="twitter:title" content="mysql ibdata 数据迁移">
+<meta name="twitter:description" content="mysql ibdata1数据迁移这两天zabbix上提示一台数据库的空间要满了。mariadb是直接yum安装的，查了一下，/var/lib/mysql/下的文件ibdata1太大了，34G+，根目录下已经快撑满 了。看了一下硬盘的其它分区，还有一个目录挂载的还有500多个G，是肯定够用的。迁移操作如下： 1 备份数据库 1234cd /homemkdri mysql chown mysql:m">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -183,47 +183,38 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-ttf-mscorefonts-installer-ubuntu" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-mysql-ibdata-数据迁移" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      ttf-mscorefonts-installer ubuntu
+      mysql ibdata 数据迁移
     </h1>
   
 
         
-        <a href="/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/" class="archive-article-date">
-  	<time datetime="2019-04-01T07:03:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-01</time>
+        <a href="/ywmy/2020/03/07/mysql-ibdata-数据迁移/" class="archive-article-date">
+  	<time datetime="2020-03-07T06:25:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ttf-mscorefonts-installer下载额外数据失败"><a href="#ttf-mscorefonts-installer下载额外数据失败" class="headerlink" title="ttf-mscorefonts-installer下载额外数据失败"></a>ttf-mscorefonts-installer下载额外数据失败</h1><p>完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：</p>
-<blockquote>
-<p>下载额外数据文件失败<br>以下软件包要求安装后下载附加数据，但其数据无法下载或无法处理。<br>ttf-mscorefonts-installer<br>稍后系统将自动重试下载，您也可以手工立即重试。执行此命令需要有活动的网络连接。  </p>
-</blockquote>
-<p>点击重试后，实际后台自动既即出。输入密码后无响应了。实际上没有执行操作。虽不影响使用，不过挺经常跳出来挺麻烦。</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
-<li>下载文件</li>
-</ul>
-<p>查看目录/usr/share/package-data-downloads/目录下，有一个文件ttf-mscorefonts-installer，查看内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Url: http://downloads.sourceforge.net/corefonts/andale32.exe</span><br><span class="line">Sha256: 0524fe42951adc3a7eb870e32f0920313c71f170c859b5f770d82b4ee111e970</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/arial32.exe</span><br><span class="line">Sha256: 85297a4d146e9c87ac6f74822734bdee5f4b2a722d7eaa584b7f2cbf76f478f6</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/arialb32.exe</span><br><span class="line">Sha256: a425f0ffb6a1a5ede5b979ed6177f4f4f4fdef6ae7c302a7b7720ef332fec0a8</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/comic32.exe</span><br><span class="line">Sha256: 9c6df3feefde26d4e41d4a4fe5db2a89f9123a772594d7f59afd062625cd204e</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/courie32.exe</span><br><span class="line">Sha256: bb511d861655dde879ae552eb86b134d6fae67cb58502e6ff73ec5d9151f3384</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/georgi32.exe</span><br><span class="line">Sha256: 2c2c7dcda6606ea5cf08918fb7cd3f3359e9e84338dc690013f20cd42e930301</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/impact32.exe</span><br><span class="line">Sha256: 6061ef3b7401d9642f5dfdb5f2b376aa14663f6275e60a51207ad4facf2fccfb</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/times32.exe</span><br><span class="line">Sha256: db56595ec6ef5d3de5c24994f001f03b2a13e37cee27bc25c58f6f43e8f807ab</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/trebuc32.exe</span><br><span class="line">Sha256: 5a690d9bb8510be1b8b4fe49f1f2319651fe51bbe54775ddddd8ef0bd07fdac9</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/verdan32.exe</span><br><span class="line">Sha256: c1cb61255e363166794e47664e2f21af8e3a26cb6346eb8d2ae2fa85dd5aad96</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/webdin32.exe</span><br><span class="line">Sha256: 64595b5abc1080fba8610c5c34fab5863408e806aafe84653ca8575bed17d75a</span><br><span class="line"></span><br><span class="line">Script: /usr/lib/msttcorefonts/update-ms-fonts</span><br><span class="line">Should-Download: msttcorefonts/accepted-mscorefonts-eula</span><br></pre></td></tr></table></figure>
-<p>可以看到11个文件的下载链接。直接下载字体文件，放在一个文件夹里。如/home/yourname/ttf-mscorefonts/目录下。</p>
-<ul>
-<li>手动更新</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure ttf-mscorefonts-installer</span><br></pre></td></tr></table></figure>
-<p>指定下载字体的目录，确认安装配置。</p>
-<ul>
-<li>删除下载失败的通知信息</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/package-data-downloads/</span><br><span class="line">sudo rm ttf-mscorefonts-installer</span><br><span class="line"><span class="built_in">cd</span> /var/lib/update-notifier/package-data-downloads/</span><br><span class="line">sudo rm ttf-mscorefonts-installer</span><br><span class="line"><span class="built_in">cd</span> /var/lib/update-notifier/user.d/</span><br><span class="line">sudo rm data-downloads-failed</span><br></pre></td></tr></table></figure>
-<p>至此更新结束。</p>
+        <h2 id="mysql-ibdata1数据迁移"><a href="#mysql-ibdata1数据迁移" class="headerlink" title="mysql ibdata1数据迁移"></a>mysql ibdata1数据迁移</h2><p>这两天zabbix上提示一台数据库的空间要满了。mariadb是直接yum安装的，查了一下，/var/lib/mysql/下的文件ibdata1太大了，34G+，根目录下已经快撑满 了。看了一下硬盘的其它分区，还有一个目录挂载的还有500多个G，是肯定够用的。迁移操作如下：</p>
+<p>1 备份数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home</span><br><span class="line">mkdri mysql </span><br><span class="line">chown mysql:mysql ./mysql -R</span><br><span class="line">mysqldump -u root -p --add-drop-table --all-databases &gt; ./mysql_20200307.sql</span><br></pre></td></tr></table></figure>
+<p>2 关闭mysql服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop mariadb</span><br></pre></td></tr></table></figure>
+<p>3 迁移数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/mysql/</span><br><span class="line">mv -rv ./* /home/mysql/</span><br></pre></td></tr></table></figure>
+<p>4 修改mysql配置文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 修改datadir和socket路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改前</span></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line"><span class="comment"># Settings user and group are ignored when systemd is used.</span></span><br><span class="line"><span class="comment"># If you need to run mysqld under a different user or group,</span></span><br><span class="line"><span class="comment"># customize your systemd unit file for mariadb according to the</span></span><br><span class="line"><span class="comment"># instructions in http://fedoraproject.org/wiki/Systemd</span></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line"><span class="built_in">log</span>-error=/var/<span class="built_in">log</span>/mariadb/mariadb.log</span><br><span class="line">pid-file=/var/run/mariadb/mariadb.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># include all files from the config directory</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">!includedir /etc/my.cnf.d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后</span></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/home/mysql</span><br><span class="line">socket=/home/mysql/mysql.sock</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line"><span class="comment"># Settings user and group are ignored when systemd is used.</span></span><br><span class="line"><span class="comment"># If you need to run mysqld under a different user or group,</span></span><br><span class="line"><span class="comment"># customize your systemd unit file for mariadb according to the</span></span><br><span class="line"><span class="comment"># instructions in http://fedoraproject.org/wiki/Systemd</span></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line"><span class="built_in">log</span>-error=/var/<span class="built_in">log</span>/mariadb/mariadb.log</span><br><span class="line">pid-file=/var/run/mariadb/mariadb.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># include all files from the config directory</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">!includedir /etc/my.cnf.d</span><br></pre></td></tr></table></figure>
+<p>5 重新启动mariadb</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mariadb</span><br><span class="line"><span class="comment"># 创建mysql.sock软链接</span></span><br><span class="line"></span><br><span class="line">ln -s /home/mysql/mysql.sock /var/lib/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">登录成功，mariadb服务和登录正常。</span><br></pre></td></tr></table></figure>
+<p>结束。</p>
 
       
 
@@ -237,7 +228,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">database</a>
         		</li>
       		
 		</ul>
@@ -293,7 +284,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=https://ywmy210.github.io/ywmy/2019/04/01/ttf-mscorefonts-installer-ubuntu/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=https://ywmy210.github.io/ywmy/2020/03/07/mysql-ibdata-数据迁移/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -307,18 +298,9 @@
   
 <nav id="article-nav">
   
-    <a href="/ywmy/2019/04/02/install-Open-Vpn-on-CentOS-7-with-easy-rsa-3/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          install Open.Vpn on CentOS 7 with easy-rsa 3
-        
-      </div>
-    </a>
   
-  
-    <a href="/ywmy/2019/03/31/windows-脚本更改密码-远程端口-开放防火墙端口/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">windows 脚本更改密码/远程端口/开放防火墙端口</div>
+    <a href="/ywmy/2020/03/07/zabbix-3-4-中文乱码/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">zabbix 3.4 中文乱码</div>
       <i class="icon-circle-right"></i>
     </a>
   

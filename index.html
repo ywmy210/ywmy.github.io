@@ -184,6 +184,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-mysql-ibdata-数据迁移" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2020/03/07/mysql-ibdata-数据迁移/">mysql ibdata 数据迁移</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2020/03/07/mysql-ibdata-数据迁移/" class="archive-article-date">
+  	<time datetime="2020-03-07T06:25:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="mysql-ibdata1数据迁移"><a href="#mysql-ibdata1数据迁移" class="headerlink" title="mysql ibdata1数据迁移"></a>mysql ibdata1数据迁移</h2><p>这两天zabbix上提示一台数据库的空间要满了。mariadb是直接yum安装的，查了一下，/var/lib/mysql/下的文件ibdata1太大了，34G+，根目录下已经快撑满 了。看了一下硬盘的其它分区，还有一个目录挂载的还有500多个G，是肯定够用的。迁移操作如下：</p>
+<p>1 备份数据库</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /home</span><br><span class="line">mkdri mysql </span><br><span class="line">chown mysql:mysql ./mysql -R</span><br><span class="line">mysqldump -u root -p --add-drop-table --all-databases &gt; ./mysql_20200307.sql</span><br></pre></td></tr></table></figure>
+<p>2 关闭mysql服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl stop mariadb</span><br></pre></td></tr></table></figure>
+<p>3 迁移数据</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/mysql/</span><br><span class="line">mv -rv ./* /home/mysql/</span><br></pre></td></tr></table></figure>
+<p>4 修改mysql配置文件 </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 修改datadir和socket路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改前</span></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line"><span class="comment"># Settings user and group are ignored when systemd is used.</span></span><br><span class="line"><span class="comment"># If you need to run mysqld under a different user or group,</span></span><br><span class="line"><span class="comment"># customize your systemd unit file for mariadb according to the</span></span><br><span class="line"><span class="comment"># instructions in http://fedoraproject.org/wiki/Systemd</span></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line"><span class="built_in">log</span>-error=/var/<span class="built_in">log</span>/mariadb/mariadb.log</span><br><span class="line">pid-file=/var/run/mariadb/mariadb.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># include all files from the config directory</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">!includedir /etc/my.cnf.d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后</span></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/home/mysql</span><br><span class="line">socket=/home/mysql/mysql.sock</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line"><span class="comment"># Settings user and group are ignored when systemd is used.</span></span><br><span class="line"><span class="comment"># If you need to run mysqld under a different user or group,</span></span><br><span class="line"><span class="comment"># customize your systemd unit file for mariadb according to the</span></span><br><span class="line"><span class="comment"># instructions in http://fedoraproject.org/wiki/Systemd</span></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line"><span class="built_in">log</span>-error=/var/<span class="built_in">log</span>/mariadb/mariadb.log</span><br><span class="line">pid-file=/var/run/mariadb/mariadb.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># include all files from the config directory</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">!includedir /etc/my.cnf.d</span><br></pre></td></tr></table></figure>
+<p>5 重新启动mariadb</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mariadb</span><br><span class="line"><span class="comment"># 创建mysql.sock软链接</span></span><br><span class="line"></span><br><span class="line">ln -s /home/mysql/mysql.sock /var/lib/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">登录成功，mariadb服务和登录正常。</span><br></pre></td></tr></table></figure>
+<p>结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">database</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2020/03/07/mysql-ibdata-数据迁移/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-zabbix-3-4-中文乱码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1018,96 +1103,6 @@
 
 
   
-    <article id="post-cisco-设备配置文件的保存和恢复" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/07/27/cisco-设备配置文件的保存和恢复/">cisco 设备配置文件的保存和恢复</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/07/27/cisco-设备配置文件的保存和恢复/" class="archive-article-date">
-  	<time datetime="2019-07-27T04:00:03.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-27</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="cisco-配置文件的保存和恢复"><a href="#cisco-配置文件的保存和恢复" class="headerlink" title="cisco 配置文件的保存和恢复"></a>cisco 配置文件的保存和恢复</h2><h3 id="保存配置文件"><a href="#保存配置文件" class="headerlink" title="保存配置文件"></a>保存配置文件</h3><p>思科保存配置文件目录结构大概如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#dir</span></span><br><span class="line">Directory of nvram:/</span><br><span class="line"></span><br><span class="line">  508  -rw-        2190                    &lt;no date&gt;  startup-config</span><br><span class="line">  509  ----          24                         &lt;no date&gt;  private-config</span><br><span class="line">  510  -rw-        2190                    &lt;no date&gt;  underlying-config</span><br><span class="line">    1  ----             34                         &lt;no date&gt;  persistent-data</span><br><span class="line">    2  -rw-           4                          &lt;no date&gt;  rf_cold_starts</span><br><span class="line">    3  -rw-           0                         &lt;no date&gt;  ifIndex-table</span><br></pre></td></tr></table></figure>
-<p>启动配置文件为start-config</p>
-<p>要保存当前配置文件的逻辑是先备份当前的启动文件startup-config </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#copy startup-config nvram:20190826.backup</span></span><br><span class="line">Destination filename [20190826.backup]? </span><br><span class="line"></span><br><span class="line">2190 bytes copied <span class="keyword">in</span> 1.136 secs (1928 bytes/sec)</span><br></pre></td></tr></table></figure>
-<p>保存的配置文件如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#dir</span></span><br><span class="line">Directory of nvram:/</span><br><span class="line"></span><br><span class="line">  508  -rw-        2190                    &lt;no date&gt;  startup-config</span><br><span class="line">  509  ----          24                         &lt;no date&gt;  private-config</span><br><span class="line">  510  -rw-        2190                    &lt;no date&gt;  underlying-config</span><br><span class="line">    1  ----             34                         &lt;no date&gt;  persistent-data</span><br><span class="line">    2  -rw-           4                           &lt;no date&gt;  rf_cold_starts</span><br><span class="line">    3  -rw-           0                           &lt;no date&gt;  ifIndex-table</span><br><span class="line">    4  -rw-           2190                    &lt;no date&gt;  20190826.backup</span><br><span class="line"></span><br><span class="line">522232 bytes total (513822 bytes free)</span><br></pre></td></tr></table></figure>
-<p>将当前配置保存为启动配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#copy running-config nvram:startup-config</span></span><br><span class="line">Destination filename [startup-config]?</span><br><span class="line">Building configuration...</span><br><span class="line">[OK]</span><br></pre></td></tr></table></figure>
-<h3 id="恢复配置文件"><a href="#恢复配置文件" class="headerlink" title="恢复配置文件"></a>恢复配置文件</h3><p>例如恢复到20190826的配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#copy nvram:/20190826.backup startup-config</span></span><br><span class="line">Destination filename [startup-config]? y</span><br><span class="line"></span><br><span class="line">2190 bytes copied <span class="keyword">in</span> 1.108 secs (1977 bytes/sec)</span><br></pre></td></tr></table></figure>
-<p>重启交换机，不需要保存运行中的配置：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">R1<span class="comment">#reload </span></span><br><span class="line">Proceed with reload? [confirm]y</span><br><span class="line">*Jul 27 02:14:18.199: %SYS-5-RELOAD: Reload requested by console. Reload Reason: Reload Command.</span><br><span class="line"></span><br><span class="line">                ROM: reload requested...</span><br></pre></td></tr></table></figure>
-<h3 id="H3C-化为的操作思路"><a href="#H3C-化为的操作思路" class="headerlink" title="H3C 化为的操作思路"></a>H3C 化为的操作思路</h3><p>保存文件，选用配置</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;F1070&gt;save 20190828.cfg</span><br><span class="line">The current configuration will be saved to flash:/20190828.cfg. Continue? [Y/N]:y</span><br><span class="line">Now saving current configuration to the device.</span><br><span class="line">Saving configuration flash:/20190828.cfg.Please <span class="built_in">wait</span>...</span><br><span class="line">Configuration is saved to device successfully.</span><br></pre></td></tr></table></figure>
-<p>配置启动项：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;F1070&gt;startup saved-configuration 20190828.cfg </span><br><span class="line">Please <span class="built_in">wait</span>...... Done.</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/07/27/cisco-设备配置文件的保存和恢复/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/2/">Next &raquo;</a>
@@ -1197,10 +1192,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">code</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -1209,7 +1200,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+                <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,7 +1208,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,7 +1220,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
