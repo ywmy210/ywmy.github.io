@@ -184,6 +184,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-zabbix-3-4-中文乱码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/ywmy/2020/03/07/zabbix-3-4-中文乱码/">zabbix 3.4 中文乱码</a>
+    </h1>
+  
+
+        
+        <a href="/ywmy/2020/03/07/zabbix-3-4-中文乱码/" class="archive-article-date">
+  	<time datetime="2020-03-07T03:37:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-03-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="zabbix-3-4中文乱码"><a href="#zabbix-3-4中文乱码" class="headerlink" title="zabbix 3.4中文乱码"></a>zabbix 3.4中文乱码</h2><p>切换到中文后，图表里有乱码，操作办法。替换换乱码的字体。</p>
+<p>zabbix图表字体位置</p>
+<p>/usr/share/zabbix/fonts/graphfont.ttf</p>
+<p>这个字体软链接到:</p>
+<p>/etc/alternatives/zabbix-web-font </p>
+<p>又链接到<br>/usr/share/fonts/dejavu/DejaVuSans.ttf</p>
+<p>这下 简单，找一个微软系统自带的字体，比如simkai.ttf上传到/usr/share/fonts/目录下</p>
+<p>备份一下zabbix的默认链接</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv  zabbix-web-font zabbix-web-font_backup</span><br><span class="line">ln -s /usr/share/fonts/simkai.ttf ./zabbix-web-font</span><br></pre></td></tr></table></figure>
+<p>重新刷新 一下zabbix页面 。好了，中文方框不见了。结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/ywmy/2020/03/07/zabbix-3-4-中文乱码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-zabbix-忘记admin密码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1025,93 +1108,6 @@
 
 
   
-    <article id="post-centos-6-ssr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/ywmy/2019/06/28/centos-6-ssr/">centos 6 ssr</a>
-    </h1>
-  
-
-        
-        <a href="/ywmy/2019/06/28/centos-6-ssr/" class="archive-article-date">
-  	<time datetime="2019-06-28T15:09:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-06-28</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="centos-6-ssr"><a href="#centos-6-ssr" class="headerlink" title="centos 6 ssr"></a>centos 6 ssr</h2><h3 id="更换内核"><a href="#更换内核" class="headerlink" title="更换内核"></a>更换内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum update 更新系统</span><br><span class="line">rpm -ivh http://www.aloneray.com/wp-content/uploads/2017/03/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm</span><br><span class="line"><span class="comment"># 更新内核</span></span><br><span class="line">rpm -ivh http://www.aloneray.com/wp-content/uploads/2017/03/kernel-2.6.32-504.3.3.el6.x86_64.rpm --force</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure>
-<h3 id="安装SSR服务端"><a href="#安装SSR服务端" class="headerlink" title="安装SSR服务端"></a>安装SSR服务端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate http://www.aloneray.com/wp-content/uploads/2019/01/shadowsocksR_CN.sh &amp;&amp; chmod +x shadowsocksR_CN.sh &amp;&amp; ./shadowsocksR_CN.sh</span><br></pre></td></tr></table></figure>
-<p>按提示和步骤操作。</p>
-<h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>锐速是一款非常不错的TCP底层加速软件。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh &amp;&amp; bash serverspeeder-all.sh</span><br></pre></td></tr></table></figure>
-<h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop </span><br><span class="line">chkconfig iptables off</span><br></pre></td></tr></table></figure>
-<h3 id="锐速常用命令"><a href="#锐速常用命令" class="headerlink" title="锐速常用命令"></a>锐速常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重启锐速：/serverspeeder/bin/serverSpeeder.sh restart</span><br><span class="line">启动锐速：/serverspeeder/bin/serverSpeeder.sh start</span><br><span class="line">停止锐速：/serverspeeder/bin/serverSpeeder.sh stop</span><br><span class="line">锐速状态：/serverspeeder/bin/serverSpeeder.sh status</span><br></pre></td></tr></table></figure>
-<h3 id="多端口配置"><a href="#多端口配置" class="headerlink" title="多端口配置"></a>多端口配置</h3><p>服务端更改配置文件</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"server"</span>: <span class="string">"0.0.0.0"</span>,</span><br><span class="line"><span class="string">"server_ipv6"</span>: <span class="string">"[::]"</span>,</span><br><span class="line"><span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>,</span><br><span class="line"><span class="string">"local_port"</span>: 1080,</span><br><span class="line"><span class="string">"port_password"</span>:</span><br><span class="line"><span class="comment"># 多端口配置开始</span></span><br><span class="line">&#123;<span class="string">"8090"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"8089"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"459"</span>:<span class="string">"password"</span>,</span><br><span class="line"><span class="string">"456"</span>:<span class="string">"password"</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment"># 多端口配置结束</span></span><br><span class="line"><span class="string">"timeout"</span>: 120,</span><br><span class="line"><span class="string">"udp_timeout"</span>: 60,</span><br><span class="line"><span class="string">"method"</span>: <span class="string">"aes-256-cfb"</span>,</span><br><span class="line"><span class="string">"protocol"</span>: <span class="string">"auth_aes128_md5"</span>,</span><br><span class="line"><span class="string">"protocol_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"obfs"</span>: <span class="string">"http_simple"</span>,</span><br><span class="line"><span class="string">"obfs_param"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"dns_ipv6"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"connect_verbose_info"</span>: 1,</span><br><span class="line"><span class="string">"redirect"</span>: <span class="string">""</span>,</span><br><span class="line"><span class="string">"fast_open"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"workers"</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>重启服务：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure>
-<p>多端口配置结束</p>
-<p>常用操作：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启动：/etc/init.d/shadowsocks start</span><br><span class="line">停止：/etc/init.d/shadowsocks stop</span><br><span class="line">重启：/etc/init.d/shadowsocks restart</span><br><span class="line">状态：/etc/init.d/shadowsocks status</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/ywmy/2019/06/28/centos-6-ssr/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/ywmy/page/2/">2</a><a class="page-number" href="/ywmy/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/ywmy/page/8/">8</a><a class="extend next" rel="next" href="/ywmy/page/2/">Next &raquo;</a>
@@ -1205,11 +1201,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,11 +1221,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">

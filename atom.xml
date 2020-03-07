@@ -6,7 +6,7 @@
   <link href="/ywmy/atom.xml" rel="self"/>
   
   <link href="https://ywmy210.github.io/ywmy/"/>
-  <updated>2020-02-27T16:48:11.211Z</updated>
+  <updated>2020-03-07T03:57:32.766Z</updated>
   <id>https://ywmy210.github.io/ywmy/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>zabbix 3.4 中文乱码</title>
+    <link href="https://ywmy210.github.io/ywmy/2020/03/07/zabbix-3-4-%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81/"/>
+    <id>https://ywmy210.github.io/ywmy/2020/03/07/zabbix-3-4-中文乱码/</id>
+    <published>2020-03-07T03:37:52.000Z</published>
+    <updated>2020-03-07T03:57:32.766Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="zabbix-3-4中文乱码"><a href="#zabbix-3-4中文乱码" class="headerlink" title="zabbix 3.4中文乱码"></a>zabbix 3.4中文乱码</h2><p>切换到中文后，图表里有乱码，操作办法。替换换乱码的字体。</p><p>zabbix图表字体位置</p><p>/usr/share/zabbix/fonts/graphfont.ttf</p><p>这个字体软链接到:</p><p>/etc/alternatives/zabbix-web-font </p><p>又链接到<br>/usr/share/fonts/dejavu/DejaVuSans.ttf</p><p>这下 简单，找一个微软系统自带的字体，比如simkai.ttf上传到/usr/share/fonts/目录下</p><p>备份一下zabbix的默认链接</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv  zabbix-web-font zabbix-web-font_backup</span><br><span class="line">ln -s /usr/share/fonts/simkai.ttf ./zabbix-web-font</span><br></pre></td></tr></table></figure><p>重新刷新 一下zabbix页面 。好了，中文方框不见了。结束。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;zabbix-3-4中文乱码&quot;&gt;&lt;a href=&quot;#zabbix-3-4中文乱码&quot; class=&quot;headerlink&quot; title=&quot;zabbix 3.4中文乱码&quot;&gt;&lt;/a&gt;zabbix 3.4中文乱码&lt;/h2&gt;&lt;p&gt;切换到中文后，图表里有乱码，操作办法。替换换
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>zabbix 忘记admin密码</title>
@@ -443,29 +466,6 @@
     
     
       <category term="database" scheme="https://ywmy210.github.io/ywmy/tags/database/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>linux下的病毒防护</title>
-    <link href="https://ywmy210.github.io/ywmy/2019/04/18/linux%E4%B8%8B%E7%9A%84%E7%97%85%E6%AF%92%E9%98%B2%E6%8A%A4/"/>
-    <id>https://ywmy210.github.io/ywmy/2019/04/18/linux下的病毒防护/</id>
-    <published>2019-04-18T00:49:58.000Z</published>
-    <updated>2019-04-18T02:32:54.488Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Linux-下的病毒防护"><a href="#Linux-下的病毒防护" class="headerlink" title="Ｌinux 下的病毒防护"></a>Ｌinux 下的病毒防护</h2><p>没有绝对安全的系统，linux下也存在病毒及安全后门。记录linux下的杀毒引擎clamav的安装及使用。</p><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>CentOS直接通过yum安装。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install epel-release -y</span><br><span class="line">sudo yum install clamav -y</span><br></pre></td></tr></table></figure><p>Ubuntu直接通过atp安装。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install clamav</span><br></pre></td></tr></table></figure><h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>安装后，更新病毒库。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># freshclam</span></span><br><span class="line"><span class="comment"># 输出如下：</span></span><br><span class="line">...............</span><br><span class="line">ClamAV update process started at Sun Apr  7 11:10:18 2019</span><br><span class="line">Downloading main.cvd [100%]</span><br><span class="line">main.cvd updated (version: 58, sigs: 4566249, f-level: 60, builder: sigmgr)</span><br><span class="line">Downloading daily.cvd [100%]</span><br><span class="line">daily.cvd updated (version: 25422, sigs: 1552110, f-level: 63, builder: raynman)</span><br><span class="line">Downloading bytecode.cvd [100%]</span><br><span class="line">bytecode.cvd updated (version: 328, sigs: 94, f-level: 63, builder: neo)</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">[LibClamAV] ***      Virus database timestamp <span class="keyword">in</span> the future!   ***</span><br><span class="line">[LibClamAV] ***  Please check the timezone and clock settings  ***</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">Database updated (6118453 signatures) from database.clamav.net (IP: 104.16.219.84)</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;Linux-下的病毒防护&quot;&gt;&lt;a href=&quot;#Linux-下的病毒防护&quot; class=&quot;headerlink&quot; title=&quot;Ｌinux 下的病毒防护&quot;&gt;&lt;/a&gt;Ｌinux 下的病毒防护&lt;/h2&gt;&lt;p&gt;没有绝对安全的系统，linux下也存在病毒及安全后门。记录l
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="https://ywmy210.github.io/ywmy/tags/linux/"/>
     
   </entry>
   
