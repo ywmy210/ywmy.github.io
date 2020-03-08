@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="豆豆家">
 <meta property="og:description" content="Rsyslog+Analyzer搭建一个项目上需求，需要内部网络上设备的日志存储满足180天，且支持日志报表导出。于是想到搭建一个日志应用。再加上日志报表分析，想到一个组合，rsyslog+loganalyzer。 操作如下： 系统环境CentOS Linux release 7.6.1810 (Core)  依赖安装设置时间同步123yum install ntpdate epel-releas">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.ywmy.xyz/linux/Loganalyzer.png">
-<meta property="og:updated_time" content="2019-08-10T08:26:28.899Z">
+<meta property="og:image" content="https://blog.ywmy.xyz/linux/Loganalyzer.png">
+<meta property="og:updated_time" content="2020-03-08T09:00:32.006Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos+rsyslog+loganalyzer">
 <meta name="twitter:description" content="Rsyslog+Analyzer搭建一个项目上需求，需要内部网络上设备的日志存储满足180天，且支持日志报表导出。于是想到搭建一个日志应用。再加上日志报表分析，想到一个组合，rsyslog+loganalyzer。 操作如下： 系统环境CentOS Linux release 7.6.1810 (Core)  依赖安装设置时间同步123yum install ntpdate epel-releas">
-<meta name="twitter:image" content="http://blog.ywmy.xyz/linux/Loganalyzer.png">
+<meta name="twitter:image" content="https://blog.ywmy.xyz/linux/Loganalyzer.png">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -248,7 +248,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># An on-disk queue is created for this action. If the remote host is</span></span><br><span class="line"><span class="comment"># down, messages are spooled to disk and sent when it is up again.</span></span><br><span class="line"><span class="comment">#$ActionQueueFileName fwdRule1 # unique name prefix for spool files</span></span><br><span class="line"><span class="comment">#$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)</span></span><br><span class="line"><span class="comment">#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown</span></span><br><span class="line"><span class="comment">#$ActionQueueType LinkedList   # run asynchronously</span></span><br><span class="line"><span class="comment">#$ActionResumeRetryCount -1    # infinite retries if host is down</span></span><br><span class="line"><span class="comment"># remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional</span></span><br><span class="line"><span class="comment">#*.* @@remote-host:514</span></span><br><span class="line">*.* @loganalyzer-IP:514</span><br><span class="line"><span class="comment"># ### end of the forwarding rule ###</span></span><br></pre></td></tr></table></figure>
 <p>开放loganalyzer服务器的514端口</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=514/tcp</span><br><span class="line">firewall-cmd --permanent --add-port=514/udp</span><br><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
-<p><img src="http://blog.ywmy.xyz/linux/Loganalyzer.png" alt="loganzlyzer"></p>
+<p><img src="https://blog.ywmy.xyz/linux/Loganalyzer.png" alt="loganzlyzer"></p>
 
       
 
@@ -465,19 +465,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
