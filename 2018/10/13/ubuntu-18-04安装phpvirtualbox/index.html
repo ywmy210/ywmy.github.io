@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="豆豆家">
 <meta property="og:description" content="安装phpvirtualboxvirtualbox安装完成后，可以通过给virtualbox后台装一个基于web的前端工具，使其可以通过网页来管理和创建虚拟机。 前提条件首先，更新系统，并安装相关信赖包 123sudo apt updatesudo apt upgradesudo apt install build-essential dkms unzip wget vim 安装完成后，需要重启u">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.ywmy.xyz/vboxstatus.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/ywmy/linuxvboxstatus.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/phpvirtualbox.png">
-<meta property="og:updated_time" content="2018-11-30T13:55:38.490Z">
+<meta property="og:image" content="https://blog.ywmy.xyz/vboxstatus.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/ywmy/linuxvboxstatus.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/phpvirtualbox.png">
+<meta property="og:updated_time" content="2020-03-08T08:45:12.961Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu 18.04安装phpvirtualbox">
 <meta name="twitter:description" content="安装phpvirtualboxvirtualbox安装完成后，可以通过给virtualbox后台装一个基于web的前端工具，使其可以通过网页来管理和创建虚拟机。 前提条件首先，更新系统，并安装相关信赖包 123sudo apt updatesudo apt upgradesudo apt install build-essential dkms unzip wget vim 安装完成后，需要重启u">
-<meta name="twitter:image" content="http://blog.ywmy.xyz/vboxstatus.png">
+<meta name="twitter:image" content="https://blog.ywmy.xyz/vboxstatus.png">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -219,11 +219,11 @@
 <p>确定virtualbox内核模块是否已加载。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status vboxdrv</span><br></pre></td></tr></table></figure>
 <p>参考图片</p>
-<p><img src="http://blog.ywmy.xyz/vboxstatus.png" alt="状态"></p>
+<p><img src="https://blog.ywmy.xyz/vboxstatus.png" alt="状态"></p>
 <h2 id="安装phpvirtualbox过程"><a href="#安装phpvirtualbox过程" class="headerlink" title="安装phpvirtualbox过程"></a>安装phpvirtualbox过程</h2><p>由于它是基于web的工具，我们需要安装apache服务器、php和一些php模块，运行命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apache2 php php-mysql libapache2-mod-php php-soap php-xml</span><br></pre></td></tr></table></figure>
 <p>然后下载virtualbox相对应的版本，如安装的virtualbox 5.2，官方<a href="https://phpvirtualbox.github.io/" target="_blank" rel="noopener">主页</a>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/phpvirtualbox/phpvirtualbox/archive/5.2.zip</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget httpss://github.com/phpvirtualbox/phpvirtualbox/archive/5.2.zip</span><br></pre></td></tr></table></figure>
 <p>解压下载的安装包。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip 5.2.0.zip</span><br></pre></td></tr></table></figure>
 <p>解压后将解压的文件夹复制到apache web服务器的要文件夹中。</p>
@@ -241,9 +241,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart vboxweb-service</span><br><span class="line">sudo systemctl restart vboxdrv</span><br><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
 <h2 id="调整防火墙允许apache-web服务器连接"><a href="#调整防火墙允许apache-web服务器连接" class="headerlink" title="调整防火墙允许apache web服务器连接"></a>调整防火墙允许apache web服务器连接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw all list</span><br><span class="line">sudo ufw app info <span class="string">"Apache Full"</span></span><br><span class="line">sudo ufw reload</span><br></pre></td></tr></table></figure>
 <p>如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linuxvboxstatus.png" alt="状态"></p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linuxvboxstatus.png" alt="状态"></p>
 <h2 id="访问phpvirtualbox的web控制台"><a href="#访问phpvirtualbox的web控制台" class="headerlink" title="访问phpvirtualbox的web控制台"></a>访问phpvirtualbox的web控制台</h2><p>现在，可以使用任意一台系统过程访问phpvirtualbox来操作virtualbox了。参考图：</p>
-<p><img src="http://blog.ywmy.xyz/phpvirtualbox.png" alt="参考图">。</p>
+<p><img src="https://blog.ywmy.xyz/phpvirtualbox.png" alt="参考图">。</p>
 
       
 
@@ -460,19 +460,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

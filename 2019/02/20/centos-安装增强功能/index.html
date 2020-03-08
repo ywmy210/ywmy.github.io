@@ -16,13 +16,13 @@
 <meta property="og:site_name" content="豆豆家">
 <meta property="og:description" content="virtualbox centos 安装增强功能环境系统：ubuntu 18.04虚拟机：virtualbox 操作步骤挂载虚拟增强工具包镜像12mkdir vbox_toolmount /dev/cdrom ./vbox_tool 安装信赖关系123sudo yum update kernel //升级内核sudo yum updatesudo yum install bzip2 tar gcc">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/linuxadditions_installed.png">
-<meta property="og:updated_time" content="2019-02-21T07:10:19.930Z">
+<meta property="og:image" content="https://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/linuxadditions_installed.png">
+<meta property="og:updated_time" content="2020-03-08T08:18:53.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos 安装增强功能">
 <meta name="twitter:description" content="virtualbox centos 安装增强功能环境系统：ubuntu 18.04虚拟机：virtualbox 操作步骤挂载虚拟增强工具包镜像12mkdir vbox_toolmount /dev/cdrom ./vbox_tool 安装信赖关系123sudo yum update kernel //升级内核sudo yum updatesudo yum install bzip2 tar gcc">
-<meta name="twitter:image" content="http://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png">
+<meta name="twitter:image" content="https://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -210,7 +210,7 @@
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="挂载虚拟增强工具包镜像"><a href="#挂载虚拟增强工具包镜像" class="headerlink" title="挂载虚拟增强工具包镜像"></a>挂载虚拟增强工具包镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir vbox_tool</span><br><span class="line">mount /dev/cdrom ./vbox_tool</span><br></pre></td></tr></table></figure>
 <h3 id="安装信赖关系"><a href="#安装信赖关系" class="headerlink" title="安装信赖关系"></a>安装信赖关系</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update kernel //升级内核</span><br><span class="line">sudo yum update</span><br><span class="line">sudo yum install bzip2 tar gcc make perl kernel-devel kernel-headers</span><br></pre></td></tr></table></figure>
 <p>最小化安装的centos安装增强功能时，会提示依赖如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png" alt="centos_vbox_install_adition"></p>
+<p><img src="https://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png" alt="centos_vbox_install_adition"></p>
 <p>注意内核版本的匹配问题，安装完成后，重启虚拟机。参考:<a href="1">链接</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br><span class="line">yum install kernel-devel-`uname -r`</span><br><span class="line">yum install kernel-headers-`uname -r`</span><br><span class="line">rpm -qa | grep -e kernel-devel -e kernel-headers</span><br></pre></td></tr></table></figure>
 <p>如果遇到内核版本与header版本不一致的，可以直接导出内核的环境变量：</p>
@@ -218,7 +218,7 @@
 <p>建议重启虚拟机。</p>
 <h3 id="安装增强功能"><a href="#安装增强功能" class="headerlink" title="安装增强功能"></a>安装增强功能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./VBoxLinuxAdditions.run</span><br></pre></td></tr></table></figure>
 <p>完成安装：</p>
-<p><img src="http://blog.ywmy.xyz/linuxadditions_installed.png" alt="additions_installed"></p>
+<p><img src="https://blog.ywmy.xyz/linuxadditions_installed.png" alt="additions_installed"></p>
 
       
 
@@ -435,19 +435,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

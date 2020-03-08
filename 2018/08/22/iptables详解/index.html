@@ -17,7 +17,7 @@
 <meta property="og:description" content="linux 之软件防火墙iptables详解 netfilter是由rusth russell提出的linux 2.4内核防火墙框架，该框架既简洁又灵活，可实现安全策略应用中的许多功能，如数据包过滤、数据包处理、地址伪装、透明代理、动态网络地址转换（network address translation, nat）,以及基于用户及媒体访问控制（media access control, mac）地">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://blog.ywmy.xyz/ywmy/linuxiptables_and_kernel.png">
-<meta property="og:updated_time" content="2018-11-30T13:47:06.809Z">
+<meta property="og:updated_time" content="2020-03-08T08:34:34.184Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iptables详解">
 <meta name="twitter:description" content="linux 之软件防火墙iptables详解 netfilter是由rusth russell提出的linux 2.4内核防火墙框架，该框架既简洁又灵活，可实现安全策略应用中的许多功能，如数据包过滤、数据包处理、地址伪装、透明代理、动态网络地址转换（network address translation, nat）,以及基于用户及媒体访问控制（media access control, mac）地">
@@ -258,7 +258,7 @@
 <li>log：在/var/log/messages文件中记录日志信息，然后将数据包传递给下一个规则。</li>
 </ul>
 <h2 id="0x02：linux数据包路由原理"><a href="#0x02：linux数据包路由原理" class="headerlink" title="0x02：linux数据包路由原理"></a>0x02：linux数据包路由原理</h2><p>我们已经知道了netfilter和iptables的架构和作用，并且学习了控制netfilter行为和xtables表的结构，那么这个xtables表是怎么在内核协议栈的数据包路由中直作用的呢？</p>
-<p>风口数据包由底层的网卡nic（network interface card）接收，通过数据链路层的解包之后（去除数据链路帧头），就进入了tcp/ip协议栈（本质就是一个处理网络数据的内核驱动）和netfilter混合的数据处理流程中了。数据包的接收、处理、转发流程构成了一个有限状态微量机，经过一些列的内核处理函数、以及netfilter hook点，最后被转发、或者本次上层的应用程序消化掉。是时候看这张图了：</p>
+<p>风口数据包由底层的网卡nic（network interface card）接收，通过数据链路层的解包之后（去除数据链路帧头），就进入了tcp/ip协议栈（本质就是一个处理网络数据的内核驱动）和netfilter混合的数据处理流程中了。数据包的接收、处理、转发流程构成了一个有限状态微量机，经过一些列的内核处理函数、以及netfilter hook点，最后被转发、或者本次上层的应用程序消化掉。是时候看这张图了</p>
 
       
 
@@ -475,19 +475,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

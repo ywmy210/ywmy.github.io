@@ -16,14 +16,14 @@
 <meta property="og:site_name" content="豆豆家">
 <meta property="og:description" content="说明windows和mac os下wacom包含官方的驱动。在linux我们需要安装linux支持才可以使用。 项目托管在github上。在使用的时候，可能需要科学的上网。项目地址请访问The linux Wacom Project 环境系统：ubuntu 18.04 LTS Kernel Driver*安装依赖 123456789sudo apt-get install linux-header">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.ywmy.xyz/ywmy/linux_upload_wacom_module.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/ywmy/linux_stylus.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/ywmy/linux_wacom.png">
-<meta property="og:updated_time" content="2018-11-30T13:51:02.568Z">
+<meta property="og:image" content="https://blog.ywmy.xyz/ywmy/linux_upload_wacom_module.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/ywmy/linux_stylus.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/ywmy/linux_wacom.png">
+<meta property="og:updated_time" content="2020-03-08T08:37:45.635Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux wacom">
 <meta name="twitter:description" content="说明windows和mac os下wacom包含官方的驱动。在linux我们需要安装linux支持才可以使用。 项目托管在github上。在使用的时候，可能需要科学的上网。项目地址请访问The linux Wacom Project 环境系统：ubuntu 18.04 LTS Kernel Driver*安装依赖 123456789sudo apt-get install linux-header">
-<meta name="twitter:image" content="http://blog.ywmy.xyz/ywmy/linux_upload_wacom_module.png">
+<meta name="twitter:image" content="https://blog.ywmy.xyz/ywmy/linux_upload_wacom_module.png">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -221,21 +221,21 @@
 <p>or</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modinfo wacom | grep version</span><br></pre></td></tr></table></figure>
 <p>如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linux_upload_wacom_module.png" alt="加载模块"></p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linux_upload_wacom_module.png" alt="加载模块"></p>
 <h2 id="X-Driver"><a href="#X-Driver" class="headerlink" title="X Driver"></a>X Driver</h2><p>*安装依赖</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install autoconf pkg-config make xutils-dev libtool xserver-xorg-dev libx11-dev libxi-dev libxrandr-dev libxinerama-dev libudev-dev</span><br></pre></td></tr></table></figure>
 <p>*下载</p>
 <p>下载<a href="https://github.com/linuxwacom/xf86-input-wacom/wiki/Building-The-Driver" target="_blank" rel="noopener">xf86-input-wacom</a></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linuxwacom/xf86-input-wacom.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> httpss://github.com/linuxwacom/xf86-input-wacom.git</span><br></pre></td></tr></table></figure>
 <p>*编译安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -- --prefix=<span class="string">"/usr"</span> --libdir=<span class="string">"<span class="variable">$(readlink -e $(ls -d /usr/lib*/xorg/modules/input/../../../ | head -n1)</span>)"</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -x ./autogen.sh; <span class="keyword">then</span> ./autogen.sh <span class="string">"<span class="variable">$@</span>"</span>; <span class="keyword">else</span> ./configure <span class="string">"<span class="variable">$@</span>"</span>; <span class="keyword">fi</span> &amp;&amp; make &amp;&amp; sudo make install || <span class="built_in">echo</span> <span class="string">"Build Failed"</span></span><br></pre></td></tr></table></figure>
 <h2 id="libwacom"><a href="#libwacom" class="headerlink" title="libwacom"></a>libwacom</h2><p>*下载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/linuxwacom/libwacom.git</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> httpss://github.com/linuxwacom/libwacom.git</span><br></pre></td></tr></table></figure>
 <p>*编译安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./autogen.sh --prefix=/usr --libdir=/lib64</span><br><span class="line">make</span><br><span class="line">sudo make install</span><br></pre></td></tr></table></figure>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><p>安装结束后，可以在系统的输入选项中检测到手绘板和笔。参考下图：</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linux_stylus.png" alt="手写笔"></p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linux_wacom.png" alt="手绘板"></p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linux_stylus.png" alt="手写笔"></p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linux_wacom.png" alt="手绘板"></p>
 
       
 
@@ -452,19 +452,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

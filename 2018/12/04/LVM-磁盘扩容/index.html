@@ -16,12 +16,12 @@
 <meta property="og:site_name" content="豆豆家">
 <meta property="og:description" content="前言之前给公司的同事配置了一台samba服务器，因为主要使用的是UI设计的同事，有大量的共享素材，磁盘很快的已经满了。前两天有同事来告知，映射的网络硬盘已经显示没有可用的空间了。想想那台主机里面的电源，应该可以再挂两个硬盘，于是，对磁盘扩容就玩起来了。 一张来来说明LVM管理：   添加硬盘关机，找到一块未用的硬笔，安装在主机里。 查看硬盘使用情况12345678910df -HT文件系统">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.ywmy.xyz/linux/LVM.png">
-<meta property="og:updated_time" content="2018-12-10T13:03:24.082Z">
+<meta property="og:image" content="https://blog.ywmy.xyz/linux/LVM.png">
+<meta property="og:updated_time" content="2020-03-08T08:39:38.260Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="LVM 磁盘扩容">
 <meta name="twitter:description" content="前言之前给公司的同事配置了一台samba服务器，因为主要使用的是UI设计的同事，有大量的共享素材，磁盘很快的已经满了。前两天有同事来告知，映射的网络硬盘已经显示没有可用的空间了。想想那台主机里面的电源，应该可以再挂两个硬盘，于是，对磁盘扩容就玩起来了。 一张来来说明LVM管理：   添加硬盘关机，找到一块未用的硬笔，安装在主机里。 查看硬盘使用情况12345678910df -HT文件系统">
-<meta name="twitter:image" content="http://blog.ywmy.xyz/linux/LVM.png">
+<meta name="twitter:image" content="https://blog.ywmy.xyz/linux/LVM.png">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -207,7 +207,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前给公司的同事配置了一台samba服务器，因为主要使用的是UI设计的同事，有大量的共享素材，磁盘很快的已经满了。前两天有同事来告知，映射的网络硬盘已经显示没有可用的空间了。想想那台主机里面的电源，应该可以再挂两个硬盘，于是，对磁盘扩容就玩起来了。</p>
 <p>一张来来说明LVM管理：</p>
-<p><img src="http://blog.ywmy.xyz/linux/LVM.png" alt="LVM"></p>
+<p><img src="https://blog.ywmy.xyz/linux/LVM.png" alt="LVM"></p>
 <hr>
 <h2 id="添加硬盘"><a href="#添加硬盘" class="headerlink" title="添加硬盘"></a>添加硬盘</h2><p>关机，找到一块未用的硬笔，安装在主机里。</p>
 <h2 id="查看硬盘使用情况"><a href="#查看硬盘使用情况" class="headerlink" title="查看硬盘使用情况"></a>查看硬盘使用情况</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df -HT</span><br><span class="line">文件系统                类型      容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/centos-root xfs        54G  1.6G   53G    3% /</span><br><span class="line">devtmpfs                devtmpfs  2.0G     0  2.0G    0% /dev</span><br><span class="line">tmpfs                   tmpfs     2.0G     0  2.0G    0% /dev/shm</span><br><span class="line">tmpfs                   tmpfs     2.0G  9.2M  2.0G    1% /run</span><br><span class="line">tmpfs                   tmpfs     2.0G     0  2.0G    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1               xfs       518M  228M  290M   44% /boot</span><br><span class="line">/dev/mapper/centos-home xfs       942G  933G  9.1G  100% /home   //这里是重点，已经满了</span><br><span class="line">tmpfs                   tmpfs     398M     0  398M    0% /run/user/0</span><br></pre></td></tr></table></figure>
@@ -461,19 +461,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

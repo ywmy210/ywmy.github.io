@@ -232,33 +232,33 @@
 <p>从上面挂载结果可以得出设备所属root，dialout组。所以，在我们使用minicom时，需要使用root权限。</p>
 <h4 id="配置串口信息"><a href="#配置串口信息" class="headerlink" title="配置串口信息"></a>配置串口信息</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo minicom</span><br></pre></td></tr></table></figure>
 <p>输出欢迎信息如下：</p>
-<p><img src="http://blog.ywmy.xyz/networkstartup.png" alt="startup"></p>
+<p><img src="https://blog.ywmy.xyz/networkstartup.png" alt="startup"></p>
 <p>包含欢迎信息，字符集，端口信息。</p>
 <p>由图可以看出转义字符为CTRL-A，输入Z查看帮助。</p>
 <p>按下CTRL－A，后输入Z。得到帮助页面如下：</p>
-<p><img src="http://blog.ywmy.xyz/networkhelp_screen.png" alt="help_screen"></p>
+<p><img src="https://blog.ywmy.xyz/networkhelp_screen.png" alt="help_screen"></p>
 <p>如图所示：</p>
 <p>D：排号目录<br>S：发送文件<br>F：发送断开帧<br>T：终端设置<br>G：运行脚本<br>O：配置minicom<br>X：退出minicom等</p>
 <p>这里，我们想要连接串口，首先配置minicom。按O键。</p>
 <p>得到如下配置项：</p>
-<p><img src="http://blog.ywmy.xyz/network/config_minicom.png" alt="config_minicom"></p>
+<p><img src="https://blog.ywmy.xyz/network/config_minicom.png" alt="config_minicom"></p>
 <p>使用方向键选择serial port setup</p>
 <p>配置如下：</p>
-<p><img src="http://blog.ywmy.xyz/network/serial_setup.png" alt="serial_setup"></p>
+<p><img src="https://blog.ywmy.xyz/network/serial_setup.png" alt="serial_setup"></p>
 <p>如图上图所示，按A，更改默认tty8为已挂载串口设备ttyUSB0，按F键更改默认Hardware Floww Control为no，默认硬件控制，即不接受串口输入信息，连接后，从键盘的输入就没有响应。改为no，后，按esc键退出菜单，将配置另存，或者直接保存默认dfl文件，然后退出配置。按X键退出minicom。</p>
 <p>重新进入minicom程序</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo minicom your_config_file</span><br></pre></td></tr></table></figure>
 <p>进入程序后，按回国，终端回显登录信息，如下图：</p>
-<p><img src="http://blog.ywmy.xyz/network/login_device.png" alt="login_device"></p>
+<p><img src="https://blog.ywmy.xyz/network/login_device.png" alt="login_device"></p>
 <p>接下来就是愉快的调试了。</p>
 <p>串口的配置文件保存在家目录下的隐藏文件，名称为.minirc.filename。如默认的.minirc.dfl。</p>
 <h3 id="使用pococom调试"><a href="#使用pococom调试" class="headerlink" title="使用pococom调试"></a>使用pococom调试</h3><h4 id="安装pococom"><a href="#安装pococom" class="headerlink" title="安装pococom"></a>安装pococom</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install picocom</span><br></pre></td></tr></table></figure>
 <p>连接操作：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo picocom -b 9600 /dev/ttyUSB0</span><br></pre></td></tr></table></figure>
 <p>输出如下：</p>
-<p><img src="http://blog.ywmy.xyz/network/picocom_startup.png" alt="picocom_startup"></p>
+<p><img src="https://blog.ywmy.xyz/network/picocom_startup.png" alt="picocom_startup"></p>
 <p>转义字符为CTRL－A，CTRL-H为查看帮助；</p>
-<p><img src="http://blog.ywmy.xyz/network/help_screen.png" alt="help_screen"></p>
+<p><img src="https://blog.ywmy.xyz/network/help_screen.png" alt="help_screen"></p>
 <p>配置项如上图所示，CTRL-A-&gt;CTRL-X退出picocom。</p>
 <p>terminal ready。按回车直接进入终端。开始调试吧。</p>
 
@@ -338,7 +338,7 @@
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="挂载虚拟增强工具包镜像"><a href="#挂载虚拟增强工具包镜像" class="headerlink" title="挂载虚拟增强工具包镜像"></a>挂载虚拟增强工具包镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir vbox_tool</span><br><span class="line">mount /dev/cdrom ./vbox_tool</span><br></pre></td></tr></table></figure>
 <h3 id="安装信赖关系"><a href="#安装信赖关系" class="headerlink" title="安装信赖关系"></a>安装信赖关系</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update kernel //升级内核</span><br><span class="line">sudo yum update</span><br><span class="line">sudo yum install bzip2 tar gcc make perl kernel-devel kernel-headers</span><br></pre></td></tr></table></figure>
 <p>最小化安装的centos安装增强功能时，会提示依赖如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png" alt="centos_vbox_install_adition"></p>
+<p><img src="https://blog.ywmy.xyz/linuxcentos_vbox_addition_install.png" alt="centos_vbox_install_adition"></p>
 <p>注意内核版本的匹配问题，安装完成后，重启虚拟机。参考:<a href="1">链接</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br><span class="line">yum install kernel-devel-`uname -r`</span><br><span class="line">yum install kernel-headers-`uname -r`</span><br><span class="line">rpm -qa | grep -e kernel-devel -e kernel-headers</span><br></pre></td></tr></table></figure>
 <p>如果遇到内核版本与header版本不一致的，可以直接导出内核的环境变量：</p>
@@ -346,7 +346,7 @@
 <p>建议重启虚拟机。</p>
 <h3 id="安装增强功能"><a href="#安装增强功能" class="headerlink" title="安装增强功能"></a>安装增强功能</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./VBoxLinuxAdditions.run</span><br></pre></td></tr></table></figure>
 <p>完成安装：</p>
-<p><img src="http://blog.ywmy.xyz/linuxadditions_installed.png" alt="additions_installed"></p>
+<p><img src="https://blog.ywmy.xyz/linuxadditions_installed.png" alt="additions_installed"></p>
 
       
 
@@ -607,7 +607,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="配置举例"><a href="#配置举例" class="headerlink" title="配置举例"></a>配置举例</h1><p>基于H3C V7版本，举例包含SNMP V2。</p>
-<h2 id="组网需求"><a href="#组网需求" class="headerlink" title="组网需求"></a>组网需求</h2><p><img src="http://blog.ywmy.xyz/network/network_topology.png" alt="network_topology"></p>
+<h2 id="组网需求"><a href="#组网需求" class="headerlink" title="组网需求"></a>组网需求</h2><p><img src="https://blog.ywmy.xyz/network/network_topology.png" alt="network_topology"></p>
 <h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h3 id="snmp-v2c-agent"><a href="#snmp-v2c-agent" class="headerlink" title="snmp v2c agent"></a>snmp v2c agent</h3><ul>
 <li>设置 Agent 使用的 SNMP 版本为 v2c、只读团体名为 readtest,读写团体名为 writetest。</li>
 </ul>
@@ -624,16 +624,16 @@
 <li>添加设备</li>
 </ul>
 <p>登录zabbix后台 -&gt; Configuration -&gt; Hosts -&gt; Create host，操作如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/network/hosts_list.png" alt="hosts_list"></p>
+<p><img src="https://blog.ywmy.xyz/network/hosts_list.png" alt="hosts_list"></p>
 <p>点击创建后 -&gt; 输入监控设备相关的信息 -&gt; Host name -&gt; Visable name -&gt; Groups (选择已有的组或创建新的组) -&gt; 移除默认的Agent interface -&gt; 添加SNMP interface 勾选 Use bulk requests</p>
-<p><img src="http://blog.ywmy.xyz/network/create_host.png" alt="create_host"></p>
+<p><img src="https://blog.ywmy.xyz/network/create_host.png" alt="create_host"></p>
 <p>点击 Templates -&gt; 选择系统创建的SNMP模版 (zabbix内置了一些常用的模版，可以直接选择来使用)</p>
-<p><img src="http://blog.ywmy.xyz/network/add_templates.png" alt="add_selected"></p>
+<p><img src="https://blog.ywmy.xyz/network/add_templates.png" alt="add_selected"></p>
 <p>因默认模版中并未包含H3C相关的模版，所以，选用了通用的SNMP V2模版。</p>
-<p><img src="http://blog.ywmy.xyz/template_selected.png" alt="template_selected"></p>
+<p><img src="https://blog.ywmy.xyz/template_selected.png" alt="template_selected"></p>
 <p>最后点击add。完成添加主机，这时的主机监控也可能还不能用。取决于上例中Agent中community的设置，在默认的模版里，已经有对一些常用变量的，一些继承全局变量的值，需要在主机的宏变量中更改。</p>
 <p>点击创建的主机 -&gt; Macros -&gt; Inherited and host macros -&gt; change -&gt; 输入设备上配置的名称 (建议只读共同体的值)</p>
-<p><img src="http://blog.ywmy.xyz/network/Macros.png" alt="Macros"></p>
+<p><img src="https://blog.ywmy.xyz/network/Macros.png" alt="Macros"></p>
 <p>更改完成后，可以看到已经添加的设备列表后面的SNMP标识已经变成绿色，说明监控模版已经在起作用。</p>
 
       
@@ -837,7 +837,7 @@
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前给公司的同事配置了一台samba服务器，因为主要使用的是UI设计的同事，有大量的共享素材，磁盘很快的已经满了。前两天有同事来告知，映射的网络硬盘已经显示没有可用的空间了。想想那台主机里面的电源，应该可以再挂两个硬盘，于是，对磁盘扩容就玩起来了。</p>
 <p>一张来来说明LVM管理：</p>
-<p><img src="http://blog.ywmy.xyz/linux/LVM.png" alt="LVM"></p>
+<p><img src="https://blog.ywmy.xyz/linux/LVM.png" alt="LVM"></p>
 <hr>
 <h2 id="添加硬盘"><a href="#添加硬盘" class="headerlink" title="添加硬盘"></a>添加硬盘</h2><p>关机，找到一块未用的硬笔，安装在主机里。</p>
 <h2 id="查看硬盘使用情况"><a href="#查看硬盘使用情况" class="headerlink" title="查看硬盘使用情况"></a>查看硬盘使用情况</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">df -HT</span><br><span class="line">文件系统                类型      容量  已用  可用 已用% 挂载点</span><br><span class="line">/dev/mapper/centos-root xfs        54G  1.6G   53G    3% /</span><br><span class="line">devtmpfs                devtmpfs  2.0G     0  2.0G    0% /dev</span><br><span class="line">tmpfs                   tmpfs     2.0G     0  2.0G    0% /dev/shm</span><br><span class="line">tmpfs                   tmpfs     2.0G  9.2M  2.0G    1% /run</span><br><span class="line">tmpfs                   tmpfs     2.0G     0  2.0G    0% /sys/fs/cgroup</span><br><span class="line">/dev/sda1               xfs       518M  228M  290M   44% /boot</span><br><span class="line">/dev/mapper/centos-home xfs       942G  933G  9.1G  100% /home   //这里是重点，已经满了</span><br><span class="line">tmpfs                   tmpfs     398M     0  398M    0% /run/user/0</span><br></pre></td></tr></table></figure>
@@ -959,45 +959,45 @@
 <li>下载<a href="2">链接</a></li>
 <li>安装</li>
 <li><p>打开程序（插入U盘后）如下图所示</p>
-<p> <img src="http://blog.ywmy.xyz/windows/easy2boot.png" alt="easy2boot"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/easy2boot.png" alt="easy2boot"></p>
 <p> 选择语言，选择U盘，创建启动盘。</p>
 </li>
 <li><p>在弹出的CMD窗口选择已经识别的U盘，如图所示：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/erase-usb-drive.png" alt="erase-usb-drive"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/erase-usb-drive.png" alt="erase-usb-drive"></p>
 <p> 如图实别的USB设备编号为1，所选择1。</p>
 </li>
 <li><p>是否格式化，选择Y，此处忘记截图。</p>
 </li>
 <li><p>选择格式化的磁盘分区类型</p>
-<p> <img src="http://blog.ywmy.xyz/windows/format-partition.png" alt="format-partition"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/format-partition.png" alt="format-partition"></p>
 <p> 此处选择了FAT32，即F。<br> 参考这一句：</p>
 <p> <strong>For UEFI-booting, convert the ISO using the MPI_FAT32 Desktop shortcut.</strong></p>
 <p> 就是说，如果你需要UEFI启动模式的话，那么转换ISO的时候，需要使用MPI_FAT32的快捷工具。</p>
 </li>
 <li><p>确认格式化，参考下图：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/confirm_action.png" alt="confirm_active"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/confirm_action.png" alt="confirm_active"></p>
 </li>
 <li><p>选择语言</p>
-<p> <img src="http://blog.ywmy.xyz/windows/select-language.png" alt="select_language"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/select-language.png" alt="select_language"></p>
 </li>
 <li><p>选择键盘</p>
-<p> <img src="http://blog.ywmy.xyz/windows/choose_keyboard_type.png" alt="choose_keyboard_type"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/choose_keyboard_type.png" alt="choose_keyboard_type"></p>
 </li>
 <li><p>选择是否显示扩展名</p>
-<p><img src="http://blog.ywmy.xyz/windows/show-filename-extensions.png" alt="show-filename-extensions"></p>
+<p><img src="https://blog.ywmy.xyz/windows/show-filename-extensions.png" alt="show-filename-extensions"></p>
 </li>
 <li><p>显示E2B图标样式</p>
-<p><img src="http://blog.ywmy.xyz/windows/display-icon.png" alt="display-icon"></p>
+<p><img src="https://blog.ywmy.xyz/windows/display-icon.png" alt="display-icon"></p>
 </li>
 <li><p>是否写入配置文件</p>
-<p><img src="http://blog.ywmy.xyz/windows/write-configure-file.png" alt="write-configure-file"></p>
+<p><img src="https://blog.ywmy.xyz/windows/write-configure-file.png" alt="write-configure-file"></p>
 </li>
 <li><p>填充linux镜像</p>
-<p><img src="http://blog.ywmy.xyz/windows/create-iso-file.png" alt="create-iso-file"></p>
+<p><img src="https://blog.ywmy.xyz/windows/create-iso-file.png" alt="create-iso-file"></p>
 <p>这里需求填充一个3.9GB的镜像文件，输入数值0为不填充，或者输入一个大于3.9GB的数据，小于4GB，大于4096会报错，参考数据盘格式化为FAT32。</p>
 </li>
 <li><p>完成制作</p>
-<p><img src="http://blog.ywmy.xyz/windows/completed-configure.png" alt="completed-configure"></p>
+<p><img src="https://blog.ywmy.xyz/windows/completed-configure.png" alt="completed-configure"></p>
 <p>至此，完成E2B U盘多启动的操作。</p>
 </li>
 </ol>
@@ -1005,35 +1005,35 @@
 <ol>
 <li>下载MTI工具，链接<a href="3">请戳</a></li>
 <li><p>解压缩下载的工具包，进入ImDisk目录，安装ImDisk程序，参考图片：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/install_imDisk_virtual_driver.png" alt="install_imDisk_virtual_driver"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/install_imDisk_virtual_driver.png" alt="install_imDisk_virtual_driver"></p>
 </li>
 <li><p>然后回到上级目录，运行 MPI_Tool_Pack_Plus_CloverLite_086\CreateDesktopShortcuts.cmd，这个CMD命令会在你的桌面上创建三个快捷方式，不过需要注意的是，需要用右键点击，然后使用管理员模式运行，参考下图：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/CreateDesktopShortcuts.png" alt="CreateDesktopShortcuts"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/CreateDesktopShortcuts.png" alt="CreateDesktopShortcuts"></p>
 <p> 此命令会在桌面上创建三个快捷方式，即MakePartImage，MPI_FAT32，MPI_NTFS，三个程序的快捷方式。</p>
 </li>
 <li><p>将你需要创建的 UEFI 启动镜像，拖拽到 MPI_FAT32 这个快捷方式上，就会自动创建出 .imgPTN 格式的镜像文件了。在创建大小的时候按回车确认即可。参考下图：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/mpi_option_2.png" alt="mpi_option"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/mpi_option_2.png" alt="mpi_option"></p>
 </li>
 <li><p>将ISO或者imgPTN文件拷贝到U盘中的对应目录即可，或者直接都扔到了 _ISO\MAINMENU 这个文件夹中。</p>
 </li>
 <li><p>完成操作后，从U盘启动，成果如下（默认UEFI支持的，可能需要关闭BIOS中的默认secret启动）：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/E2B_BOOT_UP.jpg" alt="E2B_BOOT_UP"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/E2B_BOOT_UP.jpg" alt="E2B_BOOT_UP"></p>
 </li>
 </ol>
 <h2 id="AIO-BOOT-启动引导"><a href="#AIO-BOOT-启动引导" class="headerlink" title="AIO BOOT 启动引导"></a>AIO BOOT 启动引导</h2><h3 id="操作如下："><a href="#操作如下：" class="headerlink" title="操作如下："></a>操作如下：</h3><p>这个是一个真神器，绿色，不用安装，还自带中文，如名称所说，AIO all in one。</p>
 <ol>
 <li>下载工具，链接<a href="4">请戳</a></li>
 <li><p>运行，操作如下图所示：</p>
-<p> <img src="http://blog.ywmy.xyz/windows/choose-usb-drive.png" alt="choose-usb-drive"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/choose-usb-drive.png" alt="choose-usb-drive"></p>
 <p> 切换语言，选择U盘，勾选自动安装bootloader，点击OK，完成操作。</p>
 </li>
 <li><p>接下来就是在U盘的目录下操作了，操作大致如下图所示：</p>
-<p> <img src="http://blog.ywmy.xyz/AIOcreator.png" alt="AIOcreator"></p>
-<p> <img src="http://blog.ywmy.xyz/windows/boot_creator.jpg" alt="boot_creator"></p>
-<p> <img src="http://blog.ywmy.xyz/windows/tool_bar.jpg" alt="tool_bar"></p>
+<p> <img src="https://blog.ywmy.xyz/AIOcreator.png" alt="AIOcreator"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/boot_creator.jpg" alt="boot_creator"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/tool_bar.jpg" alt="tool_bar"></p>
 </li>
 <li><p>最后，给一张U盘启动后的图片，这是一个相当结力的工具。</p>
-<p> <img src="http://blog.ywmy.xyz/windows/AIO_BOOT_UP.jpg" alt="AIO_BOOT_UP"></p>
+<p> <img src="https://blog.ywmy.xyz/windows/AIO_BOOT_UP.jpg" alt="AIO_BOOT_UP"></p>
 </li>
 </ol>
 <h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>EASY2BOOT和AIO BOOT CREATOR这两款工具都是基于grub2和grub4dos工具为基础的，easy2boot基本以命令行操作为主，linux系统下也可以使用。AIO BOOT CREATOR这个工具，基本满足了我的所有需求，简单，功能强大，操作方便。一个绿色包，直接运行，还自带中文，这个就非常方便了。后面直接使用了AIO把我想要集成的多启动系统都集成在了U盘，包括ANDROID（phoenixos），linux（Kail, ubuntu），windows（windows 7, windows server 2016）等。系统安装，live环境应有尽有，可以说是一步到位了。</p>
@@ -1117,8 +1117,8 @@
 <p>量产方式参考<a href="http://www.upantool.com/liangchan/SMI/2016/8732.html" target="_blank" rel="noopener">链接</a>。</p>
 <hr>
 <p>附上两张量产后的图（小米的量产）：</p>
-<p><img src="http://blog.ywmy.xyz/windows/USB_mass_production.png" alt="USB_MASS_PRODUCTION"></p>
-<p><img src="http://blog.ywmy.xyz/disk_manager.png" alt="DISK_MANAGER"></p>
+<p><img src="https://blog.ywmy.xyz/windows/USB_mass_production.png" alt="USB_MASS_PRODUCTION"></p>
+<p><img src="https://blog.ywmy.xyz/disk_manager.png" alt="DISK_MANAGER"></p>
 <p>U盘量产为一个5GB的光驱和一个28GB的数据盘。数据盘又给我做了多启动，通过多启动来实现系统维护，即AIOBOOT和AIO——UEFI两个分区。</p>
 
       
@@ -1197,24 +1197,24 @@
 <hr>
 <h2 id="step-one：开机检查"><a href="#step-one：开机检查" class="headerlink" title="step one：开机检查"></a>step one：开机检查</h2><p>要做的第一步自然是开机检查检查，还好，3块300GB的SAS硬盘，一块已经坏了，就直接取了下来，开机的时候，直接提示到硬盘错误，是否恢复或选择路过。因为坏的硬盘直接拿出来了，就不再想着恢复了，于是直接选择了重做RAID。</p>
 <p>惠普的这台服务器中的RAID卡为smart array p400。参考下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/hp-raid-control.jpg" alt="P400"></p>
+<p><img src="https://blog.ywmy.xyz/hp-raid-control.jpg" alt="P400"></p>
 <p>在跳过恢复选项（F1／F2）后，按F8进入raid配置选项，默认有RAID 0，RAID 1＋0，RAID 5三个可选。还有块可用的盘，就直接将两块做了RAID 0，不浪费。</p>
 <p>保存RAID配置后，听到两声蜂鸣声过后，可以先择F9进入BIOS设置。参考下图：</p>
-<p><img src="http://blog.ywmy.xyz/hp-bios-setup.jpg" alt="BIOS"></p>
+<p><img src="https://blog.ywmy.xyz/hp-bios-setup.jpg" alt="BIOS"></p>
 <p>可能是机器老旧的原因，这台服务器上的支持的启动项有限，光驱、软驱、硬盘和网络都有，就是没有看到USB支持的。尝试了一下，无论是自己用UTRLISO写入的硬盘镜像还是WINPE都无法引导。只能想想光驱的主意了，结果公司还没找到之前刻录的系统盘。最终把目光描准了自己的U盘，准备做个USB－CD量产。关于量产的细节，自己准备再补一篇，最终是成功量产了，也正常进入引导。好了，服务器检查、硬件及安装前的准备工作就已经都准备好了。引导如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/install-centos.jpg" alt="bootup"></p>
-<h2 id="step-two：系统安装"><a href="#step-two：系统安装" class="headerlink" title="step two：系统安装"></a>step two：系统安装</h2><p>正式从U盘引导启动后，就进入了熟悉的centos安装界面了，按提示操作，到了选择硬盘的时候，出现了一个问题，即安装系统中即认不到raid后的磁盘，也看到量产过后的U盘的信息，磁盘选择的地方是空的，没有可用的选择。这下好像是不是有些问题了？这台机器之前有安装过操作系统，那就一定是有办法的。想想，试着网上搜索了一下，发现这台服务器在安装centos 7的时候，确实会遇到这个问题，不过还好，有解决办法，解决办法参考<a href="http://tieba.baidu.com/p/5491102757?traceid=" target="_blank" rel="noopener">链接</a>，问题的原因就是在raid上。</p>
+<p><img src="https://blog.ywmy.xyz/install-centos.jpg" alt="bootup"></p>
+<h2 id="step-two：系统安装"><a href="#step-two：系统安装" class="headerlink" title="step two：系统安装"></a>step two：系统安装</h2><p>正式从U盘引导启动后，就进入了熟悉的centos安装界面了，按提示操作，到了选择硬盘的时候，出现了一个问题，即安装系统中即认不到raid后的磁盘，也看到量产过后的U盘的信息，磁盘选择的地方是空的，没有可用的选择。这下好像是不是有些问题了？这台机器之前有安装过操作系统，那就一定是有办法的。想想，试着网上搜索了一下，发现这台服务器在安装centos 7的时候，确实会遇到这个问题，不过还好，有解决办法，解决办法参考<a href="https://tieba.baidu.com/p/5491102757?traceid=" target="_blank" rel="noopener">链接</a>，问题的原因就是在raid上。</p>
 <p>操作方法，进入install centos 界面后，近e键编辑引导基加入下面图像中画红线的竞价内容：</p>
-<p><img src="http://blog.ywmy.xyz/edit-boot-configuration.jpg" alt="boot-conf"></p>
+<p><img src="https://blog.ywmy.xyz/edit-boot-configuration.jpg" alt="boot-conf"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hpsa.hpsa_sample_mode=1 hpsa.hpsa_allow_anly=1</span><br></pre></td></tr></table></figure>
 <p>注意与前面的配置内容之间的空格。</p>
 <p>配置完成后按ctrl+x进入安装界面，如此可以选择服务器上的raid盘了。如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/centos-select-disk.jpg" alt="select-disk"></p>
+<p><img src="https://blog.ywmy.xyz/centos-select-disk.jpg" alt="select-disk"></p>
 <p>接下来的操作就正常安装了，安装结束后，重启，把第一启动项改为本地磁盘（非必要）。改完后，发现仍然进入不了系统，原因如上面安装时一样。这时需要在启动选项的时候，按e，进入编辑模式，添加hpsa相关内容，如上图。配置结束后，按ctrl+x进入系统。</p>
 <p>进入系统后，编辑grub文件，添加hpsa相关内容。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /boot/grub2/grub.cfg</span><br><span class="line"><span class="comment"># 在LANG项的后面添加</span></span><br><span class="line">hpsa.hpsa_sample_mode=1 hpsa.hpsa_allow_anly=1</span><br></pre></td></tr></table></figure>
 <p>保存配置文件，重启服务器，正常进入系统，如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/boot-accessed.jpg" alt="boot-access"></p>
+<p><img src="https://blog.ywmy.xyz/boot-accessed.jpg" alt="boot-access"></p>
 <p>至此安装结束！记录备忘！</p>
 
       
@@ -1362,19 +1362,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

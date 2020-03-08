@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="豆豆家">
 <meta property="og:description" content="配置举例基于H3C V7版本，举例包含SNMP V2。 组网需求 配置步骤snmp v2c agent 设置 Agent 使用的 SNMP 版本为 v2c、只读团体名为 readtest,读写团体名为 writetest。  1234&amp;lt;Agent&amp;gt; system-view[Agent] snmp-agent sys-info version v2c[Agent] snmp-agent">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.ywmy.xyz/network/network_topology.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/network/hosts_list.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/network/create_host.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/network/add_templates.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/template_selected.png">
-<meta property="og:image" content="http://blog.ywmy.xyz/network/Macros.png">
-<meta property="og:updated_time" content="2018-12-27T15:13:46.483Z">
+<meta property="og:image" content="https://blog.ywmy.xyz/network/network_topology.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/network/hosts_list.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/network/create_host.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/network/add_templates.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/template_selected.png">
+<meta property="og:image" content="https://blog.ywmy.xyz/network/Macros.png">
+<meta property="og:updated_time" content="2020-03-08T08:32:19.863Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="H3C SNMP配置举例">
 <meta name="twitter:description" content="配置举例基于H3C V7版本，举例包含SNMP V2。 组网需求 配置步骤snmp v2c agent 设置 Agent 使用的 SNMP 版本为 v2c、只读团体名为 readtest,读写团体名为 writetest。  1234&amp;lt;Agent&amp;gt; system-view[Agent] snmp-agent sys-info version v2c[Agent] snmp-agent">
-<meta name="twitter:image" content="http://blog.ywmy.xyz/network/network_topology.png">
+<meta name="twitter:image" content="https://blog.ywmy.xyz/network/network_topology.png">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -211,7 +211,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="配置举例"><a href="#配置举例" class="headerlink" title="配置举例"></a>配置举例</h1><p>基于H3C V7版本，举例包含SNMP V2。</p>
-<h2 id="组网需求"><a href="#组网需求" class="headerlink" title="组网需求"></a>组网需求</h2><p><img src="http://blog.ywmy.xyz/network/network_topology.png" alt="network_topology"></p>
+<h2 id="组网需求"><a href="#组网需求" class="headerlink" title="组网需求"></a>组网需求</h2><p><img src="https://blog.ywmy.xyz/network/network_topology.png" alt="network_topology"></p>
 <h2 id="配置步骤"><a href="#配置步骤" class="headerlink" title="配置步骤"></a>配置步骤</h2><h3 id="snmp-v2c-agent"><a href="#snmp-v2c-agent" class="headerlink" title="snmp v2c agent"></a>snmp v2c agent</h3><ul>
 <li>设置 Agent 使用的 SNMP 版本为 v2c、只读团体名为 readtest,读写团体名为 writetest。</li>
 </ul>
@@ -228,16 +228,16 @@
 <li>添加设备</li>
 </ul>
 <p>登录zabbix后台 -&gt; Configuration -&gt; Hosts -&gt; Create host，操作如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/network/hosts_list.png" alt="hosts_list"></p>
+<p><img src="https://blog.ywmy.xyz/network/hosts_list.png" alt="hosts_list"></p>
 <p>点击创建后 -&gt; 输入监控设备相关的信息 -&gt; Host name -&gt; Visable name -&gt; Groups (选择已有的组或创建新的组) -&gt; 移除默认的Agent interface -&gt; 添加SNMP interface 勾选 Use bulk requests</p>
-<p><img src="http://blog.ywmy.xyz/network/create_host.png" alt="create_host"></p>
+<p><img src="https://blog.ywmy.xyz/network/create_host.png" alt="create_host"></p>
 <p>点击 Templates -&gt; 选择系统创建的SNMP模版 (zabbix内置了一些常用的模版，可以直接选择来使用)</p>
-<p><img src="http://blog.ywmy.xyz/network/add_templates.png" alt="add_selected"></p>
+<p><img src="https://blog.ywmy.xyz/network/add_templates.png" alt="add_selected"></p>
 <p>因默认模版中并未包含H3C相关的模版，所以，选用了通用的SNMP V2模版。</p>
-<p><img src="http://blog.ywmy.xyz/template_selected.png" alt="template_selected"></p>
+<p><img src="https://blog.ywmy.xyz/template_selected.png" alt="template_selected"></p>
 <p>最后点击add。完成添加主机，这时的主机监控也可能还不能用。取决于上例中Agent中community的设置，在默认的模版里，已经有对一些常用变量的，一些继承全局变量的值，需要在主机的宏变量中更改。</p>
 <p>点击创建的主机 -&gt; Macros -&gt; Inherited and host macros -&gt; change -&gt; 输入设备上配置的名称 (建议只读共同体的值)</p>
-<p><img src="http://blog.ywmy.xyz/network/Macros.png" alt="Macros"></p>
+<p><img src="https://blog.ywmy.xyz/network/Macros.png" alt="Macros"></p>
 <p>更改完成后，可以看到已经添加的设备列表后面的SNMP标识已经变成绿色，说明监控模版已经在起作用。</p>
 
       
@@ -455,19 +455,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

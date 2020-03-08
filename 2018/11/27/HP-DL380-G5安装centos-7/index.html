@@ -16,17 +16,17 @@
 <meta property="og:site_name" content="豆豆家">
 <meta property="og:description" content="背景公司有一台老旧的惠普服务器，三块盘做了RAID5，之前上面安装了一个windows系统。之前的规划中，起什么作用已经没人知道了，后面三块中的一块硬盘坏了，再后面开机都开了了，这台服务器就闲置了。最近自己刚好有点时间，去了下机房，看到那台未用的服务器，想着要不要这台旧服务器也能做点事情。于是就开始准备起来，试试看能不能让这台服务器运行起来。  step one：开机检查要做的第一步自然是开机检查">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://blog.ywmy.xyz/hp-raid-control.jpg">
-<meta property="og:image" content="http://blog.ywmy.xyz/hp-bios-setup.jpg">
-<meta property="og:image" content="http://blog.ywmy.xyz/install-centos.jpg">
-<meta property="og:image" content="http://blog.ywmy.xyz/edit-boot-configuration.jpg">
-<meta property="og:image" content="http://blog.ywmy.xyz/centos-select-disk.jpg">
-<meta property="og:image" content="http://blog.ywmy.xyz/boot-accessed.jpg">
-<meta property="og:updated_time" content="2018-11-28T14:55:50.978Z">
+<meta property="og:image" content="https://blog.ywmy.xyz/hp-raid-control.jpg">
+<meta property="og:image" content="https://blog.ywmy.xyz/hp-bios-setup.jpg">
+<meta property="og:image" content="https://blog.ywmy.xyz/install-centos.jpg">
+<meta property="og:image" content="https://blog.ywmy.xyz/edit-boot-configuration.jpg">
+<meta property="og:image" content="https://blog.ywmy.xyz/centos-select-disk.jpg">
+<meta property="og:image" content="https://blog.ywmy.xyz/boot-accessed.jpg">
+<meta property="og:updated_time" content="2020-03-08T08:33:23.701Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="HP DL380 G5安装centos 7">
 <meta name="twitter:description" content="背景公司有一台老旧的惠普服务器，三块盘做了RAID5，之前上面安装了一个windows系统。之前的规划中，起什么作用已经没人知道了，后面三块中的一块硬盘坏了，再后面开机都开了了，这台服务器就闲置了。最近自己刚好有点时间，去了下机房，看到那台未用的服务器，想着要不要这台旧服务器也能做点事情。于是就开始准备起来，试试看能不能让这台服务器运行起来。  step one：开机检查要做的第一步自然是开机检查">
-<meta name="twitter:image" content="http://blog.ywmy.xyz/hp-raid-control.jpg">
+<meta name="twitter:image" content="https://blog.ywmy.xyz/hp-raid-control.jpg">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -214,24 +214,24 @@
 <hr>
 <h2 id="step-one：开机检查"><a href="#step-one：开机检查" class="headerlink" title="step one：开机检查"></a>step one：开机检查</h2><p>要做的第一步自然是开机检查检查，还好，3块300GB的SAS硬盘，一块已经坏了，就直接取了下来，开机的时候，直接提示到硬盘错误，是否恢复或选择路过。因为坏的硬盘直接拿出来了，就不再想着恢复了，于是直接选择了重做RAID。</p>
 <p>惠普的这台服务器中的RAID卡为smart array p400。参考下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/hp-raid-control.jpg" alt="P400"></p>
+<p><img src="https://blog.ywmy.xyz/hp-raid-control.jpg" alt="P400"></p>
 <p>在跳过恢复选项（F1／F2）后，按F8进入raid配置选项，默认有RAID 0，RAID 1＋0，RAID 5三个可选。还有块可用的盘，就直接将两块做了RAID 0，不浪费。</p>
 <p>保存RAID配置后，听到两声蜂鸣声过后，可以先择F9进入BIOS设置。参考下图：</p>
-<p><img src="http://blog.ywmy.xyz/hp-bios-setup.jpg" alt="BIOS"></p>
+<p><img src="https://blog.ywmy.xyz/hp-bios-setup.jpg" alt="BIOS"></p>
 <p>可能是机器老旧的原因，这台服务器上的支持的启动项有限，光驱、软驱、硬盘和网络都有，就是没有看到USB支持的。尝试了一下，无论是自己用UTRLISO写入的硬盘镜像还是WINPE都无法引导。只能想想光驱的主意了，结果公司还没找到之前刻录的系统盘。最终把目光描准了自己的U盘，准备做个USB－CD量产。关于量产的细节，自己准备再补一篇，最终是成功量产了，也正常进入引导。好了，服务器检查、硬件及安装前的准备工作就已经都准备好了。引导如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/install-centos.jpg" alt="bootup"></p>
-<h2 id="step-two：系统安装"><a href="#step-two：系统安装" class="headerlink" title="step two：系统安装"></a>step two：系统安装</h2><p>正式从U盘引导启动后，就进入了熟悉的centos安装界面了，按提示操作，到了选择硬盘的时候，出现了一个问题，即安装系统中即认不到raid后的磁盘，也看到量产过后的U盘的信息，磁盘选择的地方是空的，没有可用的选择。这下好像是不是有些问题了？这台机器之前有安装过操作系统，那就一定是有办法的。想想，试着网上搜索了一下，发现这台服务器在安装centos 7的时候，确实会遇到这个问题，不过还好，有解决办法，解决办法参考<a href="http://tieba.baidu.com/p/5491102757?traceid=" target="_blank" rel="noopener">链接</a>，问题的原因就是在raid上。</p>
+<p><img src="https://blog.ywmy.xyz/install-centos.jpg" alt="bootup"></p>
+<h2 id="step-two：系统安装"><a href="#step-two：系统安装" class="headerlink" title="step two：系统安装"></a>step two：系统安装</h2><p>正式从U盘引导启动后，就进入了熟悉的centos安装界面了，按提示操作，到了选择硬盘的时候，出现了一个问题，即安装系统中即认不到raid后的磁盘，也看到量产过后的U盘的信息，磁盘选择的地方是空的，没有可用的选择。这下好像是不是有些问题了？这台机器之前有安装过操作系统，那就一定是有办法的。想想，试着网上搜索了一下，发现这台服务器在安装centos 7的时候，确实会遇到这个问题，不过还好，有解决办法，解决办法参考<a href="https://tieba.baidu.com/p/5491102757?traceid=" target="_blank" rel="noopener">链接</a>，问题的原因就是在raid上。</p>
 <p>操作方法，进入install centos 界面后，近e键编辑引导基加入下面图像中画红线的竞价内容：</p>
-<p><img src="http://blog.ywmy.xyz/edit-boot-configuration.jpg" alt="boot-conf"></p>
+<p><img src="https://blog.ywmy.xyz/edit-boot-configuration.jpg" alt="boot-conf"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hpsa.hpsa_sample_mode=1 hpsa.hpsa_allow_anly=1</span><br></pre></td></tr></table></figure>
 <p>注意与前面的配置内容之间的空格。</p>
 <p>配置完成后按ctrl+x进入安装界面，如此可以选择服务器上的raid盘了。如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/centos-select-disk.jpg" alt="select-disk"></p>
+<p><img src="https://blog.ywmy.xyz/centos-select-disk.jpg" alt="select-disk"></p>
 <p>接下来的操作就正常安装了，安装结束后，重启，把第一启动项改为本地磁盘（非必要）。改完后，发现仍然进入不了系统，原因如上面安装时一样。这时需要在启动选项的时候，按e，进入编辑模式，添加hpsa相关内容，如上图。配置结束后，按ctrl+x进入系统。</p>
 <p>进入系统后，编辑grub文件，添加hpsa相关内容。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">vi /boot/grub2/grub.cfg</span><br><span class="line"><span class="comment"># 在LANG项的后面添加</span></span><br><span class="line">hpsa.hpsa_sample_mode=1 hpsa.hpsa_allow_anly=1</span><br></pre></td></tr></table></figure>
 <p>保存配置文件，重启服务器，正常进入系统，如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/boot-accessed.jpg" alt="boot-access"></p>
+<p><img src="https://blog.ywmy.xyz/boot-accessed.jpg" alt="boot-access"></p>
 <p>至此安装结束！记录备忘！</p>
 
       
@@ -449,19 +449,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">

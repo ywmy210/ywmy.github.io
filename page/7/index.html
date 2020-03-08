@@ -522,6 +522,106 @@
 
 
   
+    <article id="post-centos-samba配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/21/centos-samba配置/">centos samba配置</a>
+    </h1>
+  
+
+        
+        <a href="/2018/10/21/centos-samba配置/" class="archive-article-date">
+  	<time datetime="2018-10-21T03:46:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-21</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="centos-samba配置小记"><a href="#centos-samba配置小记" class="headerlink" title="centos samba配置小记"></a>centos samba配置小记</h1><h2 id="基本更新"><a href="#基本更新" class="headerlink" title="基本更新"></a>基本更新</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release</span><br><span class="line">yum install wget curl vim</span><br></pre></td></tr></table></figure>
+<h2 id="安装samba"><a href="#安装samba" class="headerlink" title="安装samba"></a>安装samba</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install samba samba-server samba-common</span><br><span class="line">systemctl start smb</span><br><span class="line">systemctl <span class="built_in">enable</span> smb</span><br></pre></td></tr></table></figure>
+<h2 id="配置需求"><a href="#配置需求" class="headerlink" title="配置需求"></a>配置需求</h2><p>部门通过账号登录共享服务器并访问部门共享(如创建ui部门和运维部门)。配置参考如下：</p>
+<h3 id="以部门创建用户"><a href="#以部门创建用户" class="headerlink" title="以部门创建用户"></a>以部门创建用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd ui -d /home/ui -s /usr/sbin/nologin -m</span><br><span class="line">useradd ops -d /home/ops -s /usr/sbin/nologin -m</span><br></pre></td></tr></table></figure>
+<p>-d:指定用户目录<br>-s:指定登录shell（nologin禁止登录）<br>-m:无目录创建</p>
+<h3 id="给samba用户添加密码"><a href="#给samba用户添加密码" class="headerlink" title="给samba用户添加密码"></a>给samba用户添加密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pdbedit -a ui</span><br><span class="line">pdbedit -a ops</span><br></pre></td></tr></table></figure>
+<p>pdbedit -a username：新建一个samba帐户<br>pdbedit -x username：删除一个samba帐户<br>pdbedit -L：列出samba帐户，读取passdb.tdb数据库文件<br>pdbedit -Lv：列出samba用户列表的详细信息<br>pdbedit -c “[D]” -u username：暂停该samba用户账号<br>pdbedit -c “[]” -u username：恢复该samba用户账号</p>
+<p>pdbedit -Lv详细配置如图</p>
+<p><img src="https://blog.ywmy.xyz/pdbedit-Lv.png" alt="pdbedit -Lv"></p>
+<h3 id="更改samba配置文件"><a href="#更改samba配置文件" class="headerlink" title="更改samba配置文件"></a>更改samba配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/samba/smb.config /etc/samba/smb.config-backup</span><br><span class="line">vim /etc/samba/smb.config</span><br></pre></td></tr></table></figure>
+<p>配置内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># See smb.conf.example for a more detailed config file or</span></span><br><span class="line"><span class="comment"># read the smb.conf manpage.</span></span><br><span class="line"><span class="comment"># Run 'testparm' to verify the config is correct after</span></span><br><span class="line"><span class="comment"># you modified it.</span></span><br><span class="line"></span><br><span class="line">[global]</span><br><span class="line">        workgroup = SAMBA</span><br><span class="line">        security = user</span><br><span class="line"></span><br><span class="line">        passdb backend = tdbsam</span><br><span class="line"></span><br><span class="line">        printing = cups</span><br><span class="line">        printcap name = cups</span><br><span class="line">        load printers = yes</span><br><span class="line">        cups options = raw</span><br><span class="line"></span><br><span class="line">[homes]</span><br><span class="line">        comment = Home Directories</span><br><span class="line">        valid users = %S, %D%w%S</span><br><span class="line">        browseable = No</span><br><span class="line">        <span class="built_in">read</span> only = No</span><br><span class="line">        inherit acls = Yes</span><br><span class="line"></span><br><span class="line">[printers]</span><br><span class="line">        comment = All Printers</span><br><span class="line">        path = /var/tmp</span><br><span class="line">        printable = Yes</span><br><span class="line">        create mask = 0600</span><br><span class="line">        browseable = No</span><br><span class="line"></span><br><span class="line">[<span class="built_in">print</span>$]</span><br><span class="line">        comment = Printer Drivers</span><br><span class="line">        path = /var/lib/samba/drivers</span><br><span class="line">        write list = @printadmin root</span><br><span class="line">        force group = @printadmin</span><br><span class="line">        create mask = 0664</span><br><span class="line">        directory mask = 0775</span><br><span class="line"></span><br><span class="line">[ui]</span><br><span class="line">        comment = ui</span><br><span class="line">        path = /home/ui</span><br><span class="line">        browseable = yes</span><br><span class="line">        write list = ui</span><br><span class="line">        writable = yes</span><br><span class="line">        <span class="built_in">read</span> only = no</span><br><span class="line">        valid users = ui</span><br><span class="line"></span><br><span class="line">[ops]</span><br><span class="line">        comment = ops</span><br><span class="line">        path = /home/ops</span><br><span class="line">        browseable = yes</span><br><span class="line">        write list = ops</span><br><span class="line">        writable = yes</span><br><span class="line">        <span class="built_in">read</span> only = no</span><br><span class="line">        valid users = ops</span><br></pre></td></tr></table></figure>
+<p>测试samba用例如下如图</p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linuxtestparm.png" alt="testpram"></p>
+<h3 id="防火墙放开samba服务端口"><a href="#防火墙放开samba服务端口" class="headerlink" title="防火墙放开samba服务端口"></a>防火墙放开samba服务端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-service=samba</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
+<h3 id="selinux和文件夹访问权限"><a href="#selinux和文件夹访问权限" class="headerlink" title="selinux和文件夹访问权限"></a>selinux和文件夹访问权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setsebool -P samba_enable_home_dirs on</span><br><span class="line"></span><br><span class="line">chown -Rf ui.ui /home/ui</span><br><span class="line">chown -Rf ops.ops /home/ops</span><br></pre></td></tr></table></figure>
+<p>查看firewall开放端口信息如图</p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linuxfirewall-cmd.png" alt="firewall-cmd"></p>
+<h2 id="连接测试"><a href="#连接测试" class="headerlink" title="连接测试"></a>连接测试</h2><p>windows平台可以直接在支持中输入\192.168.31.250\ui。输入用户名和密码，进入samba目录。测试如图所示，</p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linuxsamba_test.PNG" alt="samba测试"><br>完成连接后，可以在资源管理器中添加映射网络驱动。将共享直接挂载到磁盘目录。</p>
+<p>linux，可以在文件管理器中输入smb://192.168.31.250/ui,选择已注册用户，输入用户名和密码，完成连接。<br>也可以通过挂载来完成文件目录的访问，操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ui</span><br><span class="line">sudo mount -t cifs -o username=ui,password=<span class="string">"password"</span> //192.168.31.250/ui /home/yourname/ui</span><br></pre></td></tr></table></figure>
+<p>取消挂载</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /home/yourname/ui</span><br></pre></td></tr></table></figure>
+<p>挂载后如图片</p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linuxlinux_mount.png" alt="挂载"><br>所示。</p>
+<h2 id="特别注意"><a href="#特别注意" class="headerlink" title="特别注意"></a>特别注意</h2><p>在创建共享的过程中，防火墙和selinux这两个是一定要注意的，端口开放，和selinux的权配置会导致访问的权限问题。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">linux samba</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/10/21/centos-samba配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-webmin安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -572,106 +672,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/10/21/webmin安装/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-centos-samba配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/21/centos-samba配置/">centos samba配置</a>
-    </h1>
-  
-
-        
-        <a href="/2018/10/21/centos-samba配置/" class="archive-article-date">
-  	<time datetime="2018-10-21T03:46:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="centos-samba配置小记"><a href="#centos-samba配置小记" class="headerlink" title="centos samba配置小记"></a>centos samba配置小记</h1><h2 id="基本更新"><a href="#基本更新" class="headerlink" title="基本更新"></a>基本更新</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release</span><br><span class="line">yum install wget curl vim</span><br></pre></td></tr></table></figure>
-<h2 id="安装samba"><a href="#安装samba" class="headerlink" title="安装samba"></a>安装samba</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum install samba samba-server samba-common</span><br><span class="line">systemctl start smb</span><br><span class="line">systemctl <span class="built_in">enable</span> smb</span><br></pre></td></tr></table></figure>
-<h2 id="配置需求"><a href="#配置需求" class="headerlink" title="配置需求"></a>配置需求</h2><p>部门通过账号登录共享服务器并访问部门共享(如创建ui部门和运维部门)。配置参考如下：</p>
-<h3 id="以部门创建用户"><a href="#以部门创建用户" class="headerlink" title="以部门创建用户"></a>以部门创建用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">useradd ui -d /home/ui -s /usr/sbin/nologin -m</span><br><span class="line">useradd ops -d /home/ops -s /usr/sbin/nologin -m</span><br></pre></td></tr></table></figure>
-<p>-d:指定用户目录<br>-s:指定登录shell（nologin禁止登录）<br>-m:无目录创建</p>
-<h3 id="给samba用户添加密码"><a href="#给samba用户添加密码" class="headerlink" title="给samba用户添加密码"></a>给samba用户添加密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pdbedit -a ui</span><br><span class="line">pdbedit -a ops</span><br></pre></td></tr></table></figure>
-<p>pdbedit -a username：新建一个samba帐户<br>pdbedit -x username：删除一个samba帐户<br>pdbedit -L：列出samba帐户，读取passdb.tdb数据库文件<br>pdbedit -Lv：列出samba用户列表的详细信息<br>pdbedit -c “[D]” -u username：暂停该samba用户账号<br>pdbedit -c “[]” -u username：恢复该samba用户账号</p>
-<p>pdbedit -Lv详细配置如图</p>
-<p><img src="http://blog.ywmy.xyz/pdbedit-Lv.png" alt="pdbedit -Lv"></p>
-<h3 id="更改samba配置文件"><a href="#更改samba配置文件" class="headerlink" title="更改samba配置文件"></a>更改samba配置文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/samba/smb.config /etc/samba/smb.config-backup</span><br><span class="line">vim /etc/samba/smb.config</span><br></pre></td></tr></table></figure>
-<p>配置内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># See smb.conf.example for a more detailed config file or</span></span><br><span class="line"><span class="comment"># read the smb.conf manpage.</span></span><br><span class="line"><span class="comment"># Run 'testparm' to verify the config is correct after</span></span><br><span class="line"><span class="comment"># you modified it.</span></span><br><span class="line"></span><br><span class="line">[global]</span><br><span class="line">        workgroup = SAMBA</span><br><span class="line">        security = user</span><br><span class="line"></span><br><span class="line">        passdb backend = tdbsam</span><br><span class="line"></span><br><span class="line">        printing = cups</span><br><span class="line">        printcap name = cups</span><br><span class="line">        load printers = yes</span><br><span class="line">        cups options = raw</span><br><span class="line"></span><br><span class="line">[homes]</span><br><span class="line">        comment = Home Directories</span><br><span class="line">        valid users = %S, %D%w%S</span><br><span class="line">        browseable = No</span><br><span class="line">        <span class="built_in">read</span> only = No</span><br><span class="line">        inherit acls = Yes</span><br><span class="line"></span><br><span class="line">[printers]</span><br><span class="line">        comment = All Printers</span><br><span class="line">        path = /var/tmp</span><br><span class="line">        printable = Yes</span><br><span class="line">        create mask = 0600</span><br><span class="line">        browseable = No</span><br><span class="line"></span><br><span class="line">[<span class="built_in">print</span>$]</span><br><span class="line">        comment = Printer Drivers</span><br><span class="line">        path = /var/lib/samba/drivers</span><br><span class="line">        write list = @printadmin root</span><br><span class="line">        force group = @printadmin</span><br><span class="line">        create mask = 0664</span><br><span class="line">        directory mask = 0775</span><br><span class="line"></span><br><span class="line">[ui]</span><br><span class="line">        comment = ui</span><br><span class="line">        path = /home/ui</span><br><span class="line">        browseable = yes</span><br><span class="line">        write list = ui</span><br><span class="line">        writable = yes</span><br><span class="line">        <span class="built_in">read</span> only = no</span><br><span class="line">        valid users = ui</span><br><span class="line"></span><br><span class="line">[ops]</span><br><span class="line">        comment = ops</span><br><span class="line">        path = /home/ops</span><br><span class="line">        browseable = yes</span><br><span class="line">        write list = ops</span><br><span class="line">        writable = yes</span><br><span class="line">        <span class="built_in">read</span> only = no</span><br><span class="line">        valid users = ops</span><br></pre></td></tr></table></figure>
-<p>测试samba用例如下如图</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linuxtestparm.png" alt="testpram"></p>
-<h3 id="防火墙放开samba服务端口"><a href="#防火墙放开samba服务端口" class="headerlink" title="防火墙放开samba服务端口"></a>防火墙放开samba服务端口</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-service=samba</span><br><span class="line">firewall-cmd --reload</span><br></pre></td></tr></table></figure>
-<h3 id="selinux和文件夹访问权限"><a href="#selinux和文件夹访问权限" class="headerlink" title="selinux和文件夹访问权限"></a>selinux和文件夹访问权限</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">setsebool -P samba_enable_home_dirs on</span><br><span class="line"></span><br><span class="line">chown -Rf ui.ui /home/ui</span><br><span class="line">chown -Rf ops.ops /home/ops</span><br></pre></td></tr></table></figure>
-<p>查看firewall开放端口信息如图</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linuxfirewall-cmd.png" alt="firewall-cmd"></p>
-<h2 id="连接测试"><a href="#连接测试" class="headerlink" title="连接测试"></a>连接测试</h2><p>windows平台可以直接在支持中输入\192.168.31.250\ui。输入用户名和密码，进入samba目录。测试如图所示，</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linuxsamba%E6%B5%8B%E8%AF%95.PNG" alt="samba测试"><br>完成连接后，可以在资源管理器中添加映射网络驱动。将共享直接挂载到磁盘目录。</p>
-<p>linux，可以在文件管理器中输入smb://192.168.31.250/ui,选择已注册用户，输入用户名和密码，完成连接。<br>也可以通过挂载来完成文件目录的访问，操作如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir ui</span><br><span class="line">sudo mount -t cifs -o username=ui,password=<span class="string">"password"</span> //192.168.31.250/ui /home/yourname/ui</span><br></pre></td></tr></table></figure>
-<p>取消挂载</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo umount /home/yourname/ui</span><br></pre></td></tr></table></figure>
-<p>挂载后如图片</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linuxlinux%E6%8C%82%E8%BD%BD.png" alt="挂载"><br>所示。</p>
-<h2 id="特别注意"><a href="#特别注意" class="headerlink" title="特别注意"></a>特别注意</h2><p>在创建共享的过程中，防火墙和selinux这两个是一定要注意的，端口开放，和selinux的权配置会导致访问的权限问题。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">linux samba</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/21/centos-samba配置/">展开全文 >></a>
         </p>
       
 
@@ -800,11 +800,11 @@
 <p>确定virtualbox内核模块是否已加载。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status vboxdrv</span><br></pre></td></tr></table></figure>
 <p>参考图片</p>
-<p><img src="http://blog.ywmy.xyz/vboxstatus.png" alt="状态"></p>
+<p><img src="https://blog.ywmy.xyz/vboxstatus.png" alt="状态"></p>
 <h2 id="安装phpvirtualbox过程"><a href="#安装phpvirtualbox过程" class="headerlink" title="安装phpvirtualbox过程"></a>安装phpvirtualbox过程</h2><p>由于它是基于web的工具，我们需要安装apache服务器、php和一些php模块，运行命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apache2 php php-mysql libapache2-mod-php php-soap php-xml</span><br></pre></td></tr></table></figure>
 <p>然后下载virtualbox相对应的版本，如安装的virtualbox 5.2，官方<a href="https://phpvirtualbox.github.io/" target="_blank" rel="noopener">主页</a>。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/phpvirtualbox/phpvirtualbox/archive/5.2.zip</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget httpss://github.com/phpvirtualbox/phpvirtualbox/archive/5.2.zip</span><br></pre></td></tr></table></figure>
 <p>解压下载的安装包。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip 5.2.0.zip</span><br></pre></td></tr></table></figure>
 <p>解压后将解压的文件夹复制到apache web服务器的要文件夹中。</p>
@@ -822,9 +822,9 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart vboxweb-service</span><br><span class="line">sudo systemctl restart vboxdrv</span><br><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
 <h2 id="调整防火墙允许apache-web服务器连接"><a href="#调整防火墙允许apache-web服务器连接" class="headerlink" title="调整防火墙允许apache web服务器连接"></a>调整防火墙允许apache web服务器连接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw all list</span><br><span class="line">sudo ufw app info <span class="string">"Apache Full"</span></span><br><span class="line">sudo ufw reload</span><br></pre></td></tr></table></figure>
 <p>如下图所示：</p>
-<p><img src="http://blog.ywmy.xyz/ywmy/linuxvboxstatus.png" alt="状态"></p>
+<p><img src="https://blog.ywmy.xyz/ywmy/linuxvboxstatus.png" alt="状态"></p>
 <h2 id="访问phpvirtualbox的web控制台"><a href="#访问phpvirtualbox的web控制台" class="headerlink" title="访问phpvirtualbox的web控制台"></a>访问phpvirtualbox的web控制台</h2><p>现在，可以使用任意一台系统过程访问phpvirtualbox来操作virtualbox了。参考图：</p>
-<p><img src="http://blog.ywmy.xyz/phpvirtualbox.png" alt="参考图">。</p>
+<p><img src="https://blog.ywmy.xyz/phpvirtualbox.png" alt="参考图">。</p>
 
       
 
@@ -951,7 +951,7 @@
 <li>log：在/var/log/messages文件中记录日志信息，然后将数据包传递给下一个规则。</li>
 </ul>
 <h2 id="0x02：linux数据包路由原理"><a href="#0x02：linux数据包路由原理" class="headerlink" title="0x02：linux数据包路由原理"></a>0x02：linux数据包路由原理</h2><p>我们已经知道了netfilter和iptables的架构和作用，并且学习了控制netfilter行为和xtables表的结构，那么这个xtables表是怎么在内核协议栈的数据包路由中直作用的呢？</p>
-<p>风口数据包由底层的网卡nic（network interface card）接收，通过数据链路层的解包之后（去除数据链路帧头），就进入了tcp/ip协议栈（本质就是一个处理网络数据的内核驱动）和netfilter混合的数据处理流程中了。数据包的接收、处理、转发流程构成了一个有限状态微量机，经过一些列的内核处理函数、以及netfilter hook点，最后被转发、或者本次上层的应用程序消化掉。是时候看这张图了：</p>
+<p>风口数据包由底层的网卡nic（network interface card）接收，通过数据链路层的解包之后（去除数据链路帧头），就进入了tcp/ip协议栈（本质就是一个处理网络数据的内核驱动）和netfilter混合的数据处理流程中了。数据包的接收、处理、转发流程构成了一个有限状态微量机，经过一些列的内核处理函数、以及netfilter hook点，最后被转发、或者本次上层的应用程序消化掉。是时候看这张图了</p>
 
       
 
@@ -1259,19 +1259,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">windows</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">
