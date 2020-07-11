@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-03-07T06:41:48.380Z</updated>
+  <updated>2020-07-11T10:02:48.009Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>编译安装zabbix agent</title>
+    <link href="http://yoursite.com/2020/03/21/%E7%BC%96%E8%AF%91%E5%AE%89%E8%A3%85zabbix-agent/"/>
+    <id>http://yoursite.com/2020/03/21/编译安装zabbix-agent/</id>
+    <published>2020-03-21T04:02:44.000Z</published>
+    <updated>2020-07-11T10:02:48.009Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="编译安装zabbix-agent"><a href="#编译安装zabbix-agent" class="headerlink" title="编译安装zabbix-agent"></a>编译安装zabbix-agent</h2><p>前期依赖程序安装，下载zabbix相对应的软件包。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release gcc pcre-devel</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;编译安装zabbix-agent&quot;&gt;&lt;a href=&quot;#编译安装zabbix-agent&quot; class=&quot;headerlink&quot; title=&quot;编译安装zabbix-agent&quot;&gt;&lt;/a&gt;编译安装zabbix-agent&lt;/h2&gt;&lt;p&gt;前期依赖程序安装，下载zab
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>mysql ibdata 数据迁移</title>
@@ -437,29 +460,6 @@
       
       
         &lt;h2 id=&quot;使用密码认证-open-v-p-n&quot;&gt;&lt;a href=&quot;#使用密码认证-open-v-p-n&quot; class=&quot;headerlink&quot; title=&quot;使用密码认证*open-[v]-[p]-[n]&quot;&gt;&lt;/a&gt;使用密码认证*open-[v]-[p]-[n]&lt;/h2&gt;&lt;
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ubuntu change default torrent program</title>
-    <link href="http://yoursite.com/2019/04/22/ubuntu-change-default-torrent-program/"/>
-    <id>http://yoursite.com/2019/04/22/ubuntu-change-default-torrent-program/</id>
-    <published>2019-04-22T02:05:35.000Z</published>
-    <updated>2019-04-22T02:23:18.699Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="更改默认磁力链下载工具"><a href="#更改默认磁力链下载工具" class="headerlink" title="更改默认磁力链下载工具"></a>更改默认磁力链下载工具</h2><p>ubuntu 默认的连接力下载工具为Transmission。后面自己又下载了Deluge，安装后即更改了默认的磁力链下载为Deluge。后面发现，默认的Transmission工具对Tracker服务器的编辑比较方便，准备将默认的下载工具改回Transmission。</p><p>操作如下：</p><h3 id="查看默认注册的磁力链下载工具"><a href="#查看默认注册的磁力链下载工具" class="headerlink" title="查看默认注册的磁力链下载工具"></a>查看默认注册的磁力链下载工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet</span><br></pre></td></tr></table></figure><p>输出如下：</p><blockquote><p>Default application for “x-scheme-handler/magnet”: transmission-gtk.desktop<br>已注册的应用程序：<br>transmission-gtk.desktop<br>deluge.desktop<br>webtorrent-desktop.desktop<br>推荐的应用程序：<br>transmission-gtk.desktop<br>deluge.desktop<br>webtorrent-desktop.desktop  </p></blockquote><p>如上图，默认的已经更改为Transmission-gtk.desktop。</p><h3 id="更改默认的磁力链下载工具"><a href="#更改默认的磁力链下载工具" class="headerlink" title="更改默认的磁力链下载工具"></a>更改默认的磁力链下载工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet transmission-gtk.desktop</span><br></pre></td></tr></table></figure><p>如果是更改为Deluge，则更改如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet deluge.desktop</span><br></pre></td></tr></table></figure><p>同理，以上系统注册了三个应用程序，更改为其它的也是一样操作，后面的启动程序文件更改一下就可以了。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;更改默认磁力链下载工具&quot;&gt;&lt;a href=&quot;#更改默认磁力链下载工具&quot; class=&quot;headerlink&quot; title=&quot;更改默认磁力链下载工具&quot;&gt;&lt;/a&gt;更改默认磁力链下载工具&lt;/h2&gt;&lt;p&gt;ubuntu 默认的连接力下载工具为Transmission。后面自
       
     
     </summary>

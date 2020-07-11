@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>centos 7 zabbix proxy | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="CentOS 7 安装配置Zabbix Proxy最近想重新搭建一台zabbix代理，发现zabbix官方的源已经没有办法访问了，试了一下，把zabbix源换成阿里云的，结果安装的时候部分依赖的还是有问题。想想还是直接下载源码包安装省事。之前搭建的zabbix是3.4.15版本的，就下载了3.4.15的源码。安装如下操作，备忘。 安装数据库  安装mariadb  可以参考链接[centos 安装">
+  <meta name="description" content="CentOS 7 安装配置Zabbix Proxy最近想重新搭建一台zabbix代理，发现zabbix官方的源已经没有办法访问了，试了一下，把zabbix源换成阿里云的，结果安装的时候部分依赖的还是有问题。想想还是直接下载源码包安装省事。之前搭建的zabbix是3.4.15版本的，就下载了3.4.15的源码。安装如下操作，备忘。 安装数据库  安装mariadb  可以参考链接centos 安装">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="centos 7 zabbix proxy">
 <meta property="og:url" content="http://yoursite.com/2019/04/04/centos-7-zabbix-proxy/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="CentOS 7 安装配置Zabbix Proxy最近想重新搭建一台zabbix代理，发现zabbix官方的源已经没有办法访问了，试了一下，把zabbix源换成阿里云的，结果安装的时候部分依赖的还是有问题。想想还是直接下载源码包安装省事。之前搭建的zabbix是3.4.15版本的，就下载了3.4.15的源码。安装如下操作，备忘。 安装数据库  安装mariadb  可以参考链接[centos 安装">
+<meta property="og:description" content="CentOS 7 安装配置Zabbix Proxy最近想重新搭建一台zabbix代理，发现zabbix官方的源已经没有办法访问了，试了一下，把zabbix源换成阿里云的，结果安装的时候部分依赖的还是有问题。想想还是直接下载源码包安装省事。之前搭建的zabbix是3.4.15版本的，就下载了3.4.15的源码。安装如下操作，备忘。 安装数据库  安装mariadb  可以参考链接centos 安装">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-03-06T16:14:09.265Z">
+<meta property="og:updated_time" content="2020-07-11T10:09:42.693Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos 7 zabbix proxy">
-<meta name="twitter:description" content="CentOS 7 安装配置Zabbix Proxy最近想重新搭建一台zabbix代理，发现zabbix官方的源已经没有办法访问了，试了一下，把zabbix源换成阿里云的，结果安装的时候部分依赖的还是有问题。想想还是直接下载源码包安装省事。之前搭建的zabbix是3.4.15版本的，就下载了3.4.15的源码。安装如下操作，备忘。 安装数据库  安装mariadb  可以参考链接[centos 安装">
+<meta name="twitter:description" content="CentOS 7 安装配置Zabbix Proxy最近想重新搭建一台zabbix代理，发现zabbix官方的源已经没有办法访问了，试了一下，把zabbix源换成阿里云的，结果安装的时候部分依赖的还是有问题。想想还是直接下载源码包安装省事。之前搭建的zabbix是3.4.15版本的，就下载了3.4.15的源码。安装如下操作，备忘。 安装数据库  安装mariadb  可以参考链接centos 安装">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -205,14 +205,14 @@
       
         <h2 id="CentOS-7-安装配置Zabbix-Proxy"><a href="#CentOS-7-安装配置Zabbix-Proxy" class="headerlink" title="CentOS 7 安装配置Zabbix Proxy"></a>CentOS 7 安装配置Zabbix Proxy</h2><p>最近想重新搭建一台zabbix代理，发现zabbix官方的源已经没有办法访问了，试了一下，把zabbix源换成阿里云的，结果安装的时候部分依赖的还是有问题。想想还是直接下载源码包安装省事。之前搭建的zabbix是3.4.15版本的，就下载了3.4.15的源码。安装如下操作，备忘。</p>
 <h3 id="安装数据库"><a href="#安装数据库" class="headerlink" title="安装数据库"></a>安装数据库</h3><p>  安装mariadb </p>
-<p>可以参考链接[centos 安装 mariadb][1]。</p>
+<p>可以参考链接<a href="https://www.ywmy.xyz/2018/08/20/centos%E5%AE%89%E8%A3%85mariadb/" target="_blank" rel="noopener">centos 安装 mariadb</a>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install mariadb mariadb-server</span><br></pre></td></tr></table></figure>
 <ul>
 <li>启用服务</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mariadb</span><br><span class="line">systemctl status mariadb </span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb    //开机自启动</span><br></pre></td></tr></table></figure>
 <h3 id="安装zabbix守护进程"><a href="#安装zabbix守护进程" class="headerlink" title="安装zabbix守护进程"></a>安装zabbix守护进程</h3><p>1 下载源代码归档</p>
-<p>下载地址[zabbix proxy download page][2]，下载，解压源码。</p>
+<p>下载地址<a href="https://www.zabbix.com/cn/download_sources" target="_blank" rel="noopener">zabbix proxy download page</a>，下载，解压源码。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxvf zabbix-3.4.15.tar.gz</span><br></pre></td></tr></table></figure>
 <p>2 创建用户</p>
 <p>对于zabbix的守护进程，需要一个无特权的用户。如果zabbix守护进程以一个无特权的用户启动，那么它会使用该用户运行。<br>然而，如果守护进程以root用户启动，它会切换为zabbix用户账户，且这个用户必须存在。创建如下：</p>
@@ -223,11 +223,11 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u zabbix -p</span><br><span class="line">password:</span><br><span class="line">mysql &gt; use zabbix_proxy;</span><br><span class="line">mysql &gt; <span class="built_in">source</span> zabbix源码数据库文件路径/schema.sql</span><br><span class="line">mysql &gt; quit;</span><br></pre></td></tr></table></figure>
 <p>zabbix proxy只需要导入schemas.sql就可以了。</p>
 <p>5 安装信赖程序 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y curl wget gcc gcc-c++ vim curl-devel net-snmp-devel nc libxml2 ssh2libssh2 libssh2-devel</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y curl wget gcc gcc-c++ vim curl-devel net-snmp-devel nc libxml2 ssh2 libssh2 libssh2-devel</span><br></pre></td></tr></table></figure>
 <p>6 编译安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --enalbe-proxy eeenable-aent --with-mysql --enable0ipv6 --with-net-snmp --with-libcurl --with-libxml2 --prefix=/usr/<span class="built_in">local</span>/zabbix</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --<span class="built_in">enable</span>-proxy --<span class="built_in">enable</span>-agent --with-mysql --<span class="built_in">enable</span>-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --prefix=/usr/<span class="built_in">local</span>/zabbix</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
 <p>7 配置zabbix proxy配置文件 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grep -Ev <span class="string">"^$ | ^[#,;]"</span> zabbix_proxy.conf</span><br><span class="line">Server=A.B.C.D  <span class="comment">#zabbix server ip</span></span><br><span class="line">Hostname=zabbix_proxy</span><br><span class="line">LogFile=/tmp/zabbix_proxy.log</span><br><span class="line">PidFile=/tmp/zabbix_proxy.pid</span><br><span class="line">DBName=zabbix_proxy</span><br><span class="line">DBPassword=your_password</span><br><span class="line">SNMPTrapperFile=/tmp/zabbix_traps.tmp</span><br><span class="line">Timeout=4</span><br><span class="line">lOGsLOWqUERIES=3000</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">grep -Ev <span class="string">"^$ | ^[#,;]"</span> zabbix_proxy.conf</span><br><span class="line">Server=A.B.C.D  <span class="comment">#zabbix server ip</span></span><br><span class="line">Hostname=zabbix_proxy</span><br><span class="line">LogFile=/tmp/zabbix_proxy.log</span><br><span class="line">PidFile=/tmp/zabbix_proxy.pid</span><br><span class="line">DBName=zabbix_proxy</span><br><span class="line">DBPassword=your_password</span><br><span class="line">SNMPTrapperFile=/tmp/zabbix_traps.tmp</span><br><span class="line">Timeout=4</span><br><span class="line">LogSlowQueris=3000</span><br></pre></td></tr></table></figure>
 <p>8 防火墙配置</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=10050/tcp</span><br><span class="line">firelwall-cmd --permanent --add-port=10051/tcp</span><br><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
 <p>9 启动服务 </p>
@@ -454,11 +454,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -470,15 +470,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -490,11 +486,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

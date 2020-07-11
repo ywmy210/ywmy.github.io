@@ -184,6 +184,91 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ubuntu-change-default-torrent-program" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/ubuntu-change-default-torrent-program/">ubuntu change default torrent program</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/22/ubuntu-change-default-torrent-program/" class="archive-article-date">
+  	<time datetime="2019-04-22T02:05:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="更改默认磁力链下载工具"><a href="#更改默认磁力链下载工具" class="headerlink" title="更改默认磁力链下载工具"></a>更改默认磁力链下载工具</h2><p>ubuntu 默认的连接力下载工具为Transmission。后面自己又下载了Deluge，安装后即更改了默认的磁力链下载为Deluge。后面发现，默认的Transmission工具对Tracker服务器的编辑比较方便，准备将默认的下载工具改回Transmission。</p>
+<p>操作如下：</p>
+<h3 id="查看默认注册的磁力链下载工具"><a href="#查看默认注册的磁力链下载工具" class="headerlink" title="查看默认注册的磁力链下载工具"></a>查看默认注册的磁力链下载工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet</span><br></pre></td></tr></table></figure>
+<p>输出如下：</p>
+<blockquote>
+<p>Default application for “x-scheme-handler/magnet”: transmission-gtk.desktop<br>已注册的应用程序：<br>transmission-gtk.desktop<br>deluge.desktop<br>webtorrent-desktop.desktop<br>推荐的应用程序：<br>transmission-gtk.desktop<br>deluge.desktop<br>webtorrent-desktop.desktop  </p>
+</blockquote>
+<p>如上图，默认的已经更改为Transmission-gtk.desktop。</p>
+<h3 id="更改默认的磁力链下载工具"><a href="#更改默认的磁力链下载工具" class="headerlink" title="更改默认的磁力链下载工具"></a>更改默认的磁力链下载工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet transmission-gtk.desktop</span><br></pre></td></tr></table></figure>
+<p>如果是更改为Deluge，则更改如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet deluge.desktop</span><br></pre></td></tr></table></figure>
+<p>同理，以上系统注册了三个应用程序，更改为其它的也是一样操作，后面的启动程序文件更改一下就可以了。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/22/ubuntu-change-default-torrent-program/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-mysql-常用操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1277,93 +1362,9 @@
 
 
   
-    <article id="post-ssh-signing-failed" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/04/ssh-signing-failed/">ssh signing failed</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/04/ssh-signing-failed/" class="archive-article-date">
-  	<time datetime="2019-04-04T08:15:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ssh-signing-faild"><a href="#ssh-signing-faild" class="headerlink" title="ssh signing faild"></a>ssh signing faild</h1><p>前言，自己电脑重装后，把原来的ssh key文件重新拷贝到了新的系统。尝试通过KEY登录远程主机，发现报错如下：</p>
-<blockquote>
-<p>ssh: sign_and_send_pubkey: signing failed: agent refused operation  </p>
-</blockquote>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>选查看文件属性。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chown yourname:yourname ~./ssh/*</span><br></pre></td></tr></table></figure>
-<p>查看已添加的KEY</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-add -l</span><br></pre></td></tr></table></figure>
-<p>更改key读写权限</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 600 ~./ssh/*</span><br></pre></td></tr></table></figure>
-<p>好了。问题解决。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/04/ssh-signing-failed/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1459,11 +1460,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1475,15 +1476,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1495,11 +1492,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

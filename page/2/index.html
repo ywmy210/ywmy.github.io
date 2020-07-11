@@ -184,6 +184,95 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-终端录制与回放" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/07/28/终端录制与回放/">终端录制与回放</a>
+    </h1>
+  
+
+        
+        <a href="/2019/07/28/终端录制与回放/" class="archive-article-date">
+  	<time datetime="2019-07-28T14:07:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-07-28</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="linux-shell-终端的录制与回放"><a href="#linux-shell-终端的录制与回放" class="headerlink" title="linux shell 终端的录制与回放"></a>linux shell 终端的录制与回放</h2><p>最近有一个需求，在给一个H3C路由器排除问题的时候，启用debug模式，debug模式下，输出到屏幕的调试信息没有办法导出到文件，只能想办法试试看能不能从终端会话录制上实现。</p>
+<h3 id="终端的会话操作录制"><a href="#终端的会话操作录制" class="headerlink" title="终端的会话操作录制"></a>终端的会话操作录制</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">script -t 2&gt; timing.log -a output.session</span><br><span class="line"><span class="built_in">type</span> commands;</span><br><span class="line"></span><br><span class="line">......</span><br><span class="line">......</span><br><span class="line"><span class="built_in">exit</span></span><br></pre></td></tr></table></figure>
+<p>exit退出录制。</p>
+<p>两个配置文件被当做script命令的参数。这两个文件可以随便命名，这里用timing.log和output.session。其中timing.log用于存储时序信息，描述每一个指令在何时运行；output.session用于存储命令信息输出。-t选项用于将时序数据导入stderr。2&gt;用于stderr重定向到timing.log。</p>
+<h3 id="录制回放"><a href="#录制回放" class="headerlink" title="录制回放"></a>录制回放</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scriptreplay timing.log output.session</span><br></pre></td></tr></table></figure>
+<p>经验证，录制还是可以的。整个屏幕输出的内容存储在输出的output.session文件中，以文本打开，就可以直接查看之前录制回显的内容了。也可以方便后期回放温故。</p>
+<h3 id="script广播会话"><a href="#script广播会话" class="headerlink" title="script广播会话"></a>script广播会话</h3><p>以两个终端为例：</p>
+<h4 id="终端1操作"><a href="#终端1操作" class="headerlink" title="终端1操作"></a>终端1操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkfifo scriptfifo</span><br></pre></td></tr></table></figure>
+<h4 id="终端2操作"><a href="#终端2操作" class="headerlink" title="终端2操作"></a>终端2操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat  scriptfifo</span><br></pre></td></tr></table></figure>
+<h4 id="终端1操作-1"><a href="#终端1操作-1" class="headerlink" title="终端1操作"></a>终端1操作</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">script -f scritpfifo</span><br><span class="line">commands</span><br><span class="line"></span><br><span class="line">......</span><br></pre></td></tr></table></figure>
+<p>exit退出。</p>
+<p>此时，终端2上同步回显终端1上的操作内容。</p>
+<p>屏幕录制操作结束。</p>
+<p>补充一个H3C 屏幕回显debug信息的操作步骤，全程用户模式下操作：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">debugging nat packet   //例如调试nat包信息</span><br><span class="line">terminal debugging   //打开调试信息的屏幕输出开关</span><br><span class="line">display debugging    //查看启用了哪些调试信息</span><br><span class="line">termainal monitor    //开启控制台对系统信息的监视功能</span><br></pre></td></tr></table></figure>
+<p>汇总结束，通过录制终端会话，来排查设备的debugging信息。设备debugging是比较消耗资源的一件事情，输出的信息也非常多，输出了非专业人员排查问题也是比较困难的。一般这个也就用于提交设备厂商售后分析了。今日份结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/07/28/终端录制与回放/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-cisco-设备配置文件的保存和恢复" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1006,94 +1095,9 @@
 
 
   
-    <article id="post-ubuntu-change-default-torrent-program" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/22/ubuntu-change-default-torrent-program/">ubuntu change default torrent program</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/22/ubuntu-change-default-torrent-program/" class="archive-article-date">
-  	<time datetime="2019-04-22T02:05:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="更改默认磁力链下载工具"><a href="#更改默认磁力链下载工具" class="headerlink" title="更改默认磁力链下载工具"></a>更改默认磁力链下载工具</h2><p>ubuntu 默认的连接力下载工具为Transmission。后面自己又下载了Deluge，安装后即更改了默认的磁力链下载为Deluge。后面发现，默认的Transmission工具对Tracker服务器的编辑比较方便，准备将默认的下载工具改回Transmission。</p>
-<p>操作如下：</p>
-<h3 id="查看默认注册的磁力链下载工具"><a href="#查看默认注册的磁力链下载工具" class="headerlink" title="查看默认注册的磁力链下载工具"></a>查看默认注册的磁力链下载工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet</span><br></pre></td></tr></table></figure>
-<p>输出如下：</p>
-<blockquote>
-<p>Default application for “x-scheme-handler/magnet”: transmission-gtk.desktop<br>已注册的应用程序：<br>transmission-gtk.desktop<br>deluge.desktop<br>webtorrent-desktop.desktop<br>推荐的应用程序：<br>transmission-gtk.desktop<br>deluge.desktop<br>webtorrent-desktop.desktop  </p>
-</blockquote>
-<p>如上图，默认的已经更改为Transmission-gtk.desktop。</p>
-<h3 id="更改默认的磁力链下载工具"><a href="#更改默认的磁力链下载工具" class="headerlink" title="更改默认的磁力链下载工具"></a>更改默认的磁力链下载工具</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet transmission-gtk.desktop</span><br></pre></td></tr></table></figure>
-<p>如果是更改为Deluge，则更改如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gio mime x-scheme-handler/magnet deluge.desktop</span><br></pre></td></tr></table></figure>
-<p>同理，以上系统注册了三个应用程序，更改为其它的也是一样操作，后面的启动程序文件更改一下就可以了。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/22/ubuntu-change-default-torrent-program/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 
@@ -1189,11 +1193,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,15 +1209,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1225,11 +1225,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>
