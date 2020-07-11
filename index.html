@@ -205,8 +205,21 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="编译安装zabbix-agent"><a href="#编译安装zabbix-agent" class="headerlink" title="编译安装zabbix-agent"></a>编译安装zabbix-agent</h2><p>前期依赖程序安装，下载zabbix相对应的软件包。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release gcc pcre-devel</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release gcc pcre-devel net-snmp-devel libevent-devel openssl-devel libxml2 libssh2-devel</span><br></pre></td></tr></table></figure>
+<p>下载源代码归档<br>下载地址[zabbix download page][1]，下载，解压源码.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf zabbix-3.4.15.tar.gz</span><br></pre></td></tr></table></figure>
+<p>创建用户</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd --system zabbix</span><br><span class="line">useradd --system -g zabbix -d /usr/lib/zabbix -s /sbin/nologin -C <span class="string">"Zabbix Monitoring System"</span>  zabbix</span><br></pre></td></tr></table></figure>
+<p>编译安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --<span class="built_in">enable</span>-agent  --prefix=/usr/<span class="built_in">local</span>/zabbix</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+<p>更改配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cat /usr/<span class="built_in">local</span>/zabbix/etc/zabbix_agentd.conf | grep -Ev <span class="string">'^#|^$'</span></span><br><span class="line">PidFile=/tmp/zabbix_agentd.pid</span><br><span class="line">LogFile=/tmp/zabbix_agentd.log</span><br><span class="line">Server=zabbix_server_or_proxy</span><br><span class="line">ServerActive=zabbix_server_or_proxy</span><br><span class="line">Hostname=your_computer_hostname</span><br></pre></td></tr></table></figure>
+<p>添加开机启动项</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Zabbix Agent</span><br><span class="line">After=syslog.target</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">User=zabbix</span><br><span class="line">Group=zabbix</span><br><span class="line">Environment=<span class="string">"CONFFILE=/usr/local/zabbix/etc/zabbix_agentd.conf"</span></span><br><span class="line">Type=forking</span><br><span class="line">Restart=on-failure</span><br><span class="line">PIDFile=/tmp/zabbix_agentd.pid</span><br><span class="line">KillMode=control-group</span><br><span class="line">ExecStart=/usr/<span class="built_in">local</span>/zabbix/sbin/zabbix_agentd -c <span class="variable">$CONFFILE</span></span><br><span class="line">ExecStop=/bin/<span class="built_in">kill</span> -SIGTERM <span class="variable">$MAINPID</span></span><br><span class="line">RestartSec=10s</span><br><span class="line">TimeoutSec=0</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+<p>防火墙配置</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=10050/tcp</span><br><span class="line">firelwall-cmd --permanent --add-port=10051/tcp</span><br><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
+<p>最后启动服务就完事了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start zabbix-agent</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-agent</span><br></pre></td></tr></table></figure>
       
 
       
@@ -1187,15 +1200,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1203,11 +1212,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1216,10 +1233,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
