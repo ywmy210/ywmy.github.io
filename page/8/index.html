@@ -184,79 +184,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-centos7-安装-zabbix" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/08/21/centos7-安装-zabbix/">centos7 安装 zabbix</a>
-    </h1>
-  
-
-        
-        <a href="/2018/08/21/centos7-安装-zabbix/" class="archive-article-date">
-  	<time datetime="2018-08-21T14:46:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-21</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="0x01：安装"><a href="#0x01：安装" class="headerlink" title="0x01：安装"></a>0x01：安装</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">linux zabbix</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/08/21/centos7-安装-zabbix/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-centos安装mariadb" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1379,9 +1306,148 @@
 
 
   
+    <article id="post-iproute2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/05/iproute2/">iproute2</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/05/iproute2/" class="archive-article-date">
+  	<time datetime="2018-08-05T14:56:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="iproute2常用"><a href="#iproute2常用" class="headerlink" title="iproute2常用"></a>iproute2常用</h1><ul>
+<li>显示所有已连接的接口</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip link show</span><br></pre></td></tr></table></figure>
+<ul>
+<li>停用或启用接口</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip link <span class="built_in">set</span> down wlp4s0</span><br><span class="line">sudo ip link <span class="built_in">set</span> up wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为网络接口分配IPv4地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo ip addr add 192.168.31.123/24 dev wlp4s0</span><br><span class="line"><span class="comment"># 可以同时给一个接口分配多个IP(ifconfig IP别名)例如</span></span><br><span class="line">sudo ip addr add 192.168.31.124/24 dev wlp4s0</span><br><span class="line">sudo ip addr add 192.168.31.125/24 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>移除网络接口IPv4地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip addr del 192.168.31.123/24 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>显示网络接口的IPv4地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>为网络接口分配IPv6地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip -6 addr add 2003:0db5:0:f102::1/64 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<p>添加多条同上</p>
+<ul>
+<li>显示网络接口的IPv6地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip -6 addr show dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>移除网络设备的IPv6地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip -6 addr del 2003:0db5:0:f102::1/64 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<p>删除多条同上</p>
+<ul>
+<li>更改网络接口的MAC地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ip link <span class="built_in">set</span> dev wlp4s0 address 08:00:27:75:2a:67</span><br></pre></td></tr></table></figure>
+<p>适用范围，如更换计算网络或主板等情况下，需要更改MAC地址，更改请需要停用网络接口，操作参考第二条内容</p>
+<ul>
+<li>查看IP路由表</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route show</span><br></pre></td></tr></table></figure>
+<ul>
+<li>更改默认路由</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip route add defautl via 192.168.31.1 wlp4s0</span><br><span class="line">sudo ip route replace default via 192.168.31.2 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加静态路由和移除静态路由</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip route add 172.16.32.0/24 via 172.16.32.1 dev wlp4s0</span><br><span class="line">sudo ip route del 172.16.32.0/24</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看管套字统计信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ss</span><br><span class="line">ss -l</span><br></pre></td></tr></table></figure>
+<ul>
+<li>查看arp表</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip neigh</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加或删除静态arp表</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ip neigh add 192.168.1.100 lladdr 00:0c:29:c0:5a:ef dev wlp4s0</span><br><span class="line">sudo ip neigh del 192.168.1.100 dev wlp4s0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加或删除多播地址</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ip maddr add 33:44:00:00:00:01 dev wlp4s0</span><br><span class="line">sudo ip maddr del 33:44:00:00:00:01 dev wlp4s0</span><br><span class="line">ip maddr list dev wlp4s0</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/05/iproute2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/9/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/7/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="page-number current">8</span>
     </nav>
   
 
@@ -1485,19 +1551,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">linux zabbix</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1513,11 +1575,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
               </li>
             
             <div class="clearfix"></div>
