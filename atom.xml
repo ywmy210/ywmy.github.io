@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-28T15:12:56.271Z</updated>
+  <updated>2021-01-17T03:12:39.122Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,17 @@
     <link href="http://yoursite.com/2020/07/28/linux-%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/"/>
     <id>http://yoursite.com/2020/07/28/linux-时间同步/</id>
     <published>2020-07-28T15:12:56.000Z</published>
-    <updated>2020-07-28T15:12:56.271Z</updated>
+    <updated>2021-01-17T03:12:39.122Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="linux时间同步"><a href="#linux时间同步" class="headerlink" title="linux时间同步"></a>linux时间同步</h2><p><code>`</code>bash</p><h1 id="每天早上0点执行"><a href="#每天早上0点执行" class="headerlink" title="每天早上0点执行"></a>每天早上0点执行</h1><p>0 0 <em> </em> <em> /usr/sbin/ntpdate cn.pool.ntp.org &amp;&amp; /sbin/hwclock -w<br>0 0 </em> <em> </em> (/usr/sbin/ntpdate cn.pool.ntp.org ; /sbin/clock -w)</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;linux时间同步&quot;&gt;&lt;a href=&quot;#linux时间同步&quot; class=&quot;headerlink&quot; title=&quot;linux时间同步&quot;&gt;&lt;/a&gt;linux时间同步&lt;/h2&gt;&lt;p&gt;&lt;code&gt;`&lt;/code&gt;bash&lt;/p&gt;
+&lt;h1 id=&quot;每天早上0点执行&quot;&gt;&lt;
+      
     
     </summary>
     
