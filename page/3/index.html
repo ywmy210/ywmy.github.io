@@ -184,6 +184,87 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-checkpwd-sh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/22/checkpwd-sh/">checkpwd.sh</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/22/checkpwd-sh/" class="archive-article-date">
+  	<time datetime="2019-04-22T02:45:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="使用密码认证-open-v-p-n"><a href="#使用密码认证-open-v-p-n" class="headerlink" title="使用密码认证*open-[v]-[p]-[n]"></a>使用密码认证*open-[v]-[p]-[n]</h2><p>客户端通过账号密码认证。</p>
+<h3 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h3><p>服务端追加配置项如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env</span><br></pre></td></tr></table></figure>
+<p>在目录上添加配置脚本，脚本内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">###########################################################</span></span><br><span class="line"><span class="comment"># checkpsw.sh (C) 2004 Mathias Sundman &lt;mathias@openvpn.se&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This script will authenticate OpenVPN users against</span></span><br><span class="line"><span class="comment"># a plain text file. The passfile should simply contain</span></span><br><span class="line"><span class="comment"># one row per user with the username first followed by</span></span><br><span class="line"><span class="comment"># one or more space(s) or tab(s) and then the password.</span></span><br><span class="line"></span><br><span class="line">PASSFILE=<span class="string">"/etc/openvpn/pwd-file"</span></span><br><span class="line">LOG_FILE=<span class="string">"/var/log/openvpn-password.log"</span></span><br><span class="line">TIME_STAMP=`date <span class="string">"+%Y-%m-%d %T"</span>`</span><br><span class="line"></span><br><span class="line"><span class="comment">###########################################################</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -r <span class="string">"<span class="variable">$&#123;PASSFILE&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_STAMP&#125;</span>: Could not open password file \"<span class="variable">$&#123;PASSFILE&#125;</span>\" for reading."</span> &gt;&gt; <span class="variable">$&#123;LOG_FILE&#125;</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">CORRECT_PASSWORD=`awk <span class="string">'!/^;/&amp;&amp;!/^#/&amp;&amp;$1=="'</span><span class="variable">$&#123;username&#125;</span><span class="string">'"&#123;print $2;exit&#125;'</span> <span class="variable">$&#123;PASSFILE&#125;</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;CORRECT_PASSWORD&#125;</span>"</span> = <span class="string">""</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_STAMP&#125;</span>: User does not exist: username=\"<span class="variable">$&#123;username&#125;</span>\", password=\"<span class="variable">$&#123;password&#125;</span>\"."</span> &gt;&gt; <span class="variable">$&#123;LOG_FILE&#125;</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;password&#125;</span>"</span> = <span class="string">"<span class="variable">$&#123;CORRECT_PASSWORD&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_STAMP&#125;</span>: Successful authentication: username=\"<span class="variable">$&#123;username&#125;</span>\"."</span> &gt;&gt; <span class="variable">$&#123;LOG_FILE&#125;</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_STAMP&#125;</span>: Incorrect password: username=\"<span class="variable">$&#123;username&#125;</span>\", password=\"<span class="variable">$&#123;password&#125;</span>\"."</span> &gt;&gt; <span class="variable">$&#123;LOG_FILE&#125;</span></span><br><span class="line"><span class="built_in">exit</span> 1</span><br></pre></td></tr></table></figure>
+<h3 id="客户端楝"><a href="#客户端楝" class="headerlink" title="客户端楝"></a>客户端楝</h3><p>客户端配置追加一条配置信息：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth-user-pass</span><br></pre></td></tr></table></figure>
+<h3 id="证书的撤销"><a href="#证书的撤销" class="headerlink" title="证书的撤销"></a>证书的撤销</h3><p>添加多个用户后，对用户的撤销操作如下“</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ./vars</span><br><span class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /home/your_name/openvpn-ca/keys</span><br><span class="line"></span><br><span class="line">./revoke-full client1</span><br><span class="line">Using configuration from /home/yourname/openvpn-ca/openssl.cnf</span><br><span class="line">Revoking Certificate 02.</span><br><span class="line">Data Base Updated</span><br><span class="line">Using configuration from /home/yourname/openvpn-ca/openssl.cnf</span><br><span class="line">C = your country, ST = your province , L = your city, O = your org, OU = your unit, CN = client1, name = server, emailAddress = yourname@abc.com </span><br><span class="line">error 23 at 0 depth lookup: certificate revoked</span><br><span class="line">error client1.crt: verification failed</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/22/checkpwd-sh/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-ubuntu-change-default-torrent-program" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1284,87 +1365,9 @@
 
 
   
-    <article id="post-CentOS-环境变量配置错误" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/09/CentOS-环境变量配置错误/">CentOS 环境变量配置错误</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/09/CentOS-环境变量配置错误/" class="archive-article-date">
-  	<time datetime="2019-04-09T02:28:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="CentOS-环境变量配置错误"><a href="#CentOS-环境变量配置错误" class="headerlink" title="CentOS 环境变量配置错误"></a>CentOS 环境变量配置错误</h1><p>今天在配置Maven时，写入一条环境变量，在重新应用环境变量后，发现只有cd命令可以用了。其它命令都不可用。解决办法如下：</p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/sudo /bin/vim /etc/profile</span><br></pre></td></tr></table></figure>
-<p>把之前配置的环境变量删除</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/bin/sudo reboot</span><br></pre></td></tr></table></figure>
-<p>重启服务器，重启后，应用新的环境变量。命令正常使用。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/09/CentOS-环境变量配置错误/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
     </nav>
   
 
@@ -1376,14 +1379,14 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2020 Ian &amp; Doudou
+    		&copy; 2021 Ian &amp; Doudou
     	</div>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
       	</div>
         <div class="BeiAN-info">
           <img src="https://blog.ywmy.xyz/beian.png">
-          <a href="http://www.beian.miit.gov.cn/" style="color:#f72b07" target="_blank">浙ICP备18045748号</a>
+          <a href="https://www.beian.miit.gov.cn/" style="color:#f72b07" target="_blank">浙ICP备18045748号</a>
         </div>
     </div>
   </div>
@@ -1492,11 +1495,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

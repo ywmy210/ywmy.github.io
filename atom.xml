@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-07-11T11:14:09.115Z</updated>
+  <updated>2020-07-28T15:12:56.271Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,20 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux 时间同步</title>
+    <link href="http://yoursite.com/2020/07/28/linux-%E6%97%B6%E9%97%B4%E5%90%8C%E6%AD%A5/"/>
+    <id>http://yoursite.com/2020/07/28/linux-时间同步/</id>
+    <published>2020-07-28T15:12:56.000Z</published>
+    <updated>2020-07-28T15:12:56.271Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>编译安装zabbix agent</title>
@@ -437,29 +451,6 @@
       
       
         &lt;h2 id=&quot;conky-配置透明度&quot;&gt;&lt;a href=&quot;#conky-配置透明度&quot; class=&quot;headerlink&quot; title=&quot;conky 配置透明度&quot;&gt;&lt;/a&gt;conky 配置透明度&lt;/h2&gt;&lt;p&gt;配置conky后，桌面上会有一个半透明的窗口，在更换壁纸后，半透明窗
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>checkpwd.sh</title>
-    <link href="http://yoursite.com/2019/04/22/checkpwd-sh/"/>
-    <id>http://yoursite.com/2019/04/22/checkpwd-sh/</id>
-    <published>2019-04-22T02:45:05.000Z</published>
-    <updated>2019-04-22T03:17:18.766Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="使用密码认证-open-v-p-n"><a href="#使用密码认证-open-v-p-n" class="headerlink" title="使用密码认证*open-[v]-[p]-[n]"></a>使用密码认证*open-[v]-[p]-[n]</h2><p>客户端通过账号密码认证。</p><h3 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h3><p>服务端追加配置项如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth-user-pass-verify /etc/openvpn/checkpsw.sh via-env</span><br></pre></td></tr></table></figure><p>在目录上添加配置脚本，脚本内容如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line"><span class="comment">###########################################################</span></span><br><span class="line"><span class="comment"># checkpsw.sh (C) 2004 Mathias Sundman &lt;mathias@openvpn.se&gt;</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># This script will authenticate OpenVPN users against</span></span><br><span class="line"><span class="comment"># a plain text file. The passfile should simply contain</span></span><br><span class="line"><span class="comment"># one row per user with the username first followed by</span></span><br><span class="line"><span class="comment"># one or more space(s) or tab(s) and then the password.</span></span><br><span class="line"></span><br><span class="line">PASSFILE=<span class="string">"/etc/openvpn/pwd-file"</span></span><br><span class="line">LOG_FILE=<span class="string">"/var/log/openvpn-password.log"</span></span><br><span class="line">TIME_STAMP=`date <span class="string">"+%Y-%m-%d %T"</span>`</span><br><span class="line"></span><br><span class="line"><span class="comment">###########################################################</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ ! -r <span class="string">"<span class="variable">$&#123;PASSFILE&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_STAMP&#125;</span>: Could not open password file \"<span class="variable">$&#123;PASSFILE&#125;</span>\" for reading."</span> &gt;&gt; <span class="variable">$&#123;LOG_FILE&#125;</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line">CORRECT_PASSWORD=`awk <span class="string">'!/^;/&amp;&amp;!/^#/&amp;&amp;$1=="'</span><span class="variable">$&#123;username&#125;</span><span class="string">'"&#123;print $2;exit&#125;'</span> <span class="variable">$&#123;PASSFILE&#125;</span>`</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;CORRECT_PASSWORD&#125;</span>"</span> = <span class="string">""</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_STAMP&#125;</span>: User does not exist: username=\"<span class="variable">$&#123;username&#125;</span>\", password=\"<span class="variable">$&#123;password&#125;</span>\"."</span> &gt;&gt; <span class="variable">$&#123;LOG_FILE&#125;</span></span><br><span class="line">  <span class="built_in">exit</span> 1</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$&#123;password&#125;</span>"</span> = <span class="string">"<span class="variable">$&#123;CORRECT_PASSWORD&#125;</span>"</span> ]; <span class="keyword">then</span></span><br><span class="line">  <span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_STAMP&#125;</span>: Successful authentication: username=\"<span class="variable">$&#123;username&#125;</span>\"."</span> &gt;&gt; <span class="variable">$&#123;LOG_FILE&#125;</span></span><br><span class="line">  <span class="built_in">exit</span> 0</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">"<span class="variable">$&#123;TIME_STAMP&#125;</span>: Incorrect password: username=\"<span class="variable">$&#123;username&#125;</span>\", password=\"<span class="variable">$&#123;password&#125;</span>\"."</span> &gt;&gt; <span class="variable">$&#123;LOG_FILE&#125;</span></span><br><span class="line"><span class="built_in">exit</span> 1</span><br></pre></td></tr></table></figure><h3 id="客户端楝"><a href="#客户端楝" class="headerlink" title="客户端楝"></a>客户端楝</h3><p>客户端配置追加一条配置信息：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth-user-pass</span><br></pre></td></tr></table></figure><h3 id="证书的撤销"><a href="#证书的撤销" class="headerlink" title="证书的撤销"></a>证书的撤销</h3><p>添加多个用户后，对用户的撤销操作如下“</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ./vars</span><br><span class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /home/your_name/openvpn-ca/keys</span><br><span class="line"></span><br><span class="line">./revoke-full client1</span><br><span class="line">Using configuration from /home/yourname/openvpn-ca/openssl.cnf</span><br><span class="line">Revoking Certificate 02.</span><br><span class="line">Data Base Updated</span><br><span class="line">Using configuration from /home/yourname/openvpn-ca/openssl.cnf</span><br><span class="line">C = your country, ST = your province , L = your city, O = your org, OU = your unit, CN = client1, name = server, emailAddress = yourname@abc.com </span><br><span class="line">error 23 at 0 depth lookup: certificate revoked</span><br><span class="line">error client1.crt: verification failed</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;使用密码认证-open-v-p-n&quot;&gt;&lt;a href=&quot;#使用密码认证-open-v-p-n&quot; class=&quot;headerlink&quot; title=&quot;使用密码认证*open-[v]-[p]-[n]&quot;&gt;&lt;/a&gt;使用密码认证*open-[v]-[p]-[n]&lt;/h2&gt;&lt;
       
     
     </summary>
