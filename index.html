@@ -204,9 +204,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="linux时间同步"><a href="#linux时间同步" class="headerlink" title="linux时间同步"></a>linux时间同步</h2><p><code>`</code>bash</p>
-<h1 id="每天早上0点执行"><a href="#每天早上0点执行" class="headerlink" title="每天早上0点执行"></a>每天早上0点执行</h1><p>0 0 <em> </em> <em> /usr/sbin/ntpdate cn.pool.ntp.org &amp;&amp; /sbin/hwclock -w<br>0 0 </em> <em> </em> (/usr/sbin/ntpdate cn.pool.ntp.org ; /sbin/clock -w)</p>
-
+        <h2 id="linux时间同步"><a href="#linux时间同步" class="headerlink" title="linux时间同步"></a>linux时间同步</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 每天早上0点执行</span></span><br><span class="line">0 0 * * * /usr/sbin/ntpdate cn.pool.ntp.org &amp;&amp; /sbin/hwclock -w</span><br><span class="line">0 0 * * * (/usr/sbin/ntpdate cn.pool.ntp.org ; /sbin/clock -w)</span><br></pre></td></tr></table></figure>
       
 
       
