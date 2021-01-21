@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>编译安装zabbix agent | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="编译安装zabbix-agent前期依赖程序安装，下载zabbix相对应的软件包。 12yum updateyum install epel-release gcc pcre-devel net-snmp-devel libevent-devel openssl-devel libxml2 libssh2-devel 下载源代码归档下载地址[zabbix download page][1]，下载，">
+  <meta name="description" content="编译安装zabbix-agent前期依赖程序安装，下载zabbix相对应的软件包。 12yum updateyum install epel-release gcc pcre-devel net-snmp-devel libevent-devel openssl-devel libxml2 libssh2-devel 下载源代码归档下载地址zabbix download page，下载，解压源码.">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="编译安装zabbix agent">
 <meta property="og:url" content="http://yoursite.com/2020/03/21/编译安装zabbix-agent/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="编译安装zabbix-agent前期依赖程序安装，下载zabbix相对应的软件包。 12yum updateyum install epel-release gcc pcre-devel net-snmp-devel libevent-devel openssl-devel libxml2 libssh2-devel 下载源代码归档下载地址[zabbix download page][1]，下载，">
+<meta property="og:description" content="编译安装zabbix-agent前期依赖程序安装，下载zabbix相对应的软件包。 12yum updateyum install epel-release gcc pcre-devel net-snmp-devel libevent-devel openssl-devel libxml2 libssh2-devel 下载源代码归档下载地址zabbix download page，下载，解压源码.">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2020-07-11T11:14:09.115Z">
+<meta property="og:updated_time" content="2021-01-21T14:53:35.550Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="编译安装zabbix agent">
-<meta name="twitter:description" content="编译安装zabbix-agent前期依赖程序安装，下载zabbix相对应的软件包。 12yum updateyum install epel-release gcc pcre-devel net-snmp-devel libevent-devel openssl-devel libxml2 libssh2-devel 下载源代码归档下载地址[zabbix download page][1]，下载，">
+<meta name="twitter:description" content="编译安装zabbix-agent前期依赖程序安装，下载zabbix相对应的软件包。 12yum updateyum install epel-release gcc pcre-devel net-snmp-devel libevent-devel openssl-devel libxml2 libssh2-devel 下载源代码归档下载地址zabbix download page，下载，解压源码.">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -205,7 +205,7 @@
       
         <h2 id="编译安装zabbix-agent"><a href="#编译安装zabbix-agent" class="headerlink" title="编译安装zabbix-agent"></a>编译安装zabbix-agent</h2><p>前期依赖程序安装，下载zabbix相对应的软件包。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release gcc pcre-devel net-snmp-devel libevent-devel openssl-devel libxml2 libssh2-devel</span><br></pre></td></tr></table></figure>
-<p>下载源代码归档<br>下载地址[zabbix download page][1]，下载，解压源码.</p>
+<p>下载源代码归档<br>下载地址<a href="https://www.zabbix.com/download_agents" target="_blank" rel="noopener">zabbix download page</a>，下载，解压源码.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf zabbix-3.4.15.tar.gz</span><br></pre></td></tr></table></figure>
 <p>创建用户</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd --system zabbix</span><br><span class="line">useradd --system -g zabbix -d /usr/lib/zabbix -s /sbin/nologin -C <span class="string">"Zabbix Monitoring System"</span>  zabbix</span><br></pre></td></tr></table></figure>
@@ -219,6 +219,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=10050/tcp</span><br><span class="line">firelwall-cmd --permanent --add-port=10051/tcp</span><br><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
 <p>最后启动服务就完事了</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start zabbix-agent</span><br><span class="line">systemctl <span class="built_in">enable</span> zabbix-agent</span><br></pre></td></tr></table></figure>
+
       
 
       
