@@ -6,19 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: linux dict | 豆豆家</title>
+  <title>华为设备安全登录示例 | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="网络和美食">
+  <meta name="description" content="设备登录安全配置示例登录设备的两种方式，本地console口和远程stelnet。 本地console口登录安全配置示例通过Console口（也称串口）登录交换机是登录设备的最基本方式，也是其他登录方式（如Telnet和STelnet）的基础。一旦攻击者接触到Console口后，交换机将暴露给攻击者，交换机的安全无法保障。通过配置Console口用户界面的认证方式、用户的认证信息和用户级别，可以保">
 <meta name="keywords" content="network">
-<meta property="og:type" content="website">
-<meta property="og:title" content="豆豆家">
-<meta property="og:url" content="http://yoursite.com/tags/linux-dict/index.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="华为设备安全登录示例">
+<meta property="og:url" content="http://yoursite.com/2021/01/29/华为设备安全登录示例/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="网络和美食">
+<meta property="og:description" content="设备登录安全配置示例登录设备的两种方式，本地console口和远程stelnet。 本地console口登录安全配置示例通过Console口（也称串口）登录交换机是登录设备的最基本方式，也是其他登录方式（如Telnet和STelnet）的基础。一旦攻击者接触到Console口后，交换机将暴露给攻击者，交换机的安全无法保障。通过配置Console口用户界面的认证方式、用户的认证信息和用户级别，可以保">
 <meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2021-01-29T03:00:56.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="豆豆家">
-<meta name="twitter:description" content="网络和美食">
+<meta name="twitter:title" content="华为设备安全登录示例">
+<meta name="twitter:description" content="设备登录安全配置示例登录设备的两种方式，本地console口和远程stelnet。 本地console口登录安全配置示例通过Console口（也称串口）登录交换机是登录设备的最基本方式，也是其他登录方式（如Telnet和STelnet）的基础。一旦攻击者接触到Console口后，交换机将暴露给攻击者，交换机的安全无法保障。通过配置Console口用户界面的认证方式、用户的认证信息和用户级别，可以保">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
   
@@ -182,60 +183,203 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-华为设备安全登录示例" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2018" class="archive-year">2018</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2018/11/25/ubuntu-18-04有道词典安装/" class="archive-article-date">
-  	<time datetime="2018-11-24T16:40:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-11-25</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2018/11/25/ubuntu-18-04有道词典安装/">ubuntu 18.04有道词典安装</a>
+    <h1 class="article-title" itemprop="name">
+      华为设备安全登录示例
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2021/01/29/华为设备安全登录示例/" class="archive-article-date">
+  	<time datetime="2021-01-29T02:03:56.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="设备登录安全配置示例"><a href="#设备登录安全配置示例" class="headerlink" title="设备登录安全配置示例"></a>设备登录安全配置示例</h2><p>登录设备的两种方式，本地console口和远程stelnet。</p>
+<h3 id="本地console口登录安全配置示例"><a href="#本地console口登录安全配置示例" class="headerlink" title="本地console口登录安全配置示例"></a>本地console口登录安全配置示例</h3><p>通过Console口（也称串口）登录交换机是登录设备的最基本方式，也是其他登录方式（如Telnet和STelnet）的基础。一旦攻击者接触到Console口后，交换机将暴露给攻击者，交换机的安全无法保障。通过配置Console口用户界面的认证方式、用户的认证信息和用户级别，可以保证Console登录的安全性。</p>
+<pre><code>**部署注意事项**
+
+- 如果用户通过console口登录设备再进行console用户界面配置，所配置的属性需要退出当前登录，再次通过console口登录后才会生效。
+- 为充分保证设备安全，首次登录设备时，必须按照要求修改缺省密码，并定期修改密码。
+</code></pre><h4 id="步骤1"><a href="#步骤1" class="headerlink" title="步骤1"></a>步骤1</h4><pre><code>配置console用户界面的认证方式。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;HUAWEI&gt; system-view</span><br><span class="line">[HUAWEI] user-interface console 0 //进入Console用户界面</span><br><span class="line">[HUAWEI-console0] authentication-mode aaa //配置认证方式为AAA，默认情况下即AAA</span><br><span class="line">[HUAWEI-console0] quit</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="步骤2"><a href="#步骤2" class="headerlink" title="步骤2"></a>步骤2</h4><pre><code>配置console用户认证信息及用户级别
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">    [HUAWEI] aaa</span><br><span class="line">    [HUAWEI-aaa] <span class="built_in">local</span>-user abcd password irreversible-cipher abcd@123 //创建本地用户abcd，登录密码为abcd@123</span><br><span class="line">    [HUAWEI-aaa] <span class="built_in">local</span>-user abcd privilege level 15 //配置本地用户abcd的级别为15</span><br><span class="line">    Warning: This operation may ffcì online users, are you sure to change the user privilege level ?[Y/N]y</span><br><span class="line">    [HUAWEI-aaa] <span class="built_in">local</span>-user abcd service-type terminal //配置本地用户abcd的接入类型为终端用</span><br><span class="line">户，即Console用户</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="步骤3"><a href="#步骤3" class="headerlink" title="步骤3"></a>步骤3</h4><pre><code>通过console口连接设备，提示用户输入用户名密码，实现console口登录。（配置示例用户为abcd，密码为abcd@123）
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Login authentication</span><br><span class="line">Username:abcd</span><br><span class="line">Password: </span><br><span class="line">&lt;HUAWEI&gt;</span><br></pre></td></tr></table></figure>
+
+**结束**
+</code></pre><h3 id="远程stelnet登录安全配置示例"><a href="#远程stelnet登录安全配置示例" class="headerlink" title="远程stelnet登录安全配置示例"></a>远程stelnet登录安全配置示例</h3><p>Telnet和STelnet是远程登录交换机两种方式，Telnet协议存在安全风险，而STelnet则基于SSH协议，实现了在不安全网络上提供安全的远程登录，提供安全信息保障和强大认证功能，保护交换机不受IP欺骗等击。</p>
+<pre><code>**部署注意事项**
+
+- 登录设备前，需要确保终端PC和设备之间路由可达。
+- 使用STelnet V1协议存在安全风险，建议使用STelnet V2登录设备。
+- 配置STelnet登录交换机前，用户终端应该已安装SSH服务器登录软件。如putty。
+- 通过STelnet登录设备需配置用户界面支持的协议是SSH，必须设置VTY用户界面认证方式为AAA认证。
+- 为充分保证设备安全，请定期修改密码。
+</code></pre><h4 id="step-1"><a href="#step-1" class="headerlink" title="step 1"></a>step 1</h4><pre><code>配置VTY用户界面的支持协议类型、认证方式和用户级别。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[HUAWEI] user-interface vty 0 4</span><br><span class="line">[HUAWEI-ui-vty0-4] authentication-mode aaa //配置VTY用户界面认证方式为AAA认证</span><br><span class="line">[HUAWEI-ui-vty0-4] protocol inbound ssh //配置VTY用户界面支持的协议为SSH，默认情况下即SSH</span><br><span class="line">[HUAWEI-ui-vty0-4] user privilege level 15 //配置VTY用户界面的级别为15</span><br><span class="line">[HUAWEI-ui-vty0-4] quit</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="step-2"><a href="#step-2" class="headerlink" title="step 2"></a>step 2</h4><pre><code>开启STelnet服务器功能并创建SSH用户。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[HUAWEI] stelnet server <span class="built_in">enable</span> //使能设备的STelnet服务器功能</span><br><span class="line">[HUAWEI] ssh user abcd //创建SSH用户abcd</span><br><span class="line">[HUAWEI] ssh user abcd service-type stelnet //配置SSH用户的服务方式为STelnet</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="step-3"><a href="#step-3" class="headerlink" title="step 3"></a>step 3</h4><pre><code>配置SSH用户认证方式为Password。使用Password认证方式时，需要在AAA视图下配置与SSH用户同名的本地用户。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">[HUAWEI] ssh user abcd authentication-type password //配置SSH用户认证方式为password</span><br><span class="line">[HUAWEI] aaa</span><br><span class="line">[HUAWEI-aaa] <span class="built_in">local</span>-user abcd password irreversible-cipher abcd@123 //创建与SSH用户同名的本地用户和对应的登录密码</span><br><span class="line">[HUAWEI-aaa] <span class="built_in">local</span>-user abcd privilege level 15 //配置本地用户级别为15</span><br><span class="line">[HUAWEI-aaa] <span class="built_in">local</span>-user abcd service-type ssh //配置本地用户的服务方式为SSH</span><br><span class="line">[HUAWEI-aaa] quit</span><br></pre></td></tr></table></figure>
+
+# 配置SSH用户认证方式为RSA、DSA或ECC。（以ECC认证方式为例，RSA、DSA认证方式步骤类似）使用RSA、DSA或ECC认证方式时，需要在SSH服务器上输入SSH客户端生成的密钥中的公钥部分。这样当客户端登录服务器时，自己的私钥如果与输入的公钥匹配成功，则认证通过。客户端公钥的生成请参见相应的SSH客户端软件的帮助文档。
+[HUAWEI] ssh user abcd authentication-type ecc //配置SSH用户认证方式为ecc
+[HUAWEI] ecc peer-public-key key01 encoding-type pem //配置ECC公共密钥编码格式，并进入ECC公共密钥视图,key01为公共密钥名称Enter &quot;ECC public key&quot; view, return system view with &quot;peer-public-key end&quot;.
+[HUAWEI-ecc-public-key] public-key-code begin //进入公共密钥编辑视图Enter &quot;ECC key code&quot; view, return last view with &quot;public-key-code end&quot;.
+[HUAWEI-dsa-key-code] 308188 //拷贝复制客户端的公钥，为十六进制字符串
+[HUAWEI-dsa-key-code] 028180
+[HUAWEI-dsa-key-code] B21315DD 859AD7E4 A6D0D9B8 121F23F0 006BB1BB
+[HUAWEI-dsa-key-code] A443130F 7CDB95D8 4A4AE2F3 D94A73D7 36FDFD5F
+[HUAWEI-dsa-key-code] 411B8B73 3CDD494A 236F35AB 9BBFE19A 7336150B
+[HUAWEI-dsa-key-code] 40A35DE6 2C6A82D7 5C5F2C36 67FBC275 2DF7E4C5
+[HUAWEI-dsa-key-code] 1987178B 8C364D57 DD0AA24A A0C2F87F 474C7931
+[HUAWEI-ecc-key-code] A9F7E8FE E0D5A1B5 092F7112 660BD153 7FB7D5B2
+[HUAWEI-ecc-key-code] 171896FB 1FFC38CD
+[HUAWEI-ecc-key-code] 0203
+[HUAWEI-ecc-key-code] 010001
+[HUAWEI-ecc-key-code] public-key-code end //退回到公共密钥视图
+[HUAWEI-ecc-public-key] peer-public-key end //退回到系统视图
+[HUAWEI] ssh user abcd assign ecc-key key01 //为用户abcd分配一个已经存在的公钥key01
+</code></pre><h4 id="step-4"><a href="#step-4" class="headerlink" title="step 4"></a>step 4</h4><pre><code>在服务器端生成本地密钥对。
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;HUAWEI&gt; system-view</span><br><span class="line">[HUAWEI] ecc <span class="built_in">local</span>-key-pair create</span><br><span class="line">Info: The key name will be: HUAWEI_Host_ECC.</span><br><span class="line">Info: The key modulus can be any one of the following: 256, 384, 521.</span><br><span class="line">Info: If the key modulus is greater than 512, it may take a few minutes.</span><br><span class="line">Please input the modulus [default=521]:521</span><br><span class="line">Info: Generating keys..........</span><br><span class="line">Info: Succeeded <span class="keyword">in</span> creating the ECC host keys.</span><br></pre></td></tr></table></figure>
+</code></pre><h4 id="step-5"><a href="#step-5" class="headerlink" title="step 5"></a>step 5</h4><pre><code>PC端用Password认证方式连接SSH服务器。通过PuTTY软件登录设备，输入设备的IP地址，选择协议类型为SSH。
+```bash
+login as: abcd
+Sent username &quot;abcd&quot;
+abcd@10.10.10.20&apos;s password:
+Info: The max number of VTY users is 8, and the number of current VTY users on line is 5. The current login time is 2018-12-22 09:35:28+00:00.
+&lt;HUAWEI&gt;
+
+**结束**
+</code></pre>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux dict</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2021/01/29/华为设备安全登录示例/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
   
   
-    </div></section>
+    <a href="/2021/01/21/linux-nc-命令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">linux nc 命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+  
+  
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -263,9 +407,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
