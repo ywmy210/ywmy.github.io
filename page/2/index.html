@@ -184,79 +184,6 @@
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-centos-7-ssr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/07/centos-7-ssr/">centos 7 ssr</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/07/centos-7-ssr/" class="archive-article-date">
-  	<time datetime="2019-10-07T09:44:52.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/07/centos-7-ssr/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-How-to-Deploy-Google-BBRon-CentOS-7" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1152,6 +1079,113 @@
 
 
   
+    <article id="post-lanproxy-配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/25/lanproxy-配置/">lanproxy 配置</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/25/lanproxy-配置/" class="archive-article-date">
+  	<time datetime="2019-04-25T06:29:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-25</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ubuntu-18-04搭建lanproxy服务"><a href="#ubuntu-18-04搭建lanproxy服务" class="headerlink" title="ubuntu 18.04搭建lanproxy服务"></a>ubuntu 18.04搭建lanproxy服务</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>lanproxy是一个内网穿透工具。支持TCP流量转发。用于替代第三方付费工具，比如anydesk、teamview、花生壳等。这些第三方工具在个人使用上存在各种各样的限制，有的时候还非常不便，所以为了顺手，就有了自己搭内网穿透的想法。在内网穿透有选择上，选择了lanproxy。工具主页<a href="https://github.com/ffay/lanproxy" target="_blank" rel="noopener">请戳</a>。</p>
+<h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
+<li>一台公网服务器(运行lanproxy server)</li>
+<li>一台内网PC或服务器(lanproxy client测试)</li>
+</ol>
+<h3 id="服务端配置"><a href="#服务端配置" class="headerlink" title="服务端配置"></a>服务端配置</h3><p>lanproxy 后端信赖JAVA。需要选安装jdk，再安装lanproxy。操作如下：</p>
+<h4 id="java安装"><a href="#java安装" class="headerlink" title="java安装"></a>java安装</h4><p>操作系统环境如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">uname -a</span><br><span class="line">Linux vultr_vps_server 4.15.0-47-generic <span class="comment">#50-Ubuntu SMP Wed Mar 13 10:44:52 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux</span></span><br></pre></td></tr></table></figure>
+<p>直接通过apt源安装openjdk。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
+<p>查看JAVA环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">openjdk version <span class="string">"11.0.2"</span> 2019-01-15</span><br><span class="line">OpenJDK Runtime Environment (build 11.0.2+9-Ubuntu-3ubuntu118.04.3)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 11.0.2+9-Ubuntu-3ubuntu118.04.3, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
+<h4 id="lanproxy-server安装"><a href="#lanproxy-server安装" class="headerlink" title="lanproxy server安装"></a>lanproxy server安装</h4><p>下载地址<a href="https://seafile.io2c.com/d/2e81550ebdbd416c933f/" target="_blank" rel="noopener">请戳</a>，选择server的程序包。下载后上传到服务器上。</p>
+<p>解压缩程序包至需要安装的目录，比如本文示例/usr/bin/proxy-server/</p>
+<p>配置文件在程序目录下的conf目录下，名称：config.properties。编辑配置文件，更改登录的用户名和密码。</p>
+<p>配置文件如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">server.bind=0.0.0.0</span><br><span class="line"></span><br><span class="line"><span class="comment">#与代理客户端通信端口</span></span><br><span class="line">server.port=4900</span><br><span class="line"></span><br><span class="line"><span class="comment">#ssl相关配置</span></span><br><span class="line">server.ssl.enable=<span class="literal">true</span></span><br><span class="line">server.ssl.bind=0.0.0.0</span><br><span class="line">server.ssl.port=4993</span><br><span class="line">server.ssl.jksPath=test.jks</span><br><span class="line">server.ssl.keyStorePassword=123456</span><br><span class="line">server.ssl.keyManagerPassword=123456</span><br><span class="line"></span><br><span class="line"><span class="comment">#这个配置可以忽略</span></span><br><span class="line">server.ssl.needsClientAuth=<span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#WEB在线配置管理相关信息</span></span><br><span class="line">config.server.bind=0.0.0.0</span><br><span class="line">config.server.port=8090</span><br><span class="line">config.admin.username=admin</span><br><span class="line">config.admin.password=admin</span><br></pre></td></tr></table></figure>
+<h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><p>在程序目录下的bin目录有服务启动脚本，添加执行权限后，直接运行启动服务。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/proxy-server/bin</span><br><span class="line">chmod +x startup.sh</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
+<p>对于8090端口和ip访问的方式，可以配置nginx代理，使用域名访问。</p>
+<h4 id="登录配置"><a href="#登录配置" class="headerlink" title="登录配置"></a>登录配置</h4><p>浏览器打开<a href="http://ip:8090" target="_blank" rel="noopener">http://ip:8090</a>，使用配置文件中的用户名和密码登录，至此服务端配置结束。</p>
+<h4 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h4><p>在客户端管理页添加客户端，添加后会自动生成客户端密钥。</p>
+<p>添加代理端口配置，添加的名称和公网端口，公网端口在防火墙上放通。配置后端IP和端口即为要转发的内网服务器IP和端口。</p>
+<h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>CentOS和Windows各测试一个，CentOS使用JAV客户端，Windows直接使用发布包程序。</p>
+<h4 id="CentOS客户端配置"><a href="#CentOS客户端配置" class="headerlink" title="CentOS客户端配置"></a>CentOS客户端配置</h4><p>安装JAVA环境：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install java-11-openjdk.x86_64 java-11-openjdk-devel.x86_64</span><br></pre></td></tr></table></figure>
+<p>下载程序包，解压至安装目录，如/usr/share/proxy-java-client/</p>
+<p>同样，配置文件在安装目录下的conf目录中。配置文件名称：config.properties。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">client.key=客户端KEY</span><br><span class="line">ssl.enable=<span class="literal">false</span></span><br><span class="line">ssl.jksPath=test.jks</span><br><span class="line">ssl.keyStorePassword=123456</span><br><span class="line"></span><br><span class="line">server.host=服务端IP</span><br><span class="line"></span><br><span class="line"><span class="comment">#default ssl port is 4993</span></span><br><span class="line">server.port=4900</span><br></pre></td></tr></table></figure>
+<p>配置文件结束，返回到上级目录下的bin文件。运行startup.sh。客户端程序启动，在服务端的管理页面中，可以看到已添加的设备在线了。</p>
+<h4 id="Windows客户端的配置"><a href="#Windows客户端的配置" class="headerlink" title="Windows客户端的配置"></a>Windows客户端的配置</h4><p>下载客户端程序，解压后直接放到C盘目录下，连接操作如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># mac 64位</span></span><br><span class="line">nohup ./client_darwin_amd64 -s SERVER_IP -p SERVER_PORT -k CLIENT_KEY &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># linux 64位</span></span><br><span class="line">nohup ./client_linux_amd64 -s SERVER_IP -p SERVER_PORT -k CLIENT_KEY &amp;</span><br><span class="line"></span><br><span class="line"><span class="comment"># windows 64 位</span></span><br><span class="line">./client_windows_amd64.exe -s SERVER_IP -p SERVER_PORT -k CLIENT_KEY</span><br></pre></td></tr></table></figure>
+<p>查看服务端管理页面，可以看到添加的代理服务器上线。</p>
+<p>配置结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/25/lanproxy-配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1258,11 +1292,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
+                <a href="javascript:void(0)" class="js-tag color3">windows</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">windows</a>
+                <a href="javascript:void(0)" class="js-tag color2">windows usb</a>
               </li>
              
               <li class="article-tag-list-item">
