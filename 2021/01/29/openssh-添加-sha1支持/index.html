@@ -8,19 +8,19 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>openssh 添加 sha1支持 | 豆豆家</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="openssh 添加 sha1支持ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下： &amp;gt; Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-">
+  <meta name="description" content="openssh 添加 sha1支持ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：  Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-grou">
 <meta name="keywords" content="linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openssh 添加 sha1支持">
 <meta property="og:url" content="http://yoursite.com/2021/01/29/openssh-添加-sha1支持/index.html">
 <meta property="og:site_name" content="豆豆家">
-<meta property="og:description" content="openssh 添加 sha1支持ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下： &amp;gt; Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-">
+<meta property="og:description" content="openssh 添加 sha1支持ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：  Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-grou">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://blog.ywmy.xyz/network/diffine-hellman.jpg">
-<meta property="og:updated_time" content="2021-01-29T09:19:05.857Z">
+<meta property="og:updated_time" content="2021-01-29T09:21:36.288Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openssh 添加 sha1支持">
-<meta name="twitter:description" content="openssh 添加 sha1支持ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下： &amp;gt; Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-">
+<meta name="twitter:description" content="openssh 添加 sha1支持ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：  Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-grou">
 <meta name="twitter:image" content="https://blog.ywmy.xyz/network/diffine-hellman.jpg">
   
     <link rel="alternative" href="/atom.xml" title="豆豆家" type="application/atom+xml">
@@ -206,8 +206,10 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="openssh-添加-sha1支持"><a href="#openssh-添加-sha1支持" class="headerlink" title="openssh 添加 sha1支持"></a>openssh 添加 sha1支持</h2><p>ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：</p>
-<pre><code>&gt; Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1
-</code></pre><p><img src="https://blog.ywmy.xyz/network/diffine-hellman.jpg" alt="diffine-hellman"></p>
+<blockquote>
+<p>Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1</p>
+</blockquote>
+<p><img src="https://blog.ywmy.xyz/network/diffine-hellman.jpg" alt="diffine-hellman"></p>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
 <li>方法一</li>
 </ul>

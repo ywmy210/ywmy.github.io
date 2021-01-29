@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-29T09:19:05.857Z</updated>
+  <updated>2021-01-29T09:21:36.288Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="http://yoursite.com/2021/01/29/openssh-%E6%B7%BB%E5%8A%A0-sha1%E6%94%AF%E6%8C%81/"/>
     <id>http://yoursite.com/2021/01/29/openssh-添加-sha1支持/</id>
     <published>2021-01-29T06:32:45.000Z</published>
-    <updated>2021-01-29T09:19:05.857Z</updated>
+    <updated>2021-01-29T09:21:36.288Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="openssh-添加-sha1支持"><a href="#openssh-添加-sha1支持" class="headerlink" title="openssh 添加 sha1支持"></a>openssh 添加 sha1支持</h2><p>ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：</p><pre><code>&gt; Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1</code></pre><p><img src="https://blog.ywmy.xyz/network/diffine-hellman.jpg" alt="diffine-hellman"></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul><li>方法一</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@legacyhost</span><br></pre></td></tr></table></figure><p>如上面示例设备提供的加密算法为diffie-hellman-group14-sha1<br>连接时实际使用：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 admin@10.10.100.253</span><br></pre></td></tr></table></figure><ul><li>方法二</li></ul><p>编辑家目录下的配置文件(~/.ssh/config)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host somehost.example.org</span><br><span class="line">    KexAlgorithms +diffie-hellman-group1-sha1</span><br></pre></td></tr></table></figure><p>追加到config文件后面，即可。</p><p>其它的算法支持，参考openssh官方<a href="http://www.openssh.com/legacy.html" target="_blank" rel="noopener">文档</a>。</p>]]></content>
+    <content type="html"><![CDATA[<h2 id="openssh-添加-sha1支持"><a href="#openssh-添加-sha1支持" class="headerlink" title="openssh 添加 sha1支持"></a>openssh 添加 sha1支持</h2><p>ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：</p><blockquote><p>Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1</p></blockquote><p><img src="https://blog.ywmy.xyz/network/diffine-hellman.jpg" alt="diffine-hellman"></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul><li>方法一</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@legacyhost</span><br></pre></td></tr></table></figure><p>如上面示例设备提供的加密算法为diffie-hellman-group14-sha1<br>连接时实际使用：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 admin@10.10.100.253</span><br></pre></td></tr></table></figure><ul><li>方法二</li></ul><p>编辑家目录下的配置文件(~/.ssh/config)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host somehost.example.org</span><br><span class="line">    KexAlgorithms +diffie-hellman-group1-sha1</span><br></pre></td></tr></table></figure><p>追加到config文件后面，即可。</p><p>其它的算法支持，参考openssh官方<a href="http://www.openssh.com/legacy.html" target="_blank" rel="noopener">文档</a>。</p>]]></content>
     
     <summary type="html">
     
