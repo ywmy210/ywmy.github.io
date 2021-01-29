@@ -184,6 +184,94 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-openssh-添加-sha1支持" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/01/29/openssh-添加-sha1支持/">openssh 添加 sha1支持</a>
+    </h1>
+  
+
+        
+        <a href="/2021/01/29/openssh-添加-sha1支持/" class="archive-article-date">
+  	<time datetime="2021-01-29T06:32:45.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-29</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="openssh-添加-sha1支持"><a href="#openssh-添加-sha1支持" class="headerlink" title="openssh 添加 sha1支持"></a>openssh 添加 sha1支持</h2><p>ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：<br>    &gt; Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1</p>
+<p><img src="https://blog.ywmy.xyz/network/diffine-hellman.jpg" alt="diffine-hellman"></p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
+<li>方法一</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@legacyhost</span><br></pre></td></tr></table></figure>
+<p>如上面示例设备提供的加密算法为diffie-hellman-group14-sha1<br>连接时实际使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 admin@10.10.100.253</span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法二</li>
+</ul>
+<p>编辑家目录下的配置文件(~/.ssh/config)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host somehost.example.org</span><br><span class="line">	KexAlgorithms +diffie-hellman-group1-sha1</span><br></pre></td></tr></table></figure>
+<p>追加到config文件后面，即可。</p>
+<p>其它的算法支持，参考openssh官方<a href="http://www.openssh.com/legacy.html" target="_blank" rel="noopener">文档</a>。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/01/29/openssh-添加-sha1支持/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-华为设备安全登录示例" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -990,89 +1078,6 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 
 
   
-    <article id="post-linux-nc-command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/11/30/linux-nc-command/">linux nc command</a>
-    </h1>
-  
-
-        
-        <a href="/2019/11/30/linux-nc-command/" class="archive-article-date">
-  	<time datetime="2019-11-30T08:25:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="linux-nc-命令"><a href="#linux-nc-命令" class="headerlink" title="linux nc 命令"></a>linux nc 命令</h2><h3 id="netcat-安装"><a href="#netcat-安装" class="headerlink" title="netcat 安装"></a>netcat 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu 18.04</span></span><br><span class="line">sudo apt install netcat</span><br><span class="line"><span class="comment"># centos  7</span></span><br><span class="line">sudo yum install nc</span><br></pre></td></tr></table></figure>
-<h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><ul>
-<li>端口扫描</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -z -v  10.10.0.103 3389  <span class="comment">#查看主机3389端口是否启用</span></span><br></pre></td></tr></table></figure>
-<p>回显示例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3389端口</span></span><br><span class="line">Connection to 10.10.0.103 3389 port [tcp/*] succeeded!</span><br><span class="line"><span class="comment"># 80端口</span></span><br><span class="line">Connection to 10.10.0.103 80 port [tcp/http] succeeded!</span><br><span class="line"><span class="comment"># 22端口</span></span><br><span class="line">Connection to 10.10.0.100 22 port [tcp/ssh] succeeded!</span><br></pre></td></tr></table></figure>
-<p>无回显，则端口无法通信。默认TCP，-u参数可调整为UDP模式。</p>
-<p>端口扫描案例：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line"></span><br><span class="line">           $ nc -zv host.example.com 20-30</span><br><span class="line">           Connection to host.example.com 22 port [tcp/ssh] succeeded!</span><br><span class="line">           Connection to host.example.com 25 port [tcp/smtp] succeeded!</span><br><span class="line"></span><br><span class="line">     The port range was specified to <span class="built_in">limit</span> the search to ports 20 - 30, and is</span><br><span class="line">     scanned by increasing order.</span><br><span class="line"></span><br><span class="line">     You can also specify a list of ports to scan, <span class="keyword">for</span> example:</span><br><span class="line"></span><br><span class="line">           $ nc -zv host.example.com 80 20 22</span><br><span class="line">           nc: connect to host.example.com 80 (tcp) failed: Connection refused</span><br><span class="line">           nc: connect to host.example.com 20 (tcp) failed: Connection refused</span><br><span class="line">           Connection to host.example.com port [tcp/ssh] succeeded!</span><br><span class="line"></span><br><span class="line">     The ports are scanned by the order you given.</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/11/30/linux-nc-command/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1167,15 +1172,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1203,11 +1208,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

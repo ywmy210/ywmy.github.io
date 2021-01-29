@@ -184,6 +184,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux-nc-command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/11/30/linux-nc-command/">linux nc command</a>
+    </h1>
+  
+
+        
+        <a href="/2019/11/30/linux-nc-command/" class="archive-article-date">
+  	<time datetime="2019-11-30T08:25:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="linux-nc-命令"><a href="#linux-nc-命令" class="headerlink" title="linux nc 命令"></a>linux nc 命令</h2><h3 id="netcat-安装"><a href="#netcat-安装" class="headerlink" title="netcat 安装"></a>netcat 安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu 18.04</span></span><br><span class="line">sudo apt install netcat</span><br><span class="line"><span class="comment"># centos  7</span></span><br><span class="line">sudo yum install nc</span><br></pre></td></tr></table></figure>
+<h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><ul>
+<li>端口扫描</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nc -z -v  10.10.0.103 3389  <span class="comment">#查看主机3389端口是否启用</span></span><br></pre></td></tr></table></figure>
+<p>回显示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3389端口</span></span><br><span class="line">Connection to 10.10.0.103 3389 port [tcp/*] succeeded!</span><br><span class="line"><span class="comment"># 80端口</span></span><br><span class="line">Connection to 10.10.0.103 80 port [tcp/http] succeeded!</span><br><span class="line"><span class="comment"># 22端口</span></span><br><span class="line">Connection to 10.10.0.100 22 port [tcp/ssh] succeeded!</span><br></pre></td></tr></table></figure>
+<p>无回显，则端口无法通信。默认TCP，-u参数可调整为UDP模式。</p>
+<p>端口扫描案例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">For example:</span><br><span class="line"></span><br><span class="line">           $ nc -zv host.example.com 20-30</span><br><span class="line">           Connection to host.example.com 22 port [tcp/ssh] succeeded!</span><br><span class="line">           Connection to host.example.com 25 port [tcp/smtp] succeeded!</span><br><span class="line"></span><br><span class="line">     The port range was specified to <span class="built_in">limit</span> the search to ports 20 - 30, and is</span><br><span class="line">     scanned by increasing order.</span><br><span class="line"></span><br><span class="line">     You can also specify a list of ports to scan, <span class="keyword">for</span> example:</span><br><span class="line"></span><br><span class="line">           $ nc -zv host.example.com 80 20 22</span><br><span class="line">           nc: connect to host.example.com 80 (tcp) failed: Connection refused</span><br><span class="line">           nc: connect to host.example.com 20 (tcp) failed: Connection refused</span><br><span class="line">           Connection to host.example.com port [tcp/ssh] succeeded!</span><br><span class="line"></span><br><span class="line">     The ports are scanned by the order you given.</span><br></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/11/30/linux-nc-command/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-centos-7-ssr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1064,94 +1147,6 @@
 
 
   
-    <article id="post-windows-10-homebasic-rdp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/06/windows-10-homebasic-rdp/">windows 10 homebasic rdp</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/06/windows-10-homebasic-rdp/" class="archive-article-date">
-  	<time datetime="2019-05-06T14:44:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="windows-10-家庭版开启远程"><a href="#windows-10-家庭版开启远程" class="headerlink" title="windows 10 家庭版开启远程"></a>windows 10 家庭版开启远程</h2><p>windows 家庭版的系统默认没有远程功能，大多数的预装正版的系统中无法使用windows自带的远程服务。</p>
-<p>虽然通过绝大多数的第三方程序，都可以实现远程，但是自己之前有搭内网穿透，所以，也想把这个用上。于是又找到一个工具:rdpwrap。下载<a href="https://github.com/stascorp/rdpwrap/releases" target="_blank" rel="noopener">请戳</a>。</p>
-<p>选择最新zip包下载。</p>
-<h3 id="安装rdpwrap"><a href="#安装rdpwrap" class="headerlink" title="安装rdpwrap"></a>安装rdpwrap</h3><ol>
-<li>解压下载的包装包</li>
-<li>安装程序</li>
-</ol>
-<p>依次运行RDPWinst，install，RDPconf文件。</p>
-<p>RDPconf文件为检测文件，运行后，会发现服务无法启用，会出现Listener state和支持的问题。</p>
-<p>解决办法：使用命令重装安装，比如把文件夹复制到C盘目录下，CMD以管理员身份运行</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> c:\RDPWrap</span><br><span class="line">c:\RDPWrap&gt;RDPWInst.exe -r</span><br></pre></td></tr></table></figure>
-<p>安装后，再次打开RDPConf.exe</p>
-<p>检测已经通过。安装结束。解决方法来自issues。</p>
-<h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>使用内网其它电脑上的RDP工具，远程测试。如果使用的是microsoft账号登录的，则直接使用microsoft认证的信息登录即可。不用使用PIN码登录。</p>
-<p>配置结束。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/06/windows-10-homebasic-rdp/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1246,15 +1241,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1282,11 +1277,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

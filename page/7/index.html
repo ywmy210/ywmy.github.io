@@ -184,6 +184,133 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-LVM命令相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/12/10/LVM命令相关/">LVM命令相关</a>
+    </h1>
+  
+
+        
+        <a href="/2018/12/10/LVM命令相关/" class="archive-article-date">
+  	<time datetime="2018-12-10T12:59:32.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-12-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="LVM常用命令："><a href="#LVM常用命令：" class="headerlink" title="LVM常用命令："></a>LVM常用命令：</h1><table>
+<thead>
+<tr>
+<th>功能/命令</th>
+<th>物理卷管理</th>
+<th>卷管理</th>
+<th>逻辑卷管理</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>扫描</td>
+<td>pvscan</td>
+<td>vgscan</td>
+<td>lvscan</td>
+</tr>
+<tr>
+<td>建立</td>
+<td>pvcreate</td>
+<td>vgcreate</td>
+<td>lvcreate</td>
+</tr>
+<tr>
+<td>显示</td>
+<td>pvdisplay</td>
+<td>vgdisplay</td>
+<td>lvdisplay</td>
+</tr>
+<tr>
+<td>删除</td>
+<td>pvremove</td>
+<td>vgremove</td>
+<td>lvremove</td>
+</tr>
+<tr>
+<td>扩展</td>
+<td></td>
+<td>vgextend</td>
+<td>lvextend</td>
+</tr>
+<tr>
+<td>缩小</td>
+<td></td>
+<td>vgreduce</td>
+<td>lvreduce</td>
+</tr>
+</tbody>
+</table>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><ul>
+<li>物理卷Physical volume (PV)：可以在上面建立卷组的媒介，可以是硬盘分区，也可以是硬盘本身或者回环文件（loopback file）。物理卷包括一个特殊的header，其余部分被切割为一块块物理区域（physical extents）。</li>
+<li>卷组Volume group (VG)：将一组物理卷收集为一个管理单元。</li>
+<li>逻辑卷Logical volume (LV)：虚拟分区，由物理区域（physical extents）组成。</li>
+<li>物理区域Physical extent (PE)：硬盘可供指派给逻辑卷的最小单位（通常为4MB）。</li>
+</ul>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/12/10/LVM命令相关/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-LVM-磁盘扩容" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1155,73 +1282,6 @@
 
 
   
-    <article id="post-centos默认防火墙使用指南" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/20/centos默认防火墙使用指南/">centos默认防火墙使用指南</a>
-    </h1>
-  
-
-        
-        <a href="/2018/10/20/centos默认防火墙使用指南/" class="archive-article-date">
-  	<time datetime="2018-10-20T12:26:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-10-20</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="firewall-cmd操作小记"><a href="#firewall-cmd操作小记" class="headerlink" title="firewall-cmd操作小记"></a>firewall-cmd操作小记</h1><h2 id="0x01-基本操作"><a href="#0x01-基本操作" class="headerlink" title="0x01:基本操作"></a>0x01:基本操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start firewalld //启动</span></span><br><span class="line"><span class="comment"># systemctl status firewalld //状态</span></span><br><span class="line"><span class="comment"># systemctl disable firewalld //禁用</span></span><br><span class="line"><span class="comment"># systemctl stop firewalld //停止</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x02-systemctl"><a href="#0x02-systemctl" class="headerlink" title="0x02:systemctl"></a>0x02:systemctl</h2><p>systemctl是centos中必不可少的管理工具，它具备service和chkconfig的所有功能</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># systemctl start firewalld.service //启动某个服务</span></span><br><span class="line"><span class="comment"># systemctl stop firewalld.service //关闭某个服务</span></span><br><span class="line"><span class="comment"># systemctl restart firewalld.service //重启某个服务</span></span><br><span class="line"><span class="comment"># systemctl status firewalld.service //显示某个服务的状态</span></span><br><span class="line"><span class="comment"># systemctl enable firewalld.service //开机时随机自启动</span></span><br><span class="line"><span class="comment"># systemctl disable firewalld.service //禁止开机启动</span></span><br><span class="line"><span class="comment"># systemctl is-enabled firewalld.service //查看是否开机启动</span></span><br><span class="line"><span class="comment"># systemctl list-unit-files|grep enabled //查看已经启动的服列表</span></span><br><span class="line"><span class="comment"># systemctl --failed //查看启动失败的服务列表</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x03-基本配置firewall-cmd"><a href="#0x03-基本配置firewall-cmd" class="headerlink" title="0x03:基本配置firewall-cmd"></a>0x03:基本配置firewall-cmd</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># firewall-cmd --version //查看防火墙版本</span></span><br><span class="line"><span class="comment"># firewall-cmd --help //查看命令操作帮助</span></span><br><span class="line"><span class="comment"># firewall-cmd --state //显示当前状态</span></span><br><span class="line"><span class="comment"># firewall-cmd --zone=public --list-ports //查看所有打开运行的端口</span></span><br><span class="line"><span class="comment"># firewall-cmd --reload //不重启立即加载</span></span><br><span class="line"><span class="comment"># firewall-cmd --list-all-zones | more //查看区域信息情况</span></span><br><span class="line"><span class="comment"># firewall-cmd --get-zone-of-interface=eth0 //查看指定接口所属区域</span></span><br><span class="line"><span class="comment"># firewall-cmd --panic-on //拒绝所有包</span></span><br><span class="line"><span class="comment"># firewall-cmd --panic-off //取消拒绝状态</span></span><br><span class="line"><span class="comment"># firewall-cmd --query-panic //查看是否拒绝</span></span><br></pre></td></tr></table></figure>
-<h2 id="0x04-基本举例"><a href="#0x04-基本举例" class="headerlink" title="0x04:基本举例"></a>0x04:基本举例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># firewall-cmd --zone=public --add-port=3306/tcp --permanent //添加3306端口（--permanent）永久生效，没有此参数重启后失效</span></span><br><span class="line"><span class="comment"># firewall-cmd --reload //不重启立即加载</span></span><br><span class="line"><span class="comment"># firewall-cmd --zone= public --query-port=3306/tcp //查看加入3306端口状态</span></span><br><span class="line"><span class="comment"># firewall-cmd --zone= public --remove-port=3306/tcp --permanent //删除刚刚加入的防火墙规则3306</span></span><br><span class="line"><span class="comment"># firewall-cmd --permanent --remove-icmp-block=echo-request //删除禁ping</span></span><br><span class="line"><span class="comment"># firewall-cmd --permanent --add-icmp-block=echo-request //开启禁ping</span></span><br><span class="line"><span class="comment"># firewall-cmd --get-service //查看已被允许的信息</span></span><br></pre></td></tr></table></figure>
-<h2 id="具体管理规则"><a href="#具体管理规则" class="headerlink" title="具体管理规则"></a>具体管理规则</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># firewall-cmd --help</span></span><br><span class="line">firewall-cmd高级功能可以到官方资料库了解更多信息。</span><br><span class="line">https://fedoraproject.org/wiki/FirewallD/zh-cn</span><br><span class="line">https://access.redhat.com/documentation/zh-CN/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html</span><br><span class="line">https://www.ibm.com/developerworks/cn/linux/1507_caojh/</span><br></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/10/20/centos默认防火墙使用指南/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/6/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/page/8/">8</a><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/8/">Next &raquo;</a>
@@ -1316,15 +1376,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1352,11 +1412,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

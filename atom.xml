@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2021-01-29T03:00:56.260Z</updated>
+  <updated>2021-01-29T09:09:29.227Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>openssh 添加 sha1支持</title>
+    <link href="http://yoursite.com/2021/01/29/openssh-%E6%B7%BB%E5%8A%A0-sha1%E6%94%AF%E6%8C%81/"/>
+    <id>http://yoursite.com/2021/01/29/openssh-添加-sha1支持/</id>
+    <published>2021-01-29T06:32:45.000Z</published>
+    <updated>2021-01-29T09:09:29.227Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="openssh-添加-sha1支持"><a href="#openssh-添加-sha1支持" class="headerlink" title="openssh 添加 sha1支持"></a>openssh 添加 sha1支持</h2><p>ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：<br>    &gt; Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1</p><p><img src="https://blog.ywmy.xyz/network/diffine-hellman.jpg" alt="diffine-hellman"></p><h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul><li>方法一</li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@legacyhost</span><br></pre></td></tr></table></figure><p>如上面示例设备提供的加密算法为diffie-hellman-group14-sha1<br>连接时实际使用：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 admin@10.10.100.253</span><br></pre></td></tr></table></figure><ul><li>方法二</li></ul><p>编辑家目录下的配置文件(~/.ssh/config)</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Host somehost.example.org</span><br><span class="line">KexAlgorithms +diffie-hellman-group1-sha1</span><br></pre></td></tr></table></figure><p>追加到config文件后面，即可。</p><p>其它的算法支持，参考openssh官方<a href="http://www.openssh.com/legacy.html" target="_blank" rel="noopener">文档</a>。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;openssh-添加-sha1支持&quot;&gt;&lt;a href=&quot;#openssh-添加-sha1支持&quot; class=&quot;headerlink&quot; title=&quot;openssh 添加 sha1支持&quot;&gt;&lt;/a&gt;openssh 添加 sha1支持&lt;/h2&gt;&lt;p&gt;ubuntu 20.
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://yoursite.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>华为设备安全登录示例</title>
@@ -444,29 +467,6 @@
     
     
       <category term="network" scheme="http://yoursite.com/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>windows 10 homebasic rdp</title>
-    <link href="http://yoursite.com/2019/05/06/windows-10-homebasic-rdp/"/>
-    <id>http://yoursite.com/2019/05/06/windows-10-homebasic-rdp/</id>
-    <published>2019-05-06T14:44:07.000Z</published>
-    <updated>2019-05-06T15:13:22.816Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="windows-10-家庭版开启远程"><a href="#windows-10-家庭版开启远程" class="headerlink" title="windows 10 家庭版开启远程"></a>windows 10 家庭版开启远程</h2><p>windows 家庭版的系统默认没有远程功能，大多数的预装正版的系统中无法使用windows自带的远程服务。</p><p>虽然通过绝大多数的第三方程序，都可以实现远程，但是自己之前有搭内网穿透，所以，也想把这个用上。于是又找到一个工具:rdpwrap。下载<a href="https://github.com/stascorp/rdpwrap/releases" target="_blank" rel="noopener">请戳</a>。</p><p>选择最新zip包下载。</p><h3 id="安装rdpwrap"><a href="#安装rdpwrap" class="headerlink" title="安装rdpwrap"></a>安装rdpwrap</h3><ol><li>解压下载的包装包</li><li>安装程序</li></ol><p>依次运行RDPWinst，install，RDPconf文件。</p><p>RDPconf文件为检测文件，运行后，会发现服务无法启用，会出现Listener state和支持的问题。</p><p>解决办法：使用命令重装安装，比如把文件夹复制到C盘目录下，CMD以管理员身份运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> c:\RDPWrap</span><br><span class="line">c:\RDPWrap&gt;RDPWInst.exe -r</span><br></pre></td></tr></table></figure><p>安装后，再次打开RDPConf.exe</p><p>检测已经通过。安装结束。解决方法来自issues。</p><h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>使用内网其它电脑上的RDP工具，远程测试。如果使用的是microsoft账号登录的，则直接使用microsoft认证的信息登录即可。不用使用PIN码登录。</p><p>配置结束。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;windows-10-家庭版开启远程&quot;&gt;&lt;a href=&quot;#windows-10-家庭版开启远程&quot; class=&quot;headerlink&quot; title=&quot;windows 10 家庭版开启远程&quot;&gt;&lt;/a&gt;windows 10 家庭版开启远程&lt;/h2&gt;&lt;p&gt;window
-      
-    
-    </summary>
-    
-    
-      <category term="windows" scheme="http://yoursite.com/tags/windows/"/>
     
   </entry>
   

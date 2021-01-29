@@ -184,6 +184,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-windows常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/05/windows常用命令/">windows常用命令</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/05/windows常用命令/" class="archive-article-date">
+  	<time datetime="2018-08-05T15:37:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="记录如下："><a href="#记录如下：" class="headerlink" title="记录如下："></a>记录如下：</h1><h2 id="net相关"><a href="#net相关" class="headerlink" title="net相关"></a>net相关</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">netsh wlan show drive  //查看网卡是否具备网络承载能力</span><br><span class="line"></span><br><span class="line">netsh wlan <span class="built_in">set</span> hostednetwork mode=allow ssid=XXX key=XXX //开启网络承载功能</span><br><span class="line"></span><br><span class="line">netsh wlan start hostednetwork //启用配置</span><br><span class="line"></span><br><span class="line">netsh wlan stop hostednetwork //停用配置</span><br><span class="line"></span><br><span class="line">netsh wlan show hostednetwork //查看已经创建的承载网络</span><br><span class="line"></span><br><span class="line">netsh winsock reset //重置sock</span><br><span class="line"></span><br><span class="line">net user administrator /active:yes //启用administrator</span><br><span class="line"></span><br><span class="line">net start //查看已经雇用的windows服务</span><br><span class="line"></span><br><span class="line">net start dnscache //开启dns缓存</span><br><span class="line"></span><br><span class="line">net stop dnscache //关闭dns缓存</span><br><span class="line"></span><br><span class="line">net share //查看本地共享</span><br><span class="line"></span><br><span class="line">net share share=c:\share //将Ｃ下的share文件夹设置为共享，共享名为share</span><br><span class="line"></span><br><span class="line">net share share /delete //删除共享名为share的共享</span><br><span class="line"></span><br><span class="line">net use //查看已经登录的网络连接</span><br><span class="line"></span><br><span class="line">net use q: \\192.168.11.10\abc abc_passwd /user:abc   //将192.168.11.10下的abc文件映射到本地Q盘，共享使用abc账号／密码登录。</span><br><span class="line"></span><br><span class="line">net use q: /delete /yes     //删除本机Q盘的映射</span><br><span class="line"></span><br><span class="line">net use */y /d //消除全部已经登录的网络会话</span><br><span class="line"></span><br><span class="line">net view //查看本地共享列表</span><br><span class="line"></span><br><span class="line">net user //查看本机用户</span><br><span class="line"></span><br><span class="line">net user administrator //查看本地帐号administrator的信息</span><br><span class="line"></span><br><span class="line">net user dev 123456 /add //添加用户为dev密码为123456</span><br><span class="line"></span><br><span class="line">net user dev localgroup administrator dev /add //将本地用户dev加入administrator组中</span><br><span class="line"></span><br><span class="line">net user dev /del //删除本地用户dev</span><br></pre></td></tr></table></figure>
+<h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasklist //查看进程</span><br><span class="line"></span><br><span class="line">taskkill /im notepad.exe //结束名为notepad.exe的进程</span><br><span class="line"></span><br><span class="line">taskkill /pid 1230 /pid 1241 /pid 1252 /t //结束pid为1230、1241、1253的进程及由它启动的子进程</span><br><span class="line"></span><br><span class="line">taskkill /f /im cmd.exe /t //强制结束名为cmd.exe的进程以及由它启动的子进程</span><br></pre></td></tr></table></figure>
+<h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -a //查看计算机开了哪些端口</span><br><span class="line"></span><br><span class="line">route <span class="built_in">print</span> //查看路由表</span><br></pre></td></tr></table></figure>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">taskchd.msc //计划任务</span><br><span class="line"></span><br><span class="line">gpedit.msc //组策略</span><br><span class="line"></span><br><span class="line">msconfig //启动项</span><br><span class="line"></span><br><span class="line">diskmgmt.msc //磁盘管理</span><br><span class="line"></span><br><span class="line">tracert IP //路由跟踪</span><br><span class="line"></span><br><span class="line">eventvwr.msc  //windows 日志</span><br><span class="line"></span><br><span class="line">diskpart //磁盘管理</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">windows</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/05/windows常用命令/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-linux常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -685,15 +761,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">code</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">network</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -721,11 +797,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>
