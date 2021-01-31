@@ -184,6 +184,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-ttf-mscorefonts-installer-ubuntu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/04/01/ttf-mscorefonts-installer-ubuntu/">ttf-mscorefonts-installer ubuntu</a>
+    </h1>
+  
+
+        
+        <a href="/2019/04/01/ttf-mscorefonts-installer-ubuntu/" class="archive-article-date">
+  	<time datetime="2019-04-01T07:03:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ttf-mscorefonts-installer下载额外数据失败"><a href="#ttf-mscorefonts-installer下载额外数据失败" class="headerlink" title="ttf-mscorefonts-installer下载额外数据失败"></a>ttf-mscorefonts-installer下载额外数据失败</h1><p>完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：</p>
+<blockquote>
+<p>下载额外数据文件失败<br>以下软件包要求安装后下载附加数据，但其数据无法下载或无法处理。<br>ttf-mscorefonts-installer<br>稍后系统将自动重试下载，您也可以手工立即重试。执行此命令需要有活动的网络连接。  </p>
+</blockquote>
+<p>点击重试后，实际后台自动既即出。输入密码后无响应了。实际上没有执行操作。虽不影响使用，不过挺经常跳出来挺麻烦。</p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
+<li>下载文件</li>
+</ul>
+<p>查看目录/usr/share/package-data-downloads/目录下，有一个文件ttf-mscorefonts-installer，查看内容如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">Url: http://downloads.sourceforge.net/corefonts/andale32.exe</span><br><span class="line">Sha256: 0524fe42951adc3a7eb870e32f0920313c71f170c859b5f770d82b4ee111e970</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/arial32.exe</span><br><span class="line">Sha256: 85297a4d146e9c87ac6f74822734bdee5f4b2a722d7eaa584b7f2cbf76f478f6</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/arialb32.exe</span><br><span class="line">Sha256: a425f0ffb6a1a5ede5b979ed6177f4f4f4fdef6ae7c302a7b7720ef332fec0a8</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/comic32.exe</span><br><span class="line">Sha256: 9c6df3feefde26d4e41d4a4fe5db2a89f9123a772594d7f59afd062625cd204e</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/courie32.exe</span><br><span class="line">Sha256: bb511d861655dde879ae552eb86b134d6fae67cb58502e6ff73ec5d9151f3384</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/georgi32.exe</span><br><span class="line">Sha256: 2c2c7dcda6606ea5cf08918fb7cd3f3359e9e84338dc690013f20cd42e930301</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/impact32.exe</span><br><span class="line">Sha256: 6061ef3b7401d9642f5dfdb5f2b376aa14663f6275e60a51207ad4facf2fccfb</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/times32.exe</span><br><span class="line">Sha256: db56595ec6ef5d3de5c24994f001f03b2a13e37cee27bc25c58f6f43e8f807ab</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/trebuc32.exe</span><br><span class="line">Sha256: 5a690d9bb8510be1b8b4fe49f1f2319651fe51bbe54775ddddd8ef0bd07fdac9</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/verdan32.exe</span><br><span class="line">Sha256: c1cb61255e363166794e47664e2f21af8e3a26cb6346eb8d2ae2fa85dd5aad96</span><br><span class="line"></span><br><span class="line">Url: http://downloads.sourceforge.net/corefonts/webdin32.exe</span><br><span class="line">Sha256: 64595b5abc1080fba8610c5c34fab5863408e806aafe84653ca8575bed17d75a</span><br><span class="line"></span><br><span class="line">Script: /usr/lib/msttcorefonts/update-ms-fonts</span><br><span class="line">Should-Download: msttcorefonts/accepted-mscorefonts-eula</span><br></pre></td></tr></table></figure>
+<p>可以看到11个文件的下载链接。直接下载字体文件，放在一个文件夹里。如/home/yourname/ttf-mscorefonts/目录下。</p>
+<ul>
+<li>手动更新</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg-reconfigure ttf-mscorefonts-installer</span><br></pre></td></tr></table></figure>
+<p>指定下载字体的目录，确认安装配置。</p>
+<ul>
+<li>删除下载失败的通知信息</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/package-data-downloads/</span><br><span class="line">sudo rm ttf-mscorefonts-installer</span><br><span class="line"><span class="built_in">cd</span> /var/lib/update-notifier/package-data-downloads/</span><br><span class="line">sudo rm ttf-mscorefonts-installer</span><br><span class="line"><span class="built_in">cd</span> /var/lib/update-notifier/user.d/</span><br><span class="line">sudo rm data-downloads-failed</span><br></pre></td></tr></table></figure>
+<p>至此更新结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/04/01/ttf-mscorefonts-installer-ubuntu/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-windows-脚本更改密码-远程端口-开放防火墙端口" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1065,101 +1159,6 @@
 
 
   
-    <article id="post-ubuntu-18-04-开启TCP-BBR拥塞控制" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/03/15/ubuntu-18-04-开启TCP-BBR拥塞控制/">ubuntu 18.04 开启TCP BBR拥塞控制</a>
-    </h1>
-  
-
-        
-        <a href="/2019/03/15/ubuntu-18-04-开启TCP-BBR拥塞控制/" class="archive-article-date">
-  	<time datetime="2019-03-15T14:27:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-03-15</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="启用TCP-BBR拥塞算法"><a href="#启用TCP-BBR拥塞算法" class="headerlink" title="启用TCP BBR拥塞算法"></a>启用TCP BBR拥塞算法</h1><p>TCP BBR是Google给出的一个改良版的tcp拥塞控制算法，其目的在于最大化利用网络链路。TCP BBR要解决的问题：</p>
-<ul>
-<li>充分利用存在一定丢包率直的网络qlkh；</li>
-<li>降低网络延迟</li>
-</ul>
-<h2 id="查看系统内核"><a href="#查看系统内核" class="headerlink" title="查看系统内核"></a>查看系统内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">4.15.0-46-generic</span><br></pre></td></tr></table></figure>
-<h2 id="修改系统变量"><a href="#修改系统变量" class="headerlink" title="修改系统变量"></a>修改系统变量</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">"net.core.default_qdisc=fq"</span> &gt;&gt; /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">"net.ipv4.tcp_congestion_control=bbr"</span> &gt;&gt; /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
-<h2 id="保存生效，配置内核"><a href="#保存生效，配置内核" class="headerlink" title="保存生效，配置内核"></a>保存生效，配置内核</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl -p</span><br></pre></td></tr></table></figure>
-<p>输出结果：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.neigh.default.base_reachable_time_ms = 600000</span><br><span class="line">net.ipv4.neigh.default.macast_solicit = 20</span><br><span class="line">net.ipv4.neigh.default.retrans_time_ms = 250</span><br><span class="line">net.core.default_qdisc = fq</span><br><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure>
-<h2 id="查看内核是否开启BBR"><a href="#查看内核是否开启BBR" class="headerlink" title="查看内核是否开启BBR"></a>查看内核是否开启BBR</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_available_congestion_control = reno cubic bbr</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sysctl net.ipv4.tcp_congestion_control</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net.ipv4.tcp_congestion_control = bbr</span><br></pre></td></tr></table></figure>
-<h2 id="验证BBR是否已经启动"><a href="#验证BBR是否已经启动" class="headerlink" title="验证BBR是否已经启动"></a>验证BBR是否已经启动</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp_bbr         20480 2</span><br></pre></td></tr></table></figure>
-<p>BBR已启用，BBR协议在linux4.9内核开始集成</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/03/15/ubuntu-18-04-开启TCP-BBR拥塞控制/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
@@ -1258,11 +1257,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1274,15 +1273,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1290,11 +1285,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

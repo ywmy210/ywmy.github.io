@@ -184,6 +184,114 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux初步服务配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/08/06/linux初步服务配置/">linux初步服务配置</a>
+    </h1>
+  
+
+        
+        <a href="/2018/08/06/linux初步服务配置/" class="archive-article-date">
+  	<time datetime="2018-08-06T14:17:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-08-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="配置操作小记"><a href="#配置操作小记" class="headerlink" title="配置操作小记"></a>配置操作小记</h1><h2 id="作业环境"><a href="#作业环境" class="headerlink" title="作业环境"></a>作业环境</h2><ul>
+<li>系统版本：ubuntu 16.04</li>
+<li>服务器环境：vps</li>
+</ul>
+<h3 id="step-one-登录"><a href="#step-one-登录" class="headerlink" title="step one -登录"></a>step one -登录</h3><p>通过vps面板提供的服务器相关信息，从终端使用ssh登录到vps：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh root@your_server_ip</span><br></pre></td></tr></table></figure>
+<p>更改vps初始密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<p>确认更变的密码</p>
+<h3 id="step-two-创建新的用户"><a href="#step-two-创建新的用户" class="headerlink" title="step two -创建新的用户"></a>step two -创建新的用户</h3><p>登录root帐号后，我们需要创建一个新用户，如以ian为例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">adduser -d /home/ian -s /bin/bash -m ian</span><br></pre></td></tr></table></figure>
+<p>上述命令中，参数d指定用户的主目录，参数s指定用户的shell，参数m表示如果该目录不存在，则创建该目录。</p>
+<p>更新用户密码：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd</span><br></pre></td></tr></table></figure>
+<h3 id="step-three-用户sudo权限"><a href="#step-three-用户sudo权限" class="headerlink" title="step three -用户sudo权限"></a>step three -用户sudo权限</h3><p>给新添加的用户sudo权限</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">usermod -aG sudo ian</span><br></pre></td></tr></table></figure>
+<h3 id="step-four-添加公钥认证"><a href="#step-four-添加公钥认证" class="headerlink" title="step four -添加公钥认证"></a>step four -添加公钥认证</h3><h4 id="在本地电脑上生成密钥对："><a href="#在本地电脑上生成密钥对：" class="headerlink" title="在本地电脑上生成密钥对："></a>在本地电脑上生成密钥对：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa_vultr_$(date +%Y-%m-%d) -C <span class="string">"Vultr key for abc corp clients"</span></span><br></pre></td></tr></table></figure>
+<p>1024 位或低于它的 DSA 和 RSA 加密是很弱的，请不要使用。当考虑 ssh 客户端向后兼容性的时候，请使用 RSA密匙代替 ECDSA 密匙。所有的 ssh 密钥要么使用 ED25519 ，要么使用 RSA，不要使用其它类型。<br>另外一个示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t ed25519 -C <span class="string">"Login to production cluster at xyz corp"</span></span><br></pre></td></tr></table></figure>
+<h4 id="上传公钥至vps"><a href="#上传公钥至vps" class="headerlink" title="上传公钥至vps"></a>上传公钥至vps</h4><p>使用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">ssh-copy-id -i ~/.ssh/~/.ssh/id_rsa.pub user@host</span><br><span class="line">or</span><br><span class="line">ssh-copy-id user@remote-server-ip-or-dns-name</span><br></pre></td></tr></table></figure>
+<p>远程主机将用户的公钥，保存在登录后的用户主目录的$HOME/.ssh/authorized_keys文件中。公钥就是一段字符串，只要把它追加在authorized_keys文件的末尾就行了。</p>
+<p>不使用上面的命令也可以使用以下命令实现：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh user@host <span class="string">'mkdir -p .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys'</span> &lt; ~/.ssh/id_rsa.pub</span><br></pre></td></tr></table></figure>
+<p>这条命令由多个语句组成，依次分解开来看：</p>
+<ul>
+<li>“$ ssh user@host”，表示登录远程主机；</li>
+<li>单引号中的mkdir .ssh &amp;&amp; cat &gt;&gt; .ssh/authorized_keys，表示登录后在远程shell上执行的命令：</li>
+<li>“$ mkdir -p .ssh”的作用是，如果用户主目录中的.ssh目录不存在，就创建一个；</li>
+<li>‘cat &gt;&gt; .ssh/authorized_keys’ &lt; ~/.ssh/id_rsa.pub的作用是，将本地的公钥文件~/.ssh/id_rsa.pub，重定向追加到远程文件authorized_keys的末尾。</li>
+</ul>
+<h4 id="配置密钥登录"><a href="#配置密钥登录" class="headerlink" title="配置密钥登录"></a>配置密钥登录</h4><p>打开远程主机，检查/etc/ssh/sshd_config文件如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">RSAAuthentication yes</span><br><span class="line">PubkeyAuthentication yes</span><br><span class="line">AuthorizedKeysFile .ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<h4 id="重启远程主机的ssh服务"><a href="#重启远程主机的ssh服务" class="headerlink" title="重启远程主机的ssh服务"></a>重启远程主机的ssh服务</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart ssh.service</span><br></pre></td></tr></table></figure>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p>如果在配置过程中更改过ssh的默认端口号，一定要记得在防火墙上放通更变后的端口。以ubuntu为例，放通端口命令如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 已更变的端口号</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/08/06/linux初步服务配置/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-windows常用命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -765,11 +873,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -781,15 +889,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -797,11 +901,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

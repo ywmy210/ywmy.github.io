@@ -184,6 +184,130 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-GNS3添加网络设备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/05/14/GNS3添加网络设备/">GNS3添加网络设备</a>
+    </h1>
+  
+
+        
+        <a href="/2019/05/14/GNS3添加网络设备/" class="archive-article-date">
+  	<time datetime="2019-05-14T13:09:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="GNS3添加网络设备"><a href="#GNS3添加网络设备" class="headerlink" title="GNS3添加网络设备"></a>GNS3添加网络设备</h2><h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><ul>
+<li><p>系统：ubuntu 18.04.2 LTS(Linux 4.15.0-48-generic #51-Ubuntu SMP Wed Apr 3 08:28:49 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux<br>)</p>
+</li>
+<li><p>GNS3 2.1.16</p>
+</li>
+<li><p>虚拟机virtualbox 6.0.4 r128413</p>
+</li>
+</ul>
+<h3 id="GNS3安装"><a href="#GNS3安装" class="headerlink" title="GNS3安装"></a>GNS3安装</h3><p>ubuntu 直接添加PPA源安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:gns3/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gns3-gui</span><br></pre></td></tr></table></figure>
+<p>安装结束后，会出现关于dynamips报错。解决办法：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:gns3/ppa</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install dynamips:i386</span><br></pre></td></tr></table></figure>
+<p>启动后，出现配置向导。</p>
+<h3 id="添加设备"><a href="#添加设备" class="headerlink" title="添加设备"></a>添加设备</h3><p>添加模拟的设备可以通过本地的server，GNS3 VM来完成。</p>
+<p>本地的server中的Dynamips中添加设备。</p>
+<p>[edit]-&gt;[Preferences]-&gt;[Dynamips]-&gt;[IOS routers]</p>
+<p>添加的设备即直接通过本地电脑的Dynapips来模拟。</p>
+<h3 id="添加IOU"><a href="#添加IOU" class="headerlink" title="添加IOU"></a>添加IOU</h3><p>添加GNS3 VM设备，需要先导入GNS3 VM虚拟机。从官网下载GNS3 VM，如本文所示，选择virtualbox版本。</p>
+<p>下载后，选择导入虚拟机，打开virtualbox，操作如下：</p>
+<p>[管理]-&gt;[导入虚拟电脑]-&gt;[选择下载的GNS VM文件]-&gt;[点击导入]</p>
+<p>导入后，在GNS3中选择GNS3 VM。操作如下：</p>
+<p>[edit]-&gt;[Preferences]-&gt;[GNS3 VM]-&gt;[enable GNS3 VM]-&gt;[select Virtualizatiom engine Virtualbox]-&gt;[Settings]-&gt;[select imported VM named GNS3 VM]-&gt;[Apply setting]-&gt;[OK]</p>
+<p>选择启动GNS3 VM，选择虚拟化引擎，选择导入的GNS3 VM。</p>
+<p>尝试启动GNS3 VM，启动后直接报错，vboxnet0相关，无法启动GNS3 VM。</p>
+<p>解决办法，添加网络vboxnet0。操作步骤：</p>
+<p>[管理]-&gt;[主机网络管理器]-&gt;[网络]-&gt;[创建]</p>
+<p>默认创建的网络就是vboxnet0。其余选项保持默认不变，启用DHCP服务。</p>
+<p>再次打开GNS3 VM，正常启动。</p>
+<p>解决GNS3 VM启动问题后，即可添加IOU（IOS ON UNIX）。</p>
+<p>操作步骤：</p>
+<p>[edit]-&gt;[Preferences]-&gt;[IOS on UNIX]-&gt;[type the license key]</p>
+<p>添加IOU需要cisco的许可密钥，本例中的许可密码如下：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[license]</span><br><span class="line">gns3vm = 73635fd3b0a13ad0;</span><br></pre></td></tr></table></figure>
+<p>许可密码可以通过以下方式生成：</p>
+<ol>
+<li><p>打开GNS3 VM，选择Shell菜单</p>
+</li>
+<li><p>下载生成脚本,并生成license:</p>
+</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.ipvanquish.com/download/CiscoIOUKeygen3f.py</span><br><span class="line">python3 CiscoIOUKeygen3f.py</span><br></pre></td></tr></table></figure>
+<p>生成的文件为.iourc。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Already copy to the file iourc.txt</span><br><span class="line"></span><br><span class="line">You can <span class="built_in">disable</span> the phone home feature with something like:</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'127.0.0.127 xml.cisco.com'</span> &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure>
+<p>把生成的GNS VM license添加到IOU on UNIX中，后，即可添加IOU设备。</p>
+<p>操作方法：</p>
+<p>[edit]-&gt;[Preferenses]-&gt;[IOS on UNIX]-&gt;[IOU devices]-&gt;[new]</p>
+<p>添加IOU镜像，添加后，即可直接通过VM来运行l2 switch l3 router设备。</p>
+<p>IOU和.iourc文件在哪里找，可以度之。</p>
+<p>license gen直接给脚本吧：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/python3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"*********************************************************************"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Cisco IOU License Generator - Kal 2011, python port of 2006 C version"</span>)</span><br><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line">import hashlib</span><br><span class="line">import struct</span><br><span class="line"><span class="comment"># get the host id and host name to calculate the hostkey</span></span><br><span class="line">hostid=os.popen(<span class="string">"hostid"</span>).<span class="built_in">read</span>().strip()</span><br><span class="line">hostname = socket.gethostname()</span><br><span class="line">ioukey=int(hostid,16)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> hostname:</span><br><span class="line"> ioukey = ioukey + ord(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"hostid="</span> + hostid +<span class="string">", hostname="</span>+ hostname + <span class="string">", ioukey="</span> + hex(ioukey)[2:])</span><br><span class="line"><span class="comment"># create the license using md5sum</span></span><br><span class="line">iouPad1 = b<span class="string">'\x4B\x58\x21\x81\x56\x7B\x0D\xF3\x21\x43\x9B\x7E\xAC\x1D\xE6\x8A'</span></span><br><span class="line">iouPad2 = b<span class="string">'\x80'</span> + 39*b<span class="string">'\0'</span></span><br><span class="line">md5input=iouPad1 + iouPad2 + struct.pack(<span class="string">'!i'</span>, ioukey) + iouPad1</span><br><span class="line">iouLicense=hashlib.md5(md5input).hexdigest()[:16]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"\nAdd the following text to ~/.iourc:"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"[license]\n"</span> + hostname + <span class="string">" = "</span> + iouLicense + <span class="string">";\n"</span>)</span><br><span class="line">with open(<span class="string">"iourc.txt"</span>, <span class="string">"wt"</span>) as out_file:</span><br><span class="line">   out_file.write(<span class="string">"[license]\n"</span> + hostname + <span class="string">" = "</span> + iouLicense + <span class="string">";\n"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAlready copy to the file iourc.txt\n "</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"You can disable the phone home feature with something like:"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">" echo '127.0.0.127 xml.cisco.com' &gt;&gt; /etc/hosts\n"</span>)</span><br></pre></td></tr></table></figure>
+<p>好了，操作记录补充结束。</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/05/14/GNS3添加网络设备/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-windows-10-homebasic-rdp" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1130,101 +1254,6 @@
 
 
   
-    <article id="post-ubuntu-18-04-安装-nginx" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/04/12/ubuntu-18-04-安装-nginx/">ubuntu 18.04 安装 nginx</a>
-    </h1>
-  
-
-        
-        <a href="/2019/04/12/ubuntu-18-04-安装-nginx/" class="archive-article-date">
-  	<time datetime="2019-04-12T03:25:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-04-12</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="ubuntu-18-04-安装-nginx"><a href="#ubuntu-18-04-安装-nginx" class="headerlink" title="ubuntu 18.04 安装 nginx"></a>ubuntu 18.04 安装 nginx</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>服务器上安装了两个服务。通过外网加端口访问。需求通过nginx代理访问两个服务。</p>
-<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>ubuntu 18.04,非root，常规用户账户。</p>
-<h2 id="Step1-Installing-Nginx"><a href="#Step1-Installing-Nginx" class="headerlink" title="Step1-Installing Nginx"></a>Step1-Installing Nginx</h2><p>Ubuntu 18.04默认软件库中包含Nginx包。所以可以直接通过apt包管理工具进行安装。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
-<h2 id="Step2-Adjusting-the-Firewall"><a href="#Step2-Adjusting-the-Firewall" class="headerlink" title="Step2-Adjusting the Firewall"></a>Step2-Adjusting the Firewall</h2><p>在进行Nginx测试之前，需求调整防火墙设置放通Nginx服务。</p>
-<p>相看ufw应用列表。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw app list</span><br></pre></td></tr></table></figure>
-<p>输出内容:</p>
-<blockquote>
-<p>Available applications:<br>Nginx Full<br>Nginx HTTP<br>Nginx HTTPS</p>
-</blockquote>
-<p>如所见，Nginx Full即放通80和443，Nginx HTTP即放通80，Nginx HTTPS即放通443。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow <span class="string">'Nginx FULL'</span></span><br></pre></td></tr></table></figure>
-<h2 id="Step3-Checking-your-Web-Server"><a href="#Step3-Checking-your-Web-Server" class="headerlink" title="Step3-Checking your Web Server"></a>Step3-Checking your Web Server</h2><p>安装结束，程序服务就会启用。通过systemctl查看Nginx相关的进程信息。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status nginx </span><br><span class="line"></span><br><span class="line">● nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sat 2019-04-13 09:41:04 UTC; 10s ago</span><br><span class="line">     Docs: man:nginx(8)</span><br><span class="line">  Process: 4576 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code=exited, status=2)</span><br><span class="line">  Process: 4586 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 4577 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 4589 (nginx)</span><br><span class="line">    Tasks: 2 (<span class="built_in">limit</span>: 1110)</span><br><span class="line">   CGroup: /system.slice/nginx.service</span><br><span class="line">           ├─4589 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─4593 nginx: worker process</span><br><span class="line"></span><br><span class="line">Apr 13 09:41:04 vultr_vps_server systemd[1]: Starting A high performance web server and a reverse proxy server...</span><br></pre></td></tr></table></figure>
-<p>安装程序结束。</p>
-<p>一个小问题：启动后的nginx有一个状态问题：</p>
-<blockquote>
-<p>nginx.service: Failed to parse PID from file /run/nginx.pid: Invalid argument</p>
-</blockquote>
-<p>解决方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Workaround:</span><br><span class="line"></span><br><span class="line"> mkdir /etc/systemd/system/nginx.service.d</span><br><span class="line"> <span class="built_in">printf</span> <span class="string">"[Service]\nExecStartPost=/bin/sleep 0.1\n"</span> &gt; /etc/systemd/system/nginx.service.d/override.conf</span><br><span class="line"> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/04/12/ubuntu-18-04-安装-nginx/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/2/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/4/">Next &raquo;</a>
@@ -1323,11 +1352,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1339,15 +1368,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1355,11 +1380,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>

@@ -184,6 +184,89 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-linux-终端生成随机密码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/02/05/linux-终端生成随机密码/">linux 终端生成随机密码</a>
+    </h1>
+  
+
+        
+        <a href="/2020/02/05/linux-终端生成随机密码/" class="archive-article-date">
+  	<time datetime="2020-02-05T04:56:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="llinux下生成随机密码"><a href="#llinux下生成随机密码" class="headerlink" title="llinux下生成随机密码"></a>llinux下生成随机密码</h2><h3 id="工具一：pwgen"><a href="#工具一：pwgen" class="headerlink" title="工具一：pwgen"></a>工具一：pwgen</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># ubuntu</span></span><br><span class="line">sudo apt install pwgen</span><br><span class="line"><span class="comment"># centos</span></span><br><span class="line">sudo yum install pwgen</span><br></pre></td></tr></table></figure>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ pwgen</span><br><span class="line"><span class="comment"># 默认生成 160个8位密码</span></span><br><span class="line">$ pwgen -s</span><br><span class="line"><span class="comment"># 生成安全随机密码，使用-s选 项</span></span><br><span class="line">$ pwgen -s 14 5</span><br><span class="line"><span class="comment"># 生成长度为14位的5组安全密码</span></span><br><span class="line">$ pwgen -cnys 14 6</span><br><span class="line"><span class="comment"># 生成6组14位的随机强度密码，常用</span></span><br></pre></td></tr></table></figure>
+<h3 id="工具二：openssl"><a href="#工具二：openssl" class="headerlink" title="工具二：openssl"></a>工具二：openssl</h3><h4 id="用法一"><a href="#用法一" class="headerlink" title="用法一"></a>用法一</h4><p>示例：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl rand -base64 14</span><br><span class="line"><span class="comment"># 生成14位密码</span></span><br></pre></td></tr></table></figure>
+<h4 id="用法二"><a href="#用法二" class="headerlink" title="用法二"></a>用法二</h4><p>示例：生成10个14位随机强度密码。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">for</span> pw <span class="keyword">in</span> &#123;1..10&#125;; <span class="keyword">do</span> openssl rand -base64 14; <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">vIFqxQb/Pl8CgaX4j3M=</span><br><span class="line">32GRzfSnxMd6yElzRq0=</span><br><span class="line">XbH3OVDe5kq4frXee8s=</span><br><span class="line">UJIVRb5WlwKL4nRlraM=</span><br><span class="line">myzSSVmoMllQu5rfNHM=</span><br><span class="line">vcz7dIHYcLQjjeZhoHQ=</span><br><span class="line">3u32tYwDldLbF22+9sc=</span><br><span class="line">61mMsj1RF8lqjUe9q6A=</span><br><span class="line">t/kDbVHAxCfAWszi++Q=</span><br><span class="line">mS5BVEZiKgob06gSnck=</span><br></pre></td></tr></table></figure>
+<h3 id="工具三：gpg"><a href="#工具三：gpg" class="headerlink" title="工具三：gpg"></a>工具三：gpg</h3><h4 id="示例1："><a href="#示例1：" class="headerlink" title="示例1："></a>示例1：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ gpg --gen-random --armor 14 1</span><br><span class="line">4flq4ofGrHFqpsyi1NM=</span><br></pre></td></tr></table></figure>
+<h4 id="示例2："><a href="#示例2：" class="headerlink" title="示例2："></a>示例2：</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="keyword">for</span> pw <span class="keyword">in</span> &#123;1..10&#125;; <span class="keyword">do</span> gpg --gen-random --armor 1 14; <span class="keyword">done</span></span><br><span class="line"></span><br><span class="line">4yCOBter8EA2bMSfaoM=</span><br><span class="line">wHSuQzrRAATSPixas1s=</span><br><span class="line">PlK5rIml+Ikdcq3U644=</span><br><span class="line">yPIMFc+pMkDxknnxW0s=</span><br><span class="line">ZHRU6HO3n7Kd0WIUDMU=</span><br><span class="line">ZJcNXsfLfC1cdI8aABU=</span><br><span class="line">gENZMAifzy+oNMrEmvw=</span><br><span class="line">CqC871lLiIUNNZ/chK8=</span><br><span class="line">ltL+Ce75tckVWlfy94I=</span><br><span class="line">38GuiLF5n7HmgxommhI=</span><br></pre></td></tr></table></figure>
+<h3 id="其它工具"><a href="#其它工具" class="headerlink" title="其它工具"></a>其它工具</h3><h4 id="使用md5sum"><a href="#使用md5sum" class="headerlink" title="使用md5sum"></a>使用md5sum</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ date | md5sum</span><br><span class="line">b932c4670f1bae71b5e43c4https://blog.ywmy.xyz/ywmy/linuxlinux_mount.png59be83a90  -</span><br></pre></td></tr></table></figure>
+<h4 id="使用-dev-urandom"><a href="#使用-dev-urandom" class="headerlink" title="使用/dev/urandom"></a>使用/dev/urandom</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /dev/urandom | tr -dc <span class="string">'a-zA-Z0-9'</span> | head -c 14</span><br><span class="line">YIqMOLPN913M0M%</span><br></pre></td></tr></table></figure>
+<h4 id="使用sha356sum"><a href="#使用sha356sum" class="headerlink" title="使用sha356sum"></a>使用sha356sum</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ date | sha256sum</span><br><span class="line">b0726dc3b8d717df789988f755589c598dc742f045cddaaedb00482d0659007f  -</span><br></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/02/05/linux-终端生成随机密码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-linux-nc-command" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1023,130 +1106,6 @@
 
 
   
-    <article id="post-GNS3添加网络设备" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/05/14/GNS3添加网络设备/">GNS3添加网络设备</a>
-    </h1>
-  
-
-        
-        <a href="/2019/05/14/GNS3添加网络设备/" class="archive-article-date">
-  	<time datetime="2019-05-14T13:09:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-05-14</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="GNS3添加网络设备"><a href="#GNS3添加网络设备" class="headerlink" title="GNS3添加网络设备"></a>GNS3添加网络设备</h2><h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><ul>
-<li><p>系统：ubuntu 18.04.2 LTS(Linux 4.15.0-48-generic #51-Ubuntu SMP Wed Apr 3 08:28:49 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux<br>)</p>
-</li>
-<li><p>GNS3 2.1.16</p>
-</li>
-<li><p>虚拟机virtualbox 6.0.4 r128413</p>
-</li>
-</ul>
-<h3 id="GNS3安装"><a href="#GNS3安装" class="headerlink" title="GNS3安装"></a>GNS3安装</h3><p>ubuntu 直接添加PPA源安装：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:gns3/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gns3-gui</span><br></pre></td></tr></table></figure>
-<p>安装结束后，会出现关于dynamips报错。解决办法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:gns3/ppa</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install dynamips:i386</span><br></pre></td></tr></table></figure>
-<p>启动后，出现配置向导。</p>
-<h3 id="添加设备"><a href="#添加设备" class="headerlink" title="添加设备"></a>添加设备</h3><p>添加模拟的设备可以通过本地的server，GNS3 VM来完成。</p>
-<p>本地的server中的Dynamips中添加设备。</p>
-<p>[edit]-&gt;[Preferences]-&gt;[Dynamips]-&gt;[IOS routers]</p>
-<p>添加的设备即直接通过本地电脑的Dynapips来模拟。</p>
-<h3 id="添加IOU"><a href="#添加IOU" class="headerlink" title="添加IOU"></a>添加IOU</h3><p>添加GNS3 VM设备，需要先导入GNS3 VM虚拟机。从官网下载GNS3 VM，如本文所示，选择virtualbox版本。</p>
-<p>下载后，选择导入虚拟机，打开virtualbox，操作如下：</p>
-<p>[管理]-&gt;[导入虚拟电脑]-&gt;[选择下载的GNS VM文件]-&gt;[点击导入]</p>
-<p>导入后，在GNS3中选择GNS3 VM。操作如下：</p>
-<p>[edit]-&gt;[Preferences]-&gt;[GNS3 VM]-&gt;[enable GNS3 VM]-&gt;[select Virtualizatiom engine Virtualbox]-&gt;[Settings]-&gt;[select imported VM named GNS3 VM]-&gt;[Apply setting]-&gt;[OK]</p>
-<p>选择启动GNS3 VM，选择虚拟化引擎，选择导入的GNS3 VM。</p>
-<p>尝试启动GNS3 VM，启动后直接报错，vboxnet0相关，无法启动GNS3 VM。</p>
-<p>解决办法，添加网络vboxnet0。操作步骤：</p>
-<p>[管理]-&gt;[主机网络管理器]-&gt;[网络]-&gt;[创建]</p>
-<p>默认创建的网络就是vboxnet0。其余选项保持默认不变，启用DHCP服务。</p>
-<p>再次打开GNS3 VM，正常启动。</p>
-<p>解决GNS3 VM启动问题后，即可添加IOU（IOS ON UNIX）。</p>
-<p>操作步骤：</p>
-<p>[edit]-&gt;[Preferences]-&gt;[IOS on UNIX]-&gt;[type the license key]</p>
-<p>添加IOU需要cisco的许可密钥，本例中的许可密码如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[license]</span><br><span class="line">gns3vm = 73635fd3b0a13ad0;</span><br></pre></td></tr></table></figure>
-<p>许可密码可以通过以下方式生成：</p>
-<ol>
-<li><p>打开GNS3 VM，选择Shell菜单</p>
-</li>
-<li><p>下载生成脚本,并生成license:</p>
-</li>
-</ol>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.ipvanquish.com/download/CiscoIOUKeygen3f.py</span><br><span class="line">python3 CiscoIOUKeygen3f.py</span><br></pre></td></tr></table></figure>
-<p>生成的文件为.iourc。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Already copy to the file iourc.txt</span><br><span class="line"></span><br><span class="line">You can <span class="built_in">disable</span> the phone home feature with something like:</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'127.0.0.127 xml.cisco.com'</span> &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure>
-<p>把生成的GNS VM license添加到IOU on UNIX中，后，即可添加IOU设备。</p>
-<p>操作方法：</p>
-<p>[edit]-&gt;[Preferenses]-&gt;[IOS on UNIX]-&gt;[IOU devices]-&gt;[new]</p>
-<p>添加IOU镜像，添加后，即可直接通过VM来运行l2 switch l3 router设备。</p>
-<p>IOU和.iourc文件在哪里找，可以度之。</p>
-<p>license gen直接给脚本吧：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/python3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"*********************************************************************"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Cisco IOU License Generator - Kal 2011, python port of 2006 C version"</span>)</span><br><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line">import hashlib</span><br><span class="line">import struct</span><br><span class="line"><span class="comment"># get the host id and host name to calculate the hostkey</span></span><br><span class="line">hostid=os.popen(<span class="string">"hostid"</span>).<span class="built_in">read</span>().strip()</span><br><span class="line">hostname = socket.gethostname()</span><br><span class="line">ioukey=int(hostid,16)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> hostname:</span><br><span class="line"> ioukey = ioukey + ord(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"hostid="</span> + hostid +<span class="string">", hostname="</span>+ hostname + <span class="string">", ioukey="</span> + hex(ioukey)[2:])</span><br><span class="line"><span class="comment"># create the license using md5sum</span></span><br><span class="line">iouPad1 = b<span class="string">'\x4B\x58\x21\x81\x56\x7B\x0D\xF3\x21\x43\x9B\x7E\xAC\x1D\xE6\x8A'</span></span><br><span class="line">iouPad2 = b<span class="string">'\x80'</span> + 39*b<span class="string">'\0'</span></span><br><span class="line">md5input=iouPad1 + iouPad2 + struct.pack(<span class="string">'!i'</span>, ioukey) + iouPad1</span><br><span class="line">iouLicense=hashlib.md5(md5input).hexdigest()[:16]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"\nAdd the following text to ~/.iourc:"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"[license]\n"</span> + hostname + <span class="string">" = "</span> + iouLicense + <span class="string">";\n"</span>)</span><br><span class="line">with open(<span class="string">"iourc.txt"</span>, <span class="string">"wt"</span>) as out_file:</span><br><span class="line">   out_file.write(<span class="string">"[license]\n"</span> + hostname + <span class="string">" = "</span> + iouLicense + <span class="string">";\n"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAlready copy to the file iourc.txt\n "</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"You can disable the phone home feature with something like:"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">" echo '127.0.0.127 xml.cisco.com' &gt;&gt; /etc/hosts\n"</span>)</span><br></pre></td></tr></table></figure>
-<p>好了，操作记录补充结束。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/05/14/GNS3添加网络设备/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
@@ -1245,11 +1204,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color3">network</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">network</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1261,15 +1220,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
+                <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1277,11 +1232,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
+                <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux dict</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">linux vritualbox</a>
               </li>
             
             <div class="clearfix"></div>
