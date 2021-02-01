@@ -184,6 +184,100 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-cisco-恢复-enable-密码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/02/01/cisco-恢复-enable-密码/">cisco 恢复 enable 密码</a>
+    </h1>
+  
+
+        
+        <a href="/2021/02/01/cisco-恢复-enable-密码/" class="archive-article-date">
+  	<time datetime="2021-02-01T02:25:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="cisco-4507-enable-密码恢复"><a href="#cisco-4507-enable-密码恢复" class="headerlink" title="cisco 4507 enable 密码恢复"></a>cisco 4507 enable 密码恢复</h2><p>公司项目上的一个问题，一台cisco 4507的交换机，被其它维护单位更改了enable密码，后面问到是否有更改密码，对方坚持说没有改过。着急配置，没办法只能着手恢复enable密码。</p>
+<p><strong>Tips:恢复enable密码的操作不会丢失配置信息。建议通过tftp备份配置后操作。</strong></p>
+<h3 id="1、重启设备加电"><a href="#1、重启设备加电" class="headerlink" title="1、重启设备加电"></a>1、重启设备加电</h3><p>重启后进入引导界面，5秒内按住<strong>Ctrl-C</strong>键，防止自动引导，进入ROM监视提示模式。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">!--- Here, you power cycle the switch.</span><br><span class="line"></span><br><span class="line">********************************************************** </span><br><span class="line"> *                                                        * </span><br><span class="line"> * Welcome to ROM Monitor <span class="keyword">for</span> WS-X4014 System.            * </span><br><span class="line"> * Copyright (c) 1999-2000, 2001 by Cisco Systems, Inc.   * </span><br><span class="line"> * All rights reserved.                                   * </span><br><span class="line"> *                                                        * </span><br><span class="line"> **********************************************************</span><br><span class="line"> </span><br><span class="line"> ROM Monitor Program Version 12.1(10r)EY(1.21) </span><br><span class="line"></span><br><span class="line"> Board <span class="built_in">type</span> 1, Board revision 7</span><br><span class="line"> Swamp FPGA revision 16, Dagobah FPGA revision 43 </span><br><span class="line"> </span><br><span class="line"> Timer interrupt <span class="built_in">test</span> passed.</span><br><span class="line"></span><br><span class="line"> MAC Address  : 00-02-b9-83-af-fe </span><br><span class="line"> IP Address   : 172.16.84.122 </span><br><span class="line"> Netmask      : 255.255.255.0 </span><br><span class="line"> Gateway      : 172.16.84.1 </span><br><span class="line"> TftpServer   : Not <span class="built_in">set</span>. </span><br><span class="line"> Main Memory  : 256 MBytes</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> ***** The system will autoboot <span class="keyword">in</span> 5 seconds *****</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"> Type control-C to prevent autobooting. </span><br><span class="line"></span><br><span class="line">!--- At this point, press Ctrl-C.</span><br><span class="line"></span><br><span class="line">Autoboot cancelled......... please <span class="built_in">wait</span>!!!</span><br><span class="line">Autoboot cancelled......... please <span class="built_in">wait</span>!!!</span><br><span class="line">rommon 1 &gt; [interrupt]  </span><br><span class="line"></span><br><span class="line">!--- The module ended <span class="keyword">in</span> the ROMmon.</span><br><span class="line"></span><br><span class="line">rommon 1 &gt; [interrupt]</span><br></pre></td></tr></table></figure>
+<h3 id="2、在common模式下使用confreg配置"><a href="#2、在common模式下使用confreg配置" class="headerlink" title="2、在common模式下使用confreg配置"></a>2、在common模式下使用confreg配置</h3><p>使重新启动从新的寄存器中加载配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">rommon 1 &gt; <span class="built_in">set</span></span><br><span class="line">rommon 1 &gt; confreg</span><br><span class="line"></span><br><span class="line"> Configuration Summary : </span><br><span class="line"> =&gt; load ROM after netboot fails</span><br><span class="line"> =&gt; console baud: 9600</span><br><span class="line"> =&gt; autoboot from: commands specified <span class="keyword">in</span> <span class="string">'BOOT'</span> environment variable</span><br><span class="line"></span><br><span class="line"> <span class="keyword">do</span> you wish to change the configuration? y/n  [n]:  **y**</span><br><span class="line"> <span class="built_in">enable</span>  <span class="string">"diagnostic mode"</span>? y/n  [n]:  **n**</span><br><span class="line"> <span class="built_in">enable</span>  <span class="string">"use net in IP bcast address"</span>? y/n  [n]:  **n**</span><br><span class="line"> <span class="built_in">disable</span> <span class="string">"load ROM after netboot fails"</span>? y/n  [n]:  **n**</span><br><span class="line"> <span class="built_in">enable</span>  <span class="string">"use all zero broadcast"</span>? y/n  [n]:  **n**</span><br><span class="line"> <span class="built_in">enable</span>  <span class="string">"break/abort has effect"</span>? y/n  [n]:  **n**</span><br><span class="line"> <span class="built_in">enable</span>  <span class="string">"ignore system config info"</span>? y/n  [n]:  **y**</span><br><span class="line"></span><br><span class="line"> change console baud rate? y/n  [n]:  **n**</span><br><span class="line"></span><br><span class="line"> change the boot characteristics? y/n  [n]:  **n**</span><br><span class="line"></span><br><span class="line"> Configuration Summary : </span><br><span class="line"> =&gt; load ROM after netboot fails</span><br><span class="line"> =&gt; ignore system config info</span><br><span class="line"> =&gt; console baud: 9600</span><br><span class="line"> =&gt; autoboot from: commands specified <span class="keyword">in</span> <span class="string">'BOOT'</span> environment variable</span><br><span class="line"></span><br><span class="line"> <span class="keyword">do</span> you wish to save this configuration? y/n  [n]:  y</span><br><span class="line"> You must reset or power cycle <span class="keyword">for</span> new configuration to take effect</span><br><span class="line">Note: You can also use the confreg 0x2142 <span class="built_in">command</span> at the ROMmon prompt <span class="keyword">in</span> order to <span class="built_in">set</span> the configuration register value to bypass the startup configuration stored <span class="keyword">in</span> NVRAM.</span><br><span class="line"></span><br><span class="line">rommon 1 &gt;confreg 0x2142  <span class="comment">#记住这里寄存器的位置</span></span><br><span class="line">You must reset or power cycle <span class="keyword">for</span> the new configuration to take effect.</span><br></pre></td></tr></table></figure>
+<h3 id="3、重启设备"><a href="#3、重启设备" class="headerlink" title="3、重启设备"></a>3、重启设备</h3><p>使用reset命令重新引导模块，因为第二步中配置忽略系统配置信息，这里将不会引导已保存的配置信息。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">rommon 2 &gt; reset</span><br><span class="line"></span><br><span class="line">Resetting .......</span><br><span class="line"></span><br><span class="line">rommon 3 &gt;</span><br><span class="line"></span><br><span class="line"> ********************************************************** </span><br><span class="line"> *                                                        * </span><br><span class="line"> * Welcome to ROM Monitor <span class="keyword">for</span> WS-X4014 System.            * </span><br><span class="line"> * Copyright (c) 1999-2000, 2001 by Cisco Systems, Inc.   * </span><br><span class="line"> * All rights reserved.                                   * </span><br><span class="line"> *                                                        * </span><br><span class="line"> **********************************************************</span><br><span class="line"></span><br><span class="line">!--- Output suppressed.</span><br><span class="line"></span><br><span class="line">Press RETURN to get started! </span><br><span class="line"></span><br><span class="line">!--- Press Return.</span><br><span class="line"></span><br><span class="line">00:00:21: %SYS-5-RESTART: System restarted --</span><br><span class="line">Cisco Internetwork Operating System Software </span><br><span class="line">IOS (tm) Catalyst 4000 L3 Switch Software (cat4000-IS-M), </span><br><span class="line">   Version 12.1(8a)EW,  RELEASE SOFTWARE (fc1)</span><br><span class="line">TAC Support: http://www.cisco.com/tac</span><br><span class="line">Copyright (c) 1986-2002 by cisco Systems, Inc.</span><br><span class="line">Compiled Thu 24-Jan-02 17:34 by ccai</span><br><span class="line">00:00:21: %SNMP-5-COLDSTART: SNMP agent on host Switch </span><br><span class="line">   is undergoing a cold start</span><br><span class="line">Switch&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="4、加载"><a href="#4、加载" class="headerlink" title="4、加载"></a>4、加载</h3><p>此值使设备从Flash启动，而无需加载已保存的配置。在Switch提示符下发出enable命令进入启用模式。然后，使用show version命令以检查配置寄存器值。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Switch&gt; <span class="built_in">enable</span></span><br><span class="line">Switch<span class="comment">#show version</span></span><br><span class="line">Cisco Internetwork Operating System Software </span><br><span class="line">IOS (TM) Catalyst 4000 L3 Switch Software (cat4000-IS-M),</span><br><span class="line">   Version 12.1(8a)EW,  RELEASE SOFTWARE (fc1)</span><br><span class="line">TAC Support: http://www.cisco.com/tac</span><br><span class="line">Copyright (c) 1986-2002 by cisco Systems, Inc.</span><br><span class="line">Compiled Thu 24-Jan-02 17:34 by ccai</span><br><span class="line">Image text-base: 0x00000000, data-base: 0x00AA2B8C</span><br><span class="line"></span><br><span class="line">ROM: 12.1(10r)EY(1.21)</span><br><span class="line">Switch uptime is 5 minutes</span><br><span class="line">System returned to ROM by reload</span><br><span class="line">Running default software</span><br><span class="line"></span><br><span class="line">cisco WS-C4006 (MPC8245) processor (revision 7) with 262144K bytes of memory.</span><br><span class="line">Processor board ID FOX04183666</span><br><span class="line">Last reset from Reload</span><br><span class="line">32 Gigabit Ethernet/IEEE 802.3 interface(s)</span><br><span class="line">467K bytes of non-volatile configuration memory.</span><br><span class="line"></span><br><span class="line">Configuration register is 0x2142  <span class="comment">#查看加载的寄存器地址</span></span><br><span class="line"></span><br><span class="line">Switch<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<h3 id="5、将配置恢复到内存中"><a href="#5、将配置恢复到内存中" class="headerlink" title="5、将配置恢复到内存中"></a>5、将配置恢复到内存中</h3><p>使用configure memory命令或copy startup-config running-config命令将NVRAM复制到内存中。<br>请勿使用configure terminal命令，该命令显示模块的默认配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Switch<span class="comment">#configure memory</span></span><br><span class="line"></span><br><span class="line">Uncompressed configuration from 1307 bytes to 3014 bytes</span><br><span class="line">Switch<span class="comment">#</span></span><br><span class="line">00:13:52: %SYS-5-CONFIG_I: Configured from memory by console</span><br><span class="line">c-4006-SUPIII<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<h3 id="6、检查接口状态"><a href="#6、检查接口状态" class="headerlink" title="6、检查接口状态"></a>6、检查接口状态</h3><p>使用show ip interface brief命令以确保之前使用的接口显示“ up up ”状态。<br>如果在密码恢复之前使用的任何接口显示“ down ”，请在该接口上发出no shutdown命令以启动接口。</p>
+<h3 id="7、检查配置文件"><a href="#7、检查配置文件" class="headerlink" title="7、检查配置文件"></a>7、检查配置文件</h3><p>使用write terminal命令和show running-config命令检查配置。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">c-4006-SUPIII<span class="comment">#show running-config </span></span><br><span class="line">Building configuration...</span><br><span class="line"></span><br><span class="line">Current configuration : 3014 bytes</span><br><span class="line">!</span><br><span class="line">version 12.1</span><br><span class="line">no service pad</span><br><span class="line">service timestamps debug uptime</span><br><span class="line">service timestamps <span class="built_in">log</span> uptime</span><br><span class="line">no service password-encryption</span><br><span class="line">service compress-config</span><br><span class="line">!</span><br><span class="line">hostname c-4006-SUPIII</span><br><span class="line">!</span><br><span class="line">boot system flash bootflash:</span><br><span class="line">!</span><br><span class="line">vtp mode transparent</span><br><span class="line"></span><br><span class="line">!--- Output suppressed.</span><br><span class="line"></span><br><span class="line">line con 0</span><br><span class="line"> stopbits 1</span><br><span class="line">line vty 0 4</span><br><span class="line"> login</span><br><span class="line">!</span><br><span class="line">end</span><br><span class="line"></span><br><span class="line">c-4006-SUPIII<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>现在可以更改密码了。</p>
+<h3 id="更改密码"><a href="#更改密码" class="headerlink" title="更改密码"></a>更改密码</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">c-4006-SUPIII<span class="comment">#configure terminal </span></span><br><span class="line">Enter configuration commands, one per line.  End with CNTL/Z.</span><br><span class="line">c-4006-SUPIII(config)<span class="comment">#no enable secret  #删除旧密码</span></span><br><span class="line"></span><br><span class="line">!--- This step is necessary <span class="keyword">if</span> the switch had an <span class="built_in">enable</span> !--- secret password.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">c-4006-SUPIII(config)<span class="comment">#enable secret &lt; password &gt;  设置新密码</span></span><br><span class="line">[Choose a strong password with at least one capital letter,</span><br><span class="line"> one number, and one special character.]</span><br><span class="line"></span><br><span class="line">!--- This <span class="built_in">command</span> sets the new password.</span><br></pre></td></tr></table></figure>
+<h3 id="确保将配置寄存器的值改回0x2102"><a href="#确保将配置寄存器的值改回0x2102" class="headerlink" title="确保将配置寄存器的值改回0x2102"></a>确保将配置寄存器的值改回0x2102</h3><p>在config模式下更改寄存器的值，并查看下一次启动引导寄存器位置是否正确。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">c-4006-SUPIII(config)<span class="comment">#config-register 0x2102</span></span><br><span class="line">c-4006-SUPIII(config)<span class="comment"># ^Z</span></span><br><span class="line">c-4006-SUPIII<span class="comment">#</span></span><br><span class="line">00:19:01: %SYS-5-CONFIG_I: Configured from console by console</span><br><span class="line">c-4006-SUPIII<span class="comment">#write memory </span></span><br><span class="line"></span><br><span class="line">!--- This step saves the configuration.</span><br><span class="line"></span><br><span class="line">Building configuration...</span><br><span class="line">Compressed configuration from 3061 bytes to 1365 bytes[OK]</span><br><span class="line">c-4006-SUPIII<span class="comment">#show version </span></span><br><span class="line"></span><br><span class="line">!--- This step verifies the value change.</span><br><span class="line"></span><br><span class="line">Cisco Internetwork Operating System Software </span><br><span class="line">IOS (TM) Catalyst 4000 L3 Switch Software (cat4000-IS-M), </span><br><span class="line">Version 12.1(8a)EW,  RELEASE SOFTWARE (fc1)</span><br><span class="line">TAC Support: http://www.cisco.com/tac</span><br><span class="line">Copyright (c) 1986-2002 by cisco Systems, Inc.</span><br><span class="line">Compiled Thu 24-Jan-02 17:34 by ccai</span><br><span class="line">Image text-base: 0x00000000, database: 0x00AA2B8C</span><br><span class="line"></span><br><span class="line">ROM: 12.1(10r)EY(1.21)</span><br><span class="line">c-4006-SUPIII uptime is 20 minutes</span><br><span class="line">System returned to ROM by reload</span><br><span class="line">Running default software</span><br><span class="line"></span><br><span class="line">cisco WS-C4006 (MPC8245) processor (revision 7) with 262144K bytes of memory.</span><br><span class="line">Processor board ID FOX04183666</span><br><span class="line">Last reset from Reload</span><br><span class="line">32 Gigabit Ethernet/IEEE 802.3 interface(s)</span><br><span class="line">467K bytes of nonvolatile configuration memory.</span><br><span class="line"></span><br><span class="line">Configuration register is 0x2142 (will be 0x2102 at next reload)</span><br><span class="line"></span><br><span class="line">c-4006-SUPIII<span class="comment">#</span></span><br></pre></td></tr></table></figure>
+<p>到这一步，已经完成enable密码更改了。</p>
+<p>参考<a href="https://www.cisco.com/c/en/us/support/docs/switches/catalyst-4000-series-switches/21229-pswdrec-cat4000-supiii-21229.html" target="_blank" rel="noopener">链接</a>，<a href="https://www.hello2099.com/1913.html" target="_blank" rel="noopener">链接</a></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">network</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/02/01/cisco-恢复-enable-密码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-mu-editor-python3-PyQt5相关问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -986,101 +1080,6 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 
 
   
-    <article id="post-centos-6-更换网卡" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/02/22/centos-6-更换网卡/">centos 6 更换网卡</a>
-    </h1>
-  
-
-        
-        <a href="/2020/02/22/centos-6-更换网卡/" class="archive-article-date">
-  	<time datetime="2020-02-22T09:48:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-22</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="CentOS-6-更换网卡"><a href="#CentOS-6-更换网卡" class="headerlink" title="CentOS 6 更换网卡"></a>CentOS 6 更换网卡</h2><p>开年上班了，到公司第一件事情就是处理过年期间挂掉的几台服务器。其中一台在自己尝试BIOS电池放电、换内存、换电源都没办法点亮后，就只能想着找一块一样的主板换上，试试能不能正常启来。还好主板是有的，换上后，正常开机了。启动后的一个问题，换主板了，网卡信息就变更了，这样新的网卡就没办法正常启用。</p>
-<ul>
-<li>备份udev下的70-persistent-net.rules文件</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv /etc/udev/rules.d/70-persistent-net.rules /etc/udev/rules.d/70-persistent-net.rules_backup</span><br></pre></td></tr></table></figure>
-<ul>
-<li>重启服务器</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">init 6</span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改新生成的70-persistent-net.rules文件，将NAME硬件名称更改为eth0 </li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/udev/rules.d/70-persistent-net.rules</span><br><span class="line"></span><br><span class="line"><span class="comment"># This file was automatically generated by the /lib/udev/write_net_rules</span></span><br><span class="line"><span class="comment"># program, run by the persistent-net-generator.rules rules file.</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># You can modify it, as long as you keep each rule on a single</span></span><br><span class="line"><span class="comment"># line, and change only the value of the NAME= key.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># PCI device 0x10ec:0x8168 (r8169)</span></span><br><span class="line">SUBSYSTEM==<span class="string">"net"</span>, ACTION==<span class="string">"add"</span>, DRIVERS==<span class="string">"?*"</span>, ATTR&#123;address&#125;==<span class="string">"c8:60:00:aa:bb:cc"</span>, ATTR&#123;<span class="built_in">type</span>&#125;==<span class="string">"1"</span>, KERNEL==<span class="string">"eth*"</span>, NAME=<span class="string">"eth0"</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>修改network-script下的ifcfg-eth0文件，将mac地址更改为新的网卡mac地址</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/sysconfig/network-scripts/ifcfg-eth0</span><br><span class="line"></span><br><span class="line">DEVICE=eth0</span><br><span class="line">HWADDR=C8:60:00:aa:bb:cc</span><br><span class="line">TYPE=Ethernet</span><br><span class="line">UUID=21e445f2-209e-4a80-aa32-8c06bde93917</span><br><span class="line">ONBOOT=yes</span><br><span class="line">NM_CONTROLLED=yes</span><br><span class="line">BOOTPROTO=static</span><br><span class="line">IPADDR=192.168.121.121</span><br><span class="line">NETMASK=255.255.255.0</span><br><span class="line">GATEWAY=192.168.121.1</span><br><span class="line">DNS1=221.12.1.227</span><br></pre></td></tr></table></figure>
-<ul>
-<li>重启</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">reboot 或 init 6</span><br></pre></td></tr></table></figure>
-<p>重启后，网卡正常工作，结束 。</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2020/02/22/centos-6-更换网卡/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1195,19 +1194,19 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">database</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">linux samba</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
+                <a href="javascript:void(0)" class="js-tag color4">database</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">linux firewall</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">linux iptables</a>
               </li>
              
               <li class="article-tag-list-item">
