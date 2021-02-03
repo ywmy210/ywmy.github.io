@@ -62,7 +62,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">systemctl start mariadb</span><br><span class="line">systemctl status mariadb </span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb    //开机自启动</span><br></pre></td></tr></table></figure>
 <h3 id="安装zabbix守护进程"><a href="#安装zabbix守护进程" class="headerlink" title="安装zabbix守护进程"></a>安装zabbix守护进程</h3><p>1 下载源代码归档</p>
 <p>下载地址<a target="_blank" rel="noopener" href="https://www.zabbix.com/cn/download_sources">zabbix proxy download page</a>，下载，解压源码。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ tar -zxvf zabbix-3.4.15.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf zabbix-3.4.15.tar.gz</span><br></pre></td></tr></table></figure>
 <p>2 创建用户</p>
 <p>对于zabbix的守护进程，需要一个无特权的用户。如果zabbix守护进程以一个无特权的用户启动，那么它会使用该用户运行。<br>然而，如果守护进程以root用户启动，它会切换为zabbix用户账户，且这个用户必须存在。创建如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">groupadd --system zabbix</span><br><span class="line">useradd --system -g zabbix -d /usr/lib/zabbix -s /sbin/nologin -C <span class="string">&quot;Zabbix Monitoring System&quot;</span>  zabbix</span><br></pre></td></tr></table></figure>
@@ -71,7 +71,7 @@
 <p>4 导入数据库</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mysql -u zabbix -p</span><br><span class="line">password:</span><br><span class="line">mysql &gt; use zabbix_proxy;</span><br><span class="line">mysql &gt; <span class="built_in">source</span> zabbix源码数据库文件路径/schema.sql</span><br><span class="line">mysql &gt; quit;</span><br></pre></td></tr></table></figure>
 <p>zabbix proxy只需要导入schemas.sql就可以了。</p>
-<p>5 安装信赖程序 </p>
+<p>5 安装信赖程序</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y curl wget gcc gcc-c++ vim curl-devel net-snmp-devel nc libxml2 ssh2 libssh2 libssh2-devel</span><br></pre></td></tr></table></figure>
 <p>6 编译安装</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">./configure --enable-proxy --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --prefix=/usr/<span class="built_in">local</span>/zabbix</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>

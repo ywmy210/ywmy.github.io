@@ -54,18 +54,13 @@ DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整
         </div>
         <div class="content markdown">
             <h2 id="华为GPON配置说明"><a href="#华为GPON配置说明" class="headerlink" title="华为GPON配置说明"></a>华为GPON配置说明</h2><h2 id="名词说明"><a href="#名词说明" class="headerlink" title="名词说明"></a>名词说明</h2><ol>
-<li><p>DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整中ONU上行进行限速的。一个PON口上行带宽为1G，实际能用到的只有900M，所以要对ONU的上行进行合理分配。</p>
-</li>
-<li><p>Tcont：tcont是连接dba和gemport的通道，也就是说emport是通过和tcont联系，才把dba的作用引用过来的。</p>
-</li>
-<li><p>Gemport：gemport是OLT线程工作的最小单元，前面的dba，tcont都是最终给gemport用。</p>
-</li>
-<li><p>线路模板ont-lineprofile：ONU注册时要选择相应的线路模板，里面包含tcont，gem等信息。</p>
-</li>
-<li><p>DBA模板，线路模板，可以创建多个；一个线路模板中：tcont有八个（0－7），gem可以创建128个（0－127）；一个gem中可有映射8个：gem mapping 1 0；gem mapping 1 1；一直到gem mapping 1 7；但是一个线路模板中最多只能创建128条gem mapping，超出会报错。</p>
-<h2 id="数据规划"><a href="#数据规划" class="headerlink" title="数据规划"></a>数据规划</h2></li>
+<li>DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整中ONU上行进行限速的。一个PON口上行带宽为1G，实际能用到的只有900M，所以要对ONU的上行进行合理分配。</li>
+<li>Tcont：tcont是连接dba和gemport的通道，也就是说emport是通过和tcont联系，才把dba的作用引用过来的。</li>
+<li>Gemport：gemport是OLT线程工作的最小单元，前面的dba，tcont都是最终给gemport用。</li>
+<li>线路模板ont-lineprofile：ONU注册时要选择相应的线路模板，里面包含tcont，gem等信息。</li>
+<li>DBA模板，线路模板，可以创建多个；一个线路模板中：tcont有八个（0－7），gem可以创建128个（0－127）；一个gem中可有映射8个：gem mapping 1 0；gem mapping 1 1；一直到gem mapping 1 7；但是一个线路模板中最多只能创建128条gem mapping，超出会报错。</li>
 </ol>
-<p>以花都狮岭数据规划为例：</p>
+<h2 id="数据规划"><a href="#数据规划" class="headerlink" title="数据规划"></a>数据规划</h2><p>以花都狮岭数据规划为例：</p>
 <p>OLT：网管VLAN 22；</p>
 <pre><code>IP：172.17.21.132；网关：172.17.21.129；语音VLAN 100；语音IP：172.16.0.11
 </code></pre>
@@ -108,7 +103,9 @@ DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整
 <p>interface vlanif 100</p>
 <p>ip address 172.16.0.23 255.255.254.0</p>
 <p>//配置语音地址</p>
-<p>quit<br>```</p>
+<p>quit</p>
+<pre><code>
+</code></pre>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">

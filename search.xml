@@ -3,7 +3,7 @@
   <entry>
     <title>C 语言数的表示（一）</title>
     <url>/2019/03/02/C-%E8%AF%AD%E8%A8%80%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="c语言整数表示"><a href="#c语言整数表示" class="headerlink" title="c语言整数表示"></a>c语言整数表示</h1><p>写文章的目的在于整理c语言整数溢出时出现的知识。</p>
+    <content><![CDATA[<h2 id="c语言整数表示"><a href="#c语言整数表示" class="headerlink" title="c语言整数表示"></a>c语言整数表示</h2><p>写文章的目的在于整理c语言整数溢出时出现的知识。</p>
 <h2 id="数据类型与表示方法"><a href="#数据类型与表示方法" class="headerlink" title="数据类型与表示方法"></a>数据类型与表示方法</h2><p>c语言中基本数据类型的表示有整型和浮点型，整型有short，int，long，还有一个修饰词，unsigned，即无符号。声明一个变量，即向内存申请一段数据类型相对应的存储地址，申请的变量类型及分配的内存大小，可以通过sizeof函数来得出。输出结果如下列表所示：</p>
 <blockquote>
 <p>Type short has a size of 2 bytes.<br>Type int has a size of 4 bytes.<br>Type long has a size of 8 bytes.<br>Type float has a size of 4 bytes.<br>Type double has a size of 8 bytes.<br>Type long long has size of 8 bytes  </p>
@@ -34,7 +34,7 @@
   <entry>
     <title>C 语言数的表示（二）</title>
     <url>/2019/03/04/C-%E8%AF%AD%E8%A8%80%E6%95%B0%E7%9A%84%E8%A1%A8%E7%A4%BA%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<h1 id="C语言小数的表示"><a href="#C语言小数的表示" class="headerlink" title="C语言小数的表示"></a>C语言小数的表示</h1><h2 id="十进制与二进制的转换"><a href="#十进制与二进制的转换" class="headerlink" title="十进制与二进制的转换"></a>十进制与二进制的转换</h2><p>先记工式，任意一个二进制浮点数V可以表示成下面的形式；</p>
+    <content><![CDATA[<h2 id="C语言小数的表示"><a href="#C语言小数的表示" class="headerlink" title="C语言小数的表示"></a>C语言小数的表示</h2><h2 id="十进制与二进制的转换"><a href="#十进制与二进制的转换" class="headerlink" title="十进制与二进制的转换"></a>十进制与二进制的转换</h2><p>先记工式，任意一个二进制浮点数V可以表示成下面的形式；</p>
 <p>V = (-1)^s<em>M</em>2^E</p>
 <ol>
 <li><p>(-1)^s表示符号位，当s=0时，V为正数，当s=1时，V为负数。</p>
@@ -78,7 +78,7 @@
   <entry>
     <title>CentOS 环境变量配置错误</title>
     <url>/2019/04/09/CentOS-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F%E9%85%8D%E7%BD%AE%E9%94%99%E8%AF%AF/</url>
-    <content><![CDATA[<h1 id="CentOS-环境变量配置错误"><a href="#CentOS-环境变量配置错误" class="headerlink" title="CentOS 环境变量配置错误"></a>CentOS 环境变量配置错误</h1><p>今天在配置Maven时，写入一条环境变量，在重新应用环境变量后，发现只有cd命令可以用了。其它命令都不可用。解决办法如下：</p>
+    <content><![CDATA[<h2 id="CentOS-环境变量配置错误"><a href="#CentOS-环境变量配置错误" class="headerlink" title="CentOS 环境变量配置错误"></a>CentOS 环境变量配置错误</h2><p>今天在配置Maven时，写入一条环境变量，在重新应用环境变量后，发现只有cd命令可以用了。其它命令都不可用。解决办法如下：</p>
 <h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/sudo /bin/vim /etc/profile</span><br></pre></td></tr></table></figure>
 <p>把之前配置的环境变量删除</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">/bin/sudo reboot</span><br></pre></td></tr></table></figure>
@@ -321,7 +321,7 @@
   <entry>
     <title>LVM 磁盘扩容</title>
     <url>/2018/12/04/LVM-%E7%A3%81%E7%9B%98%E6%89%A9%E5%AE%B9/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>之前给公司的同事配置了一台samba服务器，因为主要使用的是UI设计的同事，有大量的共享素材，磁盘很快的已经满了。前两天有同事来告知，映射的网络硬盘已经显示没有可用的空间了。想想那台主机里面的电源，应该可以再挂两个硬盘，于是，对磁盘扩容就玩起来了。</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>之前给公司的同事配置了一台samba服务器，因为主要使用的是UI设计的同事，有大量的共享素材，磁盘很快的已经满了。前两天有同事来告知，映射的网络硬盘已经显示没有可用的空间了。想想那台主机里面的电源，应该可以再挂两个硬盘，于是，对磁盘扩容就玩起来了。</p>
 <p>一张来来说明LVM管理：</p>
 <p><img src="https://blog.ywmy.xyz/linux/LVM.png" alt="LVM"></p>
 <hr>
@@ -369,7 +369,7 @@
   <entry>
     <title>LVM命令相关</title>
     <url>/2018/12/10/LVM%E5%91%BD%E4%BB%A4%E7%9B%B8%E5%85%B3/</url>
-    <content><![CDATA[<h1 id="LVM常用命令："><a href="#LVM常用命令：" class="headerlink" title="LVM常用命令："></a>LVM常用命令：</h1><table>
+    <content><![CDATA[<h2 id="LVM常用命令"><a href="#LVM常用命令" class="headerlink" title="LVM常用命令"></a>LVM常用命令</h2><table>
 <thead>
 <tr>
 <th>功能/命令</th>
@@ -429,14 +429,14 @@
   <entry>
     <title>U盘多启动</title>
     <url>/2018/12/01/U%E7%9B%98%E5%A4%9A%E5%90%AF%E5%8A%A8/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>接着前面U盘量产的工作，既然都已经到了量产了，好像不多做一点事情，总觉得对不起自己的折腾，于是再找关于U盘多启动方面的作法。以前想给自己的系统做维护，基本上就是做一个PE盘。里面集成PE工具，现在已经对U盘做了量产，即在数据盘上做一个PE，那就是两个启动了。是否可以多启动呢？想了两个方案：</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>接着前面U盘量产的工作，既然都已经到了量产了，好像不多做一点事情，总觉得对不起自己的折腾，于是再找关于U盘多启动方面的作法。以前想给自己的系统做维护，基本上就是做一个PE盘。里面集成PE工具，现在已经对U盘做了量产，即在数据盘上做一个PE，那就是两个启动了。是否可以多启动呢？想了两个方案：</p>
 <ol>
 <li>是否可以量产多个光驱？</li>
 <li>单盘多引导</li>
 </ol>
 <p>关于第一个想法，自己网上能找到的基本上都是关于三启动的，即量产为一个USB－CDROM，USB－ZIP，USB－HDD。不过量产为多光驱的还真的有一个，参考<a href="1">链接</a>;教程中把一个慧荣主控的U盘量产为7个光驱。而刚好自己的小米U盘为慧荣的主控，按教程上的说法，也是可以通过更变参数改为其它的量产参数的，不过文中提到了有风险，即数据分区通常在格式化上会出现问题。参考自己也只有一个慧荣的U盘，还有以前量产失败的经验，就先不尝试此方法。可以查看上面的链接中的教程内容，里面有详细的更变参数，以及U盘的各参数的说明。</p>
 <p>关于第二个相法，有过双系统（windows + linux）的经验，自然想到了GRUB2。按照这个思路，找到两个工具，EASY2BOOT和AIO BOOT CREATOR。通过名字就知道了，这会是两个多系统引导的好工具。特别是第二个，all in one。</p>
-<h2 id="EASY2BOOT启动引导"><a href="#EASY2BOOT启动引导" class="headerlink" title="EASY2BOOT启动引导"></a>EASY2BOOT启动引导</h2><h3 id="操作步骤如下："><a href="#操作步骤如下：" class="headerlink" title="操作步骤如下："></a>操作步骤如下：</h3><ol>
+<h2 id="EASY2BOOT启动引导"><a href="#EASY2BOOT启动引导" class="headerlink" title="EASY2BOOT启动引导"></a>EASY2BOOT启动引导</h2><h3 id="操作步骤如下"><a href="#操作步骤如下" class="headerlink" title="操作步骤如下"></a>操作步骤如下</h3><ol>
 <li><p>下载<a href="2">链接</a></p>
 </li>
 <li><p>安装</p>
@@ -530,7 +530,7 @@
   <entry>
     <title>U盘量产</title>
     <url>/2018/12/01/U%E7%9B%98%E9%87%8F%E4%BA%A7/</url>
-    <content><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>需求回到上一篇文章，惠普服务器的安装中，因为设备比较旧，对启动的支持有限，即尝试了U盘量产，希望能将U盘量产为USB－CDROM以实现从光驱启动的目的。自己手里有两个U盘，一个16GB的金士顿，还有一个小米家的32GB小米U盘。之前有过量产挂盘的经历后，对于这次的量产，还是比较小心的，从16GB的开始，没想，还真的没之前的问题。将16GB的量产结束了，接着对32GB的U盘也做了量产，都没有问题。记录量产过程如下：</p>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>需求回到上一篇文章，惠普服务器的安装中，因为设备比较旧，对启动的支持有限，即尝试了U盘量产，希望能将U盘量产为USB－CDROM以实现从光驱启动的目的。自己手里有两个U盘，一个16GB的金士顿，还有一个小米家的32GB小米U盘。之前有过量产挂盘的经历后，对于这次的量产，还是比较小心的，从16GB的开始，没想，还真的没之前的问题。将16GB的量产结束了，接着对32GB的U盘也做了量产，都没有问题。记录量产过程如下：</p>
 <h2 id="金士顿16GB量产"><a href="#金士顿16GB量产" class="headerlink" title="金士顿16GB量产"></a>金士顿16GB量产</h2><p>量产的前期准备，需求检测U盘的主控芯片，这个有一个通用的工具，叫<strong>芯片精灵</strong>可以检测到U盘主控相关的信息。下载请戳<a href="http://www.upantool.com/test/xinpian/2011/ChipGenius_V4.html">链接</a>。</p>
 <p>通过芯片精灵检测到主控芯片后，即可以去上面芯片精灵的网站，下载相应的量产工具，如自己16GB的金士顿，主控芯片为群联，即可从网站搜索群联的量产工具，有两个，MPALL和一个傻瓜转换工具ModeConverter。<br>量产方式参考<a href="http://www.upantool.com/jiaocheng/liangchan/Phison/5108.html">链接</a>。</p>
 <h2 id="小米32GB量产"><a href="#小米32GB量产" class="headerlink" title="小米32GB量产"></a>小米32GB量产</h2><p>同上一样，通过使用芯片精灵，读取相应的主控信息。接下来去量产网站下载相应的量产工具，小米32GB的U盘，采用的是慧荣的主控芯片。量产工具为：SM3267AE_2.5.54。</p>
@@ -588,7 +588,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl start mariadb</span><br><span class="line">systemctl status mariadb </span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb    //开机自启动</span><br></pre></td></tr></table></figure>
 <h3 id="安装zabbix守护进程"><a href="#安装zabbix守护进程" class="headerlink" title="安装zabbix守护进程"></a>安装zabbix守护进程</h3><p>1 下载源代码归档</p>
 <p>下载地址<a href="https://www.zabbix.com/cn/download_sources">zabbix proxy download page</a>，下载，解压源码。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ tar -zxvf zabbix-3.4.15.tar.gz</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar -zxvf zabbix-3.4.15.tar.gz</span><br></pre></td></tr></table></figure>
 <p>2 创建用户</p>
 <p>对于zabbix的守护进程，需要一个无特权的用户。如果zabbix守护进程以一个无特权的用户启动，那么它会使用该用户运行。<br>然而，如果守护进程以root用户启动，它会切换为zabbix用户账户，且这个用户必须存在。创建如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">groupadd --system zabbix</span><br><span class="line">useradd --system -g zabbix -d /usr/lib/zabbix -s /sbin/nologin -C <span class="string">&quot;Zabbix Monitoring System&quot;</span>  zabbix</span><br></pre></td></tr></table></figure>
@@ -597,7 +597,7 @@
 <p>4 导入数据库</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u zabbix -p</span><br><span class="line">password:</span><br><span class="line">mysql &gt; use zabbix_proxy;</span><br><span class="line">mysql &gt; <span class="built_in">source</span> zabbix源码数据库文件路径/schema.sql</span><br><span class="line">mysql &gt; quit;</span><br></pre></td></tr></table></figure>
 <p>zabbix proxy只需要导入schemas.sql就可以了。</p>
-<p>5 安装信赖程序 </p>
+<p>5 安装信赖程序</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install -y curl wget gcc gcc-c++ vim curl-devel net-snmp-devel nc libxml2 ssh2 libssh2 libssh2-devel</span><br></pre></td></tr></table></figure>
 <p>6 编译安装</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./configure --enable-proxy --enable-agent --with-mysql --enable-ipv6 --with-net-snmp --with-libcurl --with-libxml2 --prefix=/usr/<span class="built_in">local</span>/zabbix</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
@@ -616,9 +616,9 @@
   <entry>
     <title>centos 7 双网卡共享上网</title>
     <url>/2019/03/27/centos-7-%E5%8F%8C%E7%BD%91%E5%8D%A1%E5%85%B1%E4%BA%AB%E4%B8%8A%E7%BD%91/</url>
-    <content><![CDATA[<h1 id="centos-7-为私网提共nat网关服务"><a href="#centos-7-为私网提共nat网关服务" class="headerlink" title="centos 7 为私网提共nat网关服务"></a>centos 7 为私网提共nat网关服务</h1><p>前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的四口交换机连内网。</p>
-<h2 id="配置如下"><a href="#配置如下" class="headerlink" title="配置如下"></a>配置如下</h2><h3 id="服务器一"><a href="#服务器一" class="headerlink" title="服务器一"></a>服务器一</h3><h4 id="IP配置："><a href="#IP配置：" class="headerlink" title="IP配置："></a>IP配置：</h4><ul>
-<li>em1:218.108.88.88     项目公网地址     </li>
+    <content><![CDATA[<h2 id="centos-7-为私网提共nat网关服务"><a href="#centos-7-为私网提共nat网关服务" class="headerlink" title="centos 7 为私网提共nat网关服务"></a>centos 7 为私网提共nat网关服务</h2><p>前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的四口交换机连内网。</p>
+<h2 id="配置如下"><a href="#配置如下" class="headerlink" title="配置如下"></a>配置如下</h2><h3 id="服务器一"><a href="#服务器一" class="headerlink" title="服务器一"></a>服务器一</h3><h4 id="IP配置"><a href="#IP配置" class="headerlink" title="IP配置"></a>IP配置</h4><ul>
+<li>em1:218.108.88.88     项目公网地址</li>
 <li>em2:10.10.100.10      项目私网网段</li>
 </ul>
 <h4 id="配置IP转发"><a href="#配置IP转发" class="headerlink" title="配置IP转发"></a>配置IP转发</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/sysctl.conf</span><br><span class="line"><span class="comment"># 追加一行内容</span></span><br><span class="line"><span class="comment"># Controls IP packet forwarding</span></span><br><span class="line">net.ipv4.ip_forward = 1</span><br></pre></td></tr></table></figure>
@@ -647,7 +647,7 @@
   <entry>
     <title>centos 7 更换阿里源</title>
     <url>/2018/10/26/centos-7-%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E6%BA%90/</url>
-    <content><![CDATA[<h1 id="操作如下"><a href="#操作如下" class="headerlink" title="操作如下"></a>操作如下</h1><h2 id="备份源"><a href="#备份源" class="headerlink" title="备份源"></a>备份源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="操作如下"><a href="#操作如下" class="headerlink" title="操作如下"></a>操作如下</h2><h2 id="备份源"><a href="#备份源" class="headerlink" title="备份源"></a>备份源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br></pre></td></tr></table></figure>
 <h2 id="下载源"><a href="#下载源" class="headerlink" title="下载源"></a>下载源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
 <h3 id="刷新缓存"><a href="#刷新缓存" class="headerlink" title="刷新缓存"></a>刷新缓存</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
@@ -657,7 +657,7 @@
   <entry>
     <title>centos 7 配置ntp服务</title>
     <url>/2019/03/31/centos-7-%E9%85%8D%E7%BD%AEntp%E6%9C%8D%E5%8A%A1/</url>
-    <content><![CDATA[<h1 id="CentOS配置ntp-server"><a href="#CentOS配置ntp-server" class="headerlink" title="CentOS配置ntp server"></a>CentOS配置ntp server</h1><p>网络时间协议 - NTP - 是运行在传输层 123 号端口的 UDP 协议，它允许计算机通过网络同步准确时间。随着时间的流逝，计算机内部时间会出现漂移，这会导致时间不一致问题，尤其是对于服务器和客户端日志文件，或者你想要复制服务器的资源或数据库。</p>
+    <content><![CDATA[<h2 id="CentOS配置ntp-server"><a href="#CentOS配置ntp-server" class="headerlink" title="CentOS配置ntp server"></a>CentOS配置ntp server</h2><p>网络时间协议 - NTP - 是运行在传输层 123 号端口的 UDP 协议，它允许计算机通过网络同步准确时间。随着时间的流逝，计算机内部时间会出现漂移，这会导致时间不一致问题，尤其是对于服务器和客户端日志文件，或者你想要复制服务器的资源或数据库。</p>
 <h2 id="安装和配置ntp-serve"><a href="#安装和配置ntp-serve" class="headerlink" title="安装和配置ntp serve"></a>安装和配置ntp serve</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>可直接通过官方yum安装。</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo yum install ntp</span><br></pre></td></tr></table></figure>
 <h3 id="选择NTP-SERVER"><a href="#选择NTP-SERVER" class="headerlink" title="选择NTP SERVER"></a>选择NTP SERVER</h3><p>NTP Public Pool Time Servers，安装NTP后，可以在NTP公共服务器池中选择所在地理位置的服务器列表。服务池链接[请戳][1]。</p>
@@ -682,8 +682,7 @@
 <h2 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@ntp-server ~]<span class="comment"># ntpq -p</span></span><br><span class="line">     remote           refid      st t when poll reach   delay   offset  jitter</span><br><span class="line">==============================================================================</span><br><span class="line"> ntp1.ams1.nl.le 130.133.1.10     2 u  309  128  104  286.324  -30.954   2.799</span><br><span class="line">*electrode.felix 89.231.96.83     2 u   79  128  177  245.661   -4.341  11.315</span><br><span class="line"> 118.190.21.209  .STEP.          16 u    - 1024    0    0.000    0.000   0.000</span><br><span class="line"> biisoni.miuku.n .STEP.          16 u    - 1024    0    0.000    0.000   0.000</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@ntp-server ~]<span class="comment"># date -R</span></span><br><span class="line">Sun, 31 Mar 2019 15:06:12 +0800</span><br></pre></td></tr></table></figure>
 <p>查询ntp服务：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@ntp-server ~]<span class="comment"># ntpdate -q 0.cn.pool.ntp.org</span></span><br><span class="line">server 78.46.102.180, stratum 2, offset -0.004452, delay 0.25752</span><br><span class="line">server 51.15.238.170, stratum 0, offset 0.000000, delay 0.00000</span><br><span class="line">server 199.182.204.197, stratum 0, offset 0.000000, delay 0.00000</span><br><span class="line">server 94.130.49.186, stratum 3, offset -0.021914, delay 0.32487</span><br><span class="line">31 Mar 15:09:05 ntpdate[24663]: adjust time server 78.46.102.180 offset -0.004452 sec</span><br></pre></td></tr></table></figure>
-]]></content>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">[root@ntp-server ~]<span class="comment"># ntpdate -q 0.cn.pool.ntp.org</span></span><br><span class="line">server 78.46.102.180, stratum 2, offset -0.004452, delay 0.25752</span><br><span class="line">server 51.15.238.170, stratum 0, offset 0.000000, delay 0.00000</span><br><span class="line">server 199.182.204.197, stratum 0, offset 0.000000, delay 0.00000</span><br><span class="line">server 94.130.49.186, stratum 3, offset -0.021914, delay 0.32487</span><br><span class="line">31 Mar 15:09:05 ntpdate[24663]: adjust time server 78.46.102.180 offset -0.004452 sec</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -691,7 +690,7 @@
   <entry>
     <title>centos 7上安装webmin</title>
     <url>/2019/01/15/centos-7%E4%B8%8A%E5%AE%89%E8%A3%85webadmin/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>webmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
+    <content><![CDATA[<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>webmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
 <h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect</span><br></pre></td></tr></table></figure>
 <h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
@@ -757,7 +756,7 @@
   <entry>
     <title>centos samba配置</title>
     <url>/2018/10/21/centos-samba%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h1 id="centos-samba配置小记"><a href="#centos-samba配置小记" class="headerlink" title="centos samba配置小记"></a>centos samba配置小记</h1><h2 id="基本更新"><a href="#基本更新" class="headerlink" title="基本更新"></a>基本更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release</span><br><span class="line">yum install wget curl vim</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="centos-samba配置小记"><a href="#centos-samba配置小记" class="headerlink" title="centos samba配置小记"></a>centos samba配置小记</h2><h2 id="基本更新"><a href="#基本更新" class="headerlink" title="基本更新"></a>基本更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release</span><br><span class="line">yum install wget curl vim</span><br></pre></td></tr></table></figure>
 <h2 id="安装samba"><a href="#安装samba" class="headerlink" title="安装samba"></a>安装samba</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install samba samba-server samba-common</span><br><span class="line">systemctl start smb</span><br><span class="line">systemctl <span class="built_in">enable</span> smb</span><br></pre></td></tr></table></figure>
 <h2 id="配置需求"><a href="#配置需求" class="headerlink" title="配置需求"></a>配置需求</h2><p>部门通过账号登录共享服务器并访问部门共享(如创建ui部门和运维部门)。配置参考如下：</p>
 <h3 id="以部门创建用户"><a href="#以部门创建用户" class="headerlink" title="以部门创建用户"></a>以部门创建用户</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">useradd ui -d /home/ui -s /usr/sbin/nologin -m</span><br><span class="line">useradd ops -d /home/ops -s /usr/sbin/nologin -m</span><br></pre></td></tr></table></figure>
@@ -792,7 +791,7 @@
   <entry>
     <title>centos 安装增强功能</title>
     <url>/2019/02/20/centos-%E5%AE%89%E8%A3%85%E5%A2%9E%E5%BC%BA%E5%8A%9F%E8%83%BD/</url>
-    <content><![CDATA[<h1 id="virtualbox-centos-安装增强功能"><a href="#virtualbox-centos-安装增强功能" class="headerlink" title="virtualbox centos 安装增强功能"></a>virtualbox centos 安装增强功能</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04<br>虚拟机：virtualbox</p>
+    <content><![CDATA[<h2 id="virtualbox-centos-安装增强功能"><a href="#virtualbox-centos-安装增强功能" class="headerlink" title="virtualbox centos 安装增强功能"></a>virtualbox centos 安装增强功能</h2><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04<br>虚拟机：virtualbox</p>
 <h2 id="操作步骤"><a href="#操作步骤" class="headerlink" title="操作步骤"></a>操作步骤</h2><h3 id="挂载虚拟增强工具包镜像"><a href="#挂载虚拟增强工具包镜像" class="headerlink" title="挂载虚拟增强工具包镜像"></a>挂载虚拟增强工具包镜像</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir vbox_tool</span><br><span class="line">mount /dev/cdrom ./vbox_tool</span><br></pre></td></tr></table></figure>
 <h3 id="安装信赖关系"><a href="#安装信赖关系" class="headerlink" title="安装信赖关系"></a>安装信赖关系</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum update kernel //升级内核</span><br><span class="line">sudo yum update</span><br><span class="line">sudo yum install bzip2 tar gcc make perl kernel-devel kernel-headers</span><br></pre></td></tr></table></figure>
 <p>最小化安装的centos安装增强功能时，会提示依赖如下图所示：</p>
@@ -813,7 +812,7 @@
   <entry>
     <title>centos安装mariadb</title>
     <url>/2018/08/20/centos%E5%AE%89%E8%A3%85mariadb/</url>
-    <content><![CDATA[<h1 id="centos安装mariadb操作小记"><a href="#centos安装mariadb操作小记" class="headerlink" title="centos安装mariadb操作小记"></a>centos安装mariadb操作小记</h1><h2 id="0x01-安装"><a href="#0x01-安装" class="headerlink" title="0x01:安装"></a>0x01:安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># yum install mariadb mariadb-server</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="centos安装mariadb操作小记"><a href="#centos安装mariadb操作小记" class="headerlink" title="centos安装mariadb操作小记"></a>centos安装mariadb操作小记</h2><h2 id="0x01-安装"><a href="#0x01-安装" class="headerlink" title="0x01:安装"></a>0x01:安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># yum install mariadb mariadb-server</span></span><br></pre></td></tr></table></figure>
 <p>安装过程中输入y确认安装mariadb相关的包。</p>
 <h2 id="0x02-启用"><a href="#0x02-启用" class="headerlink" title="0x02:启用"></a>0x02:启用</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># systemctl start mariadb</span></span><br><span class="line"><span class="comment"># systemclt enable mariadb</span></span><br><span class="line"><span class="comment"># systemctl status mariadb</span></span><br></pre></td></tr></table></figure>
 <p>启用后的状态应如下图所示内容：</p>
@@ -832,7 +831,7 @@
   <entry>
     <title>centos默认防火墙使用指南</title>
     <url>/2018/10/20/centos%E9%BB%98%E8%AE%A4%E9%98%B2%E7%81%AB%E5%A2%99%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97/</url>
-    <content><![CDATA[<h1 id="firewall-cmd操作小记"><a href="#firewall-cmd操作小记" class="headerlink" title="firewall-cmd操作小记"></a>firewall-cmd操作小记</h1><h2 id="0x01-基本操作"><a href="#0x01-基本操作" class="headerlink" title="0x01:基本操作"></a>0x01:基本操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># systemctl start firewalld //启动</span></span><br><span class="line"><span class="comment"># systemctl status firewalld //状态</span></span><br><span class="line"><span class="comment"># systemctl disable firewalld //禁用</span></span><br><span class="line"><span class="comment"># systemctl stop firewalld //停止</span></span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="firewall-cmd操作小记"><a href="#firewall-cmd操作小记" class="headerlink" title="firewall-cmd操作小记"></a>firewall-cmd操作小记</h2><h2 id="0x01-基本操作"><a href="#0x01-基本操作" class="headerlink" title="0x01:基本操作"></a>0x01:基本操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># systemctl start firewalld //启动</span></span><br><span class="line"><span class="comment"># systemctl status firewalld //状态</span></span><br><span class="line"><span class="comment"># systemctl disable firewalld //禁用</span></span><br><span class="line"><span class="comment"># systemctl stop firewalld //停止</span></span><br></pre></td></tr></table></figure>
 <h2 id="0x02-systemctl"><a href="#0x02-systemctl" class="headerlink" title="0x02:systemctl"></a>0x02:systemctl</h2><p>systemctl是centos中必不可少的管理工具，它具备service和chkconfig的所有功能</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># systemctl start firewalld.service //启动某个服务</span></span><br><span class="line"><span class="comment"># systemctl stop firewalld.service //关闭某个服务</span></span><br><span class="line"><span class="comment"># systemctl restart firewalld.service //重启某个服务</span></span><br><span class="line"><span class="comment"># systemctl status firewalld.service //显示某个服务的状态</span></span><br><span class="line"><span class="comment"># systemctl enable firewalld.service //开机时随机自启动</span></span><br><span class="line"><span class="comment"># systemctl disable firewalld.service //禁止开机启动</span></span><br><span class="line"><span class="comment"># systemctl is-enabled firewalld.service //查看是否开机启动</span></span><br><span class="line"><span class="comment"># systemctl list-unit-files|grep enabled //查看已经启动的服列表</span></span><br><span class="line"><span class="comment"># systemctl --failed //查看启动失败的服务列表</span></span><br></pre></td></tr></table></figure>
 <h2 id="0x03-基本配置firewall-cmd"><a href="#0x03-基本配置firewall-cmd" class="headerlink" title="0x03:基本配置firewall-cmd"></a>0x03:基本配置firewall-cmd</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># firewall-cmd --version //查看防火墙版本</span></span><br><span class="line"><span class="comment"># firewall-cmd --help //查看命令操作帮助</span></span><br><span class="line"><span class="comment"># firewall-cmd --state //显示当前状态</span></span><br><span class="line"><span class="comment"># firewall-cmd --zone=public --list-ports //查看所有打开运行的端口</span></span><br><span class="line"><span class="comment"># firewall-cmd --reload //不重启立即加载</span></span><br><span class="line"><span class="comment"># firewall-cmd --list-all-zones | more //查看区域信息情况</span></span><br><span class="line"><span class="comment"># firewall-cmd --get-zone-of-interface=eth0 //查看指定接口所属区域</span></span><br><span class="line"><span class="comment"># firewall-cmd --panic-on //拒绝所有包</span></span><br><span class="line"><span class="comment"># firewall-cmd --panic-off //取消拒绝状态</span></span><br><span class="line"><span class="comment"># firewall-cmd --query-panic //查看是否拒绝</span></span><br></pre></td></tr></table></figure>
@@ -1128,7 +1127,7 @@
   <entry>
     <title>linux nc command</title>
     <url>/2019/11/30/linux-nc-command/</url>
-    <content><![CDATA[<p>Netcat 是一款简单的Unix工具，使用UDP和TCP协议。 它是一个可靠的容易被其他程序所启用的后台操作工具，同时它也被用作网络的测试工具或黑客工具。 使用它你可以轻易的建立任何连接。内建有很多实用的工具。</p>
+    <content><![CDATA[<p>Netcat 是一款简单的Unix工具，使用UDP和TCP协议。 它是一个可靠的容易被其他程序所启用的后台操作工具。 使用它你可以轻易的建立任何连接。内建有很多实用的工具。</p>
 <h2 id="linux-nc-命令"><a href="#linux-nc-命令" class="headerlink" title="linux nc 命令"></a>linux nc 命令</h2><h3 id="netcat-安装"><a href="#netcat-安装" class="headerlink" title="netcat 安装"></a>netcat 安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ubuntu 18.04</span></span><br><span class="line">sudo apt install netcat</span><br><span class="line"><span class="comment"># centos  7</span></span><br><span class="line">sudo yum install nc</span><br></pre></td></tr></table></figure>
 <h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><ul>
 <li>端口扫描</li>
@@ -1146,7 +1145,7 @@
   <entry>
     <title>linux nc 命令</title>
     <url>/2021/01/21/linux-nc-%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<p>Netcat 是一款简单的Unix工具，使用UDP和TCP协议。 它是一个可靠的容易被其他程序所启用的后台操作工具，同时它也被用作网络的测试工具或黑客工具。 使用它你可以轻易的建立任何连接。内建有很多实用的工具。</p>
+    <content><![CDATA[<p>Netcat 是一款简单的Unix工具，使用UDP和TCP协议。 它是一个可靠的容易被其他程序所启用的后台操作工具。 使用它你可以轻易的建立任何连接。内建有很多实用的工具。</p>
 <h2 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">nc [-hlnruz][-g&lt;网关...&gt;][-G&lt;指向器数目&gt;][-i&lt;延迟秒数&gt;][-o&lt;输出文件&gt;][-p&lt;通信端口&gt;][-s&lt;来源位址&gt;][-v...][-w&lt;超时秒数&gt;][主机名称][通信端口...]</span><br></pre></td></tr></table></figure>
 <h3 id="参数说明"><a href="#参数说明" class="headerlink" title="参数说明"></a>参数说明</h3><ul>
 <li>-g&lt;网关&gt; 设置路由器跃程通信网关，最多可设置8个。</li>
@@ -1247,7 +1246,7 @@
   <entry>
     <title>linux初步服务配置</title>
     <url>/2018/08/06/linux%E5%88%9D%E6%AD%A5%E6%9C%8D%E5%8A%A1%E9%85%8D%E7%BD%AE/</url>
-    <content><![CDATA[<h1 id="配置操作小记"><a href="#配置操作小记" class="headerlink" title="配置操作小记"></a>配置操作小记</h1><h2 id="作业环境"><a href="#作业环境" class="headerlink" title="作业环境"></a>作业环境</h2><ul>
+    <content><![CDATA[<h2 id="配置操作小记"><a href="#配置操作小记" class="headerlink" title="配置操作小记"></a>配置操作小记</h2><h2 id="作业环境"><a href="#作业环境" class="headerlink" title="作业环境"></a>作业环境</h2><ul>
 <li>系统版本：ubuntu 16.04</li>
 <li>服务器环境：vps</li>
 </ul>
@@ -1565,7 +1564,7 @@
   <entry>
     <title>snmpwalk 用法</title>
     <url>/2018/11/01/snmpwalk-%E7%94%A8%E6%B3%95/</url>
-    <content><![CDATA[<h1 id="snmpwalk-SNMP-V1-V2-SNMP-V3"><a href="#snmpwalk-SNMP-V1-V2-SNMP-V3" class="headerlink" title="snmpwalk (SNMP V1 / V2 / SNMP V3)"></a>snmpwalk (SNMP V1 / V2 / SNMP V3)</h1><h2 id="安装snmp"><a href="#安装snmp" class="headerlink" title="安装snmp"></a>安装snmp</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install net-snmp-utils</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="snmpwalk-SNMP-V1-V2-SNMP-V3"><a href="#snmpwalk-SNMP-V1-V2-SNMP-V3" class="headerlink" title="snmpwalk (SNMP V1 / V2 / SNMP V3)"></a>snmpwalk (SNMP V1 / V2 / SNMP V3)</h2><h2 id="安装snmp"><a href="#安装snmp" class="headerlink" title="安装snmp"></a>安装snmp</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install net-snmp-utils</span><br></pre></td></tr></table></figure>
 <p>or</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install snmp</span><br></pre></td></tr></table></figure>
 <h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="命令行"><a href="#命令行" class="headerlink" title="命令行"></a>命令行</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">snmpwalk [选项] agent [OID]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -1675,7 +1674,7 @@
   <entry>
     <title>ssh signing failed</title>
     <url>/2019/04/04/ssh-signing-failed/</url>
-    <content><![CDATA[<h1 id="ssh-signing-faild"><a href="#ssh-signing-faild" class="headerlink" title="ssh signing faild"></a>ssh signing faild</h1><p>前言，自己电脑重装后，把原来的ssh key文件重新拷贝到了新的系统。尝试通过KEY登录远程主机，发现报错如下：</p>
+    <content><![CDATA[<h2 id="ssh-signing-faild"><a href="#ssh-signing-faild" class="headerlink" title="ssh signing faild"></a>ssh signing faild</h2><p>前言，自己电脑重装后，把原来的ssh key文件重新拷贝到了新的系统。尝试通过KEY登录远程主机，发现报错如下：</p>
 <blockquote>
 <p>ssh: sign_and_send_pubkey: signing failed: agent refused operation  </p>
 </blockquote>
@@ -1694,7 +1693,7 @@
   <entry>
     <title>ttf-mscorefonts-installer ubuntu</title>
     <url>/2019/04/01/ttf-mscorefonts-installer-ubuntu/</url>
-    <content><![CDATA[<h1 id="ttf-mscorefonts-installer下载额外数据失败"><a href="#ttf-mscorefonts-installer下载额外数据失败" class="headerlink" title="ttf-mscorefonts-installer下载额外数据失败"></a>ttf-mscorefonts-installer下载额外数据失败</h1><p>完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：</p>
+    <content><![CDATA[<h2 id="ttf-mscorefonts-installer下载额外数据失败"><a href="#ttf-mscorefonts-installer下载额外数据失败" class="headerlink" title="ttf-mscorefonts-installer下载额外数据失败"></a>ttf-mscorefonts-installer下载额外数据失败</h2><p>完成ubuntu安装后，特别是安装wine之后，电脑经常跳出更新信息：</p>
 <blockquote>
 <p>下载额外数据文件失败<br>以下软件包要求安装后下载附加数据，但其数据无法下载或无法处理。<br>ttf-mscorefonts-installer<br>稍后系统将自动重试下载，您也可以手工立即重试。执行此命令需要有活动的网络连接。  </p>
 </blockquote>
@@ -1723,7 +1722,7 @@
   <entry>
     <title>ubuntu-16-04上安装openvpn服务器(二)</title>
     <url>/2018/08/08/ubuntu-16-04%E4%B8%8A%E5%AE%89%E8%A3%85openvpn%E6%9C%8D%E5%8A%A1%E5%99%A8-2/</url>
-    <content><![CDATA[<h1 id="ubuntu-16-04上安装openvpn-二"><a href="#ubuntu-16-04上安装openvpn-二" class="headerlink" title="ubuntu 16.04上安装openvpn(二)"></a>ubuntu 16.04上安装openvpn(二)</h1><h2 id="step-twelve-安装客户端配置"><a href="#step-twelve-安装客户端配置" class="headerlink" title="step twelve: 安装客户端配置"></a>step twelve: 安装客户端配置</h2><p>现在我们会讨论如何在windows、os x、iso和安卓上安装客户端vpn配置文件。这些客户端上的指令之间是独立的，所以可以跑到适用你的任一条。</p>
+    <content><![CDATA[<h2 id="ubuntu-16-04上安装openvpn-二"><a href="#ubuntu-16-04上安装openvpn-二" class="headerlink" title="ubuntu 16.04上安装openvpn(二)"></a>ubuntu 16.04上安装openvpn(二)</h2><h2 id="step-twelve-安装客户端配置"><a href="#step-twelve-安装客户端配置" class="headerlink" title="step twelve: 安装客户端配置"></a>step twelve: 安装客户端配置</h2><p>现在我们会讨论如何在windows、os x、iso和安卓上安装客户端vpn配置文件。这些客户端上的指令之间是独立的，所以可以跑到适用你的任一条。</p>
 <h3 id="windows"><a href="#windows" class="headerlink" title="windows"></a>windows</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>openvpn的<a href="https://openvpn.net/index.php/open-source/downloads.html">下载页面</a>可以找到windows的openvpn客户端程序。为你的windows选择适合安装的程序版本。<br><em>注意：openvpn需要管理员权限才能安装</em></p>
 <p>在安装openvpn之后，把.ovpn文件拷贝到：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">C:\Progrem Files\OpenVPN\config</span><br></pre></td></tr></table></figure>
@@ -1787,7 +1786,7 @@
   <entry>
     <title>ubuntu 18.04 使用小结</title>
     <url>/2019/03/24/ubuntu-18-04-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="ubuntu-18-04安装配置小结"><a href="#ubuntu-18-04安装配置小结" class="headerlink" title="ubuntu 18.04安装配置小结"></a>ubuntu 18.04安装配置小结</h1><p>起因，从自己毕业以来，自己的电脑就一直在使用ubuntu。最早的长期使用就是从12.04LTS用起。基本到每一个LTS版本自己就升级一次版本。到18.04时，自己重装了系统，各种小折腾后，基本上就比较符合自己需求了。一些小瑕疵还是有的，比如有一些自己之前常用的软件，某些依赖不再被支持，无法安装或启动。在自己尝试无果后，还因为不知道安装了某些依赖，导致系统重启后，每次都会跳出系统错误，询问是否发送报告。虽然实际使用中是没什么问题，不过这个让人比较难受。</p>
+    <content><![CDATA[<h2 id="ubuntu-18-04安装配置小结"><a href="#ubuntu-18-04安装配置小结" class="headerlink" title="ubuntu 18.04安装配置小结"></a>ubuntu 18.04安装配置小结</h2><p>起因，从自己毕业以来，自己的电脑就一直在使用ubuntu。最早的长期使用就是从12.04LTS用起。基本到每一个LTS版本自己就升级一次版本。到18.04时，自己重装了系统，各种小折腾后，基本上就比较符合自己需求了。一些小瑕疵还是有的，比如有一些自己之前常用的软件，某些依赖不再被支持，无法安装或启动。在自己尝试无果后，还因为不知道安装了某些依赖，导致系统重启后，每次都会跳出系统错误，询问是否发送报告。虽然实际使用中是没什么问题，不过这个让人比较难受。</p>
 <p>另外一个比较让人纠结的问题，去年的时候，自己买了一块手绘板，尝试安装linux wacom project后，经常性的在重启后，无法使用。这让我不得不在重新启动电脑后，再一次的尝试重新安装wacom project相关的依赖，或者不关／重启计算机。</p>
 <p>鉴于对自己笔记本硬件已经不太满意，前一段时间，花了点钱，给自己的电脑加了一根固态。后面，就又一次重装了系统。</p>
 <p>接下来梳理一下自已安装系统后的经过。记录一下常用的程序，及各个程序相关的插件。备用。</p>
@@ -1936,7 +1935,7 @@
   <entry>
     <title>ubuntu 18.04 安装 GoogleEarth</title>
     <url>/2019/03/02/ubuntu-18-04-%E5%AE%89%E8%A3%85-GoogleEarth/</url>
-    <content><![CDATA[<h1 id="ubuntu-18-04-安装-GoogleEarthPro"><a href="#ubuntu-18-04-安装-GoogleEarthPro" class="headerlink" title="ubuntu 18.04 安装 GoogleEarthPro"></a>ubuntu 18.04 安装 GoogleEarthPro</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04 LTS</p>
+    <content><![CDATA[<h2 id="ubuntu-18-04-安装-GoogleEarthPro"><a href="#ubuntu-18-04-安装-GoogleEarthPro" class="headerlink" title="ubuntu 18.04 安装 GoogleEarthPro"></a>ubuntu 18.04 安装 GoogleEarthPro</h2><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04 LTS</p>
 <h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install update</span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install gdebi-core wget</span><br></pre></td></tr></table></figure>
 <h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gdebi google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>]]></content>
@@ -1947,7 +1946,7 @@
   <entry>
     <title>ubuntu 18.04 安装 lanproxy</title>
     <url>/2019/04/11/ubuntu-18-04-%E5%AE%89%E8%A3%85-lanproxy/</url>
-    <content><![CDATA[<h1 id="Ubuntu-18-04-安装-lanproxy"><a href="#Ubuntu-18-04-安装-lanproxy" class="headerlink" title="Ubuntu 18.04 安装 lanproxy"></a>Ubuntu 18.04 安装 lanproxy</h1><p>lanproxy git-hub地址<a href="https://github.com/ffay/lanproxy">请戳</a></p>
+    <content><![CDATA[<h2 id="Ubuntu-18-04-安装-lanproxy"><a href="#Ubuntu-18-04-安装-lanproxy" class="headerlink" title="Ubuntu 18.04 安装 lanproxy"></a>Ubuntu 18.04 安装 lanproxy</h2><p>lanproxy git-hub地址<a href="https://github.com/ffay/lanproxy">请戳</a></p>
 <h2 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h2><h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><p>lanproxy依赖于java。服务端安装java通过包管理工具实现如下：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install default-jdk</span><br><span class="line"></span><br><span class="line">java --version</span><br><span class="line">openjdk 10.0.2 2018-07-17</span><br><span class="line">OpenJDK Runtime Environment (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.4)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 10.0.2+13-Ubuntu-1ubuntu0.18.04.4, mixed mode)</span><br></pre></td></tr></table></figure>
 <h3 id="下载服务端"><a href="#下载服务端" class="headerlink" title="下载服务端"></a>下载服务端</h3><p>本文直接是先下载到自己电脑，然后上传至服务器，方式随意。下载地址<a href="https://github.com/ffay/lanproxy/releases">请戳</a></p>
@@ -1978,7 +1977,9 @@
   <entry>
     <title>ubuntu 18.04 安装 nginx</title>
     <url>/2019/04/12/ubuntu-18-04-%E5%AE%89%E8%A3%85-nginx/</url>
-    <content><![CDATA[<h1 id="ubuntu-18-04-安装-nginx"><a href="#ubuntu-18-04-安装-nginx" class="headerlink" title="ubuntu 18.04 安装 nginx"></a>ubuntu 18.04 安装 nginx</h1><h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>服务器上安装了两个服务。通过外网加端口访问。需求通过nginx代理访问两个服务。</p>
+    <content><![CDATA[<h2 id="ubuntu-18-04-安装-nginx"><a href="#ubuntu-18-04-安装-nginx" class="headerlink" title="ubuntu 18.04 安装 nginx"></a>ubuntu 18.04 安装 nginx</h2><blockquote>
+<p>前言<br>服务器上安装了两个服务。通过外网加端口访问。需求通过nginx代理访问两个服务。</p>
+</blockquote>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>ubuntu 18.04,非root，常规用户账户。</p>
 <h2 id="Step1-Installing-Nginx"><a href="#Step1-Installing-Nginx" class="headerlink" title="Step1-Installing Nginx"></a>Step1-Installing Nginx</h2><p>Ubuntu 18.04默认软件库中包含Nginx包。所以可以直接通过apt包管理工具进行安装。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt install nginx</span><br></pre></td></tr></table></figure>
@@ -2007,7 +2008,7 @@
   <entry>
     <title>ubuntu 18.04 安装wireshark</title>
     <url>/2019/04/11/ubuntu-18-04-%E5%AE%89%E8%A3%85wireshark/</url>
-    <content><![CDATA[<h1 id="Ubuntu-18-04-安装-wireshark"><a href="#Ubuntu-18-04-安装-wireshark" class="headerlink" title="Ubuntu 18.04 安装 wireshark"></a>Ubuntu 18.04 安装 wireshark</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install wireshark wireshark-common</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="Ubuntu-18-04-安装-wireshark"><a href="#Ubuntu-18-04-安装-wireshark" class="headerlink" title="Ubuntu 18.04 安装 wireshark"></a>Ubuntu 18.04 安装 wireshark</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install wireshark wireshark-common</span><br></pre></td></tr></table></figure>
 <h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>非root用户下的wireshark没有抓包权限</p>
 <h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
 <li>以root用户运行</li>
@@ -2039,7 +2040,7 @@
   <entry>
     <title>ubuntu 18.04 开启TCP BBR拥塞控制</title>
     <url>/2019/03/15/ubuntu-18-04-%E5%BC%80%E5%90%AFTCP-BBR%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6/</url>
-    <content><![CDATA[<h1 id="启用TCP-BBR拥塞算法"><a href="#启用TCP-BBR拥塞算法" class="headerlink" title="启用TCP BBR拥塞算法"></a>启用TCP BBR拥塞算法</h1><p>TCP BBR是Google给出的一个改良版的tcp拥塞控制算法，其目的在于最大化利用网络链路。TCP BBR要解决的问题：</p>
+    <content><![CDATA[<h2 id="启用TCP-BBR拥塞算法"><a href="#启用TCP-BBR拥塞算法" class="headerlink" title="启用TCP BBR拥塞算法"></a>启用TCP BBR拥塞算法</h2><p>TCP BBR是Google给出的一个改良版的tcp拥塞控制算法，其目的在于最大化利用网络链路。TCP BBR要解决的问题：</p>
 <ul>
 <li>充分利用存在一定丢包率直的网络qlkh；</li>
 <li>降低网络延迟</li>
@@ -2069,7 +2070,7 @@
   <entry>
     <title>ubuntu 18.04安装phpvirtualbox</title>
     <url>/2018/10/13/ubuntu-18-04%E5%AE%89%E8%A3%85phpvirtualbox/</url>
-    <content><![CDATA[<h1 id="安装phpvirtualbox"><a href="#安装phpvirtualbox" class="headerlink" title="安装phpvirtualbox"></a>安装phpvirtualbox</h1><p>virtualbox安装完成后，可以通过给virtualbox后台装一个基于web的前端工具，使其可以通过网页来管理和创建虚拟机。</p>
+    <content><![CDATA[<h2 id="安装phpvirtualbox"><a href="#安装phpvirtualbox" class="headerlink" title="安装phpvirtualbox"></a>安装phpvirtualbox</h2><p>virtualbox安装完成后，可以通过给virtualbox后台装一个基于web的前端工具，使其可以通过网页来管理和创建虚拟机。</p>
 <h2 id="前提条件"><a href="#前提条件" class="headerlink" title="前提条件"></a>前提条件</h2><p>首先，更新系统，并安装相关信赖包</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt install build-essential dkms unzip wget vim</span><br></pre></td></tr></table></figure>
 <p>安装完成后，需要重启ubuntu系统。</p>
@@ -2114,7 +2115,7 @@
   <entry>
     <title>ubuntu 18.04有道词典安装</title>
     <url>/2018/11/25/ubuntu-18-04%E6%9C%89%E9%81%93%E8%AF%8D%E5%85%B8%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="安装有道词典"><a href="#安装有道词典" class="headerlink" title="安装有道词典"></a>安装有道词典</h1><p>前言</p>
+    <content><![CDATA[<h2 id="安装有道词典"><a href="#安装有道词典" class="headerlink" title="安装有道词典"></a>安装有道词典</h2><p>前言</p>
 <p>在ubuntu下，本地词典，有goldendict。可以使用本地词典，屏幕取词，引用网络词典等功能也是应有尽有，但因使用习惯问题，还是比较喜欢使用windows下的词典软件，比如有道词典。良心的是，有道词典和deepin合作开发了linux版本，在ubuntu 16.04上也是正常使用。也是linux用户的福音。ubuntu本身版本已经到18.04了，而linux版本的词典更新日期仍然是2015年的1.1.0版本。想要使用的话，关于QT相关的各种信赖就是问题。完成安装后，曾经尝试根据报错也手动解决，结果能力有限，无可奈何。转而寻找其它大神是否有编译可用的版本，还真的找到了。有的方案是自己写个程序来调用有道词典的API，返回给程序对应的参数。此方案，尝试后，还是有些问题，依然是依赖关系。最终找到一个根据官方包重新编译的，按照其方法操作，安装和运行正常，记录备查。</p>
 <h2 id="下载编译过的安装包"><a href="#下载编译过的安装包" class="headerlink" title="下载编译过的安装包"></a>下载编译过的安装包</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://github.com/yomun/youdaodict_5.5/raw/master/youdao-dict_1.1.1-0~ubuntu_amd64.deb</span><br></pre></td></tr></table></figure>
 <p>编译的安装包需要3D加速</p>
@@ -2152,7 +2153,7 @@
   <entry>
     <title>ubuntu 不支持i386</title>
     <url>/2019/03/10/ubuntu-%E4%B8%8D%E6%94%AF%E6%8C%81i386/</url>
-    <content><![CDATA[<h1 id="ubuntu更新跳过i386体系结构"><a href="#ubuntu更新跳过i386体系结构" class="headerlink" title="ubuntu更新跳过i386体系结构"></a>ubuntu更新跳过i386体系结构</h1><p>前一次，在电脑上安装了google_earth_pro。安装结束后，系统更新就会多出一条更新信息：</p>
+    <content><![CDATA[<h2 id="ubuntu更新跳过i386体系结构"><a href="#ubuntu更新跳过i386体系结构" class="headerlink" title="ubuntu更新跳过i386体系结构"></a>ubuntu更新跳过i386体系结构</h2><p>前一次，在电脑上安装了google_earth_pro。安装结束后，系统更新就会多出一条更新信息：</p>
 <blockquote>
 <p>N: 鉴于仓库 ‘<a href="http://dl.google.com/linux/earth/deb">http://dl.google.com/linux/earth/deb</a> stable InRelease’ 不支持 ‘i386’ 体系结构，跳过配置文件 ‘main/binary-i386/Packages’ 的获取。</p>
 </blockquote>
@@ -2173,7 +2174,7 @@
   <entry>
     <title>ubuntu 串口调试</title>
     <url>/2019/02/22/ubuntu-%E4%B8%B2%E5%8F%A3%E8%B0%83%E8%AF%95/</url>
-    <content><![CDATA[<h1 id="ubuntu-18-04串口调试工具"><a href="#ubuntu-18-04串口调试工具" class="headerlink" title="ubuntu 18.04串口调试工具"></a>ubuntu 18.04串口调试工具</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04</p>
+    <content><![CDATA[<h2 id="ubuntu-18-04串口调试工具"><a href="#ubuntu-18-04串口调试工具" class="headerlink" title="ubuntu 18.04串口调试工具"></a>ubuntu 18.04串口调试工具</h2><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04</p>
 <p>工具：USB转串口</p>
 <p>设备：H3C FIREWARE</p>
 <h2 id="使用命令"><a href="#使用命令" class="headerlink" title="使用命令"></a>使用命令</h2><p>命令行工具：picocom、minicom</p>
@@ -2238,7 +2239,7 @@
   <entry>
     <title>ubuntu 安装mysql server</title>
     <url>/2019/03/06/ubuntu-%E5%AE%89%E8%A3%85mysql-server/</url>
-    <content><![CDATA[<h1 id="ubuntu-安装mysql-server"><a href="#ubuntu-安装mysql-server" class="headerlink" title="ubuntu 安装mysql server"></a>ubuntu 安装mysql server</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+    <content><![CDATA[<h2 id="ubuntu-安装mysql-server"><a href="#ubuntu-安装mysql-server" class="headerlink" title="ubuntu 安装mysql server"></a>ubuntu 安装mysql server</h2><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
 <li>系统：ubuntu 18.04 LTS</li>
 <li>安装方式：apt</li>
 <li>版本：5.7.25</li>
@@ -2284,7 +2285,7 @@
   <entry>
     <title>ubuntu 安装打印机驱动</title>
     <url>/2019/03/26/ubuntu-%E5%AE%89%E8%A3%85%E6%89%93%E5%8D%B0%E6%9C%BA%E9%A9%B1%E5%8A%A8/</url>
-    <content><![CDATA[<h1 id="EPSON-L455驱动安装"><a href="#EPSON-L455驱动安装" class="headerlink" title="EPSON L455驱动安装"></a>EPSON L455驱动安装</h1><p>自己在多年前买了一个打印复印一体机，EPSON L455，4色喷墨打印机。也是长时间没有在ubuntu下使用，重装系统后，准备用起来。安装驱动如下：</p>
+    <content><![CDATA[<h2 id="EPSON-L455驱动安装"><a href="#EPSON-L455驱动安装" class="headerlink" title="EPSON L455驱动安装"></a>EPSON L455驱动安装</h2><p>自己在多年前买了一个打印复印一体机，EPSON L455，4色喷墨打印机。也是长时间没有在ubuntu下使用，重装系统后，准备用起来。安装驱动如下：</p>
 <h2 id="驱动下载"><a href="#驱动下载" class="headerlink" title="驱动下载"></a>驱动下载</h2><p>EPSON L455有linux驱动支持。下载页面<a href="http://download.ebz.epson.net/dsc/search/01/search/searchModule">请戳</a>，在驱动页面选择型号，L455，选择操作系统LINUX。有三个下载项，两个打印驱动和一个扫描驱动：</p>
 <ul>
 <li>Epson Printer Utility 1.0.2</li>
@@ -2305,7 +2306,7 @@
   <entry>
     <title>ubuntu 配置tftp服务</title>
     <url>/2019/03/28/ubuntu-%E9%85%8D%E7%BD%AEtftp%E6%9C%8D%E5%8A%A1/</url>
-    <content><![CDATA[<h1 id="ubuntu-18-04-启用TFTP服务"><a href="#ubuntu-18-04-启用TFTP服务" class="headerlink" title="ubuntu 18.04 启用TFTP服务"></a>ubuntu 18.04 启用TFTP服务</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<h2 id="ubuntu-18-04-启用TFTP服务"><a href="#ubuntu-18-04-启用TFTP服务" class="headerlink" title="ubuntu 18.04 启用TFTP服务"></a>ubuntu 18.04 启用TFTP服务</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux</span><br></pre></td></tr></table></figure>
 <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
 <li><p>创建tftp服务目录</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir tftproot</span><br><span class="line">chmod 777 tftproot</span><br></pre></td></tr></table></figure></li>
@@ -2325,7 +2326,7 @@
   <entry>
     <title>ubuntu下的一些小折腾</title>
     <url>/2019/04/17/ubuntu%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%98%E8%85%BE/</url>
-    <content><![CDATA[<h1 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h1><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul>
+    <content><![CDATA[<h2 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h2><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul>
 <li>问题描述</li>
 </ul>
 <p>默认的ibus输入法，在输入中文的时候，会出现候选词为方块的现象，原因大致为输入法码表与系统字体渲染的问题。即码表中字符在系统的字体库中找不到对应的字体。虽然不影响使用，且码表中匹配的字大都为繁体或生僻字，看到方块，总有一种要干掉方块字的冲动。尝试把系统字体更改为思源黑体，不过输入法候选词中仍然存在方块。更改输入法显示字体：</p>
@@ -2344,13 +2345,9 @@
 <ul>
 <li>解决办法</li>
 </ul>
-<ol>
-<li>安装power-line字体</li>
-</ol>
+<p>a. 安装power-line字体</p>
 <p>下载<a href="https://github.com/abertsch/Menlo-for-Powerline">请戳</a></p>
-<ol start="2">
-<li>配置vs code</li>
-</ol>
+<p>b. 配置vs code</p>
 <p>操作步骤：设置－&gt;打开json设置-&gt;输入以下调用字体信息：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;terminal.integrated.fontFamily&quot;</span>: <span class="string">&quot;Menlo for Powerline&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参考下图：</p>
@@ -2366,7 +2363,7 @@
   <entry>
     <title>vim查找与替换</title>
     <url>/2019/02/16/vim%E6%9F%A5%E6%89%BE%E4%B8%8E%E6%9B%BF%E6%8D%A2/</url>
-    <content><![CDATA[<h1 id="vim中使用查找和替换"><a href="#vim中使用查找和替换" class="headerlink" title="vim中使用查找和替换"></a>vim中使用查找和替换</h1><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>在normal模式下按下”/“即可进入查找模式，输入要查找的字符串并按下回车，Vim会跳到第一个匹配。按下”n”查找下一个，按下”N”查找上一个。</p>
+    <content><![CDATA[<h2 id="vim中使用查找和替换"><a href="#vim中使用查找和替换" class="headerlink" title="vim中使用查找和替换"></a>vim中使用查找和替换</h2><h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><p>在normal模式下按下”/“即可进入查找模式，输入要查找的字符串并按下回车，Vim会跳到第一个匹配。按下”n”查找下一个，按下”N”查找上一个。</p>
 <p>Vim查找支持正则表达式，例如/vim$匹配行尾的”vim”。需要查找特殊字符，需要黑底，例如/vim$匹配“vim$”。</p>
 <p><code>注意查找回车应用\n，而替换为回车应当用\r(相当于&lt;CR&gt;)。</code></p>
 <h3 id="大小写第三查找"><a href="#大小写第三查找" class="headerlink" title="大小写第三查找"></a>大小写第三查找</h3><p>在查找模式中加入\c表示大小写不敏感查找，\C表示大小写敏感查找。例如：</p>
@@ -2408,7 +2405,7 @@
   <entry>
     <title>webadmin安装</title>
     <url>/2018/10/21/webmin%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="centos-7-安装webadmin"><a href="#centos-7-安装webadmin" class="headerlink" title="centos 7 安装webadmin"></a>centos 7 安装webadmin</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>webadmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
+    <content><![CDATA[<h2 id="centos-7-安装webadmin"><a href="#centos-7-安装webadmin" class="headerlink" title="centos 7 安装webadmin"></a>centos 7 安装webadmin</h2><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>webadmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
 <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
 <h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect </span><br></pre></td></tr></table></figure>
 <h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
@@ -2445,8 +2442,10 @@
   <entry>
     <title>windows 脚本更改密码/远程端口/开放防火墙端口</title>
     <url>/2019/03/31/windows-%E8%84%9A%E6%9C%AC%E6%9B%B4%E6%94%B9%E5%AF%86%E7%A0%81-%E8%BF%9C%E7%A8%8B%E7%AB%AF%E5%8F%A3-%E5%BC%80%E6%94%BE%E9%98%B2%E7%81%AB%E5%A2%99%E7%AB%AF%E5%8F%A3/</url>
-    <content><![CDATA[<h1 id="脚本更改用户密码-远程端口-开放防火墙端口"><a href="#脚本更改用户密码-远程端口-开放防火墙端口" class="headerlink" title="脚本更改用户密码/远程端口/开放防火墙端口"></a>脚本更改用户密码/远程端口/开放防火墙端口</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">:begin</span><br><span class="line"><span class="built_in">echo</span> %Date% %Time% &gt;&gt; change.txt</span><br><span class="line"><span class="built_in">echo</span> <span class="comment">#######################</span></span><br><span class="line"><span class="built_in">set</span> /p input=请输入需要修改的密码:</span><br><span class="line"><span class="built_in">echo</span> 密码修改为:%input% &gt;&gt; change.txt</span><br><span class="line">net user administrator %input% &amp;&amp; <span class="built_in">echo</span> 密码修改成功 || <span class="built_in">echo</span> 密码修改失败，输入密码为弱密码，请重新输入强密码 &amp;&amp; goto begin</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="comment">##############</span></span><br><span class="line"><span class="built_in">echo</span> 修改远程桌面端口</span><br><span class="line"><span class="built_in">echo</span> <span class="comment">##############</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> /p c=请输入新的远程登录端口:</span><br><span class="line">reg add <span class="string">&quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp&quot;</span> /v <span class="string">&quot;PortNumber&quot;</span> /t REG_DWORD /d <span class="string">&quot;%c&quot;</span> /f</span><br><span class="line">reg add <span class="string">&quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot;</span> /v <span class="string">&quot;PortNumber&quot;</span> /t REG_DWORD /d <span class="string">&quot;%c&quot;</span> /f</span><br><span class="line"><span class="built_in">echo</span> 远程桌面端口更改为：%c% &gt;&gt; change.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="comment">######################</span></span><br><span class="line"><span class="built_in">echo</span> 配置防火墙开放远程端口%c%</span><br><span class="line"><span class="built_in">echo</span> <span class="comment">######################</span></span><br><span class="line"></span><br><span class="line">netsh firewall show state | findstr 操作模式 &gt; %temp%\1.txt</span><br><span class="line"><span class="built_in">set</span> /p a= &lt;%temp%\1.txt</span><br><span class="line"><span class="built_in">set</span> b=%a:~-2%</span><br><span class="line">del %temp%\1.txt</span><br><span class="line"><span class="keyword">if</span> <span class="string">&quot;%b%&quot;</span>==<span class="string">&quot;启用&quot;</span> (<span class="built_in">echo</span> 防火墙已经开放%c%端口 &amp;&amp; netsh firewall <span class="built_in">set</span> protopening TCP %c% <span class="built_in">enable</span> &gt; NUL) <span class="keyword">else</span> <span class="built_in">echo</span> 防火墙未开启，无须配置</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="comment">##########</span></span><br><span class="line"><span class="built_in">echo</span> 重启生效</span><br><span class="line"><span class="built_in">echo</span> <span class="comment">##########</span></span><br></pre></td></tr></table></figure>
-]]></content>
+    <content><![CDATA[<h2 id="脚本更改用户密码-远程端口-开放防火墙端口"><a href="#脚本更改用户密码-远程端口-开放防火墙端口" class="headerlink" title="脚本更改用户密码/远程端口/开放防火墙端口"></a>脚本更改用户密码/远程端口/开放防火墙端口</h2><blockquote>
+<p>通过脚本设置用户信息，更改windows远程端口及开放防火墙端口</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">@<span class="built_in">echo</span> off</span><br><span class="line">:begin</span><br><span class="line"><span class="built_in">echo</span> %Date% %Time% &gt;&gt; change.txt</span><br><span class="line"><span class="built_in">echo</span> <span class="comment">#######################</span></span><br><span class="line"><span class="built_in">set</span> /p input=请输入需要修改的密码:</span><br><span class="line"><span class="built_in">echo</span> 密码修改为:%input% &gt;&gt; change.txt</span><br><span class="line">net user administrator %input% &amp;&amp; <span class="built_in">echo</span> 密码修改成功 || <span class="built_in">echo</span> 密码修改失败，输入密码为弱密码，请重新输入强密码 &amp;&amp; goto begin</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="comment">##############</span></span><br><span class="line"><span class="built_in">echo</span> 修改远程桌面端口</span><br><span class="line"><span class="built_in">echo</span> <span class="comment">##############</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">set</span> /p c=请输入新的远程登录端口:</span><br><span class="line">reg add <span class="string">&quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp&quot;</span> /v <span class="string">&quot;PortNumber&quot;</span> /t REG_DWORD /d <span class="string">&quot;%c&quot;</span> /f</span><br><span class="line">reg add <span class="string">&quot;HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp&quot;</span> /v <span class="string">&quot;PortNumber&quot;</span> /t REG_DWORD /d <span class="string">&quot;%c&quot;</span> /f</span><br><span class="line"><span class="built_in">echo</span> 远程桌面端口更改为：%c% &gt;&gt; change.txt</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="comment">######################</span></span><br><span class="line"><span class="built_in">echo</span> 配置防火墙开放远程端口%c%</span><br><span class="line"><span class="built_in">echo</span> <span class="comment">######################</span></span><br><span class="line"></span><br><span class="line">netsh firewall show state | findstr 操作模式 &gt; %temp%\1.txt</span><br><span class="line"><span class="built_in">set</span> /p a= &lt;%temp%\1.txt</span><br><span class="line"><span class="built_in">set</span> b=%a:~-2%</span><br><span class="line">del %temp%\1.txt</span><br><span class="line"><span class="keyword">if</span> <span class="string">&quot;%b%&quot;</span>==<span class="string">&quot;启用&quot;</span> (<span class="built_in">echo</span> 防火墙已经开放%c%端口 &amp;&amp; netsh firewall <span class="built_in">set</span> protopening TCP %c% <span class="built_in">enable</span> &gt; NUL) <span class="keyword">else</span> <span class="built_in">echo</span> 防火墙未开启，无须配置</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="comment">##########</span></span><br><span class="line"><span class="built_in">echo</span> 重启生效</span><br><span class="line"><span class="built_in">echo</span> <span class="comment">##########</span></span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>windows</tag>
       </tags>
@@ -2454,11 +2453,23 @@
   <entry>
     <title>windows 脚本自动登录交换机</title>
     <url>/2019/03/27/windows-%E8%84%9A%E6%9C%AC%E8%87%AA%E5%8A%A8%E7%99%BB%E5%BD%95%E4%BA%A4%E6%8D%A2%E6%9C%BA/</url>
-    <content><![CDATA[<h1 id="windows-脚本telnet登录交换机"><a href="#windows-脚本telnet登录交换机" class="headerlink" title="windows 脚本telnet登录交换机"></a>windows 脚本telnet登录交换机</h1><p>前言，公司的另外一个项目中的一个小问题，网络中的LED显示屏，会经常从服务端到终端不通。从网关上ping一下之前，又可以从服务端正常操作。一直也没找到这个问题的根源，就想到了一个暂时解决方法，能不能写一个脚本自动登录交换机，执行ping命令。再写一个计划任务，每天定时执行一次脚本。</p>
+    <content><![CDATA[<h2 id="windows-脚本telnet登录交换机"><a href="#windows-脚本telnet登录交换机" class="headerlink" title="windows 脚本telnet登录交换机"></a>windows 脚本telnet登录交换机</h2><p>前言，公司的另外一个项目中的一个小问题，网络中的LED显示屏，会经常从服务端到终端不通。从网关上ping一下之前，又可以从服务端正常操作。一直也没找到这个问题的根源，就想到了一个暂时解决方法，能不能写一个脚本自动登录交换机，执行ping命令。再写一个计划任务，每天定时执行一次脚本。</p>
 <p>这个想法还真可以操作。脚本代码如下：</p>
 <h2 id="自动登录脚本"><a href="#自动登录脚本" class="headerlink" title="自动登录脚本"></a>自动登录脚本</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">echo</span> off</span><br><span class="line"><span class="built_in">echo</span> <span class="built_in">set</span> sh=WScript.CreateObject(<span class="string">&quot;WScript.Shell&quot;</span>) &gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;open 10.10.10.2&quot;</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;&#123;ENTER&#125;&quot;</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys “USERNAME&#123;ENTER&#125;” &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WSCript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;PASSWORD&#123;ENTER&#125;&quot;</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 3000 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;ping 192.0.5.120&#123;ENTER&#125;&quot;</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line">......</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;exit&#123;ENTER&#125;&quot;</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> WScript.Sleep 30 &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;&#123;ENTER&#125;&quot;</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;&#123;ENTER&#125;&quot;</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;&#123;ENTER&#125;&quot;</span> &gt;&gt; telnet_tmp.vbs</span><br><span class="line">start telnet</span><br><span class="line">cscript //nologo telnet_tmp.vbs</span><br><span class="line">taskkill /f /im cmd.exe</span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;&#123;ENTER&#125;&quot;</span></span><br><span class="line"><span class="built_in">echo</span> sh.SendKeys <span class="string">&quot;quit&#123;ENTER&#125;&quot;</span></span><br><span class="line"><span class="built_in">echo</span> del telnet_tmp.vbs</span><br></pre></td></tr></table></figure>
 <p>TODO：以上脚本可以实现登录和自动PING，仍然存在一个问题，就是telnet退出后，有一个任意键退出。此问题暂无思路。留后。</p>
 ]]></content>
+      <tags>
+        <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>windows常用命令</title>
+    <url>/2018/08/05/windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
+    <content><![CDATA[<h2 id="windows-常用命令"><a href="#windows-常用命令" class="headerlink" title="windows 常用命令"></a>windows 常用命令</h2><p>本日志记录一些常用的windows 命令，涉及网络、服务、进程、计划任务等，以备用。</p>
+<h2 id="net相关"><a href="#net相关" class="headerlink" title="net相关"></a>net相关</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netsh wlan show drive  //查看网卡是否具备网络承载能力</span><br><span class="line"></span><br><span class="line">netsh wlan <span class="built_in">set</span> hostednetwork mode=allow ssid=XXX key=XXX //开启网络承载功能</span><br><span class="line"></span><br><span class="line">netsh wlan start hostednetwork //启用配置</span><br><span class="line"></span><br><span class="line">netsh wlan stop hostednetwork //停用配置</span><br><span class="line"></span><br><span class="line">netsh wlan show hostednetwork //查看已经创建的承载网络</span><br><span class="line"></span><br><span class="line">netsh winsock reset //重置sock</span><br><span class="line"></span><br><span class="line">net user administrator /active:yes //启用administrator</span><br><span class="line"></span><br><span class="line">net start //查看已经雇用的windows服务</span><br><span class="line"></span><br><span class="line">net start dnscache //开启dns缓存</span><br><span class="line"></span><br><span class="line">net stop dnscache //关闭dns缓存</span><br><span class="line"></span><br><span class="line">net share //查看本地共享</span><br><span class="line"></span><br><span class="line">net share share=c:\share //将Ｃ下的share文件夹设置为共享，共享名为share</span><br><span class="line"></span><br><span class="line">net share share /delete //删除共享名为share的共享</span><br><span class="line"></span><br><span class="line">net use //查看已经登录的网络连接</span><br><span class="line"></span><br><span class="line">net use q: \\192.168.11.10\abc abc_passwd /user:abc   //将192.168.11.10下的abc文件映射到本地Q盘，共享使用abc账号／密码登录。</span><br><span class="line"></span><br><span class="line">net use q: /delete /yes     //删除本机Q盘的映射</span><br><span class="line"></span><br><span class="line">net use */y /d //消除全部已经登录的网络会话</span><br><span class="line"></span><br><span class="line">net view //查看本地共享列表</span><br><span class="line"></span><br><span class="line">net user //查看本机用户</span><br><span class="line"></span><br><span class="line">net user administrator //查看本地帐号administrator的信息</span><br><span class="line"></span><br><span class="line">net user dev 123456 /add //添加用户为dev密码为123456</span><br><span class="line"></span><br><span class="line">net user dev localgroup administrator dev /add //将本地用户dev加入administrator组中</span><br><span class="line"></span><br><span class="line">net user dev /del //删除本地用户dev</span><br></pre></td></tr></table></figure>
+<h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tasklist //查看进程</span><br><span class="line"></span><br><span class="line">taskkill /im notepad.exe //结束名为notepad.exe的进程</span><br><span class="line"></span><br><span class="line">taskkill /pid 1230 /pid 1241 /pid 1252 /t //结束pid为1230、1241、1253的进程及由它启动的子进程</span><br><span class="line"></span><br><span class="line">taskkill /f /im cmd.exe /t //强制结束名为cmd.exe的进程以及由它启动的子进程</span><br></pre></td></tr></table></figure>
+<h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -a //查看计算机开了哪些端口</span><br><span class="line"></span><br><span class="line">route <span class="built_in">print</span> //查看路由表</span><br></pre></td></tr></table></figure>
+<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">taskchd.msc //计划任务</span><br><span class="line"></span><br><span class="line">gpedit.msc //组策略</span><br><span class="line"></span><br><span class="line">msconfig //启动项</span><br><span class="line"></span><br><span class="line">diskmgmt.msc //磁盘管理</span><br><span class="line"></span><br><span class="line">tracert IP //路由跟踪</span><br><span class="line"></span><br><span class="line">eventvwr.msc  //windows 日志</span><br><span class="line"></span><br><span class="line">diskpart //磁盘管理</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>windows</tag>
       </tags>
@@ -2482,18 +2493,6 @@
       </tags>
   </entry>
   <entry>
-    <title>windows常用命令</title>
-    <url>/2018/08/05/windows%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/</url>
-    <content><![CDATA[<h2 id="windows-常用命令"><a href="#windows-常用命令" class="headerlink" title="windows 常用命令"></a>windows 常用命令</h2><p>本日志记录一些常用的windows 命令，涉及网络、服务、进程、计划任务等，以备用。</p>
-<h2 id="net相关"><a href="#net相关" class="headerlink" title="net相关"></a>net相关</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netsh wlan show drive  //查看网卡是否具备网络承载能力</span><br><span class="line"></span><br><span class="line">netsh wlan <span class="built_in">set</span> hostednetwork mode=allow ssid=XXX key=XXX //开启网络承载功能</span><br><span class="line"></span><br><span class="line">netsh wlan start hostednetwork //启用配置</span><br><span class="line"></span><br><span class="line">netsh wlan stop hostednetwork //停用配置</span><br><span class="line"></span><br><span class="line">netsh wlan show hostednetwork //查看已经创建的承载网络</span><br><span class="line"></span><br><span class="line">netsh winsock reset //重置sock</span><br><span class="line"></span><br><span class="line">net user administrator /active:yes //启用administrator</span><br><span class="line"></span><br><span class="line">net start //查看已经雇用的windows服务</span><br><span class="line"></span><br><span class="line">net start dnscache //开启dns缓存</span><br><span class="line"></span><br><span class="line">net stop dnscache //关闭dns缓存</span><br><span class="line"></span><br><span class="line">net share //查看本地共享</span><br><span class="line"></span><br><span class="line">net share share=c:\share //将Ｃ下的share文件夹设置为共享，共享名为share</span><br><span class="line"></span><br><span class="line">net share share /delete //删除共享名为share的共享</span><br><span class="line"></span><br><span class="line">net use //查看已经登录的网络连接</span><br><span class="line"></span><br><span class="line">net use q: \\192.168.11.10\abc abc_passwd /user:abc   //将192.168.11.10下的abc文件映射到本地Q盘，共享使用abc账号／密码登录。</span><br><span class="line"></span><br><span class="line">net use q: /delete /yes     //删除本机Q盘的映射</span><br><span class="line"></span><br><span class="line">net use */y /d //消除全部已经登录的网络会话</span><br><span class="line"></span><br><span class="line">net view //查看本地共享列表</span><br><span class="line"></span><br><span class="line">net user //查看本机用户</span><br><span class="line"></span><br><span class="line">net user administrator //查看本地帐号administrator的信息</span><br><span class="line"></span><br><span class="line">net user dev 123456 /add //添加用户为dev密码为123456</span><br><span class="line"></span><br><span class="line">net user dev localgroup administrator dev /add //将本地用户dev加入administrator组中</span><br><span class="line"></span><br><span class="line">net user dev /del //删除本地用户dev</span><br></pre></td></tr></table></figure>
-<h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tasklist //查看进程</span><br><span class="line"></span><br><span class="line">taskkill /im notepad.exe //结束名为notepad.exe的进程</span><br><span class="line"></span><br><span class="line">taskkill /pid 1230 /pid 1241 /pid 1252 /t //结束pid为1230、1241、1253的进程及由它启动的子进程</span><br><span class="line"></span><br><span class="line">taskkill /f /im cmd.exe /t //强制结束名为cmd.exe的进程以及由它启动的子进程</span><br></pre></td></tr></table></figure>
-<h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">netstat -a //查看计算机开了哪些端口</span><br><span class="line"></span><br><span class="line">route <span class="built_in">print</span> //查看路由表</span><br></pre></td></tr></table></figure>
-<h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">taskchd.msc //计划任务</span><br><span class="line"></span><br><span class="line">gpedit.msc //组策略</span><br><span class="line"></span><br><span class="line">msconfig //启动项</span><br><span class="line"></span><br><span class="line">diskmgmt.msc //磁盘管理</span><br><span class="line"></span><br><span class="line">tracert IP //路由跟踪</span><br><span class="line"></span><br><span class="line">eventvwr.msc  //windows 日志</span><br><span class="line"></span><br><span class="line">diskpart //磁盘管理</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>windows</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>zabbix 忘记admin密码</title>
     <url>/2020/02/28/zabbix-%E5%BF%98%E8%AE%B0admin%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<h2 id="zabbix忘记admin密码"><a href="#zabbix忘记admin密码" class="headerlink" title="zabbix忘记admin密码"></a>zabbix忘记admin密码</h2><p>好长时间 没有使用admin登录zabbix了，尝试了几次没登录上去，虽然有其它用户 暂不影响使用，但问题一直在，也不是办法。</p>
@@ -2510,18 +2509,13 @@
     <title>华为GPON配置说明</title>
     <url>/2019/04/02/%E5%8D%8E%E4%B8%BAGPON%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E/</url>
     <content><![CDATA[<h2 id="华为GPON配置说明"><a href="#华为GPON配置说明" class="headerlink" title="华为GPON配置说明"></a>华为GPON配置说明</h2><h2 id="名词说明"><a href="#名词说明" class="headerlink" title="名词说明"></a>名词说明</h2><ol>
-<li><p>DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整中ONU上行进行限速的。一个PON口上行带宽为1G，实际能用到的只有900M，所以要对ONU的上行进行合理分配。</p>
-</li>
-<li><p>Tcont：tcont是连接dba和gemport的通道，也就是说emport是通过和tcont联系，才把dba的作用引用过来的。</p>
-</li>
-<li><p>Gemport：gemport是OLT线程工作的最小单元，前面的dba，tcont都是最终给gemport用。</p>
-</li>
-<li><p>线路模板ont-lineprofile：ONU注册时要选择相应的线路模板，里面包含tcont，gem等信息。</p>
-</li>
-<li><p>DBA模板，线路模板，可以创建多个；一个线路模板中：tcont有八个（0－7），gem可以创建128个（0－127）；一个gem中可有映射8个：gem mapping 1 0；gem mapping 1 1；一直到gem mapping 1 7；但是一个线路模板中最多只能创建128条gem mapping，超出会报错。</p>
-<h2 id="数据规划"><a href="#数据规划" class="headerlink" title="数据规划"></a>数据规划</h2></li>
+<li>DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整中ONU上行进行限速的。一个PON口上行带宽为1G，实际能用到的只有900M，所以要对ONU的上行进行合理分配。</li>
+<li>Tcont：tcont是连接dba和gemport的通道，也就是说emport是通过和tcont联系，才把dba的作用引用过来的。</li>
+<li>Gemport：gemport是OLT线程工作的最小单元，前面的dba，tcont都是最终给gemport用。</li>
+<li>线路模板ont-lineprofile：ONU注册时要选择相应的线路模板，里面包含tcont，gem等信息。</li>
+<li>DBA模板，线路模板，可以创建多个；一个线路模板中：tcont有八个（0－7），gem可以创建128个（0－127）；一个gem中可有映射8个：gem mapping 1 0；gem mapping 1 1；一直到gem mapping 1 7；但是一个线路模板中最多只能创建128条gem mapping，超出会报错。</li>
 </ol>
-<p>以花都狮岭数据规划为例：</p>
+<h2 id="数据规划"><a href="#数据规划" class="headerlink" title="数据规划"></a>数据规划</h2><p>以花都狮岭数据规划为例：</p>
 <p>OLT：网管VLAN 22；</p>
 <pre><code>IP：172.17.21.132；网关：172.17.21.129；语音VLAN 100；语音IP：172.16.0.11
 </code></pre>
@@ -2564,7 +2558,9 @@
 <p>interface vlanif 100</p>
 <p>ip address 172.16.0.23 255.255.254.0</p>
 <p>//配置语音地址</p>
-<p>quit<br>```</p>
+<p>quit</p>
+<pre><code>
+</code></pre>
 ]]></content>
       <tags>
         <tag>network</tag>
@@ -2645,7 +2641,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#97;&#100;&#x6d;&#105;&#110;&#x40;&#x68;&#x75;&#x61;&#x77;&#x65;&#105;&#x2e;&#99;&#x6f;&#x6d;">&#97;&#100;&#x6d;&#105;&#110;&#x40;&#x68;&#x75;&#x61;&#x77;&#x65;&#105;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#97;&#x64;&#109;&#x69;&#110;&#64;&#x68;&#117;&#x61;&#119;&#101;&#105;&#x2e;&#99;&#x6f;&#x6d;">&#97;&#x64;&#109;&#x69;&#110;&#64;&#x68;&#117;&#x61;&#119;&#101;&#105;&#x2e;&#99;&#x6f;&#x6d;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2657,7 +2653,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#x64;&#109;&#x69;&#x6e;&#x40;&#x68;&#117;&#x61;&#x77;&#101;&#105;&#46;&#x63;&#x6f;&#x6d;">&#x61;&#x64;&#109;&#x69;&#x6e;&#x40;&#x68;&#117;&#x61;&#x77;&#101;&#105;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#97;&#100;&#x6d;&#x69;&#x6e;&#64;&#104;&#x75;&#x61;&#119;&#x65;&#105;&#x2e;&#99;&#111;&#x6d;">&#97;&#100;&#x6d;&#x69;&#x6e;&#64;&#104;&#x75;&#x61;&#119;&#x65;&#105;&#x2e;&#99;&#111;&#x6d;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
@@ -2725,10 +2721,8 @@
   <entry>
     <title>华为获取诊断信息文件</title>
     <url>/2019/03/29/%E5%8D%8E%E4%B8%BA%E8%8E%B7%E5%8F%96%E8%AF%8A%E6%96%AD%E4%BF%A1%E6%81%AF%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="华为交换机获取诊断信息"><a href="#华为交换机获取诊断信息" class="headerlink" title="华为交换机获取诊断信息"></a>华为交换机获取诊断信息</h1><p>获取设备诊断信息，用于判断设备故障。</p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;HEXIN&gt;display diagnostic-information dia-info.txt</span><br><span class="line">Now saving the diagnostic information to the device</span><br><span class="line">34%/        //输出进度</span><br></pre></td></tr></table></figure>
-
-]]></content>
+    <content><![CDATA[<h2 id="华为交换机获取诊断信息"><a href="#华为交换机获取诊断信息" class="headerlink" title="华为交换机获取诊断信息"></a>华为交换机获取诊断信息</h2><p>获取设备诊断信息，用于判断设备故障。</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;HEXIN&gt;display diagnostic-information dia-info.txt</span><br><span class="line">Now saving the diagnostic information to the device</span><br><span class="line">34%/        //输出进度</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>network</tag>
       </tags>
@@ -2822,7 +2816,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
   <entry>
     <title>更改windows默认3389端口</title>
     <url>/2019/03/29/%E6%9B%B4%E6%94%B9windows%E9%BB%98%E8%AE%A43389%E7%AB%AF%E5%8F%A3/</url>
-    <content><![CDATA[<h1 id="windows远程端口更改"><a href="#windows远程端口更改" class="headerlink" title="windows远程端口更改"></a>windows远程端口更改</h1><p>windows默认远程协议RDP端口为3389，更改默认端口操作如下：</p>
+    <content><![CDATA[<h2 id="windows远程端口更改"><a href="#windows远程端口更改" class="headerlink" title="windows远程端口更改"></a>windows远程端口更改</h2><p>windows默认远程协议RDP端口为3389，更改默认端口操作如下：</p>
 <h2 id="通过注册表更改默认RDP端口"><a href="#通过注册表更改默认RDP端口" class="headerlink" title="通过注册表更改默认RDP端口"></a>通过注册表更改默认RDP端口</h2><p>WIN+R运行程序regedit。注册表编辑器。</p>
 <p>HKEY_LOCAL_MACHINE -&gt; SYSTEM -&gt; CurrentControlSet -&gt; Control -&gt; Terminal Server -&gt; Wds -&gt; rdpwd -&gt; Tds -tcp -&gt; PortNumber -&gt; 基数用十进制方式显示 -&gt; 更改为想要的端口号</p>
 <p>HKEY_LOCAL_MACHINE -&gt; SYSTEM -&gt; CurrentControlSet -&gt; Control -&gt; Terminal Server -&gt; WinStations -&gt; RDP-Tcp -&gt; PortNumber -&gt; 基数用十进制方式显示 -&gt; 更改为想要的端口号</p>
@@ -2912,7 +2906,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
   <entry>
     <title>OSI</title>
     <url>/2018/08/05/OSI/</url>
-    <content><![CDATA[<h1 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h1><h2 id="各功能简介"><a href="#各功能简介" class="headerlink" title="各功能简介"></a>各功能简介</h2><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>物理层位于OSI参考模型的最低层，它直接面向原始比特流的传输；</p>
+    <content><![CDATA[<h2 id="OSI七层模型"><a href="#OSI七层模型" class="headerlink" title="OSI七层模型"></a>OSI七层模型</h2><h2 id="各功能简介"><a href="#各功能简介" class="headerlink" title="各功能简介"></a>各功能简介</h2><h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>物理层位于OSI参考模型的最低层，它直接面向原始比特流的传输；</p>
 <p>　为了实现原始比特流的物理传输，物理层必须解决好包括传输介质、信息类型、数据与信号之间的转换、信号传输中的衰减和噪声等内在的一系列问题。</p>
 <p>另外，物理层标准要给出关于物理接口的机械、电气、功能和规程特性，以便于不同的厂商既能够根据公认的标准各自独立的制造设备，又能使各个厂商的产品能够相互兼容。</p>
 <h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>　在物理层发送和接收数据的过程中，会出现一些物理层自己不能解决的问题。</p>

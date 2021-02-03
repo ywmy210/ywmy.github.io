@@ -55,7 +55,7 @@
 
         </div>
         <div class="content markdown">
-            <h1 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h1><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul>
+            <h2 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h2><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul>
 <li>问题描述</li>
 </ul>
 <p>默认的ibus输入法，在输入中文的时候，会出现候选词为方块的现象，原因大致为输入法码表与系统字体渲染的问题。即码表中字符在系统的字体库中找不到对应的字体。虽然不影响使用，且码表中匹配的字大都为繁体或生僻字，看到方块，总有一种要干掉方块字的冲动。尝试把系统字体更改为思源黑体，不过输入法候选词中仍然存在方块。更改输入法显示字体：</p>
@@ -74,13 +74,9 @@
 <ul>
 <li>解决办法</li>
 </ul>
-<ol>
-<li>安装power-line字体</li>
-</ol>
+<p>a. 安装power-line字体</p>
 <p>下载<a target="_blank" rel="noopener" href="https://github.com/abertsch/Menlo-for-Powerline">请戳</a></p>
-<ol start="2">
-<li>配置vs code</li>
-</ol>
+<p>b. 配置vs code</p>
 <p>操作步骤：设置－&gt;打开json设置-&gt;输入以下调用字体信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;terminal.integrated.fontFamily&quot;</span>: <span class="string">&quot;Menlo for Powerline&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参考下图：</p>
@@ -119,7 +115,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu-18-04-%E5%B0%8F%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu 18.04 小问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ibus%E5%80%99%E9%80%89%E8%AF%8D%E6%96%B9%E5%9D%97"><span class="toc-number">1.1.</span> <span class="toc-text">ibus候选词方块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vs-code-power-line-font"><span class="toc-number">1.2.</span> <span class="toc-text">vs code power-line font</span></a></li></ol></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ubuntu-18-04-%E5%B0%8F%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu 18.04 小问题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#ibus%E5%80%99%E9%80%89%E8%AF%8D%E6%96%B9%E5%9D%97"><span class="toc-number">2.</span> <span class="toc-text">ibus候选词方块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vs-code-power-line-font"><span class="toc-number">3.</span> <span class="toc-text">vs code power-line font</span></a></li></ol>	
         </div>
     
 </div>
