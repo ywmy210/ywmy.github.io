@@ -317,22 +317,6 @@
   </entry>
   
   <entry>
-    <title>centos 7 ssr</title>
-    <link href="http://example.com/2019/10/07/centos-7-ssr/"/>
-    <id>http://example.com/2019/10/07/centos-7-ssr/</id>
-    <published>2019-10-07T09:44:52.000Z</published>
-    <updated>2019-10-07T13:10:09.101Z</updated>
-    
-    <summary type="html">
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://example.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>How to Deploy Google BBRon CentOS 7</title>
     <link href="http://example.com/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/"/>
     <id>http://example.com/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/</id>
@@ -425,29 +409,6 @@
   </entry>
   
   <entry>
-    <title>centos 6 ssr</title>
-    <link href="http://example.com/2019/06/28/centos-6-ssr/"/>
-    <id>http://example.com/2019/06/28/centos-6-ssr/</id>
-    <published>2019-06-28T15:09:05.000Z</published>
-    <updated>2019-06-28T15:24:26.779Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="centos-6-ssr"><a href="#centos-6-ssr" class="headerlink" title="centos 6 ssr"></a>centos 6 ssr</h2><h3 id="更换内核"><a href="#更换内核" class="headerlink" title="更换内核"></a>更换内核</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum update 更新系统</span><br><span class="line">rpm -ivh http://www.aloneray.com/wp-content/uploads/2017/03/kernel-firmware-2.6.32-504.3.3.el6.noarch.rpm</span><br><span class="line"><span class="comment"># 更新内核</span></span><br><span class="line">rpm -ivh http://www.aloneray.com/wp-content/uploads/2017/03/kernel-2.6.32-504.3.3.el6.x86_64.rpm --force</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">reboot</span><br></pre></td></tr></table></figure><h3 id="安装SSR服务端"><a href="#安装SSR服务端" class="headerlink" title="安装SSR服务端"></a>安装SSR服务端</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget --no-check-certificate http://www.aloneray.com/wp-content/uploads/2019/01/shadowsocksR_CN.sh &amp;&amp; chmod +x shadowsocksR_CN.sh &amp;&amp; ./shadowsocksR_CN.sh</span><br></pre></td></tr></table></figure><p>按提示和步骤操作。</p><h3 id="锐速安装"><a href="#锐速安装" class="headerlink" title="锐速安装"></a>锐速安装</h3><p>锐速是一款非常不错的TCP底层加速软件。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N --no-check-certificate https://raw.githubusercontent.com/91yun/serverspeeder/master/serverspeeder-all.sh &amp;&amp; bash serverspeeder-all.sh</span><br></pre></td></tr></table></figure><h3 id="关闭防火墙"><a href="#关闭防火墙" class="headerlink" title="关闭防火墙"></a>关闭防火墙</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">service iptables stop </span><br><span class="line">chkconfig iptables off</span><br></pre></td></tr></table></figure><h3 id="锐速常用命令"><a href="#锐速常用命令" class="headerlink" title="锐速常用命令"></a>锐速常用命令</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">重启锐速：/serverspeeder/bin/serverSpeeder.sh restart</span><br><span class="line">启动锐速：/serverspeeder/bin/serverSpeeder.sh start</span><br><span class="line">停止锐速：/serverspeeder/bin/serverSpeeder.sh stop</span><br><span class="line">锐速状态：/serverspeeder/bin/serverSpeeder.sh status</span><br></pre></td></tr></table></figure><h3 id="多端口配置"><a href="#多端口配置" class="headerlink" title="多端口配置"></a>多端口配置</h3><p>服务端更改配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;server&quot;</span>: <span class="string">&quot;0.0.0.0&quot;</span>,</span><br><span class="line"><span class="string">&quot;server_ipv6&quot;</span>: <span class="string">&quot;[::]&quot;</span>,</span><br><span class="line"><span class="string">&quot;local_address&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>,</span><br><span class="line"><span class="string">&quot;local_port&quot;</span>: 1080,</span><br><span class="line"><span class="string">&quot;port_password&quot;</span>:</span><br><span class="line"><span class="comment"># 多端口配置开始</span></span><br><span class="line">&#123;<span class="string">&quot;8090&quot;</span>:<span class="string">&quot;password&quot;</span>,</span><br><span class="line"><span class="string">&quot;8089&quot;</span>:<span class="string">&quot;password&quot;</span>,</span><br><span class="line"><span class="string">&quot;459&quot;</span>:<span class="string">&quot;password&quot;</span>,</span><br><span class="line"><span class="string">&quot;456&quot;</span>:<span class="string">&quot;password&quot;</span></span><br><span class="line">&#125;,</span><br><span class="line"><span class="comment"># 多端口配置结束</span></span><br><span class="line"><span class="string">&quot;timeout&quot;</span>: 120,</span><br><span class="line"><span class="string">&quot;udp_timeout&quot;</span>: 60,</span><br><span class="line"><span class="string">&quot;method&quot;</span>: <span class="string">&quot;aes-256-cfb&quot;</span>,</span><br><span class="line"><span class="string">&quot;protocol&quot;</span>: <span class="string">&quot;auth_aes128_md5&quot;</span>,</span><br><span class="line"><span class="string">&quot;protocol_param&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line"><span class="string">&quot;obfs&quot;</span>: <span class="string">&quot;http_simple&quot;</span>,</span><br><span class="line"><span class="string">&quot;obfs_param&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line"><span class="string">&quot;dns_ipv6&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;connect_verbose_info&quot;</span>: 1,</span><br><span class="line"><span class="string">&quot;redirect&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line"><span class="string">&quot;fast_open&quot;</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">&quot;workers&quot;</span>: 1</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>重启服务：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/shadowsocks restart</span><br></pre></td></tr></table></figure><p>多端口配置结束</p><p>常用操作：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">启动：/etc/init.d/shadowsocks start</span><br><span class="line">停止：/etc/init.d/shadowsocks stop</span><br><span class="line">重启：/etc/init.d/shadowsocks restart</span><br><span class="line">状态：/etc/init.d/shadowsocks status</span><br></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;centos-6-ssr&quot;&gt;&lt;a href=&quot;#centos-6-ssr&quot; class=&quot;headerlink&quot; title=&quot;centos 6 ssr&quot;&gt;&lt;/a&gt;centos 6 ssr&lt;/h2&gt;&lt;h3 id=&quot;更换内核&quot;&gt;&lt;a href=&quot;#更换内核&quot; cla
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://example.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>python pip</title>
     <link href="http://example.com/2019/06/17/python-pip/"/>
     <id>http://example.com/2019/06/17/python-pip/</id>
@@ -467,6 +428,52 @@
     
     
       <category term="linux" scheme="http://example.com/tags/linux/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>小新700 触摸板双击右键</title>
+    <link href="http://example.com/2019/05/30/%E5%B0%8F%E6%96%B0700-%E8%A7%A6%E6%91%B8%E6%9D%BF%E5%8F%8C%E5%87%BB%E5%8F%B3%E9%94%AE/"/>
+    <id>http://example.com/2019/05/30/小新700-触摸板双击右键/</id>
+    <published>2019-05-30T14:23:17.000Z</published>
+    <updated>2020-03-08T08:14:51.636Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="联想小新700触摸板双击右键设置"><a href="#联想小新700触摸板双击右键设置" class="headerlink" title="联想小新700触摸板双击右键设置"></a>联想小新700触摸板双击右键设置</h2><p>之前买的联想小新电脑，在设置触摸板时，双击右键的设置是不生效的。在windows下的触摸板设置，如单指、双指、三指、四指操作，使用习惯后，操作起来也是非常高效和舒服的。不过小新的这个synaptics装置，在安装最新驱动后，双击右键依然是不起作用的。在使用过程中就比较尴尬。</p><h3 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h3><p>打开注册表编辑器，修改注册表值，路径如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WIN＋R 运行 regedit，展开路径：</span><br><span class="line">计算机\HKEY_CURRENT_USER\Software\Synaptics\SynTP\</span><br></pre></td></tr></table></figure><p>展开路径，找到TouchPadPS2TM开头的项，如自己的小新为TouchPadPS2TM3105，点击该项，右边的键值，找到2FingerTapAction，双击将默认数据0修改为2。确定修改，重启系统，双击右键设置生效。操作结束。记录备用。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;联想小新700触摸板双击右键设置&quot;&gt;&lt;a href=&quot;#联想小新700触摸板双击右键设置&quot; class=&quot;headerlink&quot; title=&quot;联想小新700触摸板双击右键设置&quot;&gt;&lt;/a&gt;联想小新700触摸板双击右键设置&lt;/h2&gt;&lt;p&gt;之前买的联想小新电脑，在设置
+      
+    
+    </summary>
+    
+    
+      <category term="windows" scheme="http://example.com/tags/windows/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>GNS3添加网络设备</title>
+    <link href="http://example.com/2019/05/14/GNS3%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87/"/>
+    <id>http://example.com/2019/05/14/GNS3添加网络设备/</id>
+    <published>2019-05-14T13:09:46.000Z</published>
+    <updated>2019-05-15T08:22:21.516Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="GNS3添加网络设备"><a href="#GNS3添加网络设备" class="headerlink" title="GNS3添加网络设备"></a>GNS3添加网络设备</h2><h3 id="搭建环境"><a href="#搭建环境" class="headerlink" title="搭建环境"></a>搭建环境</h3><ul><li><p>系统：ubuntu 18.04.2 LTS(Linux 4.15.0-48-generic #51-Ubuntu SMP Wed Apr 3 08:28:49 UTC 2019 x86_64 x86_64 x86_64 GNU/Linux<br>)</p></li><li><p>GNS3 2.1.16</p></li><li><p>虚拟机virtualbox 6.0.4 r128413</p></li></ul><h3 id="GNS3安装"><a href="#GNS3安装" class="headerlink" title="GNS3安装"></a>GNS3安装</h3><p>ubuntu 直接添加PPA源安装：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:gns3/ppa</span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install gns3-gui</span><br></pre></td></tr></table></figure><p>安装结束后，会出现关于dynamips报错。解决办法：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository ppa:gns3/ppa</span><br><span class="line">sudo dpkg --add-architecture i386</span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install dynamips:i386</span><br></pre></td></tr></table></figure><p>启动后，出现配置向导。</p><h3 id="添加设备"><a href="#添加设备" class="headerlink" title="添加设备"></a>添加设备</h3><p>添加模拟的设备可以通过本地的server，GNS3 VM来完成。</p><p>本地的server中的Dynamips中添加设备。</p><p>[edit]-&gt;[Preferences]-&gt;[Dynamips]-&gt;[IOS routers]</p><p>添加的设备即直接通过本地电脑的Dynapips来模拟。</p><h3 id="添加IOU"><a href="#添加IOU" class="headerlink" title="添加IOU"></a>添加IOU</h3><p>添加GNS3 VM设备，需要先导入GNS3 VM虚拟机。从官网下载GNS3 VM，如本文所示，选择virtualbox版本。</p><p>下载后，选择导入虚拟机，打开virtualbox，操作如下：</p><p>[管理]-&gt;[导入虚拟电脑]-&gt;[选择下载的GNS VM文件]-&gt;[点击导入]</p><p>导入后，在GNS3中选择GNS3 VM。操作如下：</p><p>[edit]-&gt;[Preferences]-&gt;[GNS3 VM]-&gt;[enable GNS3 VM]-&gt;[select Virtualizatiom engine Virtualbox]-&gt;[Settings]-&gt;[select imported VM named GNS3 VM]-&gt;[Apply setting]-&gt;[OK]</p><p>选择启动GNS3 VM，选择虚拟化引擎，选择导入的GNS3 VM。</p><p>尝试启动GNS3 VM，启动后直接报错，vboxnet0相关，无法启动GNS3 VM。</p><p>解决办法，添加网络vboxnet0。操作步骤：</p><p>[管理]-&gt;[主机网络管理器]-&gt;[网络]-&gt;[创建]</p><p>默认创建的网络就是vboxnet0。其余选项保持默认不变，启用DHCP服务。</p><p>再次打开GNS3 VM，正常启动。</p><p>解决GNS3 VM启动问题后，即可添加IOU（IOS ON UNIX）。</p><p>操作步骤：</p><p>[edit]-&gt;[Preferences]-&gt;[IOS on UNIX]-&gt;[type the license key]</p><p>添加IOU需要cisco的许可密钥，本例中的许可密码如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[license]</span><br><span class="line">gns3vm = 73635fd3b0a13ad0;</span><br></pre></td></tr></table></figure><p>许可密码可以通过以下方式生成：</p><ol><li><p>打开GNS3 VM，选择Shell菜单</p></li><li><p>下载生成脚本,并生成license:</p></li></ol><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.ipvanquish.com/download/CiscoIOUKeygen3f.py</span><br><span class="line">python3 CiscoIOUKeygen3f.py</span><br></pre></td></tr></table></figure><p>生成的文件为.iourc。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Already copy to the file iourc.txt</span><br><span class="line"></span><br><span class="line">You can <span class="built_in">disable</span> the phone home feature with something like:</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;127.0.0.127 xml.cisco.com&#x27;</span> &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure><p>把生成的GNS VM license添加到IOU on UNIX中，后，即可添加IOU设备。</p><p>操作方法：</p><p>[edit]-&gt;[Preferenses]-&gt;[IOS on UNIX]-&gt;[IOU devices]-&gt;[new]</p><p>添加IOU镜像，添加后，即可直接通过VM来运行l2 switch l3 router设备。</p><p>IOU和.iourc文件在哪里找，可以度之。</p><p>license gen直接给脚本吧：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /usr/bin/python3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;*********************************************************************&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Cisco IOU License Generator - Kal 2011, python port of 2006 C version&quot;</span>)</span><br><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line">import hashlib</span><br><span class="line">import struct</span><br><span class="line"><span class="comment"># get the host id and host name to calculate the hostkey</span></span><br><span class="line">hostid=os.popen(<span class="string">&quot;hostid&quot;</span>).<span class="built_in">read</span>().strip()</span><br><span class="line">hostname = socket.gethostname()</span><br><span class="line">ioukey=int(hostid,16)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> hostname:</span><br><span class="line"> ioukey = ioukey + ord(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hostid=&quot;</span> + hostid +<span class="string">&quot;, hostname=&quot;</span>+ hostname + <span class="string">&quot;, ioukey=&quot;</span> + hex(ioukey)[2:])</span><br><span class="line"><span class="comment"># create the license using md5sum</span></span><br><span class="line">iouPad1 = b<span class="string">&#x27;\x4B\x58\x21\x81\x56\x7B\x0D\xF3\x21\x43\x9B\x7E\xAC\x1D\xE6\x8A&#x27;</span></span><br><span class="line">iouPad2 = b<span class="string">&#x27;\x80&#x27;</span> + 39*b<span class="string">&#x27;\0&#x27;</span></span><br><span class="line">md5input=iouPad1 + iouPad2 + struct.pack(<span class="string">&#x27;!i&#x27;</span>, ioukey) + iouPad1</span><br><span class="line">iouLicense=hashlib.md5(md5input).hexdigest()[:16]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nAdd the following text to ~/.iourc:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[license]\n&quot;</span> + hostname + <span class="string">&quot; = &quot;</span> + iouLicense + <span class="string">&quot;;\n&quot;</span>)</span><br><span class="line">with open(<span class="string">&quot;iourc.txt&quot;</span>, <span class="string">&quot;wt&quot;</span>) as out_file:</span><br><span class="line">   out_file.write(<span class="string">&quot;[license]\n&quot;</span> + hostname + <span class="string">&quot; = &quot;</span> + iouLicense + <span class="string">&quot;;\n&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAlready copy to the file iourc.txt\n &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;You can disable the phone home feature with something like:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot; echo &#x27;127.0.0.127 xml.cisco.com&#x27; &gt;&gt; /etc/hosts\n&quot;</span>)</span><br></pre></td></tr></table></figure><p>好了，操作记录补充结束。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;GNS3添加网络设备&quot;&gt;&lt;a href=&quot;#GNS3添加网络设备&quot; class=&quot;headerlink&quot; title=&quot;GNS3添加网络设备&quot;&gt;&lt;/a&gt;GNS3添加网络设备&lt;/h2&gt;&lt;h3 id=&quot;搭建环境&quot;&gt;&lt;a href=&quot;#搭建环境&quot; class=&quot;head
+      
+    
+    </summary>
+    
+    
+      <category term="network" scheme="http://example.com/tags/network/"/>
     
   </entry>
   
