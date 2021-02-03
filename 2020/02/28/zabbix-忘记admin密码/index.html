@@ -67,18 +67,14 @@
 <h3 id="4-update表数据，userid-1的这个用户"><a href="#4-update表数据，userid-1的这个用户" class="headerlink" title="4.update表数据，userid=1的这个用户"></a>4.update表数据，userid=1的这个用户</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">MariaDB [zabbix]&gt; update users <span class="built_in">set</span> passwd=<span class="string">'339a65e93299ad8d72c42b263aa23117'</span> <span class="built_in">where</span> userid = <span class="string">'1'</span>;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 0</span><br><span class="line"></span><br><span class="line">MariaDB [zabbix]&gt;</span><br></pre></td></tr></table></figure>
 <h3 id="5-刷新重新加载权限表"><a href="#5-刷新重新加载权限表" class="headerlink" title="5.刷新重新加载权限表"></a>5.刷新重新加载权限表</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">FLUSH PRIVILEGES;</span><br></pre></td></tr></table></figure>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
                 <source type="audio/mpeg" src>
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
-                    
-                        
-                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
                         
                     
                 </ul>
@@ -89,6 +85,10 @@
 
 
     </div>
+    
+        <div class="side">
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zabbix忘记admin密码"><span class="toc-number">1.</span> <span class="toc-text">zabbix忘记admin密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#解决方法"><span class="toc-number">2.</span> <span class="toc-text">解决方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-连接zabbix数据库"><span class="toc-number">2.1.</span> <span class="toc-text">1.连接zabbix数据库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-查询user表信息"><span class="toc-number">2.2.</span> <span class="toc-text">2.查询user表信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-生成新的密码的md5信息"><span class="toc-number">2.3.</span> <span class="toc-text">3.生成新的密码的md5信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-update表数据，userid-1的这个用户"><span class="toc-number">2.4.</span> <span class="toc-text">4.update表数据，userid=1的这个用户</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-刷新重新加载权限表"><span class="toc-number">2.5.</span> <span class="toc-text">5.刷新重新加载权限表</span></a></li></ol></li></ol>	
+        </div>
     
 </div>
 

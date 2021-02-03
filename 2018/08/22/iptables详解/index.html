@@ -116,18 +116,14 @@ netfilter是由rusth russell提出的linux 2.4内核防火墙框架，该框架�
 <p>风口数据包由底层的网卡nic（network interface card）接收，通过数据链路层的解包之后（去除数据链路帧头），就进入了tcp/ip协议栈（本质就是一个处理网络数据的内核驱动）和netfilter混合的数据处理流程中了。数据包的接收、处理、转发流程构成了一个有限状态微量机，经过一些列的内核处理函数、以及netfilter hook点，最后被转发、或者本次上层的应用程序消化掉。是时候看这张图了</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
                 <source type="audio/mpeg" src>
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
-                    
-                        
-                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
                         
                     
                 </ul>
@@ -138,6 +134,10 @@ netfilter是由rusth russell提出的linux 2.4内核防火墙框架，该框架�
 
 
     </div>
+    
+        <div class="side">
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#linux-之软件防火墙iptables详解"><span class="toc-number">1.</span> <span class="toc-text">linux 之软件防火墙iptables详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01：filter和iptables"><span class="toc-number">1.1.</span> <span class="toc-text">0x01：filter和iptables</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-filter、nat、mangle-raw规则表"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1:filter、nat、mangle raw规则表</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#filter表"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">filter表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#nat表"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">nat表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#mangle表"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">mangle表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#raw表"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">raw表</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-input、forward等规则链和规则"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2:input、forward等规则链和规则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02：linux数据包路由原理"><span class="toc-number">1.2.</span> <span class="toc-text">0x02：linux数据包路由原理</span></a></li></ol></li></ol>	
+        </div>
     
 </div>
 

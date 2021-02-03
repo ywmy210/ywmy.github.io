@@ -64,18 +64,14 @@
 <h2 id="0x04-基本举例"><a href="#0x04-基本举例" class="headerlink" title="0x04:基本举例"></a>0x04:基本举例</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># firewall-cmd --zone=public --add-port=3306/tcp --permanent //添加3306端口（--permanent）永久生效，没有此参数重启后失效</span></span><br><span class="line"><span class="comment"># firewall-cmd --reload //不重启立即加载</span></span><br><span class="line"><span class="comment"># firewall-cmd --zone= public --query-port=3306/tcp //查看加入3306端口状态</span></span><br><span class="line"><span class="comment"># firewall-cmd --zone= public --remove-port=3306/tcp --permanent //删除刚刚加入的防火墙规则3306</span></span><br><span class="line"><span class="comment"># firewall-cmd --permanent --remove-icmp-block=echo-request //删除禁ping</span></span><br><span class="line"><span class="comment"># firewall-cmd --permanent --add-icmp-block=echo-request //开启禁ping</span></span><br><span class="line"><span class="comment"># firewall-cmd --get-service //查看已被允许的信息</span></span><br></pre></td></tr></table></figure>
 <h2 id="具体管理规则"><a href="#具体管理规则" class="headerlink" title="具体管理规则"></a>具体管理规则</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># firewall-cmd --help</span></span><br><span class="line">firewall-cmd高级功能可以到官方资料库了解更多信息。</span><br><span class="line">https://fedoraproject.org/wiki/FirewallD/zh-cn</span><br><span class="line">https://access.redhat.com/documentation/zh-CN/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html</span><br><span class="line">https://www.ibm.com/developerworks/cn/linux/1507_caojh/</span><br></pre></td></tr></table></figure>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
                 <source type="audio/mpeg" src>
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
-                        
-                    
-                        
-                            <li title="1" data-url="http://link.hhtjim.com/163/425570952.mp3"></li>
+                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
                         
                     
                 </ul>
@@ -86,6 +82,10 @@
 
 
     </div>
+    
+        <div class="side">
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#firewall-cmd操作小记"><span class="toc-number">1.</span> <span class="toc-text">firewall-cmd操作小记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-基本操作"><span class="toc-number">1.1.</span> <span class="toc-text">0x01:基本操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-systemctl"><span class="toc-number">1.2.</span> <span class="toc-text">0x02:systemctl</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-基本配置firewall-cmd"><span class="toc-number">1.3.</span> <span class="toc-text">0x03:基本配置firewall-cmd</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x04-基本举例"><span class="toc-number">1.4.</span> <span class="toc-text">0x04:基本举例</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#具体管理规则"><span class="toc-number">1.5.</span> <span class="toc-text">具体管理规则</span></a></li></ol></li></ol>	
+        </div>
     
 </div>
 
