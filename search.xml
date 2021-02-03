@@ -1590,25 +1590,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ssh signing failed</title>
-    <url>/2019/04/04/ssh-signing-failed/</url>
-    <content><![CDATA[<h1 id="ssh-signing-faild"><a href="#ssh-signing-faild" class="headerlink" title="ssh signing faild"></a>ssh signing faild</h1><p>前言，自己电脑重装后，把原来的ssh key文件重新拷贝到了新的系统。尝试通过KEY登录远程主机，发现报错如下：</p>
-<blockquote>
-<p>ssh: sign_and_send_pubkey: signing failed: agent refused operation  </p>
-</blockquote>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>选查看文件属性。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chown yourname:yourname ~./ssh/*</span><br></pre></td></tr></table></figure>
-<p>查看已添加的KEY</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-add -l</span><br></pre></td></tr></table></figure>
-<p>更改key读写权限</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod 600 ~./ssh/*</span><br></pre></td></tr></table></figure>
-<p>好了。问题解决。</p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>snmpwalk 用法</title>
     <url>/2018/11/01/snmpwalk-%E7%94%A8%E6%B3%95/</url>
     <content><![CDATA[<h1 id="snmpwalk-SNMP-V1-V2-SNMP-V3"><a href="#snmpwalk-SNMP-V1-V2-SNMP-V3" class="headerlink" title="snmpwalk (SNMP V1 / V2 / SNMP V3)"></a>snmpwalk (SNMP V1 / V2 / SNMP V3)</h1><h2 id="安装snmp"><a href="#安装snmp" class="headerlink" title="安装snmp"></a>安装snmp</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install net-snmp-utils</span><br></pre></td></tr></table></figure>
@@ -1716,6 +1697,25 @@
 <h2 id="常用的OID信息"><a href="#常用的OID信息" class="headerlink" title="常用的ＯＩＤ信息"></a>常用的ＯＩＤ信息</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Variable Descriptor Object Identifier</span><br><span class="line">System Group</span><br><span class="line">sysDescr 1.3.6.1.2.1.1.1</span><br><span class="line">sysObjectID 1.3.6.1.2.1.1.2</span><br><span class="line">sysUpTime 1.3.6.1.2.1.1.3</span><br><span class="line">sysContact 1.3.6.1.2.1.1.4</span><br><span class="line">sysName 1.3.6.1.2.1.1.5</span><br><span class="line">sysLocation 1.3.6.1.2.1.1.6</span><br><span class="line">sysServices 1.3.6.1.2.1.1.7</span><br><span class="line"></span><br><span class="line">interfaces Group</span><br><span class="line">ifNumber 1.3.6.1.2.1.2.1</span><br><span class="line">ifTable 1.3.6.1.2.1.2.2</span><br><span class="line">ifEntry 1.3.6.1.2.1.2.2.1</span><br><span class="line">ifIndex 1.3.6.1.2.1.2.2.1.1</span><br><span class="line">ifDescr 1.3.6.1.2.1.2.2.1.2</span><br><span class="line">ifType 1.3.6.1.2.1.2.2.1.3</span><br><span class="line">ifMtu 1.3.6.1.2.1.2.2.1.4</span><br><span class="line">ifSpeed 1.3.6.1.2.1.2.2.1.5</span><br><span class="line">ifPhysAddress 1.3.6.1.2.1.2.2.1.6</span><br><span class="line">ifAdminStatus 1.3.6.1.2.1.2.2.1.7</span><br><span class="line">ifOperStatus 1.3.6.1.2.1.2.2.1.8</span><br><span class="line">ifLastChange 1.3.6.1.2.1.2.2.1.9</span><br><span class="line">ifInOctets 1.3.6.1.2.1.2.2.1.10</span><br><span class="line">ifInUcastPkts 1.3.6.1.2.1.2.2.1.11</span><br><span class="line">ifInNUcastPkts 1.3.6.1.2.1.2.2.1.12</span><br><span class="line">ifInDiscards 1.3.6.1.2.1.2.2.1.13</span><br><span class="line">ifInErrors 1.3.6.1.2.1.2.2.1.14</span><br><span class="line">ifInUnknownProtos 1.3.6.1.2.1.2.2.1.15</span><br><span class="line">ifOutOctets 1.3.6.1.2.1.2.2.1.16</span><br><span class="line">ifOutUcastPkts 1.3.6.1.2.1.2.2.1.17</span><br><span class="line">ifOutNUcastPkts 1.3.6.1.2.1.2.2.1.18</span><br><span class="line">ifOutDiscards 1.3.6.1.2.1.2.2.1.19</span><br><span class="line">ifOutErrors 1.3.6.1.2.1.2.2.1.20</span><br><span class="line">ifOutQLen 1.3.6.1.2.1.2.2.1.21</span><br><span class="line">ifSpecific 1.3.6.1.2.1.2.2.1.22</span><br><span class="line"></span><br><span class="line">IP Group</span><br><span class="line">ipForwarding 1.3.6.1.2.1.4.1</span><br><span class="line">ipDefaultTTL 1.3.6.1.2.1.4.2</span><br><span class="line">ipInReceives 1.3.6.1.2.1.4.3</span><br><span class="line">ipInHdrErrors 1.3.6.1.2.1.4.4</span><br><span class="line">ipInAddrErrors 1.3.6.1.2.1.4.5</span><br><span class="line">ipForwDatagrams 1.3.6.1.2.1.4.6</span><br><span class="line">ipInUnknownProtos 1.3.6.1.2.1.4.7</span><br><span class="line">ipInDiscards 1.3.6.1.2.1.4.8</span><br><span class="line">ipInDelivers 1.3.6.1.2.1.4.9</span><br><span class="line">ipOutRequests 1.3.6.1.2.1.4.10</span><br><span class="line">ipOutDiscards 1.3.6.1.2.1.4.11</span><br><span class="line">ipOutNoRoutes 1.3.6.1.2.1.4.12</span><br><span class="line">ipReasmTimeout 1.3.6.1.2.1.4.13</span><br><span class="line">ipReasmReqds 1.3.6.1.2.1.4.14</span><br><span class="line">ipReasmOKs 1.3.6.1.2.1.4.15</span><br><span class="line">ipReasmFails 1.3.6.1.2.1.4.16</span><br><span class="line">ipFragsOKs 1.3.6.1.2.1.4.17</span><br><span class="line">ipFragsFails 1.3.6.1.2.1.4.18</span><br><span class="line">ipFragCreates 1.3.6.1.2.1.4.19</span><br><span class="line">ipAddrTable 1.3.6.1.2.1.4.20</span><br><span class="line">ipAddrEntry 1.3.6.1.2.1.4.20.1</span><br><span class="line">ipAdEntAddr 1.3.6.1.2.1.4.20.1.1</span><br><span class="line">ipAdEntIfIndex 1.3.6.1.2.1.4.20.1.2</span><br><span class="line">ipAdEntNetMask 1.3.6.1.2.1.4.20.1.3</span><br><span class="line">ipAdEntBcastAddr 1.3.6.1.2.1.4.20.1.4</span><br><span class="line">ipAdEntReasmMaxSize 1.3.6.1.2.1.4.20.1.5</span><br><span class="line"></span><br><span class="line">ICMP Group</span><br><span class="line">icmpInMsgs 1.3.6.1.2.1.5.1</span><br><span class="line">icmpInErrors 1.3.6.1.2.1.5.2</span><br><span class="line">icmpInDestUnreachs 1.3.6.1.2.1.5.3</span><br><span class="line">icmpInTimeExcds 1.3.6.1.2.1.5.4</span><br><span class="line">icmpInParmProbs 1.3.6.1.2.1.5.5</span><br><span class="line">icmpInSrcQuenchs 1.3.6.1.2.1.5.6</span><br><span class="line">icmpInRedirects 1.3.6.1.2.1.5.7</span><br><span class="line">icmpInEchos 1.3.6.1.2.1.5.8</span><br><span class="line">icmpInEchoReps 1.3.6.1.2.1.5.9</span><br><span class="line">icmpInTimestamps 1.3.6.1.2.1.5.10</span><br><span class="line">icmpInTimestampReps 1.3.6.1.2.1.5.11</span><br><span class="line">icmpInAddrMasks 1.3.6.1.2.1.5.12</span><br><span class="line">icmpInAddrMaskReps 1.3.6.1.2.1.5.13</span><br><span class="line">icmpOutMsgs 1.3.6.1.2.1.5.14</span><br><span class="line">icmpOutErrors 1.3.6.1.2.1.5.15</span><br><span class="line">icmpOutDestUnreachs 1.3.6.1.2.1.5.16</span><br><span class="line">icmpOutTimeExcds 1.3.6.1.2.1.5.17</span><br><span class="line">icmpOutParmProbs 1.3.6.1.2.1.5.18</span><br><span class="line">icmpOutSrcQuenchs 1.3.6.1.2.1.5.19</span><br><span class="line">icmpOutRedirects 1.3.6.1.2.1.5.20</span><br><span class="line">icmpOutEchos 1.3.6.1.2.1.5.21</span><br><span class="line">icmpOutEchoReps 1.3.6.1.2.1.5.22</span><br><span class="line">icmpOutTimestamps 1.3.6.1.2.1.5.23</span><br><span class="line">icmpOutTimestampReps 1.3.6.1.2.1.5.24</span><br><span class="line">icmpOutAddrMasks 1.3.6.1.2.1.5.25</span><br><span class="line">icmpOutAddrMaskReps 1.3.6.1.2.1.5.26</span><br><span class="line"></span><br><span class="line">TCP Group</span><br><span class="line">tcpRtoAlgorithm 1.3.6.1.2.1.6.1</span><br><span class="line">tcpRtoMin 1.3.6.1.2.1.6.2</span><br><span class="line">tcpRtoMax 1.3.6.1.2.1.6.3</span><br><span class="line">tcpMaxConn 1.3.6.1.2.1.6.4</span><br><span class="line">tcpActiveOpens 1.3.6.1.2.1.6.5</span><br><span class="line">tcpPassiveOpens 1.3.6.1.2.1.6.6</span><br><span class="line">tcpAttemptFails 1.3.6.1.2.1.6.7</span><br><span class="line">tcpEstabResets 1.3.6.1.2.1.6.8</span><br><span class="line">tcpCurrEstab 1.3.6.1.2.1.6.9</span><br><span class="line">tcpInSegs 1.3.6.1.2.1.6.10</span><br><span class="line">tcpOutSegs 1.3.6.1.2.1.6.11</span><br><span class="line">tcpRetransSegs 1.3.6.1.2.1.6.12</span><br><span class="line">tcpConnTable 1.3.6.1.2.1.6.13</span><br><span class="line">tcpConnEntry 1.3.6.1.2.1.6.13.1</span><br><span class="line">tcpConnState 1.3.6.1.2.1.6.13.1.1</span><br><span class="line">tcpConnLocalAddress 1.3.6.1.2.1.6.13.1.2</span><br><span class="line">tcpConnLocalPort 1.3.6.1.2.1.6.13.1.3</span><br><span class="line">tcpConnRemAddress 1.3.6.1.2.1.6.13.1.4</span><br><span class="line">tcpConnRemPort 1.3.6.1.2.1.6.13.1.5</span><br><span class="line">tcpInErrs 1.3.6.1.2.1.6.14</span><br><span class="line">tcpOutRsts 1.3.6.1.2.1.6.15</span><br><span class="line"></span><br><span class="line">UDP Group</span><br><span class="line">udpInDatagrams 1.3.6.1.2.1.7.1</span><br><span class="line">udpNoPorts 1.3.6.1.2.1.7.2</span><br><span class="line">udpInErrors 1.3.6.1.2.1.7.3</span><br><span class="line">udpOutDatagrams 1.3.6.1.2.1.7.4</span><br><span class="line">udpTable 1.3.6.1.2.1.7.5</span><br><span class="line">udpEntry 1.3.6.1.2.1.7.5.1</span><br><span class="line">udpLocalAddress 1.3.6.1.2.1.7.5.1.1</span><br><span class="line">udpLocalPort 1.3.6.1.2.1.7.5.1.2</span><br><span class="line"></span><br><span class="line">SNMP Group</span><br><span class="line">snmpInPkts 1.3.6.1.2.1.11.1</span><br><span class="line">snmpOutPkts 1.3.6.1.2.1.11.2</span><br><span class="line">snmpInBadVersions 1.3.6.1.2.1.11.3</span><br><span class="line">snmpInBadCommunityNames 1.3.6.1.2.1.11.4</span><br><span class="line">snmpInBadCommunityUses 1.3.6.1.2.1.11.5</span><br><span class="line">snmpInASNParseErrs 1.3.6.1.2.1.11.6</span><br><span class="line">NOT USED 1.3.6.1.2.1.11.7</span><br><span class="line">snmpInTooBigs 1.3.6.1.2.1.11.8</span><br><span class="line">snmpInNoSuchNames 1.3.6.1.2.1.11.9</span><br><span class="line">snmpInBadValues 1.3.6.1.2.1.11.10</span><br><span class="line">snmpInReadOnlys 1.3.6.1.2.1.11.11</span><br><span class="line">snmpInGenErrs 1.3.6.1.2.1.11.12</span><br><span class="line">snmpInTotalReqVars 1.3.6.1.2.1.11.13</span><br><span class="line">snmpInTotalSetVars 1.3.6.1.2.1.11.14</span><br><span class="line">snmpInGetRequests 1.3.6.1.2.1.11.15</span><br><span class="line">snmpInGetNexts 1.3.6.1.2.1.11.16</span><br><span class="line">snmpInSetRequests 1.3.6.1.2.1.11.17</span><br><span class="line">snmpInGetResponses 1.3.6.1.2.1.11.18</span><br><span class="line">snmpInTraps 1.3.6.1.2.1.11.19</span><br><span class="line">snmpOutTooBigs 1.3.6.1.2.1.11.20</span><br><span class="line">snmpOutNoSuchNames 1.3.6.1.2.1.11.21</span><br><span class="line">snmpOutBadValues 1.3.6.1.2.1.11.22</span><br><span class="line">NOT USED 1.3.6.1.2.1.11.23</span><br><span class="line">snmpOutGenErrs 1.3.6.1.2.1.11.24</span><br><span class="line">snmpOutGetRequests 1.3.6.1.2.1.11.25</span><br><span class="line">snmpOutGetNexts 1.3.6.1.2.1.11.26</span><br><span class="line">snmpOutSetRequests 1.3.6.1.2.1.11.27</span><br><span class="line">snmpOutGetResponses 1.3.6.1.2.1.11.28</span><br><span class="line">snmpOutTraps 1.3.6.1.2.1.11.29</span><br><span class="line">snmpEnableAuthenTraps 1.3.6.1.2.1.11.30</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ssh signing failed</title>
+    <url>/2019/04/04/ssh-signing-failed/</url>
+    <content><![CDATA[<h1 id="ssh-signing-faild"><a href="#ssh-signing-faild" class="headerlink" title="ssh signing faild"></a>ssh signing faild</h1><p>前言，自己电脑重装后，把原来的ssh key文件重新拷贝到了新的系统。尝试通过KEY登录远程主机，发现报错如下：</p>
+<blockquote>
+<p>ssh: sign_and_send_pubkey: signing failed: agent refused operation  </p>
+</blockquote>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><p>选查看文件属性。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chown yourname:yourname ~./ssh/*</span><br></pre></td></tr></table></figure>
+<p>查看已添加的KEY</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh-add -l</span><br></pre></td></tr></table></figure>
+<p>更改key读写权限</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod 600 ~./ssh/*</span><br></pre></td></tr></table></figure>
+<p>好了。问题解决。</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2460,20 +2460,6 @@
       </tags>
   </entry>
   <entry>
-    <title>webadmin安装</title>
-    <url>/2018/10/21/webmin%E5%AE%89%E8%A3%85/</url>
-    <content><![CDATA[<h1 id="centos-7-安装webadmin"><a href="#centos-7-安装webadmin" class="headerlink" title="centos 7 安装webadmin"></a>centos 7 安装webadmin</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>webadmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect </span><br></pre></td></tr></table></figure>
-<h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p>程序安装位置：/usr/libexec/webmin</p>
-<p>程序默认通过https访问，端口10000 TCP，按访问需求放通。</p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>windows 10 homebasic rdp</title>
     <url>/2019/05/06/windows-10-homebasic-rdp/</url>
     <content><![CDATA[<h2 id="windows-10-家庭版开启远程"><a href="#windows-10-家庭版开启远程" class="headerlink" title="windows 10 家庭版开启远程"></a>windows 10 家庭版开启远程</h2><p>windows 家庭版的系统默认没有远程功能，大多数的预装正版的系统中无法使用windows自带的远程服务。</p>
@@ -2494,6 +2480,20 @@
 ]]></content>
       <tags>
         <tag>windows</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>webadmin安装</title>
+    <url>/2018/10/21/webmin%E5%AE%89%E8%A3%85/</url>
+    <content><![CDATA[<h1 id="centos-7-安装webadmin"><a href="#centos-7-安装webadmin" class="headerlink" title="centos 7 安装webadmin"></a>centos 7 安装webadmin</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>webadmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect </span><br></pre></td></tr></table></figure>
+<h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>程序安装位置：/usr/libexec/webmin</p>
+<p>程序默认通过https访问，端口10000 TCP，按访问需求放通。</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2699,7 +2699,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#97;&#x64;&#x6d;&#105;&#x6e;&#x40;&#104;&#117;&#x61;&#x77;&#101;&#x69;&#x2e;&#x63;&#x6f;&#109;">&#97;&#x64;&#x6d;&#105;&#x6e;&#x40;&#104;&#117;&#x61;&#x77;&#101;&#x69;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#97;&#100;&#109;&#105;&#110;&#x40;&#104;&#117;&#x61;&#x77;&#101;&#105;&#x2e;&#99;&#111;&#109;">&#97;&#100;&#109;&#105;&#110;&#x40;&#104;&#117;&#x61;&#x77;&#101;&#105;&#x2e;&#99;&#111;&#109;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2711,7 +2711,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#100;&#109;&#105;&#110;&#x40;&#104;&#117;&#x61;&#x77;&#101;&#x69;&#x2e;&#x63;&#x6f;&#x6d;">&#x61;&#100;&#109;&#105;&#110;&#x40;&#104;&#117;&#x61;&#x77;&#101;&#x69;&#x2e;&#x63;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#97;&#100;&#109;&#105;&#110;&#64;&#104;&#117;&#97;&#x77;&#101;&#x69;&#46;&#99;&#x6f;&#109;">&#97;&#100;&#109;&#105;&#110;&#64;&#104;&#117;&#97;&#x77;&#101;&#x69;&#46;&#99;&#x6f;&#109;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
