@@ -614,16 +614,6 @@
       </tags>
   </entry>
   <entry>
-    <title>centos 7 更换阿里源</title>
-    <url>/2018/10/26/centos-7-%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E6%BA%90/</url>
-    <content><![CDATA[<h1 id="操作如下"><a href="#操作如下" class="headerlink" title="操作如下"></a>操作如下</h1><h2 id="备份源"><a href="#备份源" class="headerlink" title="备份源"></a>备份源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br></pre></td></tr></table></figure>
-<h2 id="下载源"><a href="#下载源" class="headerlink" title="下载源"></a>下载源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
-<h3 id="刷新缓存"><a href="#刷新缓存" class="headerlink" title="刷新缓存"></a>刷新缓存</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos 7 双网卡共享上网</title>
     <url>/2019/03/27/centos-7-%E5%8F%8C%E7%BD%91%E5%8D%A1%E5%85%B1%E4%BA%AB%E4%B8%8A%E7%BD%91/</url>
     <content><![CDATA[<h1 id="centos-7-为私网提共nat网关服务"><a href="#centos-7-为私网提共nat网关服务" class="headerlink" title="centos 7 为私网提共nat网关服务"></a>centos 7 为私网提共nat网关服务</h1><p>前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的四口交换机连内网。</p>
@@ -650,6 +640,16 @@
 </blockquote>
 <h3 id="服务器三配置"><a href="#服务器三配置" class="headerlink" title="服务器三配置"></a>服务器三配置</h3><p>参考服务器二，配置网关指向服务器一的私网IP。至此，三台服务器均可上网，服务器配置公司业务。</p>
 ]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos 7 更换阿里源</title>
+    <url>/2018/10/26/centos-7-%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E6%BA%90/</url>
+    <content><![CDATA[<h1 id="操作如下"><a href="#操作如下" class="headerlink" title="操作如下"></a>操作如下</h1><h2 id="备份源"><a href="#备份源" class="headerlink" title="备份源"></a>备份源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br></pre></td></tr></table></figure>
+<h2 id="下载源"><a href="#下载源" class="headerlink" title="下载源"></a>下载源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
+<h3 id="刷新缓存"><a href="#刷新缓存" class="headerlink" title="刷新缓存"></a>刷新缓存</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -689,20 +689,6 @@
       </tags>
   </entry>
   <entry>
-    <title>centos 7上安装webmin</title>
-    <url>/2019/01/15/centos-7%E4%B8%8A%E5%AE%89%E8%A3%85webadmin/</url>
-    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>webmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect</span><br></pre></td></tr></table></figure>
-<h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p>程序安装位置：/usr/libexec/webmin</p>
-<p>程序默认通过https访问，端口10000 TCP，按访问需求放通。</p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos samba配置</title>
     <url>/2018/10/21/centos-samba%E9%85%8D%E7%BD%AE/</url>
     <content><![CDATA[<h1 id="centos-samba配置小记"><a href="#centos-samba配置小记" class="headerlink" title="centos samba配置小记"></a>centos samba配置小记</h1><h2 id="基本更新"><a href="#基本更新" class="headerlink" title="基本更新"></a>基本更新</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum update</span><br><span class="line">yum install epel-release</span><br><span class="line">yum install wget curl vim</span><br></pre></td></tr></table></figure>
@@ -735,58 +721,6 @@
 ]]></content>
       <tags>
         <tag>linux samba</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos+rsyslog+loganalyzer</title>
-    <url>/2019/08/07/centos-rsyslog-loganalyzer/</url>
-    <content><![CDATA[<h2 id="Rsyslog-Analyzer搭建"><a href="#Rsyslog-Analyzer搭建" class="headerlink" title="Rsyslog+Analyzer搭建"></a>Rsyslog+Analyzer搭建</h2><p>一个项目上需求，需要内部网络上设备的日志存储满足180天，且支持日志报表导出。于是想到搭建一个日志应用。再加上日志报表分析，想到一个组合，rsyslog+loganalyzer。</p>
-<p>操作如下：</p>
-<h3 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h3><p>CentOS Linux release 7.6.1810 (Core) </p>
-<h3 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h3><h4 id="设置时间同步"><a href="#设置时间同步" class="headerlink" title="设置时间同步"></a>设置时间同步</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install ntpdate epel-release vim curl wget</span><br><span class="line">ntpdate cn.ntp.org.cn</span><br><span class="line">hwclock -w</span><br></pre></td></tr></table></figure>
-<p>配置crontab任务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/crontab</span><br><span class="line">00 23 * * * ntpdate cn.ntp.org.cn</span><br><span class="line">30 00 * * * hwclock -w</span><br></pre></td></tr></table></figure>
-<h4 id="安装apache、php、mariadb-server"><a href="#安装apache、php、mariadb-server" class="headerlink" title="安装apache、php、mariadb-server"></a>安装apache、php、mariadb-server</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install php php-mysql php-gd php-mbstring php-mcrypt php-devel php-xml mariadb-server httpd</span><br></pre></td></tr></table></figure>
-<p>设置开机启动</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> httpd</span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb</span><br><span class="line">systemctl start httpd</span><br><span class="line">systemctl start mariadb</span><br></pre></td></tr></table></figure>
-<p>配置mariadb-server</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
-<h4 id="安装rsyslog-mysql"><a href="#安装rsyslog-mysql" class="headerlink" title="安装rsyslog-mysql"></a>安装rsyslog-mysql</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install rsyslog rsyslog-mysql -y</span><br></pre></td></tr></table></figure>
-<h4 id="创建rsyslog数据库和用户"><a href="#创建rsyslog数据库和用户" class="headerlink" title="创建rsyslog数据库和用户"></a>创建rsyslog数据库和用户</h4><p>导入rsyslog数据库</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u root -p &lt; /usr/share/doc/rsyslog-8.24.0/mysql-createDB.sql </span><br></pre></td></tr></table></figure>
-<p>创建rsyslog用户，并授权</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">mysql&gt; GRANT ALL ON  Syslog.* TO <span class="string">&#x27;rsyslog&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;MYSQLPASSOWRD&#x27;</span>;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br><span class="line">mysql&gt; <span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
-<h4 id="设置rsyslog-mysql"><a href="#设置rsyslog-mysql" class="headerlink" title="设置rsyslog-mysql"></a>设置rsyslog-mysql</h4><p>修改rsyslog配置文件，启用rsyslog mysql 模块，配置mysql 连接信息</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/rsyslog.conf</span><br><span class="line"><span class="comment"># 添加下面的信息</span></span><br><span class="line"><span class="variable">$ModLoad</span> ommysql</span><br><span class="line">*.* :ommysql:127.0.0.1,Syslog,rsyslog,MYSQLPASSWORD</span><br></pre></td></tr></table></figure>
-<p>最终如下所示：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rsyslog configuration file</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># For more information see /usr/share/doc/rsyslog-*/rsyslog_conf.html</span></span><br><span class="line"><span class="comment"># If you experience problems, see http://www.rsyslog.com/doc/troubleshoot.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### MODULES ####</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The imjournal module bellow is now used as a message source instead of imuxsock.</span></span><br><span class="line"><span class="variable">$ModLoad</span> imuxsock <span class="comment"># provides support for local system logging (e.g. via logger command)</span></span><br><span class="line"><span class="variable">$ModLoad</span> imjournal <span class="comment"># provides access to the systemd journal</span></span><br><span class="line"><span class="variable">$ModLoad</span> imklog <span class="comment"># reads kernel messages (the same are read from journald)</span></span><br><span class="line"><span class="variable">$ModLoad</span> immark  <span class="comment"># provides --MARK-- message capability</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Provides UDP syslog reception</span></span><br><span class="line"><span class="variable">$ModLoad</span> imudp</span><br><span class="line"><span class="variable">$UDPServerRun</span> 514</span><br><span class="line"></span><br><span class="line"><span class="comment"># Provides TCP syslog reception</span></span><br><span class="line"><span class="variable">$ModLoad</span> imtcp</span><br><span class="line"><span class="variable">$InputTCPServerRun</span> 514</span><br><span class="line"><span class="comment"># 新启用的rsyslog mysql模块</span></span><br><span class="line"><span class="variable">$Modload</span> ommysql</span><br><span class="line">*.* :ommysql:localhost,Syslog,rsyslog,MYSQLPASSWORD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### GLOBAL DIRECTIVES ####</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Where to place auxiliary files</span></span><br><span class="line"><span class="variable">$WorkDirectory</span> /var/lib/rsyslog</span><br><span class="line"></span><br><span class="line"><span class="comment"># Use default timestamp format</span></span><br><span class="line"><span class="variable">$ActionFileDefaultTemplate</span> RSYSLOG_TraditionalFileFormat</span><br><span class="line"></span><br><span class="line"><span class="comment"># File syncing capability is disabled by default. This feature is usually not required,</span></span><br><span class="line"><span class="comment"># not useful and an extreme performance hit</span></span><br><span class="line"><span class="comment">#$ActionFileEnableSync on</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Include all config files in /etc/rsyslog.d/</span></span><br><span class="line"><span class="variable">$IncludeConfig</span> /etc/rsyslog.d/*.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># Turn off message reception via local log socket;</span></span><br><span class="line"><span class="comment"># local messages are retrieved through imjournal now.</span></span><br><span class="line"><span class="variable">$OmitLocalLogging</span> on</span><br><span class="line"></span><br><span class="line"><span class="comment"># File to store the position in the journal</span></span><br><span class="line"><span class="variable">$IMJournalStateFile</span> imjournal.state</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### RULES ####</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log all kernel messages to the console.</span></span><br><span class="line"><span class="comment"># Logging much else clutters up the screen.</span></span><br><span class="line"><span class="comment">#kern.*                                                 /dev/console</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log anything (except mail) of level info or higher.</span></span><br><span class="line"><span class="comment"># Don&#x27;t log private authentication messages!</span></span><br><span class="line">*.info;mail.none;authpriv.none;cron.none                /var/<span class="built_in">log</span>/messages</span><br><span class="line"></span><br><span class="line"><span class="comment"># The authpriv file has restricted access.</span></span><br><span class="line">authpriv.*                                              /var/<span class="built_in">log</span>/secure</span><br><span class="line"></span><br><span class="line"><span class="comment"># Log all the mail messages in one place.</span></span><br><span class="line">mail.*                                                  -/var/<span class="built_in">log</span>/maillog</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log cron stuff</span></span><br><span class="line">cron.*                                                  /var/<span class="built_in">log</span>/cron</span><br><span class="line"></span><br><span class="line"><span class="comment"># Everybody gets emergency messages</span></span><br><span class="line">*.emerg                                                 :omusrmsg:*</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save news errors of level crit and higher in a special file.</span></span><br><span class="line">uucp,news.crit                                          /var/<span class="built_in">log</span>/spooler</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save boot messages also to boot.log</span></span><br><span class="line">local7.*                                                /var/<span class="built_in">log</span>/boot.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ### begin forwarding rule ###</span></span><br><span class="line"><span class="comment"># The statement between the begin ... end define a SINGLE forwarding</span></span><br><span class="line"><span class="comment"># rule. They belong together, do NOT split them. If you create multiple</span></span><br><span class="line"><span class="comment"># forwarding rules, duplicate the whole block!</span></span><br><span class="line"><span class="comment"># Remote Logging (we use TCP for reliable delivery)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># An on-disk queue is created for this action. If the remote host is</span></span><br><span class="line"><span class="comment"># down, messages are spooled to disk and sent when it is up again.</span></span><br><span class="line"><span class="comment">#$ActionQueueFileName fwdRule1 # unique name prefix for spool files</span></span><br><span class="line"><span class="comment">#$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)</span></span><br><span class="line"><span class="comment">#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown</span></span><br><span class="line"><span class="comment">#$ActionQueueType LinkedList   # run asynchronously</span></span><br><span class="line"><span class="comment">#$ActionResumeRetryCount -1    # infinite retries if host is down</span></span><br><span class="line"><span class="comment"># remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional</span></span><br><span class="line"><span class="comment">#*.* @@remote-host:514</span></span><br><span class="line"><span class="comment"># ### end of the forwarding rule ###</span></span><br></pre></td></tr></table></figure>
-<h4 id="重新启用rsyslog服务"><a href="#重新启用rsyslog服务" class="headerlink" title="重新启用rsyslog服务"></a>重新启用rsyslog服务</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart rsyslog</span><br></pre></td></tr></table></figure>
-<p>至此，rsyslog的日志存储已经可以在mysql中查看，接下来我们还需要对存储的日志可视化操作。即安装loganalyzer。</p>
-<h3 id="安装loganalyzer"><a href="#安装loganalyzer" class="headerlink" title="安装loganalyzer"></a>安装loganalyzer</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/download</span><br><span class="line">wget http://download.adiscon.com/loganalyzer/loganalyzer-4.1.7.tar.gz</span><br><span class="line">tar -xzf loganalyzer-4.1.7.tar.gz</span><br></pre></td></tr></table></figure>
-<p>把安装源文件复制到本地站点目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -r /loganalyzer-4.1.7/src /var/www/html/loganalyzer</span><br></pre></td></tr></table></figure>
-<h4 id="创建loganalyzer的配置文件"><a href="#创建loganalyzer的配置文件" class="headerlink" title="创建loganalyzer的配置文件"></a>创建loganalyzer的配置文件</h4><p>创建配置文件的时候，先把selinux关闭，不然后面写入配置文件的时候会有问题。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/www/html/loganalyzer</span><br><span class="line">touch config.php</span><br><span class="line">chown apache:apache ./*</span><br><span class="line">chmod 666 config.php</span><br></pre></td></tr></table></figure>
-<h4 id="安装引导"><a href="#安装引导" class="headerlink" title="安装引导"></a>安装引导</h4><p>打开安装引导页面</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://server-ip/loganalyzer/install.php</span><br></pre></td></tr></table></figure>
-<p>根据引导页面开始安装，安装过程中，如果遇到config.php的问题，参考selinux配置，即需要关闭，重启后操作。</p>
-<p>连接数据库后，有一个配置创建第一个rsyslog信息源。注意表名SystemEvents这个表名，不确定的，可以登录mysql查看Syslog表名确认。不然这里的创建后面登录后，查不到日志信息。</p>
-<p>引导页面安装结束，即可以看到日志。</p>
-<p>如果查询不到日志，提示以下错误：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“Could not find the configured table, maybe misspelled or the table names are <span class="keyword">case</span> sensitive”</span><br></pre></td></tr></table></figure>
-<p>解决方法如下：</p>
-<p>更改loganalyzer 的config.php文件，更改如下行内容：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$CFG</span>[‘Sources’][‘Source1’][‘DBTableName’] = ‘systemevents’; =&gt; ‘SystemEvents’</span><br></pre></td></tr></table></figure>
-<p>更新数据库</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u rsyslog -p</span><br><span class="line">mysql&gt; update logcon_sources <span class="built_in">set</span> DBTableName =’SystemEvents’ <span class="built_in">where</span> ID=1;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1 Changed: 1 Warnings: 0</span><br></pre></td></tr></table></figure>
-<h3 id="配置其它主机的日志"><a href="#配置其它主机的日志" class="headerlink" title="配置其它主机的日志"></a>配置其它主机的日志</h3><p>添加一台主机，把日志存储到laganalyzer主机上，只需要配置主机的rsyslog配置文件，配置文件如下例：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># An on-disk queue is created for this action. If the remote host is</span></span><br><span class="line"><span class="comment"># down, messages are spooled to disk and sent when it is up again.</span></span><br><span class="line"><span class="comment">#$ActionQueueFileName fwdRule1 # unique name prefix for spool files</span></span><br><span class="line"><span class="comment">#$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)</span></span><br><span class="line"><span class="comment">#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown</span></span><br><span class="line"><span class="comment">#$ActionQueueType LinkedList   # run asynchronously</span></span><br><span class="line"><span class="comment">#$ActionResumeRetryCount -1    # infinite retries if host is down</span></span><br><span class="line"><span class="comment"># remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional</span></span><br><span class="line"><span class="comment">#*.* @@remote-host:514</span></span><br><span class="line">*.* @loganalyzer-IP:514</span><br><span class="line"><span class="comment"># ### end of the forwarding rule ###</span></span><br></pre></td></tr></table></figure>
-<p>开放loganalyzer服务器的514端口</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=514/tcp</span><br><span class="line">firewall-cmd --permanent --add-port=514/udp</span><br><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
-<p><img src="https://blog.ywmy.xyz/linux/Loganalyzer.png" alt="loganzlyzer"></p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -840,6 +774,20 @@
 <h2 id="具体管理规则"><a href="#具体管理规则" class="headerlink" title="具体管理规则"></a>具体管理规则</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"> <span class="comment"># firewall-cmd --help</span></span><br><span class="line">firewall-cmd高级功能可以到官方资料库了解更多信息。</span><br><span class="line">https://fedoraproject.org/wiki/FirewallD/zh-cn</span><br><span class="line">https://access.redhat.com/documentation/zh-CN/Red_Hat_Enterprise_Linux/7/html/Security_Guide/sec-Using_Firewalls.html</span><br><span class="line">https://www.ibm.com/developerworks/cn/linux/1507_caojh/</span><br></pre></td></tr></table></figure>]]></content>
   </entry>
   <entry>
+    <title>centos 7上安装webmin</title>
+    <url>/2019/01/15/centos-7%E4%B8%8A%E5%AE%89%E8%A3%85webadmin/</url>
+    <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>webmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect</span><br></pre></td></tr></table></figure>
+<h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
+<p>程序安装位置：/usr/libexec/webmin</p>
+<p>程序默认通过https访问，端口10000 TCP，按访问需求放通。</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>checkpwd.sh</title>
     <url>/2019/04/22/checkpwd-sh/</url>
     <content><![CDATA[<h2 id="使用密码认证-open-v-p-n"><a href="#使用密码认证-open-v-p-n" class="headerlink" title="使用密码认证*open-[v]-[p]-[n]"></a>使用密码认证*open-[v]-[p]-[n]</h2><p>客户端通过账号密码认证。</p>
@@ -851,6 +799,58 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">auth-user-pass</span><br></pre></td></tr></table></figure>
 <h3 id="证书的撤销"><a href="#证书的撤销" class="headerlink" title="证书的撤销"></a>证书的撤销</h3><p>添加多个用户后，对用户的撤销操作如下“</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">source</span> ./vars</span><br><span class="line">NOTE: If you run ./clean-all, I will be doing a rm -rf on /home/your_name/openvpn-ca/keys</span><br><span class="line"></span><br><span class="line">./revoke-full client1</span><br><span class="line">Using configuration from /home/yourname/openvpn-ca/openssl.cnf</span><br><span class="line">Revoking Certificate 02.</span><br><span class="line">Data Base Updated</span><br><span class="line">Using configuration from /home/yourname/openvpn-ca/openssl.cnf</span><br><span class="line">C = your country, ST = your province , L = your city, O = your org, OU = your unit, CN = client1, name = server, emailAddress = yourname@abc.com </span><br><span class="line">error 23 at 0 depth lookup: certificate revoked</span><br><span class="line">error client1.crt: verification failed</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>centos+rsyslog+loganalyzer</title>
+    <url>/2019/08/07/centos-rsyslog-loganalyzer/</url>
+    <content><![CDATA[<h2 id="Rsyslog-Analyzer搭建"><a href="#Rsyslog-Analyzer搭建" class="headerlink" title="Rsyslog+Analyzer搭建"></a>Rsyslog+Analyzer搭建</h2><p>一个项目上需求，需要内部网络上设备的日志存储满足180天，且支持日志报表导出。于是想到搭建一个日志应用。再加上日志报表分析，想到一个组合，rsyslog+loganalyzer。</p>
+<p>操作如下：</p>
+<h3 id="系统环境"><a href="#系统环境" class="headerlink" title="系统环境"></a>系统环境</h3><p>CentOS Linux release 7.6.1810 (Core) </p>
+<h3 id="依赖安装"><a href="#依赖安装" class="headerlink" title="依赖安装"></a>依赖安装</h3><h4 id="设置时间同步"><a href="#设置时间同步" class="headerlink" title="设置时间同步"></a>设置时间同步</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install ntpdate epel-release vim curl wget</span><br><span class="line">ntpdate cn.ntp.org.cn</span><br><span class="line">hwclock -w</span><br></pre></td></tr></table></figure>
+<p>配置crontab任务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/crontab</span><br><span class="line">00 23 * * * ntpdate cn.ntp.org.cn</span><br><span class="line">30 00 * * * hwclock -w</span><br></pre></td></tr></table></figure>
+<h4 id="安装apache、php、mariadb-server"><a href="#安装apache、php、mariadb-server" class="headerlink" title="安装apache、php、mariadb-server"></a>安装apache、php、mariadb-server</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install php php-mysql php-gd php-mbstring php-mcrypt php-devel php-xml mariadb-server httpd</span><br></pre></td></tr></table></figure>
+<p>设置开机启动</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl <span class="built_in">enable</span> httpd</span><br><span class="line">systemctl <span class="built_in">enable</span> mariadb</span><br><span class="line">systemctl start httpd</span><br><span class="line">systemctl start mariadb</span><br></pre></td></tr></table></figure>
+<p>配置mariadb-server</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql_secure_installation</span><br></pre></td></tr></table></figure>
+<h4 id="安装rsyslog-mysql"><a href="#安装rsyslog-mysql" class="headerlink" title="安装rsyslog-mysql"></a>安装rsyslog-mysql</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install rsyslog rsyslog-mysql -y</span><br></pre></td></tr></table></figure>
+<h4 id="创建rsyslog数据库和用户"><a href="#创建rsyslog数据库和用户" class="headerlink" title="创建rsyslog数据库和用户"></a>创建rsyslog数据库和用户</h4><p>导入rsyslog数据库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u root -p &lt; /usr/share/doc/rsyslog-8.24.0/mysql-createDB.sql </span><br></pre></td></tr></table></figure>
+<p>创建rsyslog用户，并授权</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u root -p</span><br><span class="line">mysql&gt; GRANT ALL ON  Syslog.* TO <span class="string">&#x27;rsyslog&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;MYSQLPASSOWRD&#x27;</span>;</span><br><span class="line">mysql&gt; FLUSH PRIVILEGES;</span><br><span class="line">mysql&gt; <span class="built_in">exit</span>;</span><br></pre></td></tr></table></figure>
+<h4 id="设置rsyslog-mysql"><a href="#设置rsyslog-mysql" class="headerlink" title="设置rsyslog-mysql"></a>设置rsyslog-mysql</h4><p>修改rsyslog配置文件，启用rsyslog mysql 模块，配置mysql 连接信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/rsyslog.conf</span><br><span class="line"><span class="comment"># 添加下面的信息</span></span><br><span class="line"><span class="variable">$ModLoad</span> ommysql</span><br><span class="line">*.* :ommysql:127.0.0.1,Syslog,rsyslog,MYSQLPASSWORD</span><br></pre></td></tr></table></figure>
+<p>最终如下所示：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># rsyslog configuration file</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># For more information see /usr/share/doc/rsyslog-*/rsyslog_conf.html</span></span><br><span class="line"><span class="comment"># If you experience problems, see http://www.rsyslog.com/doc/troubleshoot.html</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#### MODULES ####</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The imjournal module bellow is now used as a message source instead of imuxsock.</span></span><br><span class="line"><span class="variable">$ModLoad</span> imuxsock <span class="comment"># provides support for local system logging (e.g. via logger command)</span></span><br><span class="line"><span class="variable">$ModLoad</span> imjournal <span class="comment"># provides access to the systemd journal</span></span><br><span class="line"><span class="variable">$ModLoad</span> imklog <span class="comment"># reads kernel messages (the same are read from journald)</span></span><br><span class="line"><span class="variable">$ModLoad</span> immark  <span class="comment"># provides --MARK-- message capability</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Provides UDP syslog reception</span></span><br><span class="line"><span class="variable">$ModLoad</span> imudp</span><br><span class="line"><span class="variable">$UDPServerRun</span> 514</span><br><span class="line"></span><br><span class="line"><span class="comment"># Provides TCP syslog reception</span></span><br><span class="line"><span class="variable">$ModLoad</span> imtcp</span><br><span class="line"><span class="variable">$InputTCPServerRun</span> 514</span><br><span class="line"><span class="comment"># 新启用的rsyslog mysql模块</span></span><br><span class="line"><span class="variable">$Modload</span> ommysql</span><br><span class="line">*.* :ommysql:localhost,Syslog,rsyslog,MYSQLPASSWORD</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### GLOBAL DIRECTIVES ####</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Where to place auxiliary files</span></span><br><span class="line"><span class="variable">$WorkDirectory</span> /var/lib/rsyslog</span><br><span class="line"></span><br><span class="line"><span class="comment"># Use default timestamp format</span></span><br><span class="line"><span class="variable">$ActionFileDefaultTemplate</span> RSYSLOG_TraditionalFileFormat</span><br><span class="line"></span><br><span class="line"><span class="comment"># File syncing capability is disabled by default. This feature is usually not required,</span></span><br><span class="line"><span class="comment"># not useful and an extreme performance hit</span></span><br><span class="line"><span class="comment">#$ActionFileEnableSync on</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Include all config files in /etc/rsyslog.d/</span></span><br><span class="line"><span class="variable">$IncludeConfig</span> /etc/rsyslog.d/*.conf</span><br><span class="line"></span><br><span class="line"><span class="comment"># Turn off message reception via local log socket;</span></span><br><span class="line"><span class="comment"># local messages are retrieved through imjournal now.</span></span><br><span class="line"><span class="variable">$OmitLocalLogging</span> on</span><br><span class="line"></span><br><span class="line"><span class="comment"># File to store the position in the journal</span></span><br><span class="line"><span class="variable">$IMJournalStateFile</span> imjournal.state</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">#### RULES ####</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log all kernel messages to the console.</span></span><br><span class="line"><span class="comment"># Logging much else clutters up the screen.</span></span><br><span class="line"><span class="comment">#kern.*                                                 /dev/console</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log anything (except mail) of level info or higher.</span></span><br><span class="line"><span class="comment"># Don&#x27;t log private authentication messages!</span></span><br><span class="line">*.info;mail.none;authpriv.none;cron.none                /var/<span class="built_in">log</span>/messages</span><br><span class="line"></span><br><span class="line"><span class="comment"># The authpriv file has restricted access.</span></span><br><span class="line">authpriv.*                                              /var/<span class="built_in">log</span>/secure</span><br><span class="line"></span><br><span class="line"><span class="comment"># Log all the mail messages in one place.</span></span><br><span class="line">mail.*                                                  -/var/<span class="built_in">log</span>/maillog</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Log cron stuff</span></span><br><span class="line">cron.*                                                  /var/<span class="built_in">log</span>/cron</span><br><span class="line"></span><br><span class="line"><span class="comment"># Everybody gets emergency messages</span></span><br><span class="line">*.emerg                                                 :omusrmsg:*</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save news errors of level crit and higher in a special file.</span></span><br><span class="line">uucp,news.crit                                          /var/<span class="built_in">log</span>/spooler</span><br><span class="line"></span><br><span class="line"><span class="comment"># Save boot messages also to boot.log</span></span><br><span class="line">local7.*                                                /var/<span class="built_in">log</span>/boot.log</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># ### begin forwarding rule ###</span></span><br><span class="line"><span class="comment"># The statement between the begin ... end define a SINGLE forwarding</span></span><br><span class="line"><span class="comment"># rule. They belong together, do NOT split them. If you create multiple</span></span><br><span class="line"><span class="comment"># forwarding rules, duplicate the whole block!</span></span><br><span class="line"><span class="comment"># Remote Logging (we use TCP for reliable delivery)</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># An on-disk queue is created for this action. If the remote host is</span></span><br><span class="line"><span class="comment"># down, messages are spooled to disk and sent when it is up again.</span></span><br><span class="line"><span class="comment">#$ActionQueueFileName fwdRule1 # unique name prefix for spool files</span></span><br><span class="line"><span class="comment">#$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)</span></span><br><span class="line"><span class="comment">#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown</span></span><br><span class="line"><span class="comment">#$ActionQueueType LinkedList   # run asynchronously</span></span><br><span class="line"><span class="comment">#$ActionResumeRetryCount -1    # infinite retries if host is down</span></span><br><span class="line"><span class="comment"># remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional</span></span><br><span class="line"><span class="comment">#*.* @@remote-host:514</span></span><br><span class="line"><span class="comment"># ### end of the forwarding rule ###</span></span><br></pre></td></tr></table></figure>
+<h4 id="重新启用rsyslog服务"><a href="#重新启用rsyslog服务" class="headerlink" title="重新启用rsyslog服务"></a>重新启用rsyslog服务</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">systemctl restart rsyslog</span><br></pre></td></tr></table></figure>
+<p>至此，rsyslog的日志存储已经可以在mysql中查看，接下来我们还需要对存储的日志可视化操作。即安装loganalyzer。</p>
+<h3 id="安装loganalyzer"><a href="#安装loganalyzer" class="headerlink" title="安装loganalyzer"></a>安装loganalyzer</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/download</span><br><span class="line">wget http://download.adiscon.com/loganalyzer/loganalyzer-4.1.7.tar.gz</span><br><span class="line">tar -xzf loganalyzer-4.1.7.tar.gz</span><br></pre></td></tr></table></figure>
+<p>把安装源文件复制到本地站点目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp -r /loganalyzer-4.1.7/src /var/www/html/loganalyzer</span><br></pre></td></tr></table></figure>
+<h4 id="创建loganalyzer的配置文件"><a href="#创建loganalyzer的配置文件" class="headerlink" title="创建loganalyzer的配置文件"></a>创建loganalyzer的配置文件</h4><p>创建配置文件的时候，先把selinux关闭，不然后面写入配置文件的时候会有问题。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/www/html/loganalyzer</span><br><span class="line">touch config.php</span><br><span class="line">chown apache:apache ./*</span><br><span class="line">chmod 666 config.php</span><br></pre></td></tr></table></figure>
+<h4 id="安装引导"><a href="#安装引导" class="headerlink" title="安装引导"></a>安装引导</h4><p>打开安装引导页面</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">http://server-ip/loganalyzer/install.php</span><br></pre></td></tr></table></figure>
+<p>根据引导页面开始安装，安装过程中，如果遇到config.php的问题，参考selinux配置，即需要关闭，重启后操作。</p>
+<p>连接数据库后，有一个配置创建第一个rsyslog信息源。注意表名SystemEvents这个表名，不确定的，可以登录mysql查看Syslog表名确认。不然这里的创建后面登录后，查不到日志信息。</p>
+<p>引导页面安装结束，即可以看到日志。</p>
+<p>如果查询不到日志，提示以下错误：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">“Could not find the configured table, maybe misspelled or the table names are <span class="keyword">case</span> sensitive”</span><br></pre></td></tr></table></figure>
+<p>解决方法如下：</p>
+<p>更改loganalyzer 的config.php文件，更改如下行内容：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="variable">$CFG</span>[‘Sources’][‘Source1’][‘DBTableName’] = ‘systemevents’; =&gt; ‘SystemEvents’</span><br></pre></td></tr></table></figure>
+<p>更新数据库</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mysql -u rsyslog -p</span><br><span class="line">mysql&gt; update logcon_sources <span class="built_in">set</span> DBTableName =’SystemEvents’ <span class="built_in">where</span> ID=1;</span><br><span class="line">Query OK, 1 row affected (0.00 sec)</span><br><span class="line">Rows matched: 1 Changed: 1 Warnings: 0</span><br></pre></td></tr></table></figure>
+<h3 id="配置其它主机的日志"><a href="#配置其它主机的日志" class="headerlink" title="配置其它主机的日志"></a>配置其它主机的日志</h3><p>添加一台主机，把日志存储到laganalyzer主机上，只需要配置主机的rsyslog配置文件，配置文件如下例：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># An on-disk queue is created for this action. If the remote host is</span></span><br><span class="line"><span class="comment"># down, messages are spooled to disk and sent when it is up again.</span></span><br><span class="line"><span class="comment">#$ActionQueueFileName fwdRule1 # unique name prefix for spool files</span></span><br><span class="line"><span class="comment">#$ActionQueueMaxDiskSpace 1g   # 1gb space limit (use as much as possible)</span></span><br><span class="line"><span class="comment">#$ActionQueueSaveOnShutdown on # save messages to disk on shutdown</span></span><br><span class="line"><span class="comment">#$ActionQueueType LinkedList   # run asynchronously</span></span><br><span class="line"><span class="comment">#$ActionResumeRetryCount -1    # infinite retries if host is down</span></span><br><span class="line"><span class="comment"># remote host is: name/ip:port, e.g. 192.168.0.1:514, port optional</span></span><br><span class="line"><span class="comment">#*.* @@remote-host:514</span></span><br><span class="line">*.* @loganalyzer-IP:514</span><br><span class="line"><span class="comment"># ### end of the forwarding rule ###</span></span><br></pre></td></tr></table></figure>
+<p>开放loganalyzer服务器的514端口</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">firewall-cmd --permanent --add-port=514/tcp</span><br><span class="line">firewall-cmd --permanent --add-port=514/udp</span><br><span class="line">firewall-cmd --complete-reload</span><br></pre></td></tr></table></figure>
+<p><img src="https://blog.ywmy.xyz/linux/Loganalyzer.png" alt="loganzlyzer"></p>
+]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -2148,33 +2148,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu shadow-socket</title>
-    <url>/2019/04/04/ubuntu-shadow-socket/</url>
-    <content><![CDATA[<h1 id="ubuntu-shadow-socket"><a href="#ubuntu-shadow-socket" class="headerlink" title="ubuntu shadow-socket"></a>ubuntu shadow-socket</h1><h2 id="0x01-install"><a href="#0x01-install" class="headerlink" title="0x01 install"></a>0x01 install</h2><ul>
-<li>ubuntu</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">apt install python-pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
-<p>or </p>
-<p>install pip</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://bootstrap.pypa.ip/get-pip.py</span><br><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo easy_install shadowsocks</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>centos</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum install python-setuptool &amp;&amp; easy_install pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
-<h2 id="0x02-config-file"><a href="#0x02-config-file" class="headerlink" title="0x02 config_file"></a>0x02 config_file</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line">   <span class="string">&quot;server&quot;</span>:<span class="string">&quot;my_server_ip&quot;</span>, </span><br><span class="line">   <span class="string">&quot;server_port&quot;</span>:25, </span><br><span class="line">   <span class="string">&quot;local_address&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>, </span><br><span class="line">   <span class="string">&quot;local_port&quot;</span>:1080, </span><br><span class="line">   <span class="string">&quot;password&quot;</span>:<span class="string">&quot;mypassword&quot;</span>,</span><br><span class="line">   <span class="string">&quot;timeout&quot;</span>:300, </span><br><span class="line">   <span class="string">&quot;method&quot;</span>:<span class="string">&quot;aes-256-cfb&quot;</span>, </span><br><span class="line">   <span class="string">&quot;fast_open&quot;</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="0x03-start-server"><a href="#0x03-start-server" class="headerlink" title="0x03 start server"></a>0x03 start server</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
-<p>后台启动和停止服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start </span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop</span><br></pre></td></tr></table></figure>
-<h2 id="0X04-download"><a href="#0X04-download" class="headerlink" title="0X04 download"></a>0X04 download</h2><p>下载<a href="https://github.com/shadowsocks">请戳</a></p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ubuntu 不支持i386</title>
     <url>/2019/03/10/ubuntu-%E4%B8%8D%E6%94%AF%E6%8C%81i386/</url>
     <content><![CDATA[<h1 id="ubuntu更新跳过i386体系结构"><a href="#ubuntu更新跳过i386体系结构" class="headerlink" title="ubuntu更新跳过i386体系结构"></a>ubuntu更新跳过i386体系结构</h1><p>前一次，在电脑上安装了google_earth_pro。安装结束后，系统更新就会多出一条更新信息：</p>
@@ -2596,6 +2569,17 @@
       </tags>
   </entry>
   <entry>
+    <title>华为获取诊断信息文件</title>
+    <url>/2019/03/29/%E5%8D%8E%E4%B8%BA%E8%8E%B7%E5%8F%96%E8%AF%8A%E6%96%AD%E4%BF%A1%E6%81%AF%E6%96%87%E4%BB%B6/</url>
+    <content><![CDATA[<h1 id="华为交换机获取诊断信息"><a href="#华为交换机获取诊断信息" class="headerlink" title="华为交换机获取诊断信息"></a>华为交换机获取诊断信息</h1><p>获取设备诊断信息，用于判断设备故障。</p>
+<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;HEXIN&gt;display diagnostic-information dia-info.txt</span><br><span class="line">Now saving the diagnostic information to the device</span><br><span class="line">34%/        //输出进度</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>network</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>华为交换机清除console密码</title>
     <url>/2019/04/11/%E5%8D%8E%E4%B8%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%B8%85%E9%99%A4console%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<h2 id="华为交换机清除console密码"><a href="#华为交换机清除console密码" class="headerlink" title="华为交换机清除console密码"></a>华为交换机清除console密码</h2><p>昨天下午在准备查看一台交换机配置的时候，发现原来给的登录信息已经不正确了。就想着用console登录试试，发现console登录也设置了用户名和密码，于是只能想到通过启动菜单来尝试清除密码了。</p>
@@ -2670,7 +2654,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#x64;&#x6d;&#x69;&#x6e;&#64;&#104;&#x75;&#x61;&#119;&#x65;&#x69;&#x2e;&#99;&#111;&#x6d;">&#x61;&#x64;&#x6d;&#x69;&#x6e;&#64;&#104;&#x75;&#x61;&#119;&#x65;&#x69;&#x2e;&#99;&#111;&#x6d;</a></td>
+<td><a href="mailto:&#x61;&#x64;&#109;&#105;&#x6e;&#64;&#104;&#x75;&#97;&#x77;&#101;&#x69;&#46;&#99;&#x6f;&#x6d;">&#x61;&#x64;&#109;&#105;&#x6e;&#64;&#104;&#x75;&#97;&#x77;&#101;&#x69;&#46;&#99;&#x6f;&#x6d;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2682,7 +2666,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#97;&#x64;&#109;&#105;&#110;&#64;&#104;&#117;&#x61;&#119;&#x65;&#x69;&#x2e;&#99;&#x6f;&#109;">&#97;&#x64;&#109;&#105;&#110;&#64;&#104;&#117;&#x61;&#119;&#x65;&#x69;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#97;&#100;&#109;&#105;&#110;&#x40;&#x68;&#x75;&#x61;&#x77;&#101;&#105;&#x2e;&#x63;&#111;&#x6d;">&#97;&#100;&#109;&#105;&#110;&#x40;&#x68;&#x75;&#x61;&#x77;&#101;&#105;&#x2e;&#x63;&#111;&#x6d;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
@@ -2742,17 +2726,6 @@
 <p><img src="https://blog.ywmy.xyz/network/boot_with_default_mode.png" alt="boot_with_default_mode"></p>
 </li>
 </ol>
-]]></content>
-      <tags>
-        <tag>network</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>华为获取诊断信息文件</title>
-    <url>/2019/03/29/%E5%8D%8E%E4%B8%BA%E8%8E%B7%E5%8F%96%E8%AF%8A%E6%96%AD%E4%BF%A1%E6%81%AF%E6%96%87%E4%BB%B6/</url>
-    <content><![CDATA[<h1 id="华为交换机获取诊断信息"><a href="#华为交换机获取诊断信息" class="headerlink" title="华为交换机获取诊断信息"></a>华为交换机获取诊断信息</h1><p>获取设备诊断信息，用于判断设备故障。</p>
-<h2 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">&lt;HEXIN&gt;display diagnostic-information dia-info.txt</span><br><span class="line">Now saving the diagnostic information to the device</span><br><span class="line">34%/        //输出进度</span><br></pre></td></tr></table></figure>
-
 ]]></content>
       <tags>
         <tag>network</tag>
@@ -3122,7 +3095,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
   <entry>
     <title>ubuntu-16-04上安装openvpn服务器(一)</title>
     <url>/2018/08/08/ubuntu-16-04%E4%B8%8A%E5%AE%89%E8%A3%85openvpn%E6%9C%8D%E5%8A%A1%E5%99%A8-1/</url>
-    <content><![CDATA[<h1 id="ubuntu-16-04上安装openvpn-一"><a href="#ubuntu-16-04上安装openvpn-一" class="headerlink" title="ubuntu 16.04上安装openvpn(一)"></a>ubuntu 16.04上安装openvpn(一)</h1><h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><ul>
+    <content><![CDATA[<h2 id="ubuntu-16-04上安装openvpn-一"><a href="#ubuntu-16-04上安装openvpn-一" class="headerlink" title="ubuntu 16.04上安装openvpn(一)"></a>ubuntu 16.04上安装openvpn(一)</h2><h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><ul>
 <li>ubuntu 16.04服务器</li>
 <li>已经配置sudo权限的用户。</li>
 </ul>
@@ -3155,8 +3128,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <p>现在我们有了ca，可以用来创建我们需要的其它文件。</p>
 <h3 id="step-five-创建服务器证书、密钥和加密文件"><a href="#step-five-创建服务器证书、密钥和加密文件" class="headerlink" title="step five: 创建服务器证书、密钥和加密文件"></a>step five: 创建服务器证书、密钥和加密文件</h3><p>下面，我们会生成服务器证书以及密钥对，以及加密过程中需要的其它文件。</p>
 <p>首先生成openvpn服务器证书及密钥对：</p>
-<pre><code>注意：如果你选择的名字不是server， 那么下面的指导中需要做些调整。比如，在把生成的文件复制到/etc/openvpn目录下时，必须替换为正确的名称。你还需要修改/etc/openvpn/server.conf文件以指向正确的.crt和.key文件。
-</code></pre>
+<p>注意：如果你选择的名字不是server， 那么下面的指导中需要做些调整。比如，在把生成的文件复制到/etc/openvpn目录下时，必须替换为正确的名称。你还需要修改/etc/openvpn/server.conf文件以指向正确的.crt和.key文件。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">./build-key-server server</span><br></pre></td></tr></table></figure>
 <p>现在，你只需要按enter键接受默认值即可。在最后的时候，你需要为两个问题输入y来签署和提交证书：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Output</span><br><span class="line">. . .</span><br><span class="line"></span><br><span class="line">Certificate is to be certified until May  1 17:51:16 2026 GMT (3650 days)</span><br><span class="line">Sign the certificate? [y/n]:y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1 out of 1 certificate requests certified, commit? [y/n]y</span><br><span class="line">Write out database with 1 new entries</span><br><span class="line">Data Base Updated</span><br></pre></td></tr></table></figure>
@@ -3177,12 +3149,10 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/openvpn-ca/keys</span><br><span class="line">sudo cp ca.crt server.crt server.key ta.key dh2048.pem /etc/openvpn</span><br></pre></td></tr></table></figure>
 <p>然后，我们需要拷贝并触感一个简单的openvpn配置文件到配置目录中：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
-<pre><code>修改openvpn配置
-</code></pre>
+<p>修改openvpn配置</p>
 <p>现在我们可以修改服务器配置文件了：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
-<pre><code>基本配置
-</code></pre>
+<p>基本配置</p>
 <p>首先，通过查找tls-auth指定到hmac部分。删除”;”来取消注释tls-auth行。在下面添加key-direction参数并设置为“０”,:/etc/openvpn/srver.conf</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tls-auth ta.key 0 <span class="comment"># This is secret</span></span><br><span class="line">key-direction 0</span><br></pre></td></tr></table></figure>
 <p>然后通过查找注释掉的cipher行来加密密码部分。aes-128-cbc密码提供了很好的加密级别。删除“：”以取消cipher-aes-128-cbc行的注释：/etc/openvpn/server.conf</p>
@@ -3191,29 +3161,25 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">auth SHA256</span><br></pre></td></tr></table></figure>
 <p>最后找到user和group设置并删除“；”以取消注释：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">user nobody</span><br><span class="line">group nogroup</span><br></pre></td></tr></table></figure>
-<pre><code>（可选）重定向所有流到vpn
-</code></pre>
+<p>（可选）重定向所有流到vpn</p>
 <p>上面的设置会建立两台机器之间的vpn连接，但是不会强制任何使用隧道。如果你希望使用vpn来路由所有的流量，那么你需要将dns设置摄像头到客户端电脑。</p>
 <p>取消那些注释掉配置客户端生定向所有流到vpn的指令。找到redirect-gateway部分并删除“；”：/etc/openvpn.server.conf</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">push <span class="string">&quot;redirect-gateway def1 bypass-dhcp&quot;</span></span><br></pre></td></tr></table></figure>
 <p>在下面找到dhcp-option部分，删除“；”：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">push <span class="string">&quot;dhcp-option DNS 208.67.222.222&quot;</span></span><br><span class="line">push <span class="string">&quot;dhcp-option DNS 208.67.220.220&quot;</span></span><br></pre></td></tr></table></figure>
 <p>这应该有助于客户端重新的配置dns设置，以使用vpn隧道作为默认网关。</p>
-<pre><code>（可选）修改端口和协议
-</code></pre>
+<p>（可选）修改端口和协议</p>
 <p>默认情况下，openvpn服务器使用的端口1194和udp协议来接受客户端连接。如果你需要使用不同的端口，是可以更改端口选项的。可以用端口443，因为一般这个是衩防火墙规则允许的：／etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># optional!</span></span><br><span class="line">port 443</span><br></pre></td></tr></table></figure>
 <p>通过协议也会被限制在该端口，如果是这样的话，把协议从udp修改到tcp：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># optional!</span></span><br><span class="line">proto tcp</span><br></pre></td></tr></table></figure>
 <p>如果你不需要使用不同的端口，最好把两个设置设为默认值。</p>
-<pre><code>（可选）指向非默认证书
-</code></pre>
+<p>（可选）指向非默认证书</p>
 <p>如果之前在./build-key-server命令中使用了其它的名字，需要修改cert和key行指向正确的.crt和.key文件。如果使用了默认的server，则应该已经正确设置：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cert server.crt</span><br><span class="line">key server.key</span><br></pre></td></tr></table></figure>
 <p>完成之后，保存并关闭文件。</p>
 <h3 id="step-eight-修改服务器网络配置"><a href="#step-eight-修改服务器网络配置" class="headerlink" title="step eight: 修改服务器网络配置"></a>step eight: 修改服务器网络配置</h3><p>下面我们需要对服务器的网络做一些高速便利openvpn可以正确的路由流量。</p>
-<pre><code>允许ip转发
-</code></pre>
+<p>允许ip转发</p>
 <p>首先，我们需要允许服务器转发流量。这对于我们希望vpn服务器提供的功能是非常重要的。</p>
 <p>可以通过修改/etc/sysctl.conf文件来高速设置：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
@@ -3222,8 +3188,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <p>保存并关闭文件。</p>
 <p>要读取文件并高速当前会话的值，请输入：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<pre><code>调整ufw规则以伪装客户端连接
-</code></pre>
+<p>调整ufw规则以伪装客户端连接</p>
 <p>我们需要修改规则文件来设置伪装，这是一个iptables的概念，它提供了即时动态的nat来正确路由客户端连接。</p>
 <p>在打开防火墙配置文件添加伪装之前，我们需要找到机器的公网接口。为此，请输入：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ip route | grep default</span><br></pre></td></tr></table></figure>
@@ -3232,8 +3197,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <p>当你的接口与默认路由相关联时，打开/etc/ufw/before.rules文件来添加相关配置：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo vim /etc/ufw/before.rules</span><br></pre></td></tr></table></figure>
 <p>这个文件处理在加载传统ufw规则之前应该文墨的配置。在文件顶部添加下面的行。这会为nat表中的postrouting链接设置默认策略，并伪装来自vpn的所有流量：/etc/ufw/before.rules</p>
-<pre><code>注意：刻把-A POSTROUTINGＴ中的wlplls0换成你自己的接口
-</code></pre>
+<p>注意：刻把-A POSTROUTINGＴ中的wlplls0换成你自己的接口</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># rules.before</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Rules that should be run before the ufw command line added rules. Custom</span></span><br><span class="line"><span class="comment"># rules should be added to one of these chains:</span></span><br><span class="line"><span class="comment">#   ufw-before-input</span></span><br><span class="line"><span class="comment">#   ufw-before-output</span></span><br><span class="line"><span class="comment">#   ufw-before-forward</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># START OPENVPN RULES</span></span><br><span class="line"><span class="comment"># NAT table rules</span></span><br><span class="line">*nat</span><br><span class="line">:POSTROUTING ACCEPT [0:0]</span><br><span class="line"><span class="comment"># Allow traffic from OpenVPN client to wlp11s0 (change to the interface you discovered!)</span></span><br><span class="line">-A POSTROUTING -s 10.8.0.0/8 -o wlp11s0 -j MASQUERADE</span><br><span class="line">COMMIT</span><br><span class="line"><span class="comment"># END OPENVPN RULES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Don&#x27;t delete these required lines, otherwise there will be errors</span></span><br><span class="line">*filter</span><br><span class="line">. . .</span><br></pre></td></tr></table></figure>
 <p>保存并关闭文件。</p>
 <p>我们需要告诉ufw默认允许转发数据包。为些，我们打开/etc/default/ufw文件：</p>
@@ -3241,8 +3205,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <p>找到default_forward_policy指令，把值从drop改成accetp：/etc/default/ufw：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">DEFAULT_FORWARD_POLIEY=<span class="string">&quot;ACCEPT&quot;</span></span><br></pre></td></tr></table></figure>
 <p>保存并关闭文件。</p>
-<pre><code>打开openvpn端口并雇用更改
-</code></pre>
+<p>打开openvpn端口并雇用更改</p>
 <p>下面，我们将高速防火墙本身以允许流量到openvpn。</p>
 <p>如果你没有改变/etc/openvpn/server.conf文件中的端口和协议，你需要打开udp流量到端口1194。如果你修改了端口和协议，请使用你选择的值。</p>
 <p>我们还会添加ssh端口：</p>
@@ -3264,14 +3227,12 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <p>如果一切正常的话，雇用服务以便在服务器启动的时候自动启动：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> openvpn@server</span><br></pre></td></tr></table></figure>
 <h3 id="step-ten-创建客户端"><a href="#step-ten-创建客户端" class="headerlink" title="step ten: 创建客户端"></a>step ten: 创建客户端</h3><p>下面我们需要建立一个系统，使我们能够轻松创建客户端配置文件。</p>
-<pre><code>创建客户配置目录结构
-</code></pre>
+<p>创建客户配置目录结构</p>
 <p>在home目录下创建一个目录结构用来保存文件：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir -p ~/client-configs/files</span><br></pre></td></tr></table></figure>
 <p>因为我们的客户端配置文件将嵌入客户密钥，我们应该锁定内部目录的权限：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">chmod 700 ~/client-configs/files</span><br></pre></td></tr></table></figure>
-<pre><code>创建一个基本配置
-</code></pre>
+<p>创建一个基本配置</p>
 <p>下面我们将示例客户端配置拷贝到我们的目录中作为一个基本配置：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf ~/client-configs/base.conf</span><br></pre></td></tr></table></figure>
 <p>打开这个文件：</p>
@@ -3290,8 +3251,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">key-direction 1</span><br></pre></td></tr></table></figure>
 <p>如果你的客户端运行在linux上并且具有/etc/openvpn/update-resolv-config文件，那么应该从生成的openvpn客户端配置文件取消注释这些行。</p>
 <p>保存文件。</p>
-<pre><code>创建配置生成脚本*
-</code></pre>
+<p>创建配置生成脚本*</p>
 <p>下面，我们会创建一个简单的脚本，用相关证书、密钥和加密文件来编译我们的基本配置。这会把生成的配置文件放在~/client-configs/files目录下。</p>
 <p>在~/client-configs目录下创建并打开文件make_config.sh</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">vim ~/client-configs/make_config.sh</span><br></pre></td></tr></table></figure>
@@ -3305,8 +3265,7 @@ Info: The max number of VTY users is 8, and the number of current VTY users on l
 <p>如果一切正常的话，那么在~/client-configs/files目录下，会生成一个client1.ovpn文件：</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ls ~/client-configs/files</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Output</span><br><span class="line">client1.ovpn</span><br></pre></td></tr></table></figure>
-<pre><code>把配置文件伟到客户端
-</code></pre>
+<p>把配置文件伟到客户端</p>
 <p>我们需要把客户端配置文件传输到相关设备上。比如，你的本地计算机或者一个移动设备。</p>
 <p>虽然用于完成此传输的程序取决于你的选择和设备的操作系统。但你希望应用程序在后端使用sftp和scp。这将通过加密连接传输客户端的vpn认证文件。</p>
 <p>以下是使用sftp命令传输client1.ovpn的示例。这个命令可以在你的本地计算机（MAC OS X或linux）运行。它把.ovpn文件放到你的主目录中：</p>

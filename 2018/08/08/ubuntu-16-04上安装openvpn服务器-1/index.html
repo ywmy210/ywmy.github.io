@@ -56,7 +56,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 
         </div>
         <div class="content markdown">
-            <h1 id="ubuntu-16-04上安装openvpn-一"><a href="#ubuntu-16-04上安装openvpn-一" class="headerlink" title="ubuntu 16.04上安装openvpn(一)"></a>ubuntu 16.04上安装openvpn(一)</h1><h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><ul>
+            <h2 id="ubuntu-16-04上安装openvpn-一"><a href="#ubuntu-16-04上安装openvpn-一" class="headerlink" title="ubuntu 16.04上安装openvpn(一)"></a>ubuntu 16.04上安装openvpn(一)</h2><h2 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h2><ul>
 <li>ubuntu 16.04服务器</li>
 <li>已经配置sudo权限的用户。</li>
 </ul>
@@ -89,8 +89,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>现在我们有了ca，可以用来创建我们需要的其它文件。</p>
 <h3 id="step-five-创建服务器证书、密钥和加密文件"><a href="#step-five-创建服务器证书、密钥和加密文件" class="headerlink" title="step five: 创建服务器证书、密钥和加密文件"></a>step five: 创建服务器证书、密钥和加密文件</h3><p>下面，我们会生成服务器证书以及密钥对，以及加密过程中需要的其它文件。</p>
 <p>首先生成openvpn服务器证书及密钥对：</p>
-<pre><code>注意：如果你选择的名字不是server， 那么下面的指导中需要做些调整。比如，在把生成的文件复制到/etc/openvpn目录下时，必须替换为正确的名称。你还需要修改/etc/openvpn/server.conf文件以指向正确的.crt和.key文件。
-</code></pre>
+<p>注意：如果你选择的名字不是server， 那么下面的指导中需要做些调整。比如，在把生成的文件复制到/etc/openvpn目录下时，必须替换为正确的名称。你还需要修改/etc/openvpn/server.conf文件以指向正确的.crt和.key文件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./build-key-server server</span><br></pre></td></tr></table></figure>
 <p>现在，你只需要按enter键接受默认值即可。在最后的时候，你需要为两个问题输入y来签署和提交证书：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">. . .</span><br><span class="line"></span><br><span class="line">Certificate is to be certified until May  1 17:51:16 2026 GMT (3650 days)</span><br><span class="line">Sign the certificate? [y/n]:y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1 out of 1 certificate requests certified, commit? [y/n]y</span><br><span class="line">Write out database with 1 new entries</span><br><span class="line">Data Base Updated</span><br></pre></td></tr></table></figure>
@@ -111,12 +110,10 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/openvpn-ca/keys</span><br><span class="line">sudo cp ca.crt server.crt server.key ta.key dh2048.pem /etc/openvpn</span><br></pre></td></tr></table></figure>
 <p>然后，我们需要拷贝并触感一个简单的openvpn配置文件到配置目录中：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
-<pre><code>修改openvpn配置
-</code></pre>
+<p>修改openvpn配置</p>
 <p>现在我们可以修改服务器配置文件了：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
-<pre><code>基本配置
-</code></pre>
+<p>基本配置</p>
 <p>首先，通过查找tls-auth指定到hmac部分。删除”;”来取消注释tls-auth行。在下面添加key-direction参数并设置为“０”,:/etc/openvpn/srver.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tls-auth ta.key 0 <span class="comment"># This is secret</span></span><br><span class="line">key-direction 0</span><br></pre></td></tr></table></figure>
 <p>然后通过查找注释掉的cipher行来加密密码部分。aes-128-cbc密码提供了很好的加密级别。删除“：”以取消cipher-aes-128-cbc行的注释：/etc/openvpn/server.conf</p>
@@ -125,29 +122,25 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">auth SHA256</span><br></pre></td></tr></table></figure>
 <p>最后找到user和group设置并删除“；”以取消注释：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user nobody</span><br><span class="line">group nogroup</span><br></pre></td></tr></table></figure>
-<pre><code>（可选）重定向所有流到vpn
-</code></pre>
+<p>（可选）重定向所有流到vpn</p>
 <p>上面的设置会建立两台机器之间的vpn连接，但是不会强制任何使用隧道。如果你希望使用vpn来路由所有的流量，那么你需要将dns设置摄像头到客户端电脑。</p>
 <p>取消那些注释掉配置客户端生定向所有流到vpn的指令。找到redirect-gateway部分并删除“；”：/etc/openvpn.server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">push <span class="string">&quot;redirect-gateway def1 bypass-dhcp&quot;</span></span><br></pre></td></tr></table></figure>
 <p>在下面找到dhcp-option部分，删除“；”：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push <span class="string">&quot;dhcp-option DNS 208.67.222.222&quot;</span></span><br><span class="line">push <span class="string">&quot;dhcp-option DNS 208.67.220.220&quot;</span></span><br></pre></td></tr></table></figure>
 <p>这应该有助于客户端重新的配置dns设置，以使用vpn隧道作为默认网关。</p>
-<pre><code>（可选）修改端口和协议
-</code></pre>
+<p>（可选）修改端口和协议</p>
 <p>默认情况下，openvpn服务器使用的端口1194和udp协议来接受客户端连接。如果你需要使用不同的端口，是可以更改端口选项的。可以用端口443，因为一般这个是衩防火墙规则允许的：／etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># optional!</span></span><br><span class="line">port 443</span><br></pre></td></tr></table></figure>
 <p>通过协议也会被限制在该端口，如果是这样的话，把协议从udp修改到tcp：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># optional!</span></span><br><span class="line">proto tcp</span><br></pre></td></tr></table></figure>
 <p>如果你不需要使用不同的端口，最好把两个设置设为默认值。</p>
-<pre><code>（可选）指向非默认证书
-</code></pre>
+<p>（可选）指向非默认证书</p>
 <p>如果之前在./build-key-server命令中使用了其它的名字，需要修改cert和key行指向正确的.crt和.key文件。如果使用了默认的server，则应该已经正确设置：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cert server.crt</span><br><span class="line">key server.key</span><br></pre></td></tr></table></figure>
 <p>完成之后，保存并关闭文件。</p>
 <h3 id="step-eight-修改服务器网络配置"><a href="#step-eight-修改服务器网络配置" class="headerlink" title="step eight: 修改服务器网络配置"></a>step eight: 修改服务器网络配置</h3><p>下面我们需要对服务器的网络做一些高速便利openvpn可以正确的路由流量。</p>
-<pre><code>允许ip转发
-</code></pre>
+<p>允许ip转发</p>
 <p>首先，我们需要允许服务器转发流量。这对于我们希望vpn服务器提供的功能是非常重要的。</p>
 <p>可以通过修改/etc/sysctl.conf文件来高速设置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
@@ -156,8 +149,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>保存并关闭文件。</p>
 <p>要读取文件并高速当前会话的值，请输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
-<pre><code>调整ufw规则以伪装客户端连接
-</code></pre>
+<p>调整ufw规则以伪装客户端连接</p>
 <p>我们需要修改规则文件来设置伪装，这是一个iptables的概念，它提供了即时动态的nat来正确路由客户端连接。</p>
 <p>在打开防火墙配置文件添加伪装之前，我们需要找到机器的公网接口。为此，请输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route | grep default</span><br></pre></td></tr></table></figure>
@@ -166,8 +158,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>当你的接口与默认路由相关联时，打开/etc/ufw/before.rules文件来添加相关配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ufw/before.rules</span><br></pre></td></tr></table></figure>
 <p>这个文件处理在加载传统ufw规则之前应该文墨的配置。在文件顶部添加下面的行。这会为nat表中的postrouting链接设置默认策略，并伪装来自vpn的所有流量：/etc/ufw/before.rules</p>
-<pre><code>注意：刻把-A POSTROUTINGＴ中的wlplls0换成你自己的接口
-</code></pre>
+<p>注意：刻把-A POSTROUTINGＴ中的wlplls0换成你自己的接口</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># rules.before</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Rules that should be run before the ufw command line added rules. Custom</span></span><br><span class="line"><span class="comment"># rules should be added to one of these chains:</span></span><br><span class="line"><span class="comment">#   ufw-before-input</span></span><br><span class="line"><span class="comment">#   ufw-before-output</span></span><br><span class="line"><span class="comment">#   ufw-before-forward</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># START OPENVPN RULES</span></span><br><span class="line"><span class="comment"># NAT table rules</span></span><br><span class="line">*nat</span><br><span class="line">:POSTROUTING ACCEPT [0:0]</span><br><span class="line"><span class="comment"># Allow traffic from OpenVPN client to wlp11s0 (change to the interface you discovered!)</span></span><br><span class="line">-A POSTROUTING -s 10.8.0.0/8 -o wlp11s0 -j MASQUERADE</span><br><span class="line">COMMIT</span><br><span class="line"><span class="comment"># END OPENVPN RULES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Don&#x27;t delete these required lines, otherwise there will be errors</span></span><br><span class="line">*filter</span><br><span class="line">. . .</span><br></pre></td></tr></table></figure>
 <p>保存并关闭文件。</p>
 <p>我们需要告诉ufw默认允许转发数据包。为些，我们打开/etc/default/ufw文件：</p>
@@ -175,8 +166,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>找到default_forward_policy指令，把值从drop改成accetp：/etc/default/ufw：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEFAULT_FORWARD_POLIEY=<span class="string">&quot;ACCEPT&quot;</span></span><br></pre></td></tr></table></figure>
 <p>保存并关闭文件。</p>
-<pre><code>打开openvpn端口并雇用更改
-</code></pre>
+<p>打开openvpn端口并雇用更改</p>
 <p>下面，我们将高速防火墙本身以允许流量到openvpn。</p>
 <p>如果你没有改变/etc/openvpn/server.conf文件中的端口和协议，你需要打开udp流量到端口1194。如果你修改了端口和协议，请使用你选择的值。</p>
 <p>我们还会添加ssh端口：</p>
@@ -198,14 +188,12 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>如果一切正常的话，雇用服务以便在服务器启动的时候自动启动：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> openvpn@server</span><br></pre></td></tr></table></figure>
 <h3 id="step-ten-创建客户端"><a href="#step-ten-创建客户端" class="headerlink" title="step ten: 创建客户端"></a>step ten: 创建客户端</h3><p>下面我们需要建立一个系统，使我们能够轻松创建客户端配置文件。</p>
-<pre><code>创建客户配置目录结构
-</code></pre>
+<p>创建客户配置目录结构</p>
 <p>在home目录下创建一个目录结构用来保存文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/client-configs/files</span><br></pre></td></tr></table></figure>
 <p>因为我们的客户端配置文件将嵌入客户密钥，我们应该锁定内部目录的权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 ~/client-configs/files</span><br></pre></td></tr></table></figure>
-<pre><code>创建一个基本配置
-</code></pre>
+<p>创建一个基本配置</p>
 <p>下面我们将示例客户端配置拷贝到我们的目录中作为一个基本配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf ~/client-configs/base.conf</span><br></pre></td></tr></table></figure>
 <p>打开这个文件：</p>
@@ -224,8 +212,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">key-direction 1</span><br></pre></td></tr></table></figure>
 <p>如果你的客户端运行在linux上并且具有/etc/openvpn/update-resolv-config文件，那么应该从生成的openvpn客户端配置文件取消注释这些行。</p>
 <p>保存文件。</p>
-<pre><code>创建配置生成脚本*
-</code></pre>
+<p>创建配置生成脚本*</p>
 <p>下面，我们会创建一个简单的脚本，用相关证书、密钥和加密文件来编译我们的基本配置。这会把生成的配置文件放在~/client-configs/files目录下。</p>
 <p>在~/client-configs目录下创建并打开文件make_config.sh</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/client-configs/make_config.sh</span><br></pre></td></tr></table></figure>
@@ -239,8 +226,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>如果一切正常的话，那么在~/client-configs/files目录下，会生成一个client1.ovpn文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls ~/client-configs/files</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">client1.ovpn</span><br></pre></td></tr></table></figure>
-<pre><code>把配置文件伟到客户端
-</code></pre>
+<p>把配置文件伟到客户端</p>
 <p>我们需要把客户端配置文件传输到相关设备上。比如，你的本地计算机或者一个移动设备。</p>
 <p>虽然用于完成此传输的程序取决于你的选择和设备的操作系统。但你希望应用程序在后端使用sftp和scp。这将通过加密连接传输客户端的vpn认证文件。</p>
 <p>以下是使用sftp命令传输client1.ovpn的示例。这个命令可以在你的本地计算机（MAC OS X或linux）运行。它把.ovpn文件放到你的主目录中：</p>
@@ -277,7 +263,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-16-04%E4%B8%8A%E5%AE%89%E8%A3%85openvpn-%E4%B8%80"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 16.04上安装openvpn(一)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E6%B1%82"><span class="toc-number">1.1.</span> <span class="toc-text">要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step-one-%E5%AE%89%E8%A3%85openvpn"><span class="toc-number">1.1.1.</span> <span class="toc-text">step one: 安装openvpn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-two-%E5%88%9B%E5%BB%BAca%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">step two: 创建ca目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setp-three-%E9%85%8D%E7%BD%AEca%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">setp three: 配置ca变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-four-%E5%BB%BA%E7%AB%8B%E8%AF%81%E4%B9%A6%E9%A2%81%E5%8F%91%E6%9C%BA%E6%9E%84"><span class="toc-number">1.1.4.</span> <span class="toc-text">step four: 建立证书颁发机构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-five-%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%81%E4%B9%A6%E3%80%81%E5%AF%86%E9%92%A5%E5%92%8C%E5%8A%A0%E5%AF%86%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.5.</span> <span class="toc-text">step five: 创建服务器证书、密钥和加密文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-six-%E7%94%9F%E6%88%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%81%E4%B9%A6%E5%92%8C%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="toc-number">1.1.6.</span> <span class="toc-text">step six: 生成客户端证书和密钥对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-seven-%E9%85%8D%E7%BD%AEopenvpn%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.7.</span> <span class="toc-text">step seven: 配置openvpn服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-eight-%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.8.</span> <span class="toc-text">step eight: 修改服务器网络配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-nine-%E5%90%AF%E5%8A%A8%E5%B9%B6%E5%90%AF%E7%94%A8openvpn%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.9.</span> <span class="toc-text">step nine: 启动并启用openvpn服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-ten-%E5%88%9B%E5%BB%BA%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.1.10.</span> <span class="toc-text">step ten: 创建客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-eleven-%E7%94%9F%E6%88%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.11.</span> <span class="toc-text">step eleven: 生成客户端配置</span></a></li></ol></li></ol></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-16-04%E4%B8%8A%E5%AE%89%E8%A3%85openvpn-%E4%B8%80"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 16.04上安装openvpn(一)</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E6%B1%82"><span class="toc-number">2.</span> <span class="toc-text">要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step-one-%E5%AE%89%E8%A3%85openvpn"><span class="toc-number">2.1.</span> <span class="toc-text">step one: 安装openvpn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-two-%E5%88%9B%E5%BB%BAca%E7%9B%AE%E5%BD%95"><span class="toc-number">2.2.</span> <span class="toc-text">step two: 创建ca目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setp-three-%E9%85%8D%E7%BD%AEca%E5%8F%98%E9%87%8F"><span class="toc-number">2.3.</span> <span class="toc-text">setp three: 配置ca变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-four-%E5%BB%BA%E7%AB%8B%E8%AF%81%E4%B9%A6%E9%A2%81%E5%8F%91%E6%9C%BA%E6%9E%84"><span class="toc-number">2.4.</span> <span class="toc-text">step four: 建立证书颁发机构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-five-%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%81%E4%B9%A6%E3%80%81%E5%AF%86%E9%92%A5%E5%92%8C%E5%8A%A0%E5%AF%86%E6%96%87%E4%BB%B6"><span class="toc-number">2.5.</span> <span class="toc-text">step five: 创建服务器证书、密钥和加密文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-six-%E7%94%9F%E6%88%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%81%E4%B9%A6%E5%92%8C%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="toc-number">2.6.</span> <span class="toc-text">step six: 生成客户端证书和密钥对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-seven-%E9%85%8D%E7%BD%AEopenvpn%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.7.</span> <span class="toc-text">step seven: 配置openvpn服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-eight-%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">2.8.</span> <span class="toc-text">step eight: 修改服务器网络配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-nine-%E5%90%AF%E5%8A%A8%E5%B9%B6%E5%90%AF%E7%94%A8openvpn%E6%9C%8D%E5%8A%A1"><span class="toc-number">2.9.</span> <span class="toc-text">step nine: 启动并启用openvpn服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-ten-%E5%88%9B%E5%BB%BA%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">2.10.</span> <span class="toc-text">step ten: 创建客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-eleven-%E7%94%9F%E6%88%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">2.11.</span> <span class="toc-text">step eleven: 生成客户端配置</span></a></li></ol></li></ol>	
         </div>
     
 </div>
