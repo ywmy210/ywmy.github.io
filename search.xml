@@ -1128,7 +1128,8 @@
   <entry>
     <title>linux nc command</title>
     <url>/2019/11/30/linux-nc-command/</url>
-    <content><![CDATA[<h2 id="linux-nc-命令"><a href="#linux-nc-命令" class="headerlink" title="linux nc 命令"></a>linux nc 命令</h2><h3 id="netcat-安装"><a href="#netcat-安装" class="headerlink" title="netcat 安装"></a>netcat 安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ubuntu 18.04</span></span><br><span class="line">sudo apt install netcat</span><br><span class="line"><span class="comment"># centos  7</span></span><br><span class="line">sudo yum install nc</span><br></pre></td></tr></table></figure>
+    <content><![CDATA[<p>Netcat 是一款简单的Unix工具，使用UDP和TCP协议。 它是一个可靠的容易被其他程序所启用的后台操作工具，同时它也被用作网络的测试工具或黑客工具。 使用它你可以轻易的建立任何连接。内建有很多实用的工具。</p>
+<h2 id="linux-nc-命令"><a href="#linux-nc-命令" class="headerlink" title="linux nc 命令"></a>linux nc 命令</h2><h3 id="netcat-安装"><a href="#netcat-安装" class="headerlink" title="netcat 安装"></a>netcat 安装</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ubuntu 18.04</span></span><br><span class="line">sudo apt install netcat</span><br><span class="line"><span class="comment"># centos  7</span></span><br><span class="line">sudo yum install nc</span><br></pre></td></tr></table></figure>
 <h3 id="应用案例"><a href="#应用案例" class="headerlink" title="应用案例"></a>应用案例</h3><ul>
 <li>端口扫描</li>
 </ul>
@@ -1212,20 +1213,6 @@
       </tags>
   </entry>
   <entry>
-    <title>linux下的病毒防护</title>
-    <url>/2019/04/18/linux%E4%B8%8B%E7%9A%84%E7%97%85%E6%AF%92%E9%98%B2%E6%8A%A4/</url>
-    <content><![CDATA[<h2 id="Linux-下的病毒防护"><a href="#Linux-下的病毒防护" class="headerlink" title="Ｌinux 下的病毒防护"></a>Ｌinux 下的病毒防护</h2><p>没有绝对安全的系统，linux下也存在病毒及安全后门。记录linux下的杀毒引擎clamav的安装及使用。</p>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>CentOS直接通过yum安装。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install epel-release -y</span><br><span class="line">sudo yum install clamav -y</span><br></pre></td></tr></table></figure>
-<p>Ubuntu直接通过atp安装。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install clamav</span><br></pre></td></tr></table></figure>
-<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>安装后，更新病毒库。</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># freshclam</span></span><br><span class="line"><span class="comment"># 输出如下：</span></span><br><span class="line">...............</span><br><span class="line">ClamAV update process started at Sun Apr  7 11:10:18 2019</span><br><span class="line">Downloading main.cvd [100%]</span><br><span class="line">main.cvd updated (version: 58, sigs: 4566249, f-level: 60, builder: sigmgr)</span><br><span class="line">Downloading daily.cvd [100%]</span><br><span class="line">daily.cvd updated (version: 25422, sigs: 1552110, f-level: 63, builder: raynman)</span><br><span class="line">Downloading bytecode.cvd [100%]</span><br><span class="line">bytecode.cvd updated (version: 328, sigs: 94, f-level: 63, builder: neo)</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">[LibClamAV] ***      Virus database timestamp <span class="keyword">in</span> the future!   ***</span><br><span class="line">[LibClamAV] ***  Please check the timezone and clock settings  ***</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">Database updated (6118453 signatures) from database.clamav.net (IP: 104.16.219.84)</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux 终端生成随机密码</title>
     <url>/2020/02/05/linux-%E7%BB%88%E7%AB%AF%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E5%AF%86%E7%A0%81/</url>
     <content><![CDATA[<h2 id="llinux下生成随机密码"><a href="#llinux下生成随机密码" class="headerlink" title="llinux下生成随机密码"></a>llinux下生成随机密码</h2><h3 id="工具一：pwgen"><a href="#工具一：pwgen" class="headerlink" title="工具一：pwgen"></a>工具一：pwgen</h3><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># ubuntu</span></span><br><span class="line">sudo apt install pwgen</span><br><span class="line"><span class="comment"># centos</span></span><br><span class="line">sudo yum install pwgen</span><br></pre></td></tr></table></figure>
@@ -1239,6 +1226,20 @@
 <h3 id="其它工具"><a href="#其它工具" class="headerlink" title="其它工具"></a>其它工具</h3><h4 id="使用md5sum"><a href="#使用md5sum" class="headerlink" title="使用md5sum"></a>使用md5sum</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ date | md5sum</span><br><span class="line">b932c4670f1bae71b5e43c4https://blog.ywmy.xyz/ywmy/linuxlinux_mount.png59be83a90  -</span><br></pre></td></tr></table></figure>
 <h4 id="使用-dev-urandom"><a href="#使用-dev-urandom" class="headerlink" title="使用/dev/urandom"></a>使用/dev/urandom</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">cat /dev/urandom | tr -dc <span class="string">&#x27;a-zA-Z0-9&#x27;</span> | head -c 14</span><br><span class="line">YIqMOLPN913M0M% </span><br></pre></td></tr></table></figure>
 <h4 id="使用sha356sum"><a href="#使用sha356sum" class="headerlink" title="使用sha356sum"></a>使用sha356sum</h4><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ date | sha256sum</span><br><span class="line">b0726dc3b8d717df789988f755589c598dc742f045cddaaedb00482d0659007f  -</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux下的病毒防护</title>
+    <url>/2019/04/18/linux%E4%B8%8B%E7%9A%84%E7%97%85%E6%AF%92%E9%98%B2%E6%8A%A4/</url>
+    <content><![CDATA[<h2 id="Linux-下的病毒防护"><a href="#Linux-下的病毒防护" class="headerlink" title="Ｌinux 下的病毒防护"></a>Ｌinux 下的病毒防护</h2><p>没有绝对安全的系统，linux下也存在病毒及安全后门。记录linux下的杀毒引擎clamav的安装及使用。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>CentOS直接通过yum安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo yum install epel-release -y</span><br><span class="line">sudo yum install clamav -y</span><br></pre></td></tr></table></figure>
+<p>Ubuntu直接通过atp安装。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install clamav</span><br></pre></td></tr></table></figure>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>安装后，更新病毒库。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># freshclam</span></span><br><span class="line"><span class="comment"># 输出如下：</span></span><br><span class="line">...............</span><br><span class="line">ClamAV update process started at Sun Apr  7 11:10:18 2019</span><br><span class="line">Downloading main.cvd [100%]</span><br><span class="line">main.cvd updated (version: 58, sigs: 4566249, f-level: 60, builder: sigmgr)</span><br><span class="line">Downloading daily.cvd [100%]</span><br><span class="line">daily.cvd updated (version: 25422, sigs: 1552110, f-level: 63, builder: raynman)</span><br><span class="line">Downloading bytecode.cvd [100%]</span><br><span class="line">bytecode.cvd updated (version: 328, sigs: 94, f-level: 63, builder: neo)</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">[LibClamAV] ***      Virus database timestamp <span class="keyword">in</span> the future!   ***</span><br><span class="line">[LibClamAV] ***  Please check the timezone and clock settings  ***</span><br><span class="line">[LibClamAV] ******************************************************</span><br><span class="line">Database updated (6118453 signatures) from database.clamav.net (IP: 104.16.219.84)</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -1784,6 +1785,17 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu 18.04 安装 GoogleEarth</title>
+    <url>/2019/03/02/ubuntu-18-04-%E5%AE%89%E8%A3%85-GoogleEarth/</url>
+    <content><![CDATA[<h1 id="ubuntu-18-04-安装-GoogleEarthPro"><a href="#ubuntu-18-04-安装-GoogleEarthPro" class="headerlink" title="ubuntu 18.04 安装 GoogleEarthPro"></a>ubuntu 18.04 安装 GoogleEarthPro</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04 LTS</p>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install update</span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install gdebi-core wget</span><br></pre></td></tr></table></figure>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gdebi google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu 18.04 使用小结</title>
     <url>/2019/03/24/ubuntu-18-04-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h1 id="ubuntu-18-04安装配置小结"><a href="#ubuntu-18-04安装配置小结" class="headerlink" title="ubuntu 18.04安装配置小结"></a>ubuntu 18.04安装配置小结</h1><p>起因，从自己毕业以来，自己的电脑就一直在使用ubuntu。最早的长期使用就是从12.04LTS用起。基本到每一个LTS版本自己就升级一次版本。到18.04时，自己重装了系统，各种小折腾后，基本上就比较符合自己需求了。一些小瑕疵还是有的，比如有一些自己之前常用的软件，某些依赖不再被支持，无法安装或启动。在自己尝试无果后，还因为不知道安装了某些依赖，导致系统重启后，每次都会跳出系统错误，询问是否发送报告。虽然实际使用中是没什么问题，不过这个让人比较难受。</p>
@@ -1928,17 +1940,6 @@
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在完成这次的重装后，因为上了固态这个大保健，电脑似乎又能再战三年。全新安装后的系统也没有报错，之前因为自己折腾而导致各种不明依赖造成的手绘板不可用也正常使用了。算是已经接近自己完美使用的需要了。</p>
 <p>自然，也还有一些问题，在我自己搭建的过程中，也给解决掉了。其中有一个因为系统更新后，键盘鼠标不可用的。也在自己搜索后得到解决的办法，会单独写一篇记录，实在是值得记住，差点想要放弃重新再安装。</p>
 ]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu 18.04 安装 GoogleEarth</title>
-    <url>/2019/03/02/ubuntu-18-04-%E5%AE%89%E8%A3%85-GoogleEarth/</url>
-    <content><![CDATA[<h1 id="ubuntu-18-04-安装-GoogleEarthPro"><a href="#ubuntu-18-04-安装-GoogleEarthPro" class="headerlink" title="ubuntu 18.04 安装 GoogleEarthPro"></a>ubuntu 18.04 安装 GoogleEarthPro</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04 LTS</p>
-<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install update</span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install gdebi-core wget</span><br></pre></td></tr></table></figure>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gdebi google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -2644,7 +2645,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#97;&#100;&#109;&#x69;&#110;&#64;&#104;&#x75;&#97;&#119;&#x65;&#105;&#x2e;&#x63;&#x6f;&#109;">&#97;&#100;&#109;&#x69;&#110;&#64;&#104;&#x75;&#97;&#119;&#x65;&#105;&#x2e;&#x63;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#x61;&#x64;&#x6d;&#105;&#x6e;&#64;&#104;&#x75;&#x61;&#119;&#101;&#x69;&#46;&#99;&#x6f;&#x6d;">&#x61;&#x64;&#x6d;&#105;&#x6e;&#64;&#104;&#x75;&#x61;&#119;&#101;&#x69;&#46;&#99;&#x6f;&#x6d;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2656,7 +2657,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#97;&#100;&#x6d;&#x69;&#110;&#64;&#x68;&#117;&#97;&#x77;&#x65;&#x69;&#46;&#99;&#111;&#109;">&#97;&#100;&#x6d;&#x69;&#110;&#64;&#x68;&#117;&#97;&#x77;&#x65;&#x69;&#46;&#99;&#111;&#109;</a></td>
+<td><a href="mailto:&#x61;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#x75;&#x61;&#119;&#101;&#105;&#x2e;&#99;&#111;&#109;">&#x61;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#x75;&#x61;&#119;&#101;&#105;&#x2e;&#99;&#111;&#109;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
