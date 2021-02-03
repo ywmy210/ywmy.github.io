@@ -5,13 +5,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>webadmin安装 - 豆豆家</title>
+    <title>豆豆家 - network &amp; delicacy</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
-    <meta name="description" content="网络和美食,centos 7 安装webadmin简介webadmin是一个基于浏览器界面的类Unix系统配置管理工具。
-安装下载1wget http://prdownloads.sourceforge.net,"> 
+    <meta name="description" content="网络和美食,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
@@ -34,80 +33,30 @@
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
-    <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">webadmin安装</h3>
-    <div class="social">
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
-            </div>
-            <div id="qr"></div>
-        </div>
+    <div id="single" class="page">
+    <div id="top">
+        <a class="iconfont icon-left image-icon" href="javascript:history.back()"></a>
     </div>
-    <div class="scrollbar"></div>
-</div>
-
     <div class="section">
         <div class="article">
-    <div class='main'>
-        <h1 class="title">webadmin安装</h1>
-        <div class="stuff">
-            <span>十月 21, 2018</span>
-            
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
-
-
-        </div>
-        <div class="content markdown">
-            <h1 id="centos-7-安装webadmin"><a href="#centos-7-安装webadmin" class="headerlink" title="centos 7 安装webadmin"></a>centos 7 安装webadmin</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>webadmin是一个基于浏览器界面的类Unix系统配置管理工具。</p>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><h3 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget http://prdownloads.sourceforge.net/webadmin/webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-<h3 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum -y install perl perl-Net-SSLeay openssl perl-IO-Tty perl-Encode-Detect </span><br></pre></td></tr></table></figure>
-<h3 id="安装程序"><a href="#安装程序" class="headerlink" title="安装程序"></a>安装程序</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -U webmin-1.900-1.noarch.rpm</span><br></pre></td></tr></table></figure>
-<p>程序安装位置：/usr/libexec/webmin</p>
-<p>程序默认通过https访问，端口10000 TCP，按访问需求放通。</p>
-
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        
-                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
-                        
-                    
-                </ul>
-            
-        </div>
-        
-    <div id='gitalk-container' class="comment link"
-		data-enable='false'
-        data-ae='false'
-        data-ci=''
-        data-cs=''
-        data-r=''
-        data-o=''
-        data-a=''
-        data-d='false'
-    >查看评论</div>
-
-
-    </div>
-    
-        <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#centos-7-%E5%AE%89%E8%A3%85webadmin"><span class="toc-number">1.</span> <span class="toc-text">centos 7 安装webadmin</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">1.2.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96"><span class="toc-number">1.2.2.</span> <span class="toc-text">安装依赖</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.2.3.</span> <span class="toc-text">安装程序</span></a></li></ol></li></ol></li></ol>	
-        </div>
-    
+            <div class="main">
+                <div class="content">
+                
+                    <div class="set">
+	<h2 style="color:gray;">搜索</h2>
+	<div id="site_search" class="search">
+		<input type="text" id="local-search-input" class="search-input" placeholder="你想找些什么？" />
+	    <div id="local-search-result" class="local-search-result"></div>
+	</div>
 </div>
 
-
+                
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+
 </body>
 
 

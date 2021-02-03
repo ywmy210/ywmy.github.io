@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ubuntu 安装mysql server - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,ubuntu 安装mysql server环境
 系统：ubuntu 18.04 LTS
@@ -21,7 +21,9 @@
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -29,17 +31,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">ubuntu 安装mysql server</h3>
     <div class="social">
@@ -55,12 +58,12 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">ubuntu 安装mysql server</h1>
         <div class="stuff">
             <span>三月 06, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/database/">database</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/database/" rel="tag">database</a></li></ul>
 
 
         </div>
@@ -75,7 +78,7 @@
 <h3 id="初始化操作"><a href="#初始化操作" class="headerlink" title="初始化操作"></a>初始化操作</h3><p>在之前的ubuntu版本中，通过apt方式安装mysql服务后，直接运行命令mysql_secure_installation，即可直接运行mysql的初始化。默认的root密码为空，提交回车后，会直接提示设置root密码，以及mysql相关的其它配置。</p>
 <p>在ubuntu 18.04中，默认的安装中，没有root账号，运行会提示如下：</p>
 <blockquote>
-<p>Securing the MySQL server deployment.<br>Enter password for user root:<br>Error: Access denied for user ‘root‘@’localhost’  </p>
+<p>Securing the MySQL server deployment.<br>Enter password for user root:<br>Error: Access denied for user ‘root’@’localhost’  </p>
 </blockquote>
 <p>即没有root账号也没有无法运行mysql_secure_installation命令，需要我们从安装的配置文件中寻找有用的信息，运行命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">whereis mysql</span><br></pre></td></tr></table></figure>
@@ -94,39 +97,47 @@
 <p>好了，从配置文件中，我们看到了初始生成的用户名和密码了，使用用户名和密码登录，成功进入。</p>
 <h3 id="创建用户及授权"><a href="#创建用户及授权" class="headerlink" title="创建用户及授权"></a>创建用户及授权</h3><p>使用默认生成的账号和密码登录：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql -u debain-sys-maint -p</span><br></pre></td></tr></table></figure>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">'your_name'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER <span class="string">&#x27;your_name&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> IDENTIFIED BY <span class="string">&#x27;password&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>授权：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">'your_name'</span>@<span class="string">'localhost'</span> WITH GRANT OPTION</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GRANT ALL PRIVILEGES ON *.* TO <span class="string">&#x27;your_name&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span> WITH GRANT OPTION</span><br></pre></td></tr></table></figure>
 <p>授权所有权限，并授权从任意位置登录。</p>
 <p>以上操作至此结束。</p>
 <p>查看已存在的用户密码：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">select user,host from mysql.user;</span><br></pre></td></tr></table></figure>
 <p>更改用户密码：</p>
 <p>例如更新那个不知道密码的root账号：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update user <span class="built_in">set</span> authentication_string=password(<span class="string">'new_password'</span>) WHERE user=<span class="string">'root'</span>;</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.08 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 1</span><br><span class="line"></span><br><span class="line">mysql&gt; flush privileges;     //刷新权限，立即生效</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; update user <span class="built_in">set</span> authentication_string=password(<span class="string">&#x27;new_password&#x27;</span>) WHERE user=<span class="string">&#x27;root&#x27;</span>;</span><br><span class="line">Query OK, 1 row affected, 1 warning (0.08 sec)</span><br><span class="line">Rows matched: 1  Changed: 1  Warnings: 1</span><br><span class="line"></span><br><span class="line">mysql&gt; flush privileges;     //刷新权限，立即生效</span><br><span class="line">Query OK, 0 rows affected (0.00 sec)</span><br></pre></td></tr></table></figure>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-安装mysql-server"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 安装mysql server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#操作"><span class="toc-number">1.2.</span> <span class="toc-text">操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#安装"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#启用服务"><span class="toc-number">1.2.2.</span> <span class="toc-text">启用服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#初始化操作"><span class="toc-number">1.2.3.</span> <span class="toc-text">初始化操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建用户及授权"><span class="toc-number">1.2.4.</span> <span class="toc-text">创建用户及授权</span></a></li></ol></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-%E5%AE%89%E8%A3%85mysql-server"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 安装mysql server</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%AF%E7%94%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">启用服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.3.</span> <span class="toc-text">初始化操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E7%94%A8%E6%88%B7%E5%8F%8A%E6%8E%88%E6%9D%83"><span class="toc-number">1.2.4.</span> <span class="toc-text">创建用户及授权</span></a></li></ol></li></ol></li></ol>	
         </div>
     
 </div>
@@ -136,14 +147,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -194,6 +211,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

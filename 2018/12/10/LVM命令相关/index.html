@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>LVM命令相关 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,LVM常用命令：
 
@@ -17,7 +17,6 @@
 物理卷管理
 卷管理
 逻辑卷管理
-
 
 
 
@@ -34,12 +33,14 @@ lvcreate
 
 
 显示
-p,"> 
+pv,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -47,17 +48,18 @@ p,">
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">LVM命令相关</h3>
     <div class="social">
@@ -73,12 +75,12 @@ p,">
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">LVM命令相关</h1>
         <div class="stuff">
             <span>十二月 10, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
@@ -92,8 +94,7 @@ p,">
 <th>逻辑卷管理</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>扫描</td>
 <td>pvscan</td>
 <td>vgscan</td>
@@ -129,8 +130,7 @@ p,">
 <td>vgreduce</td>
 <td>lvreduce</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 <h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><ul>
 <li>物理卷Physical volume (PV)：可以在上面建立卷组的媒介，可以是硬盘分区，也可以是硬盘本身或者回环文件（loopback file）。物理卷包括一个特殊的header，其余部分被切割为一块块物理区域（physical extents）。</li>
 <li>卷组Volume group (VG)：将一组物理卷收集为一个管理单元。</li>
@@ -140,26 +140,35 @@ p,">
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LVM常用命令："><span class="toc-number">1.</span> <span class="toc-text">LVM常用命令：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#名词解释"><span class="toc-number">1.1.</span> <span class="toc-text">名词解释</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#LVM%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4%EF%BC%9A"><span class="toc-number">1.</span> <span class="toc-text">LVM常用命令：</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="toc-number">1.1.</span> <span class="toc-text">名词解释</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -169,14 +178,20 @@ p,">
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -227,6 +242,25 @@ p,">
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

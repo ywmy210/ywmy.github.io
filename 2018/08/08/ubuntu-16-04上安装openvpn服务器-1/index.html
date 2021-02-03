@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ubuntu-16-04上安装openvpn服务器(一) - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,ubuntu 16.04上安装openvpn(一)要求
 ubuntu 16.04服务器
@@ -19,7 +19,9 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -27,17 +29,18 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">ubuntu-16-04上安装openvpn服务器(一)</h3>
     <div class="social">
@@ -53,12 +56,12 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">ubuntu-16-04上安装openvpn服务器(一)</h1>
         <div class="stuff">
             <span>八月 08, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
@@ -78,10 +81,10 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <h3 id="setp-three-配置ca变量"><a href="#setp-three-配置ca变量" class="headerlink" title="setp three: 配置ca变量"></a>setp three: 配置ca变量</h3><p>进入新创建的目录，开始配置ca。</p>
 <p>在这个文件夹中，你可以找到一些变量，这些变量用来决定你的证书是如何创建的。</p>
 <p>在文件底部，找到类似下面的行，这些行为为新证书设置了一些默认值：~/openvpn-ca/vars</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># These are the default values for fields</span></span><br><span class="line"><span class="comment"># which will be placed in the certificate.</span></span><br><span class="line"><span class="comment"># Don't leave any of these fields blank.</span></span><br><span class="line"><span class="built_in">export</span> KEY_COUNTRY=<span class="string">"US"</span></span><br><span class="line"><span class="built_in">export</span> KEY_PROVINCE=<span class="string">"CA"</span></span><br><span class="line"><span class="built_in">export</span> KEY_CITY=<span class="string">"SanFrancisco"</span></span><br><span class="line"><span class="built_in">export</span> KEY_ORG=<span class="string">"Fort-Funston"</span></span><br><span class="line"><span class="built_in">export</span> KEY_EMAIL=<span class="string">"me@myhost.mydomain"</span></span><br><span class="line"><span class="built_in">export</span> KEY_OU=<span class="string">"MyOrganizationalUnit"</span></span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"><span class="comment"># These are the default values for fields</span></span><br><span class="line"><span class="comment"># which will be placed in the certificate.</span></span><br><span class="line"><span class="comment"># Don&#x27;t leave any of these fields blank.</span></span><br><span class="line"><span class="built_in">export</span> KEY_COUNTRY=<span class="string">&quot;US&quot;</span></span><br><span class="line"><span class="built_in">export</span> KEY_PROVINCE=<span class="string">&quot;CA&quot;</span></span><br><span class="line"><span class="built_in">export</span> KEY_CITY=<span class="string">&quot;SanFrancisco&quot;</span></span><br><span class="line"><span class="built_in">export</span> KEY_ORG=<span class="string">&quot;Fort-Funston&quot;</span></span><br><span class="line"><span class="built_in">export</span> KEY_EMAIL=<span class="string">&quot;me@myhost.mydomain&quot;</span></span><br><span class="line"><span class="built_in">export</span> KEY_OU=<span class="string">&quot;MyOrganizationalUnit&quot;</span></span><br><span class="line"></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
 <p>你可以修改这些设置的值，但不要为空。</p>
 <p>我们也需要编辑这一块KEY_NAME的值，为了简单起见，在这施教程中我们把它设成server：~/openvpn-ca/vars</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> KEY_NAME=<span class="string">"server"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> KEY_NAME=<span class="string">&quot;server&quot;</span></span><br></pre></td></tr></table></figure>
 <h3 id="step-four-建立证书颁发机构"><a href="#step-four-建立证书颁发机构" class="headerlink" title="step four: 建立证书颁发机构"></a>step four: 建立证书颁发机构</h3><p>现在我们可以使用我们刚才设置的变量和easy-rsa程序来构建我们的证书颁发机构。</p>
 <p>确保你现在ca目录下，然后source刚刚编辑的vars文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> ~/openvpn-ca</span><br><span class="line"><span class="built_in">source</span> vars</span><br></pre></td></tr></table></figure>
@@ -92,12 +95,13 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>现在可以通过以下命令来构建根ca：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./build-ca</span><br></pre></td></tr></table></figure>
 <p>这会启动创建要证书颁发机构的密钥及证书的过程。由于我们上面修改了vars文件，所有的值都会自动填充。只需要根据提示按enter键确认选择即可：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">Generating a 2048 bit RSA private key</span><br><span class="line">..........................................................................................+++</span><br><span class="line">...............................+++</span><br><span class="line">writing new private key to <span class="string">'ca.key'</span></span><br><span class="line">-----</span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter <span class="string">'.'</span>, the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Country Name (2 letter code) [US]:</span><br><span class="line">State or Province Name (full name) [NY]:</span><br><span class="line">Locality Name (eg, city) [New York City]:</span><br><span class="line">Organization Name (eg, company) [DigitalOcean]:</span><br><span class="line">Organizational Unit Name (eg, section) [Community]:</span><br><span class="line">Common Name (eg, your name or your server<span class="string">'s hostname) [DigitalOcean CA]:</span></span><br><span class="line"><span class="string">Name [server]:</span></span><br><span class="line"><span class="string">Email Address [admin@email.com]:</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">Generating a 2048 bit RSA private key</span><br><span class="line">..........................................................................................+++</span><br><span class="line">...............................+++</span><br><span class="line">writing new private key to <span class="string">&#x27;ca.key&#x27;</span></span><br><span class="line">-----</span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter <span class="string">&#x27;.&#x27;</span>, the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Country Name (2 letter code) [US]:</span><br><span class="line">State or Province Name (full name) [NY]:</span><br><span class="line">Locality Name (eg, city) [New York City]:</span><br><span class="line">Organization Name (eg, company) [DigitalOcean]:</span><br><span class="line">Organizational Unit Name (eg, section) [Community]:</span><br><span class="line">Common Name (eg, your name or your server<span class="string">&#x27;s hostname) [DigitalOcean CA]:</span></span><br><span class="line"><span class="string">Name [server]:</span></span><br><span class="line"><span class="string">Email Address [admin@email.com]:</span></span><br></pre></td></tr></table></figure>
 <p>现在我们有了ca，可以用来创建我们需要的其它文件。</p>
 <h3 id="step-five-创建服务器证书、密钥和加密文件"><a href="#step-five-创建服务器证书、密钥和加密文件" class="headerlink" title="step five: 创建服务器证书、密钥和加密文件"></a>step five: 创建服务器证书、密钥和加密文件</h3><p>下面，我们会生成服务器证书以及密钥对，以及加密过程中需要的其它文件。</p>
 <p>首先生成openvpn服务器证书及密钥对：</p>
 <pre><code>注意：如果你选择的名字不是server， 那么下面的指导中需要做些调整。比如，在把生成的文件复制到/etc/openvpn目录下时，必须替换为正确的名称。你还需要修改/etc/openvpn/server.conf文件以指向正确的.crt和.key文件。
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./build-key-server server</span><br></pre></td></tr></table></figure>
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./build-key-server server</span><br></pre></td></tr></table></figure>
 <p>现在，你只需要按enter键接受默认值即可。在最后的时候，你需要为两个问题输入y来签署和提交证书：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">. . .</span><br><span class="line"></span><br><span class="line">Certificate is to be certified until May  1 17:51:16 2026 GMT (3650 days)</span><br><span class="line">Sign the certificate? [y/n]:y</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">1 out of 1 certificate requests certified, commit? [y/n]y</span><br><span class="line">Write out database with 1 new entries</span><br><span class="line">Data Base Updated</span><br></pre></td></tr></table></figure>
 <p>接下来，我们将生成一些其它项。我们可以通过下面的命令生成强大的deffie-hellman密钥以在密钥交换的过程中使用：</p>
@@ -118,10 +122,12 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>然后，我们需要拷贝并触感一个简单的openvpn配置文件到配置目录中：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gunzip -c /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz | sudo tee /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
 <pre><code>修改openvpn配置
-</code></pre><p>现在我们可以修改服务器配置文件了：</p>
+</code></pre>
+<p>现在我们可以修改服务器配置文件了：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
 <pre><code>基本配置
-</code></pre><p>首先，通过查找tls-auth指定到hmac部分。删除”;”来取消注释tls-auth行。在下面添加key-direction参数并设置为“０”,:/etc/openvpn/srver.conf</p>
+</code></pre>
+<p>首先，通过查找tls-auth指定到hmac部分。删除”;”来取消注释tls-auth行。在下面添加key-direction参数并设置为“０”,:/etc/openvpn/srver.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tls-auth ta.key 0 <span class="comment"># This is secret</span></span><br><span class="line">key-direction 0</span><br></pre></td></tr></table></figure>
 <p>然后通过查找注释掉的cipher行来加密密码部分。aes-128-cbc密码提供了很好的加密级别。删除“：”以取消cipher-aes-128-cbc行的注释：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cipher AES-128-CBC</span><br></pre></td></tr></table></figure>
@@ -130,25 +136,29 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>最后找到user和group设置并删除“；”以取消注释：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">user nobody</span><br><span class="line">group nogroup</span><br></pre></td></tr></table></figure>
 <pre><code>（可选）重定向所有流到vpn
-</code></pre><p>上面的设置会建立两台机器之间的vpn连接，但是不会强制任何使用隧道。如果你希望使用vpn来路由所有的流量，那么你需要将dns设置摄像头到客户端电脑。</p>
+</code></pre>
+<p>上面的设置会建立两台机器之间的vpn连接，但是不会强制任何使用隧道。如果你希望使用vpn来路由所有的流量，那么你需要将dns设置摄像头到客户端电脑。</p>
 <p>取消那些注释掉配置客户端生定向所有流到vpn的指令。找到redirect-gateway部分并删除“；”：/etc/openvpn.server.conf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">push <span class="string">"redirect-gateway def1 bypass-dhcp"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">push <span class="string">&quot;redirect-gateway def1 bypass-dhcp&quot;</span></span><br></pre></td></tr></table></figure>
 <p>在下面找到dhcp-option部分，删除“；”：/etc/openvpn/server.conf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push <span class="string">"dhcp-option DNS 208.67.222.222"</span></span><br><span class="line">push <span class="string">"dhcp-option DNS 208.67.220.220"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">push <span class="string">&quot;dhcp-option DNS 208.67.222.222&quot;</span></span><br><span class="line">push <span class="string">&quot;dhcp-option DNS 208.67.220.220&quot;</span></span><br></pre></td></tr></table></figure>
 <p>这应该有助于客户端重新的配置dns设置，以使用vpn隧道作为默认网关。</p>
 <pre><code>（可选）修改端口和协议
-</code></pre><p>默认情况下，openvpn服务器使用的端口1194和udp协议来接受客户端连接。如果你需要使用不同的端口，是可以更改端口选项的。可以用端口443，因为一般这个是衩防火墙规则允许的：／etc/openvpn/server.conf</p>
+</code></pre>
+<p>默认情况下，openvpn服务器使用的端口1194和udp协议来接受客户端连接。如果你需要使用不同的端口，是可以更改端口选项的。可以用端口443，因为一般这个是衩防火墙规则允许的：／etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># optional!</span></span><br><span class="line">port 443</span><br></pre></td></tr></table></figure>
 <p>通过协议也会被限制在该端口，如果是这样的话，把协议从udp修改到tcp：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># optional!</span></span><br><span class="line">proto tcp</span><br></pre></td></tr></table></figure>
 <p>如果你不需要使用不同的端口，最好把两个设置设为默认值。</p>
 <pre><code>（可选）指向非默认证书
-</code></pre><p>如果之前在./build-key-server命令中使用了其它的名字，需要修改cert和key行指向正确的.crt和.key文件。如果使用了默认的server，则应该已经正确设置：/etc/openvpn/server.conf</p>
+</code></pre>
+<p>如果之前在./build-key-server命令中使用了其它的名字，需要修改cert和key行指向正确的.crt和.key文件。如果使用了默认的server，则应该已经正确设置：/etc/openvpn/server.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cert server.crt</span><br><span class="line">key server.key</span><br></pre></td></tr></table></figure>
 <p>完成之后，保存并关闭文件。</p>
 <h3 id="step-eight-修改服务器网络配置"><a href="#step-eight-修改服务器网络配置" class="headerlink" title="step eight: 修改服务器网络配置"></a>step eight: 修改服务器网络配置</h3><p>下面我们需要对服务器的网络做一些高速便利openvpn可以正确的路由流量。</p>
 <pre><code>允许ip转发
-</code></pre><p>首先，我们需要允许服务器转发流量。这对于我们希望vpn服务器提供的功能是非常重要的。</p>
+</code></pre>
+<p>首先，我们需要允许服务器转发流量。这对于我们希望vpn服务器提供的功能是非常重要的。</p>
 <p>可以通过修改/etc/sysctl.conf文件来高速设置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/sysctl.conf</span><br></pre></td></tr></table></figure>
 <p>找到设置net.ipv4.ip_forward的那一行，删除这行前面的“＃“:／etc/sysctl.conf</p>
@@ -157,7 +167,8 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>要读取文件并高速当前会话的值，请输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure>
 <pre><code>调整ufw规则以伪装客户端连接
-</code></pre><p>我们需要修改规则文件来设置伪装，这是一个iptables的概念，它提供了即时动态的nat来正确路由客户端连接。</p>
+</code></pre>
+<p>我们需要修改规则文件来设置伪装，这是一个iptables的概念，它提供了即时动态的nat来正确路由客户端连接。</p>
 <p>在打开防火墙配置文件添加伪装之前，我们需要找到机器的公网接口。为此，请输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip route | grep default</span><br></pre></td></tr></table></figure>
 <p>你的公网接口应该在单词“dev”后面。比如，下面结果显示了名为wlplls0的接口：</p>
@@ -166,15 +177,17 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/ufw/before.rules</span><br></pre></td></tr></table></figure>
 <p>这个文件处理在加载传统ufw规则之前应该文墨的配置。在文件顶部添加下面的行。这会为nat表中的postrouting链接设置默认策略，并伪装来自vpn的所有流量：/etc/ufw/before.rules</p>
 <pre><code>注意：刻把-A POSTROUTINGＴ中的wlplls0换成你自己的接口
-</code></pre><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># rules.before</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Rules that should be run before the ufw command line added rules. Custom</span></span><br><span class="line"><span class="comment"># rules should be added to one of these chains:</span></span><br><span class="line"><span class="comment">#   ufw-before-input</span></span><br><span class="line"><span class="comment">#   ufw-before-output</span></span><br><span class="line"><span class="comment">#   ufw-before-forward</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># START OPENVPN RULES</span></span><br><span class="line"><span class="comment"># NAT table rules</span></span><br><span class="line">*nat</span><br><span class="line">:POSTROUTING ACCEPT [0:0]</span><br><span class="line"><span class="comment"># Allow traffic from OpenVPN client to wlp11s0 (change to the interface you discovered!)</span></span><br><span class="line">-A POSTROUTING -s 10.8.0.0/8 -o wlp11s0 -j MASQUERADE</span><br><span class="line">COMMIT</span><br><span class="line"><span class="comment"># END OPENVPN RULES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Don't delete these required lines, otherwise there will be errors</span></span><br><span class="line">*filter</span><br><span class="line">. . .</span><br></pre></td></tr></table></figure>
+</code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># rules.before</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># Rules that should be run before the ufw command line added rules. Custom</span></span><br><span class="line"><span class="comment"># rules should be added to one of these chains:</span></span><br><span class="line"><span class="comment">#   ufw-before-input</span></span><br><span class="line"><span class="comment">#   ufw-before-output</span></span><br><span class="line"><span class="comment">#   ufw-before-forward</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># START OPENVPN RULES</span></span><br><span class="line"><span class="comment"># NAT table rules</span></span><br><span class="line">*nat</span><br><span class="line">:POSTROUTING ACCEPT [0:0]</span><br><span class="line"><span class="comment"># Allow traffic from OpenVPN client to wlp11s0 (change to the interface you discovered!)</span></span><br><span class="line">-A POSTROUTING -s 10.8.0.0/8 -o wlp11s0 -j MASQUERADE</span><br><span class="line">COMMIT</span><br><span class="line"><span class="comment"># END OPENVPN RULES</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Don&#x27;t delete these required lines, otherwise there will be errors</span></span><br><span class="line">*filter</span><br><span class="line">. . .</span><br></pre></td></tr></table></figure>
 <p>保存并关闭文件。</p>
 <p>我们需要告诉ufw默认允许转发数据包。为些，我们打开/etc/default/ufw文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/default/ufw</span><br></pre></td></tr></table></figure>
 <p>找到default_forward_policy指令，把值从drop改成accetp：/etc/default/ufw：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEFAULT_FORWARD_POLIEY=<span class="string">"ACCEPT"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DEFAULT_FORWARD_POLIEY=<span class="string">&quot;ACCEPT&quot;</span></span><br></pre></td></tr></table></figure>
 <p>保存并关闭文件。</p>
 <pre><code>打开openvpn端口并雇用更改
-</code></pre><p>下面，我们将高速防火墙本身以允许流量到openvpn。</p>
+</code></pre>
+<p>下面，我们将高速防火墙本身以允许流量到openvpn。</p>
 <p>如果你没有改变/etc/openvpn/server.conf文件中的端口和协议，你需要打开udp流量到端口1194。如果你修改了端口和协议，请使用你选择的值。</p>
 <p>我们还会添加ssh端口：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow 1194/udp</span><br><span class="line">sudo ufw allow openssh</span><br></pre></td></tr></table></figure>
@@ -187,7 +200,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>通过下面的命令来检查服务是否成功启动：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl stauts openvpn@server</span><br></pre></td></tr></table></figure>
 <p>如果一切正常的话，那么你的输出应该看起来像如下内容：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">● openvpn@server.service - OpenVPN connection to server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/openvpn@.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sat 2018-08-04 18:07:06 UTC; 2 days ago</span><br><span class="line">     Docs: man:openvpn(8)</span><br><span class="line">           https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage</span><br><span class="line">           https://community.openvpn.net/openvpn/wiki/HOWTO</span><br><span class="line"> Main PID: 7130 (openvpn)</span><br><span class="line">   CGroup: /system.slice/system-openvpn.slice/openvpn@server.service</span><br><span class="line">           └─7130 /usr/sbin/openvpn --daemon ovpn-server --status /run/openvpn/server.status 10 --<span class="built_in">cd</span> /etc/openvpn --script-secur</span><br><span class="line"></span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: 112.10.253.234:30160 [client1] Peer Connection Initiated with [AF_INET]112.10.253</span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: MULTI: new connection by client <span class="string">'client1'</span> will cause previous active sessions by</span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: MULTI_sva: pool returned IPv4=10.8.0.6, IPv6=(Not enabled)</span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: MULTI: Learn: 10.8.0.6 -&gt; client1/112.10.253.234:30160</span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: MULTI: primary virtual IP <span class="keyword">for</span> client1/112.10.253.234:30160: 10.8.0.6</span><br><span class="line">Aug 07 14:33:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 PUSH: Received control message: <span class="string">'PUSH_REQUEST'</span></span><br><span class="line">Aug 07 14:33:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 send_push_reply(): safe_cap=940</span><br><span class="line">Aug 07 14:33:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 SENT CONTROL [client1]: <span class="string">'PUSH_REPLY,redirect-gateway</span></span><br><span class="line"><span class="string">Aug 07 14:37:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 [client1] Inactivity timeout (--ping-restart), resta</span></span><br><span class="line"><span class="string">Aug 07 14:37:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 SIGUSR1[soft,ping-restart] received, client-instance</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">● openvpn@server.service - OpenVPN connection to server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/openvpn@.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sat 2018-08-04 18:07:06 UTC; 2 days ago</span><br><span class="line">     Docs: man:openvpn(8)</span><br><span class="line">           https://community.openvpn.net/openvpn/wiki/Openvpn23ManPage</span><br><span class="line">           https://community.openvpn.net/openvpn/wiki/HOWTO</span><br><span class="line"> Main PID: 7130 (openvpn)</span><br><span class="line">   CGroup: /system.slice/system-openvpn.slice/openvpn@server.service</span><br><span class="line">           └─7130 /usr/sbin/openvpn --daemon ovpn-server --status /run/openvpn/server.status 10 --<span class="built_in">cd</span> /etc/openvpn --script-secur</span><br><span class="line"></span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: 112.10.253.234:30160 [client1] Peer Connection Initiated with [AF_INET]112.10.253</span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: MULTI: new connection by client <span class="string">&#x27;client1&#x27;</span> will cause previous active sessions by</span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: MULTI_sva: pool returned IPv4=10.8.0.6, IPv6=(Not enabled)</span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: MULTI: Learn: 10.8.0.6 -&gt; client1/112.10.253.234:30160</span><br><span class="line">Aug 07 14:33:44 vultr.guest ovpn-server[7130]: MULTI: primary virtual IP <span class="keyword">for</span> client1/112.10.253.234:30160: 10.8.0.6</span><br><span class="line">Aug 07 14:33:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 PUSH: Received control message: <span class="string">&#x27;PUSH_REQUEST&#x27;</span></span><br><span class="line">Aug 07 14:33:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 send_push_reply(): safe_cap=940</span><br><span class="line">Aug 07 14:33:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 SENT CONTROL [client1]: <span class="string">&#x27;PUSH_REPLY,redirect-gateway</span></span><br><span class="line"><span class="string">Aug 07 14:37:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 [client1] Inactivity timeout (--ping-restart), resta</span></span><br><span class="line"><span class="string">Aug 07 14:37:48 vultr.guest ovpn-server[7130]: client1/112.10.253.234:30160 SIGUSR1[soft,ping-restart] received, client-instance</span></span><br></pre></td></tr></table></figure>
 <p>你也可以通过以下命令来检查openvpn tun0接口是否可用：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ip addr show tun0</span><br></pre></td></tr></table></figure>
 <p>你应该看到一个配置接口：</p>
@@ -196,12 +209,14 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl <span class="built_in">enable</span> openvpn@server</span><br></pre></td></tr></table></figure>
 <h3 id="step-ten-创建客户端"><a href="#step-ten-创建客户端" class="headerlink" title="step ten: 创建客户端"></a>step ten: 创建客户端</h3><p>下面我们需要建立一个系统，使我们能够轻松创建客户端配置文件。</p>
 <pre><code>创建客户配置目录结构
-</code></pre><p>在home目录下创建一个目录结构用来保存文件：</p>
+</code></pre>
+<p>在home目录下创建一个目录结构用来保存文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p ~/client-configs/files</span><br></pre></td></tr></table></figure>
 <p>因为我们的客户端配置文件将嵌入客户密钥，我们应该锁定内部目录的权限：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 ~/client-configs/files</span><br></pre></td></tr></table></figure>
 <pre><code>创建一个基本配置
-</code></pre><p>下面我们将示例客户端配置拷贝到我们的目录中作为一个基本配置：</p>
+</code></pre>
+<p>下面我们将示例客户端配置拷贝到我们的目录中作为一个基本配置：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/doc/openvpn/examples/sample-config-files/client.conf ~/client-configs/base.conf</span><br></pre></td></tr></table></figure>
 <p>打开这个文件：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/client-configs/base.conf</span><br></pre></td></tr></table></figure>
@@ -212,7 +227,7 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>下面，删除“；”取消注释user和group指令：~/client-configs/bash.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Downgrade privileges after initialization (non-Windows only)</span></span><br><span class="line">user nobody</span><br><span class="line">group nogroup</span><br></pre></td></tr></table></figure>
 <p>找到设置ca，cert，key的指令，注释掉这些指定，因为我们会在文件本身中添加certs和keys：~/client-configs/base.conf</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># SSL/TLS parms.</span></span><br><span class="line"><span class="comment"># See the server config file for more</span></span><br><span class="line"><span class="comment"># description.  It's best to use</span></span><br><span class="line"><span class="comment"># a separate .crt/.key file pair</span></span><br><span class="line"><span class="comment"># for each client.  A single ca</span></span><br><span class="line"><span class="comment"># file can be used for all clients.</span></span><br><span class="line"><span class="comment">#ca ca.crt</span></span><br><span class="line"><span class="comment">#cert client.crt</span></span><br><span class="line"><span class="comment">#key client.key</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># SSL/TLS parms.</span></span><br><span class="line"><span class="comment"># See the server config file for more</span></span><br><span class="line"><span class="comment"># description.  It&#x27;s best to use</span></span><br><span class="line"><span class="comment"># a separate .crt/.key file pair</span></span><br><span class="line"><span class="comment"># for each client.  A single ca</span></span><br><span class="line"><span class="comment"># file can be used for all clients.</span></span><br><span class="line"><span class="comment">#ca ca.crt</span></span><br><span class="line"><span class="comment">#cert client.crt</span></span><br><span class="line"><span class="comment">#key client.key</span></span><br></pre></td></tr></table></figure>
 <p>修改cipher和auth为我们在/etc/openvpn/server.conf文件中设置的：~/client-configs/base.conf</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cipher AES-128-CBC</span><br><span class="line">auth SHA256</span><br></pre></td></tr></table></figure>
 <p>下面，在文件中添加key-direction指令。必须设置成1才能使用服务器：~/client-configs/base.conf</p>
@@ -220,11 +235,12 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <p>如果你的客户端运行在linux上并且具有/etc/openvpn/update-resolv-config文件，那么应该从生成的openvpn客户端配置文件取消注释这些行。</p>
 <p>保存文件。</p>
 <pre><code>创建配置生成脚本*
-</code></pre><p>下面，我们会创建一个简单的脚本，用相关证书、密钥和加密文件来编译我们的基本配置。这会把生成的配置文件放在~/client-configs/files目录下。</p>
+</code></pre>
+<p>下面，我们会创建一个简单的脚本，用相关证书、密钥和加密文件来编译我们的基本配置。这会把生成的配置文件放在~/client-configs/files目录下。</p>
 <p>在~/client-configs目录下创建并打开文件make_config.sh</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/client-configs/make_config.sh</span><br></pre></td></tr></table></figure>
 <p>粘贴以下脚本到这个文件中：~/client-configs/make_config.sh</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># First argument: Client identifier</span></span><br><span class="line"></span><br><span class="line">KEY_DIR=~/openvpn-ca/keys</span><br><span class="line">OUTPUT_DIR=~/client-configs/files</span><br><span class="line">BASE_CONFIG=~/client-configs/base.conf</span><br><span class="line"></span><br><span class="line">cat <span class="variable">$&#123;BASE_CONFIG&#125;</span> \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">'&lt;ca&gt;'</span>) \</span><br><span class="line">    <span class="variable">$&#123;KEY_DIR&#125;</span>/ca.crt \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">'&lt;/ca&gt;\n&lt;cert&gt;'</span>) \</span><br><span class="line">    <span class="variable">$&#123;KEY_DIR&#125;</span>/<span class="variable">$&#123;1&#125;</span>.crt \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">'&lt;/cert&gt;\n&lt;key&gt;'</span>) \</span><br><span class="line">    <span class="variable">$&#123;KEY_DIR&#125;</span>/<span class="variable">$&#123;1&#125;</span>.key \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">'&lt;/key&gt;\n&lt;tls-auth&gt;'</span>) \</span><br><span class="line">    <span class="variable">$&#123;KEY_DIR&#125;</span>/ta.key \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">'&lt;/tls-auth&gt;'</span>) \</span><br><span class="line">    &gt; <span class="variable">$&#123;OUTPUT_DIR&#125;</span>/<span class="variable">$&#123;1&#125;</span>.ovpn</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># First argument: Client identifier</span></span><br><span class="line"></span><br><span class="line">KEY_DIR=~/openvpn-ca/keys</span><br><span class="line">OUTPUT_DIR=~/client-configs/files</span><br><span class="line">BASE_CONFIG=~/client-configs/base.conf</span><br><span class="line"></span><br><span class="line">cat <span class="variable">$&#123;BASE_CONFIG&#125;</span> \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">&#x27;&lt;ca&gt;&#x27;</span>) \</span><br><span class="line">    <span class="variable">$&#123;KEY_DIR&#125;</span>/ca.crt \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">&#x27;&lt;/ca&gt;\n&lt;cert&gt;&#x27;</span>) \</span><br><span class="line">    <span class="variable">$&#123;KEY_DIR&#125;</span>/<span class="variable">$&#123;1&#125;</span>.crt \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">&#x27;&lt;/cert&gt;\n&lt;key&gt;&#x27;</span>) \</span><br><span class="line">    <span class="variable">$&#123;KEY_DIR&#125;</span>/<span class="variable">$&#123;1&#125;</span>.key \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">&#x27;&lt;/key&gt;\n&lt;tls-auth&gt;&#x27;</span>) \</span><br><span class="line">    <span class="variable">$&#123;KEY_DIR&#125;</span>/ta.key \</span><br><span class="line">    &lt;(<span class="built_in">echo</span> -e <span class="string">&#x27;&lt;/tls-auth&gt;&#x27;</span>) \</span><br><span class="line">    &gt; <span class="variable">$&#123;OUTPUT_DIR&#125;</span>/<span class="variable">$&#123;1&#125;</span>.ovpn</span><br></pre></td></tr></table></figure>
 <p>保存并关闭文件。</p>
 <p>通过以下命令把这个脚本文件设置为可执行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 700 ~/client-configs/make_config.sh</span><br></pre></td></tr></table></figure>
@@ -234,7 +250,8 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls ~/client-configs/files</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Output</span><br><span class="line">client1.ovpn</span><br></pre></td></tr></table></figure>
 <pre><code>把配置文件伟到客户端
-</code></pre><p>我们需要把客户端配置文件传输到相关设备上。比如，你的本地计算机或者一个移动设备。</p>
+</code></pre>
+<p>我们需要把客户端配置文件传输到相关设备上。比如，你的本地计算机或者一个移动设备。</p>
 <p>虽然用于完成此传输的程序取决于你的选择和设备的操作系统。但你希望应用程序在后端使用sftp和scp。这将通过加密连接传输客户端的vpn认证文件。</p>
 <p>以下是使用sftp命令传输client1.ovpn的示例。这个命令可以在你的本地计算机（MAC OS X或linux）运行。它把.ovpn文件放到你的主目录中：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sftp sammy@openvpn_server_ip:client-configs/files/client1.ovpn ~/</span><br></pre></td></tr></table></figure>
@@ -242,26 +259,35 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-16-04上安装openvpn-一"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 16.04上安装openvpn(一)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#要求"><span class="toc-number">1.1.</span> <span class="toc-text">要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step-one-安装openvpn"><span class="toc-number">1.1.1.</span> <span class="toc-text">step one: 安装openvpn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-two-创建ca目录"><span class="toc-number">1.1.2.</span> <span class="toc-text">step two: 创建ca目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setp-three-配置ca变量"><span class="toc-number">1.1.3.</span> <span class="toc-text">setp three: 配置ca变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-four-建立证书颁发机构"><span class="toc-number">1.1.4.</span> <span class="toc-text">step four: 建立证书颁发机构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-five-创建服务器证书、密钥和加密文件"><span class="toc-number">1.1.5.</span> <span class="toc-text">step five: 创建服务器证书、密钥和加密文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-six-生成客户端证书和密钥对"><span class="toc-number">1.1.6.</span> <span class="toc-text">step six: 生成客户端证书和密钥对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-seven-配置openvpn服务"><span class="toc-number">1.1.7.</span> <span class="toc-text">step seven: 配置openvpn服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-eight-修改服务器网络配置"><span class="toc-number">1.1.8.</span> <span class="toc-text">step eight: 修改服务器网络配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-nine-启动并启用openvpn服务"><span class="toc-number">1.1.9.</span> <span class="toc-text">step nine: 启动并启用openvpn服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-ten-创建客户端"><span class="toc-number">1.1.10.</span> <span class="toc-text">step ten: 创建客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-eleven-生成客户端配置"><span class="toc-number">1.1.11.</span> <span class="toc-text">step eleven: 生成客户端配置</span></a></li></ol></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-16-04%E4%B8%8A%E5%AE%89%E8%A3%85openvpn-%E4%B8%80"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 16.04上安装openvpn(一)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A6%81%E6%B1%82"><span class="toc-number">1.1.</span> <span class="toc-text">要求</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#step-one-%E5%AE%89%E8%A3%85openvpn"><span class="toc-number">1.1.1.</span> <span class="toc-text">step one: 安装openvpn</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-two-%E5%88%9B%E5%BB%BAca%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">step two: 创建ca目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#setp-three-%E9%85%8D%E7%BD%AEca%E5%8F%98%E9%87%8F"><span class="toc-number">1.1.3.</span> <span class="toc-text">setp three: 配置ca变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-four-%E5%BB%BA%E7%AB%8B%E8%AF%81%E4%B9%A6%E9%A2%81%E5%8F%91%E6%9C%BA%E6%9E%84"><span class="toc-number">1.1.4.</span> <span class="toc-text">step four: 建立证书颁发机构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-five-%E5%88%9B%E5%BB%BA%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%AF%81%E4%B9%A6%E3%80%81%E5%AF%86%E9%92%A5%E5%92%8C%E5%8A%A0%E5%AF%86%E6%96%87%E4%BB%B6"><span class="toc-number">1.1.5.</span> <span class="toc-text">step five: 创建服务器证书、密钥和加密文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-six-%E7%94%9F%E6%88%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AF%81%E4%B9%A6%E5%92%8C%E5%AF%86%E9%92%A5%E5%AF%B9"><span class="toc-number">1.1.6.</span> <span class="toc-text">step six: 生成客户端证书和密钥对</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-seven-%E9%85%8D%E7%BD%AEopenvpn%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.7.</span> <span class="toc-text">step seven: 配置openvpn服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-eight-%E4%BF%AE%E6%94%B9%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BD%91%E7%BB%9C%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.8.</span> <span class="toc-text">step eight: 修改服务器网络配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-nine-%E5%90%AF%E5%8A%A8%E5%B9%B6%E5%90%AF%E7%94%A8openvpn%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.1.9.</span> <span class="toc-text">step nine: 启动并启用openvpn服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-ten-%E5%88%9B%E5%BB%BA%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="toc-number">1.1.10.</span> <span class="toc-text">step ten: 创建客户端</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#step-eleven-%E7%94%9F%E6%88%90%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">1.1.11.</span> <span class="toc-text">step eleven: 生成客户端配置</span></a></li></ol></li></ol></li></ol>	
         </div>
     
 </div>
@@ -271,14 +297,20 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -329,6 +361,25 @@ step one: 安装openvpn首先在服务器上安装openvpn。在ub,">
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

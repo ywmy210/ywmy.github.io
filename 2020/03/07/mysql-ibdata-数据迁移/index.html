@@ -1,21 +1,23 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>mysql ibdata 数据迁移 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,mysql ibdata1数据迁移这两天zabbix上提示一台数据库的空间要满了。mariadb是直接yum安装的，查了一下，/var/lib/mysql/下的文件ibdata1太大了，34G+，根,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -23,17 +25,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">mysql ibdata 数据迁移</h3>
     <div class="social">
@@ -49,12 +52,12 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">mysql ibdata 数据迁移</h1>
         <div class="stuff">
             <span>三月 07, 2020</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/database/">database</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/database/" rel="tag">database</a></li></ul>
 
 
         </div>
@@ -67,33 +70,42 @@
 <p>3 迁移数据</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /var/lib/mysql/</span><br><span class="line">mv -rv ./* /home/mysql/</span><br></pre></td></tr></table></figure>
 <p>4 修改mysql配置文件 </p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 修改datadir和socket路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改前</span></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line"><span class="comment"># Settings user and group are ignored when systemd is used.</span></span><br><span class="line"><span class="comment"># If you need to run mysqld under a different user or group,</span></span><br><span class="line"><span class="comment"># customize your systemd unit file for mariadb according to the</span></span><br><span class="line"><span class="comment"># instructions in http://fedoraproject.org/wiki/Systemd</span></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line"><span class="built_in">log</span>-error=/var/<span class="built_in">log</span>/mariadb/mariadb.log</span><br><span class="line">pid-file=/var/run/mariadb/mariadb.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># include all files from the config directory</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">!includedir /etc/my.cnf.d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后</span></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/home/mysql</span><br><span class="line">socket=/home/mysql/mysql.sock</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line"><span class="comment"># Settings user and group are ignored when systemd is used.</span></span><br><span class="line"><span class="comment"># If you need to run mysqld under a different user or group,</span></span><br><span class="line"><span class="comment"># customize your systemd unit file for mariadb according to the</span></span><br><span class="line"><span class="comment"># instructions in http://fedoraproject.org/wiki/Systemd</span></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line"><span class="built_in">log</span>-error=/var/<span class="built_in">log</span>/mariadb/mariadb.log</span><br><span class="line">pid-file=/var/run/mariadb/mariadb.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># include all files from the config directory</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">!includedir /etc/my.cnf.d</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/my.cnf</span><br><span class="line"><span class="comment"># 修改datadir和socket路径</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改前</span></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/var/lib/mysql</span><br><span class="line">socket=/var/lib/mysql/mysql.sock</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line"><span class="comment"># Settings user and group are ignored when systemd is used.</span></span><br><span class="line"><span class="comment"># If you need to run mysqld under a different user or group,</span></span><br><span class="line"><span class="comment"># customize your systemd unit file for mariadb according to the</span></span><br><span class="line"><span class="comment"># instructions in http://fedoraproject.org/wiki/Systemd</span></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line">log-error=/var/<span class="built_in">log</span>/mariadb/mariadb.log</span><br><span class="line">pid-file=/var/run/mariadb/mariadb.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># include all files from the config directory</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">!includedir /etc/my.cnf.d</span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改后</span></span><br><span class="line">[mysqld]</span><br><span class="line">datadir=/home/mysql</span><br><span class="line">socket=/home/mysql/mysql.sock</span><br><span class="line"><span class="comment"># Disabling symbolic-links is recommended to prevent assorted security risks</span></span><br><span class="line">symbolic-links=0</span><br><span class="line"><span class="comment"># Settings user and group are ignored when systemd is used.</span></span><br><span class="line"><span class="comment"># If you need to run mysqld under a different user or group,</span></span><br><span class="line"><span class="comment"># customize your systemd unit file for mariadb according to the</span></span><br><span class="line"><span class="comment"># instructions in http://fedoraproject.org/wiki/Systemd</span></span><br><span class="line"></span><br><span class="line">[mysqld_safe]</span><br><span class="line">log-error=/var/<span class="built_in">log</span>/mariadb/mariadb.log</span><br><span class="line">pid-file=/var/run/mariadb/mariadb.pid</span><br><span class="line"></span><br><span class="line"><span class="comment">#</span></span><br><span class="line"><span class="comment"># include all files from the config directory</span></span><br><span class="line"><span class="comment">#</span></span><br><span class="line">!includedir /etc/my.cnf.d</span><br></pre></td></tr></table></figure>
 <p>5 重新启动mariadb</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">systemctl restart mariadb</span><br><span class="line"><span class="comment"># 创建mysql.sock软链接</span></span><br><span class="line"></span><br><span class="line">ln -s /home/mysql/mysql.sock /var/lib/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">mysql -u root -p</span><br><span class="line"></span><br><span class="line">登录成功，mariadb服务和登录正常。</span><br></pre></td></tr></table></figure>
 <p>结束。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-ibdata1数据迁移"><span class="toc-number">1.</span> <span class="toc-text">mysql ibdata1数据迁移</span></a></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mysql-ibdata1%E6%95%B0%E6%8D%AE%E8%BF%81%E7%A7%BB"><span class="toc-number">1.</span> <span class="toc-text">mysql ibdata1数据迁移</span></a></li></ol>	
         </div>
     
 </div>
@@ -103,14 +115,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -161,6 +179,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

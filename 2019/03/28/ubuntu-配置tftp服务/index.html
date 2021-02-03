@@ -1,25 +1,26 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ubuntu 配置tftp服务 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,ubuntu 18.04 启用TFTP服务安装1sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux
 配置文件
 创建tftp服务目录
-
-,"> 
+1,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -27,17 +28,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">ubuntu 配置tftp服务</h3>
     <div class="social">
@@ -53,51 +55,60 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">ubuntu 配置tftp服务</h1>
         <div class="stuff">
             <span>三月 28, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
         <div class="content markdown">
             <h1 id="ubuntu-18-04-启用TFTP服务"><a href="#ubuntu-18-04-启用TFTP服务" class="headerlink" title="ubuntu 18.04 启用TFTP服务"></a>ubuntu 18.04 启用TFTP服务</h1><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux</span><br></pre></td></tr></table></figure>
 <h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
-<li>创建tftp服务目录</li>
+<li><p>创建tftp服务目录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir tftproot</span><br><span class="line">chmod 777 tftproot</span><br></pre></td></tr></table></figure></li>
+<li><p>修改配置文件</p>
+</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir tftproot</span><br><span class="line">chmod 777 tftproot</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/default/tftpd-hpa /etc/default/tftpd-hpa_backup   //备份配置文件</span><br><span class="line">sudo vim /etc/default/tftpd-hpa         //修改配置文件</span><br><span class="line"></span><br><span class="line">//配置如下</span><br><span class="line"></span><br><span class="line"><span class="comment"># /etc/default/tftpd-hpa</span></span><br><span class="line"></span><br><span class="line">TFTP_USERNAME=<span class="string">&quot;tftp&quot;</span></span><br><span class="line">TFTP_DIRECTORY=<span class="string">&quot;/home/abcd/tftproot&quot;</span></span><br><span class="line">TFTP_ADDRESS=<span class="string">&quot;:69&quot;</span></span><br><span class="line">TFTP_OPTIONS=<span class="string">&quot;-l -c -s&quot;</span></span><br></pre></td></tr></table></figure>
 <ul>
-<li>修改配置文件</li>
+<li><p>启用tftp服务</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sudo service tftpd-hpa restart</span><br><span class="line">sudo systemctl status tftpd-hpa //查看服务状态</span><br><span class="line"></span><br><span class="line">● tftpd-hpa.service - LSB: HPA<span class="string">&#x27;s tftp server</span></span><br><span class="line"><span class="string">   Loaded: loaded (/etc/init.d/tftpd-hpa; generated)</span></span><br><span class="line"><span class="string">   Active: active (running) since Thu 2019-03-28 19:44:48 CST; 16s ago</span></span><br><span class="line"><span class="string">     Docs: man:systemd-sysv-generator(8)</span></span><br><span class="line"><span class="string">  Process: 11088 ExecStop=/etc/init.d/tftpd-hpa stop (code=exited, status=0/SUCC</span></span><br><span class="line"><span class="string">  Process: 11093 ExecStart=/etc/init.d/tftpd-hpa start (code=exited, status=0/SU</span></span><br><span class="line"><span class="string">    Tasks: 1 (limit: 4915)</span></span><br><span class="line"><span class="string">   CGroup: /system.slice/tftpd-hpa.service</span></span><br><span class="line"><span class="string">           └─11101 /usr/sbin/in.tftpd --listen --user tftp --address :69 -l -c -</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Starting LSB: HPA&#x27;</span>s tftp server...</span><br><span class="line">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:  * Starting HPA<span class="string">&#x27;s tftpd in.tftpd</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:    ...done.</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Started LSB: HPA&#x27;</span>s tftp server.</span><br><span class="line">lines 1-14/14 (END)</span><br></pre></td></tr></table></figure></li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /etc/default/tftpd-hpa /etc/default/tftpd-hpa_backup   //备份配置文件</span><br><span class="line">sudo vim /etc/default/tftpd-hpa         //修改配置文件</span><br><span class="line"></span><br><span class="line">//配置如下</span><br><span class="line"></span><br><span class="line"><span class="comment"># /etc/default/tftpd-hpa</span></span><br><span class="line"></span><br><span class="line">TFTP_USERNAME=<span class="string">"tftp"</span></span><br><span class="line">TFTP_DIRECTORY=<span class="string">"/home/abcd/tftproot"</span></span><br><span class="line">TFTP_ADDRESS=<span class="string">":69"</span></span><br><span class="line">TFTP_OPTIONS=<span class="string">"-l -c -s"</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>启用tftp服务</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">sudo service tftpd-hpa restart</span><br><span class="line">sudo systemctl status tftpd-hpa //查看服务状态</span><br><span class="line"></span><br><span class="line">● tftpd-hpa.service - LSB: HPA<span class="string">'s tftp server</span></span><br><span class="line"><span class="string">   Loaded: loaded (/etc/init.d/tftpd-hpa; generated)</span></span><br><span class="line"><span class="string">   Active: active (running) since Thu 2019-03-28 19:44:48 CST; 16s ago</span></span><br><span class="line"><span class="string">     Docs: man:systemd-sysv-generator(8)</span></span><br><span class="line"><span class="string">  Process: 11088 ExecStop=/etc/init.d/tftpd-hpa stop (code=exited, status=0/SUCC</span></span><br><span class="line"><span class="string">  Process: 11093 ExecStart=/etc/init.d/tftpd-hpa start (code=exited, status=0/SU</span></span><br><span class="line"><span class="string">    Tasks: 1 (limit: 4915)</span></span><br><span class="line"><span class="string">   CGroup: /system.slice/tftpd-hpa.service</span></span><br><span class="line"><span class="string">           └─11101 /usr/sbin/in.tftpd --listen --user tftp --address :69 -l -c -</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Starting LSB: HPA'</span>s tftp server...</span><br><span class="line">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:  * Starting HPA<span class="string">'s tftpd in.tftpd</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:    ...done.</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Started LSB: HPA'</span>s tftp server.</span><br><span class="line">lines 1-14/14 (END)</span><br></pre></td></tr></table></figure>
+
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-18-04-启用TFTP服务"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 18.04 启用TFTP服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#配置文件"><span class="toc-number">1.2.</span> <span class="toc-text">配置文件</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-18-04-%E5%90%AF%E7%94%A8TFTP%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 18.04 启用TFTP服务</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85"><span class="toc-number">1.1.</span> <span class="toc-text">安装</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">配置文件</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -107,14 +118,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -165,6 +182,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

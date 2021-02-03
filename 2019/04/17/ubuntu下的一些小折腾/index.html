@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ubuntu下的一些小折腾 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,Ubuntu 18.04 小问题ibus候选词方块
 问题描述
@@ -18,7 +18,9 @@
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -26,17 +28,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">ubuntu下的一些小折腾</h3>
     <div class="social">
@@ -52,12 +55,12 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">ubuntu下的一些小折腾</h1>
         <div class="stuff">
             <span>四月 17, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
@@ -70,7 +73,7 @@
 <p>更改如图：</p>
 <p><img src="https://blog.ywmy.xyz/linux/ibus_setup.png" alt="ibus-setup"></p>
 <p>尝试安装更多字符集的字体库，如明朝花园Ｂ。</p>
-<p>下载链接<a href="https://github.com/tony/dot-fonts" target="_blank" rel="noopener">请戳</a></p>
+<p>下载链接<a target="_blank" rel="noopener" href="https://github.com/tony/dot-fonts">请戳</a></p>
 <p>补充CJK字体在不同程序之间输入显示的一个小问题，比如码表同[IDRN]源下加心，𢢵.这个字在VS CODE中可以显示，谷歌浏览器中也可以正常显示，在WPS中则显示为潮。</p>
 <h2 id="vs-code-power-line-font"><a href="#vs-code-power-line-font" class="headerlink" title="vs code power-line font"></a>vs code power-line font</h2><ul>
 <li>问题描述</li>
@@ -84,40 +87,49 @@
 <ol>
 <li>安装power-line字体</li>
 </ol>
-<p>下载<a href="https://github.com/abertsch/Menlo-for-Powerline" target="_blank" rel="noopener">请戳</a></p>
+<p>下载<a target="_blank" rel="noopener" href="https://github.com/abertsch/Menlo-for-Powerline">请戳</a></p>
 <ol start="2">
 <li>配置vs code</li>
 </ol>
 <p>操作步骤：设置－&gt;打开json设置-&gt;输入以下调用字体信息：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">"terminal.integrated.fontFamily"</span>: <span class="string">"Menlo for Powerline"</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line"><span class="string">&quot;terminal.integrated.fontFamily&quot;</span>: <span class="string">&quot;Menlo for Powerline&quot;</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>参考下图：</p>
 <p><img src="https://blog.ywmy.xyz/linux/vs_code_powerline_set.png" alt="vs_code_powerline_set"></p>
 <p>完成设置后，显示效果生效，参考下图：</p>
 <p><img src="https://blog.ywmy.xyz/linux/vs_code_json_set.png" alt="vs_code_json_ser"></p>
-<p><a href="https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7" target="_blank" rel="noopener">参考链接</a></p>
+<p><a target="_blank" rel="noopener" href="https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7">参考链接</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu-18-04-小问题"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu 18.04 小问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ibus候选词方块"><span class="toc-number">1.1.</span> <span class="toc-text">ibus候选词方块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vs-code-power-line-font"><span class="toc-number">1.2.</span> <span class="toc-text">vs code power-line font</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Ubuntu-18-04-%E5%B0%8F%E9%97%AE%E9%A2%98"><span class="toc-number">1.</span> <span class="toc-text">Ubuntu 18.04 小问题</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#ibus%E5%80%99%E9%80%89%E8%AF%8D%E6%96%B9%E5%9D%97"><span class="toc-number">1.1.</span> <span class="toc-text">ibus候选词方块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vs-code-power-line-font"><span class="toc-number">1.2.</span> <span class="toc-text">vs code power-line font</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -127,14 +139,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -185,6 +203,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ubuntu 18.04 安装 nginx - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,ubuntu 18.04 安装 nginx前言服务器上安装了两个服务。通过外网加端口访问。需求通过nginx代理访问两个服务。
 环境ubuntu 18.04,非root，常规用户账户。
@@ -17,7 +17,9 @@ Step1-,">
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -25,17 +27,18 @@ Step1-,">
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">ubuntu 18.04 安装 nginx</h3>
     <div class="social">
@@ -51,12 +54,12 @@ Step1-,">
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">ubuntu 18.04 安装 nginx</h1>
         <div class="stuff">
             <span>四月 12, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
@@ -73,7 +76,7 @@ Step1-,">
 <p>Available applications:<br>Nginx Full<br>Nginx HTTP<br>Nginx HTTPS</p>
 </blockquote>
 <p>如所见，Nginx Full即放通80和443，Nginx HTTP即放通80，Nginx HTTPS即放通443。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow <span class="string">'Nginx FULL'</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow <span class="string">&#x27;Nginx FULL&#x27;</span></span><br></pre></td></tr></table></figure>
 <h2 id="Step3-Checking-your-Web-Server"><a href="#Step3-Checking-your-Web-Server" class="headerlink" title="Step3-Checking your Web Server"></a>Step3-Checking your Web Server</h2><p>安装结束，程序服务就会启用。通过systemctl查看Nginx相关的进程信息。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl status nginx </span><br><span class="line"></span><br><span class="line">● nginx.service - A high performance web server and a reverse proxy server</span><br><span class="line">   Loaded: loaded (/lib/systemd/system/nginx.service; enabled; vendor preset: enabled)</span><br><span class="line">   Active: active (running) since Sat 2019-04-13 09:41:04 UTC; 10s ago</span><br><span class="line">     Docs: man:nginx(8)</span><br><span class="line">  Process: 4576 ExecStop=/sbin/start-stop-daemon --quiet --stop --retry QUIT/5 --pidfile /run/nginx.pid (code=exited, status=2)</span><br><span class="line">  Process: 4586 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line">  Process: 4577 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)</span><br><span class="line"> Main PID: 4589 (nginx)</span><br><span class="line">    Tasks: 2 (<span class="built_in">limit</span>: 1110)</span><br><span class="line">   CGroup: /system.slice/nginx.service</span><br><span class="line">           ├─4589 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;</span><br><span class="line">           └─4593 nginx: worker process</span><br><span class="line"></span><br><span class="line">Apr 13 09:41:04 vultr_vps_server systemd[1]: Starting A high performance web server and a reverse proxy server...</span><br></pre></td></tr></table></figure>
 <p>安装程序结束。</p>
@@ -82,30 +85,38 @@ Step1-,">
 <p>nginx.service: Failed to parse PID from file /run/nginx.pid: Invalid argument</p>
 </blockquote>
 <p>解决方法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Workaround:</span><br><span class="line"></span><br><span class="line"> mkdir /etc/systemd/system/nginx.service.d</span><br><span class="line"> <span class="built_in">printf</span> <span class="string">"[Service]\nExecStartPost=/bin/sleep 0.1\n"</span> &gt; /etc/systemd/system/nginx.service.d/override.conf</span><br><span class="line"> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
-
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Workaround:</span><br><span class="line"></span><br><span class="line"> mkdir /etc/systemd/system/nginx.service.d</span><br><span class="line"> <span class="built_in">printf</span> <span class="string">&quot;[Service]\nExecStartPost=/bin/sleep 0.1\n&quot;</span> &gt; /etc/systemd/system/nginx.service.d/override.conf</span><br><span class="line"> systemctl daemon-reload</span><br></pre></td></tr></table></figure>
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-18-04-安装-nginx"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 18.04 安装 nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step1-Installing-Nginx"><span class="toc-number">1.3.</span> <span class="toc-text">Step1-Installing Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step2-Adjusting-the-Firewall"><span class="toc-number">1.4.</span> <span class="toc-text">Step2-Adjusting the Firewall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step3-Checking-your-Web-Server"><span class="toc-number">1.5.</span> <span class="toc-text">Step3-Checking your Web Server</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-18-04-%E5%AE%89%E8%A3%85-nginx"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 18.04 安装 nginx</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.2.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step1-Installing-Nginx"><span class="toc-number">1.3.</span> <span class="toc-text">Step1-Installing Nginx</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step2-Adjusting-the-Firewall"><span class="toc-number">1.4.</span> <span class="toc-text">Step2-Adjusting the Firewall</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Step3-Checking-your-Web-Server"><span class="toc-number">1.5.</span> <span class="toc-text">Step3-Checking your Web Server</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -115,14 +126,20 @@ Step1-,">
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -173,6 +190,25 @@ Step1-,">
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

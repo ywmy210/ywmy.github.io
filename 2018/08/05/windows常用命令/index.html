@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>windows常用命令 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,windows 常用命令本日志记录一些常用的windows 命令，涉及网络、服务、进程、计划任务等，以备用。
 net相关123456789101112131415161718192021222324,"> 
@@ -16,7 +16,9 @@ net相关123456789101112131415161718192021222324,">
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -24,17 +26,18 @@ net相关123456789101112131415161718192021222324,">
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">windows常用命令</h3>
     <div class="social">
@@ -50,12 +53,12 @@ net相关123456789101112131415161718192021222324,">
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">windows常用命令</h1>
         <div class="stuff">
             <span>八月 05, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/windows/">windows</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/windows/" rel="tag">windows</a></li></ul>
 
 
         </div>
@@ -65,29 +68,37 @@ net相关123456789101112131415161718192021222324,">
 <h2 id="进程操作"><a href="#进程操作" class="headerlink" title="进程操作"></a>进程操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">tasklist //查看进程</span><br><span class="line"></span><br><span class="line">taskkill /im notepad.exe //结束名为notepad.exe的进程</span><br><span class="line"></span><br><span class="line">taskkill /pid 1230 /pid 1241 /pid 1252 /t //结束pid为1230、1241、1253的进程及由它启动的子进程</span><br><span class="line"></span><br><span class="line">taskkill /f /im cmd.exe /t //强制结束名为cmd.exe的进程以及由它启动的子进程</span><br></pre></td></tr></table></figure>
 <h2 id="网络操作"><a href="#网络操作" class="headerlink" title="网络操作"></a>网络操作</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">netstat -a //查看计算机开了哪些端口</span><br><span class="line"></span><br><span class="line">route <span class="built_in">print</span> //查看路由表</span><br></pre></td></tr></table></figure>
 <h2 id="其它"><a href="#其它" class="headerlink" title="其它"></a>其它</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">taskchd.msc //计划任务</span><br><span class="line"></span><br><span class="line">gpedit.msc //组策略</span><br><span class="line"></span><br><span class="line">msconfig //启动项</span><br><span class="line"></span><br><span class="line">diskmgmt.msc //磁盘管理</span><br><span class="line"></span><br><span class="line">tracert IP //路由跟踪</span><br><span class="line"></span><br><span class="line">eventvwr.msc  //windows 日志</span><br><span class="line"></span><br><span class="line">diskpart //磁盘管理</span><br></pre></td></tr></table></figure>
-
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#windows-常用命令"><span class="toc-number">1.</span> <span class="toc-text">windows 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#net相关"><span class="toc-number">2.</span> <span class="toc-text">net相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#进程操作"><span class="toc-number">3.</span> <span class="toc-text">进程操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#网络操作"><span class="toc-number">4.</span> <span class="toc-text">网络操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#其它"><span class="toc-number">5.</span> <span class="toc-text">其它</span></a></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#windows-%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number">1.</span> <span class="toc-text">windows 常用命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#net%E7%9B%B8%E5%85%B3"><span class="toc-number">2.</span> <span class="toc-text">net相关</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%BF%9B%E7%A8%8B%E6%93%8D%E4%BD%9C"><span class="toc-number">3.</span> <span class="toc-text">进程操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%93%8D%E4%BD%9C"><span class="toc-number">4.</span> <span class="toc-text">网络操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%B6%E5%AE%83"><span class="toc-number">5.</span> <span class="toc-text">其它</span></a></li></ol>	
         </div>
     
 </div>
@@ -97,14 +108,20 @@ net相关123456789101112131415161718192021222324,">
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -155,6 +172,25 @@ net相关123456789101112131415161718192021222324,">
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>华为GPON配置说明 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,华为GPON配置说明名词说明
 DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整中ONU上行进行限速的。一个PON口上行带宽为1G，实际能用到的只有900M，所以要对ONU的上,"> 
@@ -16,7 +16,9 @@ DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -24,17 +26,18 @@ DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">华为GPON配置说明</h3>
     <div class="social">
@@ -50,27 +53,33 @@ DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">华为GPON配置说明</h1>
         <div class="stuff">
             <span>四月 02, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/network/">network</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/network/" rel="tag">network</a></li></ul>
 
 
         </div>
         <div class="content markdown">
             <h2 id="华为GPON配置说明"><a href="#华为GPON配置说明" class="headerlink" title="华为GPON配置说明"></a>华为GPON配置说明</h2><h2 id="名词说明"><a href="#名词说明" class="headerlink" title="名词说明"></a>名词说明</h2><ol>
-<li>DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整中ONU上行进行限速的。一个PON口上行带宽为1G，实际能用到的只有900M，所以要对ONU的上行进行合理分配。</li>
-<li>Tcont：tcont是连接dba和gemport的通道，也就是说emport是通过和tcont联系，才把dba的作用引用过来的。</li>
-<li>Gemport：gemport是OLT线程工作的最小单元，前面的dba，tcont都是最终给gemport用。</li>
-<li>线路模板ont-lineprofile：ONU注册时要选择相应的线路模板，里面包含tcont，gem等信息。</li>
-<li>DBA模板，线路模板，可以创建多个；一个线路模板中：tcont有八个（0－7），gem可以创建128个（0－127）；一个gem中可有映射8个：gem mapping 1 0；gem mapping 1 1；一直到gem mapping 1 7；但是一个线路模板中最多只能创建128条gem mapping，超出会报错。</li>
+<li><p>DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整中ONU上行进行限速的。一个PON口上行带宽为1G，实际能用到的只有900M，所以要对ONU的上行进行合理分配。</p>
+</li>
+<li><p>Tcont：tcont是连接dba和gemport的通道，也就是说emport是通过和tcont联系，才把dba的作用引用过来的。</p>
+</li>
+<li><p>Gemport：gemport是OLT线程工作的最小单元，前面的dba，tcont都是最终给gemport用。</p>
+</li>
+<li><p>线路模板ont-lineprofile：ONU注册时要选择相应的线路模板，里面包含tcont，gem等信息。</p>
+</li>
+<li><p>DBA模板，线路模板，可以创建多个；一个线路模板中：tcont有八个（0－7），gem可以创建128个（0－127）；一个gem中可有映射8个：gem mapping 1 0；gem mapping 1 1；一直到gem mapping 1 7；但是一个线路模板中最多只能创建128条gem mapping，超出会报错。</p>
+<h2 id="数据规划"><a href="#数据规划" class="headerlink" title="数据规划"></a>数据规划</h2></li>
 </ol>
-<h2 id="数据规划"><a href="#数据规划" class="headerlink" title="数据规划"></a>数据规划</h2><p>以花都狮岭数据规划为例：</p>
+<p>以花都狮岭数据规划为例：</p>
 <p>OLT：网管VLAN 22；</p>
 <pre><code>IP：172.17.21.132；网关：172.17.21.129；语音VLAN 100；语音IP：172.16.0.11
-</code></pre><p>ONU：所属OLT的PON串口0/18/3<br>    ONUID：1<br>    ONU网管IP：172.17.21.134；网关：172.17.21.129；<br>    语音VLAN 100；语音IP：172.16.0.21</p>
+</code></pre>
+<p>ONU：所属OLT的PON串口0/18/3<br>    ONUID：1<br>    ONU网管IP：172.17.21.134；网关：172.17.21.129；<br>    语音VLAN 100；语音IP：172.16.0.21</p>
 <p>数据配置</p>
 <ol>
 <li><p>数据配置</p>
@@ -109,30 +118,39 @@ DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整
 <p>interface vlanif 100</p>
 <p>ip address 172.16.0.23 255.255.254.0</p>
 <p>//配置语音地址</p>
-<p>quit<br><code>`</code></p>
+<p>quit<br>```</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#华为GPON配置说明"><span class="toc-number">1.</span> <span class="toc-text">华为GPON配置说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#名词说明"><span class="toc-number">2.</span> <span class="toc-text">名词说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#数据规划"><span class="toc-number">3.</span> <span class="toc-text">数据规划</span></a></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BAGPON%E9%85%8D%E7%BD%AE%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">华为GPON配置说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%8D%E8%AF%8D%E8%AF%B4%E6%98%8E"><span class="toc-number">2.</span> <span class="toc-text">名词说明</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E8%A7%84%E5%88%92"><span class="toc-number">3.</span> <span class="toc-text">数据规划</span></a></li></ol>	
         </div>
     
 </div>
@@ -142,14 +160,20 @@ DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -200,6 +224,25 @@ DBA模块：创建的dba模板时，给tcont引的，dba模板的作用是对整
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

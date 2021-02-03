@@ -1,21 +1,23 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>lanproxy 配置 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,ubuntu 18.04搭建lanproxy服务前言lanproxy是一个内网穿透工具。支持TCP流量转发。用于替代第三方付费工具，比如anydesk、teamview、花生壳等。这些第三方工具在个,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -23,17 +25,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">lanproxy 配置</h3>
     <div class="social">
@@ -49,17 +52,17 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">lanproxy 配置</h1>
         <div class="stuff">
             <span>四月 25, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <h2 id="ubuntu-18-04搭建lanproxy服务"><a href="#ubuntu-18-04搭建lanproxy服务" class="headerlink" title="ubuntu 18.04搭建lanproxy服务"></a>ubuntu 18.04搭建lanproxy服务</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>lanproxy是一个内网穿透工具。支持TCP流量转发。用于替代第三方付费工具，比如anydesk、teamview、花生壳等。这些第三方工具在个人使用上存在各种各样的限制，有的时候还非常不便，所以为了顺手，就有了自己搭内网穿透的想法。在内网穿透有选择上，选择了lanproxy。工具主页<a href="https://github.com/ffay/lanproxy" target="_blank" rel="noopener">请戳</a>。</p>
+            <h2 id="ubuntu-18-04搭建lanproxy服务"><a href="#ubuntu-18-04搭建lanproxy服务" class="headerlink" title="ubuntu 18.04搭建lanproxy服务"></a>ubuntu 18.04搭建lanproxy服务</h2><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>lanproxy是一个内网穿透工具。支持TCP流量转发。用于替代第三方付费工具，比如anydesk、teamview、花生壳等。这些第三方工具在个人使用上存在各种各样的限制，有的时候还非常不便，所以为了顺手，就有了自己搭内网穿透的想法。在内网穿透有选择上，选择了lanproxy。工具主页<a target="_blank" rel="noopener" href="https://github.com/ffay/lanproxy">请戳</a>。</p>
 <h3 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h3><ol>
 <li>一台公网服务器(运行lanproxy server)</li>
 <li>一台内网PC或服务器(lanproxy client测试)</li>
@@ -70,8 +73,8 @@
 <p>直接通过apt源安装openjdk。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install openjdk-11-jdk</span><br></pre></td></tr></table></figure>
 <p>查看JAVA环境：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">openjdk version <span class="string">"11.0.2"</span> 2019-01-15</span><br><span class="line">OpenJDK Runtime Environment (build 11.0.2+9-Ubuntu-3ubuntu118.04.3)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 11.0.2+9-Ubuntu-3ubuntu118.04.3, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
-<h4 id="lanproxy-server安装"><a href="#lanproxy-server安装" class="headerlink" title="lanproxy server安装"></a>lanproxy server安装</h4><p>下载地址<a href="https://seafile.io2c.com/d/2e81550ebdbd416c933f/" target="_blank" rel="noopener">请戳</a>，选择server的程序包。下载后上传到服务器上。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java -version</span><br><span class="line">openjdk version <span class="string">&quot;11.0.2&quot;</span> 2019-01-15</span><br><span class="line">OpenJDK Runtime Environment (build 11.0.2+9-Ubuntu-3ubuntu118.04.3)</span><br><span class="line">OpenJDK 64-Bit Server VM (build 11.0.2+9-Ubuntu-3ubuntu118.04.3, mixed mode, sharing)</span><br></pre></td></tr></table></figure>
+<h4 id="lanproxy-server安装"><a href="#lanproxy-server安装" class="headerlink" title="lanproxy server安装"></a>lanproxy server安装</h4><p>下载地址<a target="_blank" rel="noopener" href="https://seafile.io2c.com/d/2e81550ebdbd416c933f/">请戳</a>，选择server的程序包。下载后上传到服务器上。</p>
 <p>解压缩程序包至需要安装的目录，比如本文示例/usr/bin/proxy-server/</p>
 <p>配置文件在程序目录下的conf目录下，名称：config.properties。编辑配置文件，更改登录的用户名和密码。</p>
 <p>配置文件如下：</p>
@@ -79,7 +82,7 @@
 <h4 id="启动服务"><a href="#启动服务" class="headerlink" title="启动服务"></a>启动服务</h4><p>在程序目录下的bin目录有服务启动脚本，添加执行权限后，直接运行启动服务。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/proxy-server/bin</span><br><span class="line">chmod +x startup.sh</span><br><span class="line">./startup.sh</span><br></pre></td></tr></table></figure>
 <p>对于8090端口和ip访问的方式，可以配置nginx代理，使用域名访问。</p>
-<h4 id="登录配置"><a href="#登录配置" class="headerlink" title="登录配置"></a>登录配置</h4><p>浏览器打开<a href="http://ip:8090" target="_blank" rel="noopener">http://ip:8090</a>，使用配置文件中的用户名和密码登录，至此服务端配置结束。</p>
+<h4 id="登录配置"><a href="#登录配置" class="headerlink" title="登录配置"></a>登录配置</h4><p>浏览器打开<a target="_blank" rel="noopener" href="http://ip:8090/">http://ip:8090</a>，使用配置文件中的用户名和密码登录，至此服务端配置结束。</p>
 <h4 id="代理配置"><a href="#代理配置" class="headerlink" title="代理配置"></a>代理配置</h4><p>在客户端管理页添加客户端，添加后会自动生成客户端密钥。</p>
 <p>添加代理端口配置，添加的名称和公网端口，公网端口在防火墙上放通。配置后端IP和端口即为要转发的内网服务器IP和端口。</p>
 <h3 id="客户端配置"><a href="#客户端配置" class="headerlink" title="客户端配置"></a>客户端配置</h3><p>CentOS和Windows各测试一个，CentOS使用JAV客户端，Windows直接使用发布包程序。</p>
@@ -96,26 +99,35 @@
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-18-04搭建lanproxy服务"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 18.04搭建lanproxy服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#前言"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#准备工作"><span class="toc-number">1.2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#服务端配置"><span class="toc-number">1.3.</span> <span class="toc-text">服务端配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#java安装"><span class="toc-number">1.3.1.</span> <span class="toc-text">java安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lanproxy-server安装"><span class="toc-number">1.3.2.</span> <span class="toc-text">lanproxy server安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#启动服务"><span class="toc-number">1.3.3.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#登录配置"><span class="toc-number">1.3.4.</span> <span class="toc-text">登录配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代理配置"><span class="toc-number">1.3.5.</span> <span class="toc-text">代理配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#客户端配置"><span class="toc-number">1.4.</span> <span class="toc-text">客户端配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CentOS客户端配置"><span class="toc-number">1.4.1.</span> <span class="toc-text">CentOS客户端配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows客户端的配置"><span class="toc-number">1.4.2.</span> <span class="toc-text">Windows客户端的配置</span></a></li></ol></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu-18-04%E6%90%AD%E5%BB%BAlanproxy%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.</span> <span class="toc-text">ubuntu 18.04搭建lanproxy服务</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.2.</span> <span class="toc-text">准备工作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.</span> <span class="toc-text">服务端配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#java%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.1.</span> <span class="toc-text">java安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#lanproxy-server%E5%AE%89%E8%A3%85"><span class="toc-number">1.3.2.</span> <span class="toc-text">lanproxy server安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E6%9C%8D%E5%8A%A1"><span class="toc-number">1.3.3.</span> <span class="toc-text">启动服务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%99%BB%E5%BD%95%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.4.</span> <span class="toc-text">登录配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E7%90%86%E9%85%8D%E7%BD%AE"><span class="toc-number">1.3.5.</span> <span class="toc-text">代理配置</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.</span> <span class="toc-text">客户端配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CentOS%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.1.</span> <span class="toc-text">CentOS客户端配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Windows%E5%AE%A2%E6%88%B7%E7%AB%AF%E7%9A%84%E9%85%8D%E7%BD%AE"><span class="toc-number">1.4.2.</span> <span class="toc-text">Windows客户端的配置</span></a></li></ol></li></ol></li></ol>	
         </div>
     
 </div>
@@ -125,14 +137,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -183,6 +201,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

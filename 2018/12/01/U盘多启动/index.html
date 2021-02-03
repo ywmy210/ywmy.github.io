@@ -1,21 +1,23 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>U盘多启动 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,前言接着前面U盘量产的工作，既然都已经到了量产了，好像不多做一点事情，总觉得对不起自己的折腾，于是再找关于U盘多启动方面的作法。以前想给自己的系统做维护，基本上就是做一个PE盘。里面集成PE工具，现,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -23,17 +25,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">U盘多启动</h3>
     <div class="social">
@@ -49,12 +52,12 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">U盘多启动</h1>
         <div class="stuff">
             <span>十二月 01, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/windows-usb/">windows usb</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/windows-usb/" rel="tag">windows usb</a></li></ul>
 
 
         </div>
@@ -67,8 +70,10 @@
 <p>关于第一个想法，自己网上能找到的基本上都是关于三启动的，即量产为一个USB－CDROM，USB－ZIP，USB－HDD。不过量产为多光驱的还真的有一个，参考<a href="1">链接</a>;教程中把一个慧荣主控的U盘量产为7个光驱。而刚好自己的小米U盘为慧荣的主控，按教程上的说法，也是可以通过更变参数改为其它的量产参数的，不过文中提到了有风险，即数据分区通常在格式化上会出现问题。参考自己也只有一个慧荣的U盘，还有以前量产失败的经验，就先不尝试此方法。可以查看上面的链接中的教程内容，里面有详细的更变参数，以及U盘的各参数的说明。</p>
 <p>关于第二个相法，有过双系统（windows + linux）的经验，自然想到了GRUB2。按照这个思路，找到两个工具，EASY2BOOT和AIO BOOT CREATOR。通过名字就知道了，这会是两个多系统引导的好工具。特别是第二个，all in one。</p>
 <h2 id="EASY2BOOT启动引导"><a href="#EASY2BOOT启动引导" class="headerlink" title="EASY2BOOT启动引导"></a>EASY2BOOT启动引导</h2><h3 id="操作步骤如下："><a href="#操作步骤如下：" class="headerlink" title="操作步骤如下："></a>操作步骤如下：</h3><ol>
-<li>下载<a href="2">链接</a></li>
-<li>安装</li>
+<li><p>下载<a href="2">链接</a></p>
+</li>
+<li><p>安装</p>
+</li>
 <li><p>打开程序（插入U盘后）如下图所示</p>
 <p> <img src="https://blog.ywmy.xyz/windows/easy2boot.png" alt="easy2boot"></p>
 <p> 选择语言，选择U盘，创建启动盘。</p>
@@ -114,7 +119,8 @@
 </ol>
 <h3 id="UEFI启动支持"><a href="#UEFI启动支持" class="headerlink" title="UEFI启动支持"></a>UEFI启动支持</h3><p>操作步骤：</p>
 <ol>
-<li>下载MTI工具，链接<a href="3">请戳</a></li>
+<li><p>下载MTI工具，链接<a href="3">请戳</a></p>
+</li>
 <li><p>解压缩下载的工具包，进入ImDisk目录，安装ImDisk程序，参考图片：</p>
 <p> <img src="https://blog.ywmy.xyz/windows/install_imDisk_virtual_driver.png" alt="install_imDisk_virtual_driver"></p>
 </li>
@@ -133,7 +139,8 @@
 </ol>
 <h2 id="AIO-BOOT-启动引导"><a href="#AIO-BOOT-启动引导" class="headerlink" title="AIO BOOT 启动引导"></a>AIO BOOT 启动引导</h2><h3 id="操作如下："><a href="#操作如下：" class="headerlink" title="操作如下："></a>操作如下：</h3><p>这个是一个真神器，绿色，不用安装，还自带中文，如名称所说，AIO all in one。</p>
 <ol>
-<li>下载工具，链接<a href="4">请戳</a></li>
+<li><p>下载工具，链接<a href="4">请戳</a></p>
+</li>
 <li><p>运行，操作如下图所示：</p>
 <p> <img src="https://blog.ywmy.xyz/windows/choose-usb-drive.png" alt="choose-usb-drive"></p>
 <p> 切换语言，选择U盘，勾选自动安装bootloader，点击OK，完成操作。</p>
@@ -151,26 +158,35 @@
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前言"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EASY2BOOT启动引导"><span class="toc-number">1.1.</span> <span class="toc-text">EASY2BOOT启动引导</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作步骤如下："><span class="toc-number">1.1.1.</span> <span class="toc-text">操作步骤如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UEFI启动支持"><span class="toc-number">1.1.2.</span> <span class="toc-text">UEFI启动支持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AIO-BOOT-启动引导"><span class="toc-number">1.2.</span> <span class="toc-text">AIO BOOT 启动引导</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#操作如下："><span class="toc-number">1.2.1.</span> <span class="toc-text">操作如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#总结"><span class="toc-number">1.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#EASY2BOOT%E5%90%AF%E5%8A%A8%E5%BC%95%E5%AF%BC"><span class="toc-number">1.1.</span> <span class="toc-text">EASY2BOOT启动引导</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E6%AD%A5%E9%AA%A4%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">操作步骤如下：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#UEFI%E5%90%AF%E5%8A%A8%E6%94%AF%E6%8C%81"><span class="toc-number">1.1.2.</span> <span class="toc-text">UEFI启动支持</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AIO-BOOT-%E5%90%AF%E5%8A%A8%E5%BC%95%E5%AF%BC"><span class="toc-number">1.2.</span> <span class="toc-text">AIO BOOT 启动引导</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C%E5%A6%82%E4%B8%8B%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">操作如下：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.</span> <span class="toc-text">总结</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -180,14 +196,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -238,6 +260,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

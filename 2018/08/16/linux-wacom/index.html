@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>linux wacom - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,说明windows和mac os下wacom包含官方的驱动。在linux我们需要安装linux支持才可以使用。
 项目托管在github上。在使用的时候，可能需要科学的上网。项目地址请访问The li,"> 
@@ -16,7 +16,9 @@
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -24,17 +26,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">linux wacom</h3>
     <div class="social">
@@ -50,27 +53,27 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">linux wacom</h1>
         <div class="stuff">
             <span>八月 16, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
         <div class="content markdown">
             <h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>windows和mac os下wacom包含官方的驱动。在linux我们需要安装linux支持才可以使用。</p>
-<p>项目托管在github上。在使用的时候，可能需要科学的上网。项目地址请访问<a href="https://linuxwacom.github.io/" target="_blank" rel="noopener">The linux Wacom Project</a></p>
+<p>项目托管在github上。在使用的时候，可能需要科学的上网。项目地址请访问<a target="_blank" rel="noopener" href="https://linuxwacom.github.io/">The linux Wacom Project</a></p>
 <h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04 LTS</p>
 <h2 id="Kernel-Driver"><a href="#Kernel-Driver" class="headerlink" title="Kernel Driver"></a>Kernel Driver</h2><p>*安装依赖</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-headers-$(uname -r) build-essential <span class="comment"># on Debian, Ubuntu, Mint</span></span><br><span class="line">sudo apt-get install autoconf                                  <span class="comment"># on Debian, Ubuntu, Mint</span></span><br><span class="line">sudo yum install gcc <span class="string">"kernel-devel-uname-r == <span class="variable">$(uname -r)</span>"</span>     <span class="comment"># on RHEL, CentOS, Fedora</span></span><br><span class="line">sudo pacman -Syy                                               <span class="comment"># on Arch</span></span><br><span class="line">sudo pacman -S linux                                           <span class="comment"># on Arch</span></span><br><span class="line">sudo reboot                                                    <span class="comment"># on Arch</span></span><br><span class="line">sudo pacman -S linux-headers                                   <span class="comment"># on Arch</span></span><br><span class="line">sudo zypper install kernel-devel                               <span class="comment"># on open SUSE 11.4</span></span><br><span class="line">sudo zypper install --<span class="built_in">type</span> pattern devel_basis                 <span class="comment"># on open SUSE 11.4</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install linux-headers-$(uname -r) build-essential <span class="comment"># on Debian, Ubuntu, Mint</span></span><br><span class="line">sudo apt-get install autoconf                                  <span class="comment"># on Debian, Ubuntu, Mint</span></span><br><span class="line">sudo yum install gcc <span class="string">&quot;kernel-devel-uname-r == <span class="subst">$(uname -r)</span>&quot;</span>     <span class="comment"># on RHEL, CentOS, Fedora</span></span><br><span class="line">sudo pacman -Syy                                               <span class="comment"># on Arch</span></span><br><span class="line">sudo pacman -S linux                                           <span class="comment"># on Arch</span></span><br><span class="line">sudo reboot                                                    <span class="comment"># on Arch</span></span><br><span class="line">sudo pacman -S linux-headers                                   <span class="comment"># on Arch</span></span><br><span class="line">sudo zypper install kernel-devel                               <span class="comment"># on open SUSE 11.4</span></span><br><span class="line">sudo zypper install --<span class="built_in">type</span> pattern devel_basis                 <span class="comment"># on open SUSE 11.4</span></span><br></pre></td></tr></table></figure>
 <p>*下载</p>
-<p>下载<a href="https://github.com/linuxwacom/xf86-input-wacom/wiki/Building-The-Driver" target="_blank" rel="noopener">input-wacom</a></p>
+<p>下载<a target="_blank" rel="noopener" href="https://github.com/linuxwacom/xf86-input-wacom/wiki/Building-The-Driver">input-wacom</a></p>
 <p>*编译安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -x ./autogen.sh; <span class="keyword">then</span> ./autogen.sh; <span class="keyword">else</span> ./configure; <span class="keyword">fi</span> &amp;&amp; make &amp;&amp; sudo make install || <span class="built_in">echo</span> <span class="string">"Build Failed"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -x ./autogen.sh; <span class="keyword">then</span> ./autogen.sh; <span class="keyword">else</span> ./configure; <span class="keyword">fi</span> &amp;&amp; make &amp;&amp; sudo make install || <span class="built_in">echo</span> <span class="string">&quot;Build Failed&quot;</span></span><br></pre></td></tr></table></figure>
 <p>*加载模块</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">""</span> /sys/module/wacom*/version</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grep <span class="string">&quot;&quot;</span> /sys/module/wacom*/version</span><br></pre></td></tr></table></figure>
 <p>or</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">modinfo wacom | grep version</span><br></pre></td></tr></table></figure>
 <p>如下图所示：</p>
@@ -78,10 +81,10 @@
 <h2 id="X-Driver"><a href="#X-Driver" class="headerlink" title="X Driver"></a>X Driver</h2><p>*安装依赖</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install autoconf pkg-config make xutils-dev libtool xserver-xorg-dev libx11-dev libxi-dev libxrandr-dev libxinerama-dev libudev-dev</span><br></pre></td></tr></table></figure>
 <p>*下载</p>
-<p>下载<a href="https://github.com/linuxwacom/xf86-input-wacom/wiki/Building-The-Driver" target="_blank" rel="noopener">xf86-input-wacom</a></p>
+<p>下载<a target="_blank" rel="noopener" href="https://github.com/linuxwacom/xf86-input-wacom/wiki/Building-The-Driver">xf86-input-wacom</a></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> httpss://github.com/linuxwacom/xf86-input-wacom.git</span><br></pre></td></tr></table></figure>
 <p>*编译安装</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -- --prefix=<span class="string">"/usr"</span> --libdir=<span class="string">"<span class="variable">$(readlink -e $(ls -d /usr/lib*/xorg/modules/input/../../../ | head -n1)</span>)"</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -x ./autogen.sh; <span class="keyword">then</span> ./autogen.sh <span class="string">"<span class="variable">$@</span>"</span>; <span class="keyword">else</span> ./configure <span class="string">"<span class="variable">$@</span>"</span>; <span class="keyword">fi</span> &amp;&amp; make &amp;&amp; sudo make install || <span class="built_in">echo</span> <span class="string">"Build Failed"</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span> -- --prefix=<span class="string">&quot;/usr&quot;</span> --libdir=<span class="string">&quot;<span class="subst">$(readlink -e $(ls -d /usr/lib*/xorg/modules/input/../../../ | head -n1)</span>)&quot;</span></span><br><span class="line"><span class="keyword">if</span> <span class="built_in">test</span> -x ./autogen.sh; <span class="keyword">then</span> ./autogen.sh <span class="string">&quot;<span class="variable">$@</span>&quot;</span>; <span class="keyword">else</span> ./configure <span class="string">&quot;<span class="variable">$@</span>&quot;</span>; <span class="keyword">fi</span> &amp;&amp; make &amp;&amp; sudo make install || <span class="built_in">echo</span> <span class="string">&quot;Build Failed&quot;</span></span><br></pre></td></tr></table></figure>
 <h2 id="libwacom"><a href="#libwacom" class="headerlink" title="libwacom"></a>libwacom</h2><p>*下载</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> httpss://github.com/linuxwacom/libwacom.git</span><br></pre></td></tr></table></figure>
 <p>*编译安装</p>
@@ -92,26 +95,35 @@
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#说明"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#环境"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kernel-Driver"><span class="toc-number">1.2.</span> <span class="toc-text">Kernel Driver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#X-Driver"><span class="toc-number">1.3.</span> <span class="toc-text">X Driver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#libwacom"><span class="toc-number">1.4.</span> <span class="toc-text">libwacom</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用"><span class="toc-number">1.5.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AF%B4%E6%98%8E"><span class="toc-number">1.</span> <span class="toc-text">说明</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">环境</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Kernel-Driver"><span class="toc-number">1.2.</span> <span class="toc-text">Kernel Driver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#X-Driver"><span class="toc-number">1.3.</span> <span class="toc-text">X Driver</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#libwacom"><span class="toc-number">1.4.</span> <span class="toc-text">libwacom</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">1.5.</span> <span class="toc-text">使用</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -121,14 +133,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -179,6 +197,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

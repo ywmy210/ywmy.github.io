@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ubuntu shadow-socket - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,ubuntu shadow-socket0x01 install
 ubuntu
@@ -20,7 +20,9 @@ instal,">
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -28,17 +30,18 @@ instal,">
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">ubuntu shadow-socket</h3>
     <div class="social">
@@ -54,12 +57,12 @@ instal,">
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">ubuntu shadow-socket</h1>
         <div class="stuff">
             <span>四月 04, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
@@ -72,37 +75,48 @@ instal,">
 <p>install pip</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget https://bootstrap.pypa.ip/get-pip.py</span><br><span class="line">python get-pip.py</span><br></pre></td></tr></table></figure>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo easy_install shadowsocks</span><br></pre></td></tr></table></figure>
+
 <ul>
 <li>centos</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">yum install python-setuptool &amp;&amp; easy_install pip</span><br><span class="line">pip install shadowsocks</span><br></pre></td></tr></table></figure>
-<h2 id="0x02-config-file"><a href="#0x02-config-file" class="headerlink" title="0x02 config_file"></a>0x02 config_file</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line">   <span class="string">"server"</span>:<span class="string">"my_server_ip"</span>, </span><br><span class="line">   <span class="string">"server_port"</span>:25, </span><br><span class="line">   <span class="string">"local_address"</span>: <span class="string">"127.0.0.1"</span>, </span><br><span class="line">   <span class="string">"local_port"</span>:1080, </span><br><span class="line">   <span class="string">"password"</span>:<span class="string">"mypassword"</span>,</span><br><span class="line">   <span class="string">"timeout"</span>:300, </span><br><span class="line">   <span class="string">"method"</span>:<span class="string">"aes-256-cfb"</span>, </span><br><span class="line">   <span class="string">"fast_open"</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="0x02-config-file"><a href="#0x02-config-file" class="headerlink" title="0x02 config_file"></a>0x02 config_file</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/shadowsocks.json</span><br><span class="line"></span><br><span class="line">&#123; </span><br><span class="line">   <span class="string">&quot;server&quot;</span>:<span class="string">&quot;my_server_ip&quot;</span>, </span><br><span class="line">   <span class="string">&quot;server_port&quot;</span>:25, </span><br><span class="line">   <span class="string">&quot;local_address&quot;</span>: <span class="string">&quot;127.0.0.1&quot;</span>, </span><br><span class="line">   <span class="string">&quot;local_port&quot;</span>:1080, </span><br><span class="line">   <span class="string">&quot;password&quot;</span>:<span class="string">&quot;mypassword&quot;</span>,</span><br><span class="line">   <span class="string">&quot;timeout&quot;</span>:300, </span><br><span class="line">   <span class="string">&quot;method&quot;</span>:<span class="string">&quot;aes-256-cfb&quot;</span>, </span><br><span class="line">   <span class="string">&quot;fast_open&quot;</span>: <span class="literal">false</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <h2 id="0x03-start-server"><a href="#0x03-start-server" class="headerlink" title="0x03 start server"></a>0x03 start server</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json</span><br></pre></td></tr></table></figure>
 <p>后台启动和停止服务</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssserver -c /etc/shadowsocks.json -d start </span><br><span class="line">ssserver -c /etc/shadowsocks.json -d stop</span><br></pre></td></tr></table></figure>
-<h2 id="0X04-download"><a href="#0X04-download" class="headerlink" title="0X04 download"></a>0X04 download</h2><p>下载<a href="https://github.com/shadowsocks" target="_blank" rel="noopener">请戳</a></p>
+<h2 id="0X04-download"><a href="#0X04-download" class="headerlink" title="0X04 download"></a>0X04 download</h2><p>下载<a target="_blank" rel="noopener" href="https://github.com/shadowsocks">请戳</a></p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
+        <div class='side'>
 			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#ubuntu-shadow-socket"><span class="toc-number">1.</span> <span class="toc-text">ubuntu shadow-socket</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#0x01-install"><span class="toc-number">1.1.</span> <span class="toc-text">0x01 install</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x02-config-file"><span class="toc-number">1.2.</span> <span class="toc-text">0x02 config_file</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0x03-start-server"><span class="toc-number">1.3.</span> <span class="toc-text">0x03 start server</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#0X04-download"><span class="toc-number">1.4.</span> <span class="toc-text">0X04 download</span></a></li></ol></li></ol>	
         </div>
     
@@ -113,14 +127,20 @@ instal,">
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -171,6 +191,25 @@ instal,">
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

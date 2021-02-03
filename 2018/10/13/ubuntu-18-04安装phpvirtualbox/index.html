@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>ubuntu 18.04安装phpvirtualbox - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,安装phpvirtualboxvirtualbox安装完成后，可以通过给virtualbox后台装一个基于web的前端工具，使其可以通过网页来管理和创建虚拟机。
 前提条件首先，更新系统，并安装相关信,"> 
@@ -16,7 +16,9 @@
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -24,17 +26,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">ubuntu 18.04安装phpvirtualbox</h3>
     <div class="social">
@@ -50,12 +53,12 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">ubuntu 18.04安装phpvirtualbox</h1>
         <div class="stuff">
             <span>十月 13, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux-vritualbox/">linux vritualbox</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux-vritualbox/" rel="tag">linux vritualbox</a></li></ul>
 
 
         </div>
@@ -65,7 +68,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br><span class="line">sudo apt upgrade</span><br><span class="line">sudo apt install build-essential dkms unzip wget vim</span><br></pre></td></tr></table></figure>
 <p>安装完成后，需要重启ubuntu系统。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo reboot</span><br></pre></td></tr></table></figure>
-<h2 id="在ubuntu-18-04上安装virtualbox"><a href="#在ubuntu-18-04上安装virtualbox" class="headerlink" title="在ubuntu 18.04上安装virtualbox"></a>在ubuntu 18.04上安装virtualbox</h2><p>从官网上下载<a href="https://www.virtualbox.org/" target="_blank" rel="noopener">安装包</a>和<a href="https://www.virtualbox.org/wiki/Downloads" target="_blank" rel="noopener">拓展包</a>。先安装virtualbox程序，再导入拓展包。</p>
+<h2 id="在ubuntu-18-04上安装virtualbox"><a href="#在ubuntu-18-04上安装virtualbox" class="headerlink" title="在ubuntu 18.04上安装virtualbox"></a>在ubuntu 18.04上安装virtualbox</h2><p>从官网上下载<a target="_blank" rel="noopener" href="https://www.virtualbox.org/">安装包</a>和<a target="_blank" rel="noopener" href="https://www.virtualbox.org/wiki/Downloads">拓展包</a>。先安装virtualbox程序，再导入拓展包。</p>
 <p>添加用户到virtualbox组</p>
 <p>我们需要去创建并添加我们系统的用户vboxusers组中。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo usermod -aG vboxusers yourname</span><br></pre></td></tr></table></figure>
@@ -75,7 +78,7 @@
 <p><img src="https://blog.ywmy.xyz/vboxstatus.png" alt="状态"></p>
 <h2 id="安装phpvirtualbox过程"><a href="#安装phpvirtualbox过程" class="headerlink" title="安装phpvirtualbox过程"></a>安装phpvirtualbox过程</h2><p>由于它是基于web的工具，我们需要安装apache服务器、php和一些php模块，运行命令。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install apache2 php php-mysql libapache2-mod-php php-soap php-xml</span><br></pre></td></tr></table></figure>
-<p>然后下载virtualbox相对应的版本，如安装的virtualbox 5.2，官方<a href="https://phpvirtualbox.github.io/" target="_blank" rel="noopener">主页</a>。</p>
+<p>然后下载virtualbox相对应的版本，如安装的virtualbox 5.2，官方<a target="_blank" rel="noopener" href="https://phpvirtualbox.github.io/">主页</a>。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget httpss://github.com/phpvirtualbox/phpvirtualbox/archive/5.2.zip</span><br></pre></td></tr></table></figure>
 <p>解压下载的安装包。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">unzip 5.2.0.zip</span><br></pre></td></tr></table></figure>
@@ -84,7 +87,7 @@
 <p>接下来配置phpvirtualbox。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo cp /var/www/html/phpvirtualbox/config.php-example /var/www/html/phpvirtualbox/config.php</span><br><span class="line">sudo vim /var/www/html/phpvirtualbox/config.php</span><br></pre></td></tr></table></figure>
 <p>更改内容如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var <span class="variable">$username</span> = <span class="string">'yourname'</span>;</span><br><span class="line">var <span class="variable">$password</span> = <span class="string">'password'</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var <span class="variable">$username</span> = <span class="string">&#x27;yourname&#x27;</span>;</span><br><span class="line">var <span class="variable">$password</span> = <span class="string">&#x27;password&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>保存文件。</p>
 <p>创建文件如下内容：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo vim /etc/default/virutalbox</span><br></pre></td></tr></table></figure>
@@ -92,7 +95,7 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">VBOXWEB_USER=yourname</span><br></pre></td></tr></table></figure>
 <p>最后，重新启动服务：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl restart vboxweb-service</span><br><span class="line">sudo systemctl restart vboxdrv</span><br><span class="line">sudo systemctl restart apache2</span><br></pre></td></tr></table></figure>
-<h2 id="调整防火墙允许apache-web服务器连接"><a href="#调整防火墙允许apache-web服务器连接" class="headerlink" title="调整防火墙允许apache web服务器连接"></a>调整防火墙允许apache web服务器连接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw all list</span><br><span class="line">sudo ufw app info <span class="string">"Apache Full"</span></span><br><span class="line">sudo ufw reload</span><br></pre></td></tr></table></figure>
+<h2 id="调整防火墙允许apache-web服务器连接"><a href="#调整防火墙允许apache-web服务器连接" class="headerlink" title="调整防火墙允许apache web服务器连接"></a>调整防火墙允许apache web服务器连接</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw all list</span><br><span class="line">sudo ufw app info <span class="string">&quot;Apache Full&quot;</span></span><br><span class="line">sudo ufw reload</span><br></pre></td></tr></table></figure>
 <p>如下图所示：</p>
 <p><img src="https://blog.ywmy.xyz/ywmy/linuxvboxstatus.png" alt="状态"></p>
 <h2 id="访问phpvirtualbox的web控制台"><a href="#访问phpvirtualbox的web控制台" class="headerlink" title="访问phpvirtualbox的web控制台"></a>访问phpvirtualbox的web控制台</h2><p>现在，可以使用任意一台系统过程访问phpvirtualbox来操作virtualbox了。参考图：</p>
@@ -100,26 +103,35 @@
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#安装phpvirtualbox"><span class="toc-number">1.</span> <span class="toc-text">安装phpvirtualbox</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#前提条件"><span class="toc-number">1.1.</span> <span class="toc-text">前提条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#在ubuntu-18-04上安装virtualbox"><span class="toc-number">1.2.</span> <span class="toc-text">在ubuntu 18.04上安装virtualbox</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装phpvirtualbox过程"><span class="toc-number">1.3.</span> <span class="toc-text">安装phpvirtualbox过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#调整防火墙允许apache-web服务器连接"><span class="toc-number">1.4.</span> <span class="toc-text">调整防火墙允许apache web服务器连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问phpvirtualbox的web控制台"><span class="toc-number">1.5.</span> <span class="toc-text">访问phpvirtualbox的web控制台</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85phpvirtualbox"><span class="toc-number">1.</span> <span class="toc-text">安装phpvirtualbox</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E6%8F%90%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">前提条件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9C%A8ubuntu-18-04%E4%B8%8A%E5%AE%89%E8%A3%85virtualbox"><span class="toc-number">1.2.</span> <span class="toc-text">在ubuntu 18.04上安装virtualbox</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AE%89%E8%A3%85phpvirtualbox%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.</span> <span class="toc-text">安装phpvirtualbox过程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B0%83%E6%95%B4%E9%98%B2%E7%81%AB%E5%A2%99%E5%85%81%E8%AE%B8apache-web%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%BF%9E%E6%8E%A5"><span class="toc-number">1.4.</span> <span class="toc-text">调整防火墙允许apache web服务器连接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%AE%BF%E9%97%AEphpvirtualbox%E7%9A%84web%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="toc-number">1.5.</span> <span class="toc-text">访问phpvirtualbox的web控制台</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -129,14 +141,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -187,6 +205,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

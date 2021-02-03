@@ -1,14 +1,14 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>GNS3添加网络设备 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,GNS3添加网络设备搭建环境
 系统：ubuntu 18.04.2 LTS(Linux 4.15.0-48-generic #51-Ubuntu SMP Wed Apr 3 08:28:49 UTC ,"> 
@@ -16,7 +16,9 @@
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -24,17 +26,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">GNS3添加网络设备</h3>
     <div class="social">
@@ -50,12 +53,12 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">GNS3添加网络设备</h1>
         <div class="stuff">
             <span>五月 14, 2019</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/network/">network</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/network/" rel="tag">network</a></li></ul>
 
 
         </div>
@@ -102,38 +105,47 @@
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">wget http://www.ipvanquish.com/download/CiscoIOUKeygen3f.py</span><br><span class="line">python3 CiscoIOUKeygen3f.py</span><br></pre></td></tr></table></figure>
 <p>生成的文件为.iourc。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Already copy to the file iourc.txt</span><br><span class="line"></span><br><span class="line">You can <span class="built_in">disable</span> the phone home feature with something like:</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">'127.0.0.127 xml.cisco.com'</span> &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Already copy to the file iourc.txt</span><br><span class="line"></span><br><span class="line">You can <span class="built_in">disable</span> the phone home feature with something like:</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;127.0.0.127 xml.cisco.com&#x27;</span> &gt;&gt; /etc/hosts</span><br></pre></td></tr></table></figure>
 <p>把生成的GNS VM license添加到IOU on UNIX中，后，即可添加IOU设备。</p>
 <p>操作方法：</p>
 <p>[edit]-&gt;[Preferenses]-&gt;[IOS on UNIX]-&gt;[IOU devices]-&gt;[new]</p>
 <p>添加IOU镜像，添加后，即可直接通过VM来运行l2 switch l3 router设备。</p>
 <p>IOU和.iourc文件在哪里找，可以度之。</p>
 <p>license gen直接给脚本吧：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#! /usr/bin/python3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"*********************************************************************"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"Cisco IOU License Generator - Kal 2011, python port of 2006 C version"</span>)</span><br><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line">import hashlib</span><br><span class="line">import struct</span><br><span class="line"><span class="comment"># get the host id and host name to calculate the hostkey</span></span><br><span class="line">hostid=os.popen(<span class="string">"hostid"</span>).<span class="built_in">read</span>().strip()</span><br><span class="line">hostname = socket.gethostname()</span><br><span class="line">ioukey=int(hostid,16)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> hostname:</span><br><span class="line"> ioukey = ioukey + ord(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"hostid="</span> + hostid +<span class="string">", hostname="</span>+ hostname + <span class="string">", ioukey="</span> + hex(ioukey)[2:])</span><br><span class="line"><span class="comment"># create the license using md5sum</span></span><br><span class="line">iouPad1 = b<span class="string">'\x4B\x58\x21\x81\x56\x7B\x0D\xF3\x21\x43\x9B\x7E\xAC\x1D\xE6\x8A'</span></span><br><span class="line">iouPad2 = b<span class="string">'\x80'</span> + 39*b<span class="string">'\0'</span></span><br><span class="line">md5input=iouPad1 + iouPad2 + struct.pack(<span class="string">'!i'</span>, ioukey) + iouPad1</span><br><span class="line">iouLicense=hashlib.md5(md5input).hexdigest()[:16]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"\nAdd the following text to ~/.iourc:"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"[license]\n"</span> + hostname + <span class="string">" = "</span> + iouLicense + <span class="string">";\n"</span>)</span><br><span class="line">with open(<span class="string">"iourc.txt"</span>, <span class="string">"wt"</span>) as out_file:</span><br><span class="line">   out_file.write(<span class="string">"[license]\n"</span> + hostname + <span class="string">" = "</span> + iouLicense + <span class="string">";\n"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">"^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAlready copy to the file iourc.txt\n "</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">"You can disable the phone home feature with something like:"</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">" echo '127.0.0.127 xml.cisco.com' &gt;&gt; /etc/hosts\n"</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#! /usr/bin/python3</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;*********************************************************************&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;Cisco IOU License Generator - Kal 2011, python port of 2006 C version&quot;</span>)</span><br><span class="line">import os</span><br><span class="line">import socket</span><br><span class="line">import hashlib</span><br><span class="line">import struct</span><br><span class="line"><span class="comment"># get the host id and host name to calculate the hostkey</span></span><br><span class="line">hostid=os.popen(<span class="string">&quot;hostid&quot;</span>).<span class="built_in">read</span>().strip()</span><br><span class="line">hostname = socket.gethostname()</span><br><span class="line">ioukey=int(hostid,16)</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> hostname:</span><br><span class="line"> ioukey = ioukey + ord(x)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;hostid=&quot;</span> + hostid +<span class="string">&quot;, hostname=&quot;</span>+ hostname + <span class="string">&quot;, ioukey=&quot;</span> + hex(ioukey)[2:])</span><br><span class="line"><span class="comment"># create the license using md5sum</span></span><br><span class="line">iouPad1 = b<span class="string">&#x27;\x4B\x58\x21\x81\x56\x7B\x0D\xF3\x21\x43\x9B\x7E\xAC\x1D\xE6\x8A&#x27;</span></span><br><span class="line">iouPad2 = b<span class="string">&#x27;\x80&#x27;</span> + 39*b<span class="string">&#x27;\0&#x27;</span></span><br><span class="line">md5input=iouPad1 + iouPad2 + struct.pack(<span class="string">&#x27;!i&#x27;</span>, ioukey) + iouPad1</span><br><span class="line">iouLicense=hashlib.md5(md5input).hexdigest()[:16]</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;\nAdd the following text to ~/.iourc:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;[license]\n&quot;</span> + hostname + <span class="string">&quot; = &quot;</span> + iouLicense + <span class="string">&quot;;\n&quot;</span>)</span><br><span class="line">with open(<span class="string">&quot;iourc.txt&quot;</span>, <span class="string">&quot;wt&quot;</span>) as out_file:</span><br><span class="line">   out_file.write(<span class="string">&quot;[license]\n&quot;</span> + hostname + <span class="string">&quot; = &quot;</span> + iouLicense + <span class="string">&quot;;\n&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAlready copy to the file iourc.txt\n &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;You can disable the phone home feature with something like:&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot; echo &#x27;127.0.0.127 xml.cisco.com&#x27; &gt;&gt; /etc/hosts\n&quot;</span>)</span><br></pre></td></tr></table></figure>
 <p>好了，操作记录补充结束。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GNS3添加网络设备"><span class="toc-number">1.</span> <span class="toc-text">GNS3添加网络设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#搭建环境"><span class="toc-number">1.1.</span> <span class="toc-text">搭建环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GNS3安装"><span class="toc-number">1.2.</span> <span class="toc-text">GNS3安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加设备"><span class="toc-number">1.3.</span> <span class="toc-text">添加设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#添加IOU"><span class="toc-number">1.4.</span> <span class="toc-text">添加IOU</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#GNS3%E6%B7%BB%E5%8A%A0%E7%BD%91%E7%BB%9C%E8%AE%BE%E5%A4%87"><span class="toc-number">1.</span> <span class="toc-text">GNS3添加网络设备</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%90%AD%E5%BB%BA%E7%8E%AF%E5%A2%83"><span class="toc-number">1.1.</span> <span class="toc-text">搭建环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GNS3%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">GNS3安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E8%AE%BE%E5%A4%87"><span class="toc-number">1.3.</span> <span class="toc-text">添加设备</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0IOU"><span class="toc-number">1.4.</span> <span class="toc-text">添加IOU</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -143,14 +155,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -201,6 +219,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 

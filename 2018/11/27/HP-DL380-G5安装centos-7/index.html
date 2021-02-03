@@ -1,21 +1,23 @@
 
 <!DOCTYPE html>
 <html lang="zh-Hans" class="loading">
-<head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>HP DL380 G5安装centos 7 - 豆豆家</title>
-    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
+    <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
     <meta name="description" content="网络和美食,背景公司有一台老旧的惠普服务器，三块盘做了RAID5，之前上面安装了一个windows系统。之前的规划中，起什么作用已经没人知道了，后面三块中的一块硬盘坏了，再后面开机都开了了，这台服务器就闲置了。,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="豆豆家" type="application/atom+xml"> 
     <link rel="icon" href="https://s.gravatar.com/avatar/9891bcc848d15226914be94e08200208?s=80"> 
     
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
 	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     <script>
          (adsbygoogle = window.adsbygoogle || []).push({
@@ -23,17 +25,18 @@
               enable_page_level_ads: true
          });
     </script>
-    <script async custom-element="amp-auto-ads" src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-</head>
-</html>
+<meta name="generator" content="Hexo 5.3.0"></head>
+
 <body class="loading">
     <span id="config-title" style="display:none">豆豆家</span>
     <div id="loader"></div>
     <div id="single">
     <div id="top" style="display: block;">
     <div class="bar" style="width: 0;"></div>
-    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://yoursite.com"></a>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
     <h3 class="subtitle">HP DL380 G5安装centos 7</h3>
     <div class="social">
@@ -49,12 +52,12 @@
 
     <div class="section">
         <div class="article">
-    <div class="main">
+    <div class='main'>
         <h1 class="title">HP DL380 G5安装centos 7</h1>
         <div class="stuff">
             <span>十一月 27, 2018</span>
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/">linux</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
@@ -69,7 +72,7 @@
 <p><img src="https://blog.ywmy.xyz/hp-bios-setup.jpg" alt="BIOS"></p>
 <p>可能是机器老旧的原因，这台服务器上的支持的启动项有限，光驱、软驱、硬盘和网络都有，就是没有看到USB支持的。尝试了一下，无论是自己用UTRLISO写入的硬盘镜像还是WINPE都无法引导。只能想想光驱的主意了，结果公司还没找到之前刻录的系统盘。最终把目光描准了自己的U盘，准备做个USB－CD量产。关于量产的细节，自己准备再补一篇，最终是成功量产了，也正常进入引导。好了，服务器检查、硬件及安装前的准备工作就已经都准备好了。引导如下图所示：</p>
 <p><img src="https://blog.ywmy.xyz/install-centos.jpg" alt="bootup"></p>
-<h2 id="step-two：系统安装"><a href="#step-two：系统安装" class="headerlink" title="step two：系统安装"></a>step two：系统安装</h2><p>正式从U盘引导启动后，就进入了熟悉的centos安装界面了，按提示操作，到了选择硬盘的时候，出现了一个问题，即安装系统中即认不到raid后的磁盘，也看到量产过后的U盘的信息，磁盘选择的地方是空的，没有可用的选择。这下好像是不是有些问题了？这台机器之前有安装过操作系统，那就一定是有办法的。想想，试着网上搜索了一下，发现这台服务器在安装centos 7的时候，确实会遇到这个问题，不过还好，有解决办法，解决办法参考<a href="https://tieba.baidu.com/p/5491102757?traceid=" target="_blank" rel="noopener">链接</a>，问题的原因就是在raid上。</p>
+<h2 id="step-two：系统安装"><a href="#step-two：系统安装" class="headerlink" title="step two：系统安装"></a>step two：系统安装</h2><p>正式从U盘引导启动后，就进入了熟悉的centos安装界面了，按提示操作，到了选择硬盘的时候，出现了一个问题，即安装系统中即认不到raid后的磁盘，也看到量产过后的U盘的信息，磁盘选择的地方是空的，没有可用的选择。这下好像是不是有些问题了？这台机器之前有安装过操作系统，那就一定是有办法的。想想，试着网上搜索了一下，发现这台服务器在安装centos 7的时候，确实会遇到这个问题，不过还好，有解决办法，解决办法参考<a target="_blank" rel="noopener" href="https://tieba.baidu.com/p/5491102757?traceid=">链接</a>，问题的原因就是在raid上。</p>
 <p>操作方法，进入install centos 界面后，近e键编辑引导基加入下面图像中画红线的竞价内容：</p>
 <p><img src="https://blog.ywmy.xyz/edit-boot-configuration.jpg" alt="boot-conf"></p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hpsa.hpsa_sample_mode=1 hpsa.hpsa_allow_anly=1</span><br></pre></td></tr></table></figure>
@@ -85,26 +88,35 @@
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
-                <source type="audio/mpeg" src>
+                <source type="audio/mpeg" src="">
             </audio>
             
                 <ul id="audio-list" style="display:none">
                     
                         
-                            <li title="0" data-url="https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3"></li>
+                            <li title='0' data-url='https://blog.ywmy.xyz/Journey%20to%20the%20Light.mp3'></li>
                         
                     
                 </ul>
             
         </div>
         
-    <div id="gitalk-container" class="comment link" data-enable="false" data-ae="false" data-ci data-cs data-r data-o data-a data-d="false">查看评论</div>
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci=''
+        data-cs=''
+        data-r=''
+        data-o=''
+        data-a=''
+        data-d='false'
+    >查看评论</div>
 
 
     </div>
     
-        <div class="side">
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#背景"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#step-one：开机检查"><span class="toc-number">1.1.</span> <span class="toc-text">step one：开机检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step-two：系统安装"><span class="toc-number">1.2.</span> <span class="toc-text">step two：系统安装</span></a></li></ol></li></ol>	
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%83%8C%E6%99%AF"><span class="toc-number">1.</span> <span class="toc-text">背景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#step-one%EF%BC%9A%E5%BC%80%E6%9C%BA%E6%A3%80%E6%9F%A5"><span class="toc-number">1.1.</span> <span class="toc-text">step one：开机检查</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#step-two%EF%BC%9A%E7%B3%BB%E7%BB%9F%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.</span> <span class="toc-text">step two：系统安装</span></a></li></ol></li></ol>	
         </div>
     
 </div>
@@ -114,14 +126,20 @@
 </div>
 </body>
 
+
 <script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
 <script src="/js/plugin.js"></script>
 <script src="/js/typed.js"></script>
 <script src="/js/diaspora.js"></script>
+
+
 <link rel="stylesheet" href="/photoswipe/photoswipe.css">
 <link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
 <script src="/photoswipe/photoswipe.min.js"></script>
 <script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
 
 <!-- Root element of PhotoSwipe. Must have class pswp. -->
 <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
@@ -172,6 +190,25 @@
 </div>
 
 
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({"HTML-CSS": { preferredFont: "TeX", availableFonts: ["STIX","TeX"], linebreaks: { automatic:true }, EqnChunk: (MathJax.Hub.Browser.isMobile ? 10 : 50) },
+        tex2jax: { inlineMath: [ ["$", "$"], ["\\(","\\)"] ], processEscapes: true, ignoreClass: "tex2jax_ignore|dno",skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']},
+        TeX: {  noUndefined: { attributes: { mathcolor: "red", mathbackground: "#FFEEEE", mathsize: "90%" } }, Macros: { href: "{}" } },
+        messageStyle: "none"
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
 
 
 
