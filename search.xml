@@ -1785,17 +1785,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu 18.04 安装 GoogleEarth</title>
-    <url>/2019/03/02/ubuntu-18-04-%E5%AE%89%E8%A3%85-GoogleEarth/</url>
-    <content><![CDATA[<h1 id="ubuntu-18-04-安装-GoogleEarthPro"><a href="#ubuntu-18-04-安装-GoogleEarthPro" class="headerlink" title="ubuntu 18.04 安装 GoogleEarthPro"></a>ubuntu 18.04 安装 GoogleEarthPro</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04 LTS</p>
-<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install update</span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install gdebi-core wget</span><br></pre></td></tr></table></figure>
-<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
-<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gdebi google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ubuntu 18.04 使用小结</title>
     <url>/2019/03/24/ubuntu-18-04-%E4%BD%BF%E7%94%A8%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<h1 id="ubuntu-18-04安装配置小结"><a href="#ubuntu-18-04安装配置小结" class="headerlink" title="ubuntu 18.04安装配置小结"></a>ubuntu 18.04安装配置小结</h1><p>起因，从自己毕业以来，自己的电脑就一直在使用ubuntu。最早的长期使用就是从12.04LTS用起。基本到每一个LTS版本自己就升级一次版本。到18.04时，自己重装了系统，各种小折腾后，基本上就比较符合自己需求了。一些小瑕疵还是有的，比如有一些自己之前常用的软件，某些依赖不再被支持，无法安装或启动。在自己尝试无果后，还因为不知道安装了某些依赖，导致系统重启后，每次都会跳出系统错误，询问是否发送报告。虽然实际使用中是没什么问题，不过这个让人比较难受。</p>
@@ -1940,6 +1929,17 @@
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>在完成这次的重装后，因为上了固态这个大保健，电脑似乎又能再战三年。全新安装后的系统也没有报错，之前因为自己折腾而导致各种不明依赖造成的手绘板不可用也正常使用了。算是已经接近自己完美使用的需要了。</p>
 <p>自然，也还有一些问题，在我自己搭建的过程中，也给解决掉了。其中有一个因为系统更新后，键盘鼠标不可用的。也在自己搜索后得到解决的办法，会单独写一篇记录，实在是值得记住，差点想要放弃重新再安装。</p>
 ]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu 18.04 安装 GoogleEarth</title>
+    <url>/2019/03/02/ubuntu-18-04-%E5%AE%89%E8%A3%85-GoogleEarth/</url>
+    <content><![CDATA[<h1 id="ubuntu-18-04-安装-GoogleEarthPro"><a href="#ubuntu-18-04-安装-GoogleEarthPro" class="headerlink" title="ubuntu 18.04 安装 GoogleEarthPro"></a>ubuntu 18.04 安装 GoogleEarthPro</h1><h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><p>系统：ubuntu 18.04 LTS</p>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install update</span><br><span class="line">sudo apt install upgrade</span><br><span class="line">sudo apt install gdebi-core wget</span><br></pre></td></tr></table></figure>
+<h2 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget https://dl.google.com/dl/earth/client/current/google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gdebi google-earth-pro-stable_current_amd64.deb</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -2645,7 +2645,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#x64;&#x6d;&#105;&#x6e;&#64;&#104;&#x75;&#x61;&#119;&#101;&#x69;&#46;&#99;&#x6f;&#x6d;">&#x61;&#x64;&#x6d;&#105;&#x6e;&#64;&#104;&#x75;&#x61;&#119;&#101;&#x69;&#46;&#99;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#97;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#117;&#97;&#119;&#x65;&#105;&#x2e;&#x63;&#111;&#x6d;">&#97;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#117;&#97;&#119;&#x65;&#105;&#x2e;&#x63;&#111;&#x6d;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2657,7 +2657,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#x75;&#x61;&#119;&#101;&#105;&#x2e;&#99;&#111;&#109;">&#x61;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#x75;&#x61;&#119;&#101;&#105;&#x2e;&#99;&#111;&#109;</a></td>
+<td><a href="mailto:&#97;&#x64;&#x6d;&#105;&#110;&#x40;&#104;&#117;&#97;&#x77;&#x65;&#x69;&#x2e;&#x63;&#111;&#109;">&#97;&#x64;&#x6d;&#105;&#110;&#x40;&#104;&#117;&#97;&#x77;&#x65;&#x69;&#x2e;&#x63;&#111;&#109;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
