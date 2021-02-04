@@ -460,24 +460,6 @@
       </tags>
   </entry>
   <entry>
-    <title>U盘量产</title>
-    <url>/2018/12/01/U%E7%9B%98%E9%87%8F%E4%BA%A7/</url>
-    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>需求回到上一篇文章，惠普服务器的安装中，因为设备比较旧，对启动的支持有限，即尝试了U盘量产，希望能将U盘量产为USB－CDROM以实现从光驱启动的目的。自己手里有两个U盘，一个16GB的金士顿，还有一个小米家的32GB小米U盘。之前有过量产挂盘的经历后，对于这次的量产，还是比较小心的，从16GB的开始，没想，还真的没之前的问题。将16GB的量产结束了，接着对32GB的U盘也做了量产，都没有问题。记录量产过程如下：</p>
-<h2 id="金士顿16GB量产"><a href="#金士顿16GB量产" class="headerlink" title="金士顿16GB量产"></a>金士顿16GB量产</h2><p>量产的前期准备，需求检测U盘的主控芯片，这个有一个通用的工具，叫<strong>芯片精灵</strong>可以检测到U盘主控相关的信息。下载请戳<a href="http://www.upantool.com/test/xinpian/2011/ChipGenius_V4.html">链接</a>。</p>
-<p>通过芯片精灵检测到主控芯片后，即可以去上面芯片精灵的网站，下载相应的量产工具，如自己16GB的金士顿，主控芯片为群联，即可从网站搜索群联的量产工具，有两个，MPALL和一个傻瓜转换工具ModeConverter。<br>量产方式参考<a href="http://www.upantool.com/jiaocheng/liangchan/Phison/5108.html">链接</a>。</p>
-<h2 id="小米32GB量产"><a href="#小米32GB量产" class="headerlink" title="小米32GB量产"></a>小米32GB量产</h2><p>同上一样，通过使用芯片精灵，读取相应的主控信息。接下来去量产网站下载相应的量产工具，小米32GB的U盘，采用的是慧荣的主控芯片。量产工具为：SM3267AE_2.5.54。</p>
-<p>量产方式参考<a href="http://www.upantool.com/liangchan/SMI/2016/8732.html">链接</a>。</p>
-<hr>
-<p>附上两张量产后的图（小米的量产）：</p>
-<p><img src="https://blog.ywmy.xyz/windows/USB_mass_production.png" alt="USB_MASS_PRODUCTION"></p>
-<p><img src="https://blog.ywmy.xyz/disk_manager.png" alt="DISK_MANAGER"></p>
-<p>U盘量产为一个5GB的光驱和一个28GB的数据盘。数据盘又给我做了多启动，通过多启动来实现系统维护，即AIOBOOT和AIO——UEFI两个分区。</p>
-]]></content>
-      <tags>
-        <tag>windows</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>centos 6 更换网卡</title>
     <url>/2020/02/22/centos-6-%E6%9B%B4%E6%8D%A2%E7%BD%91%E5%8D%A1/</url>
     <content><![CDATA[<h2 id="CentOS-6-更换网卡"><a href="#CentOS-6-更换网卡" class="headerlink" title="CentOS 6 更换网卡"></a>CentOS 6 更换网卡</h2><p>开年上班了，到公司第一件事情就是处理过年期间挂掉的几台服务器。其中一台在自己尝试BIOS电池放电、换内存、换电源都没办法点亮后，就只能想着找一块一样的主板换上，试试能不能正常启来。还好主板是有的，换上后，正常开机了。启动后的一个问题，换主板了，网卡信息就变更了，这样新的网卡就没办法正常启用。</p>
@@ -505,6 +487,24 @@
 ]]></content>
       <tags>
         <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>U盘量产</title>
+    <url>/2018/12/01/U%E7%9B%98%E9%87%8F%E4%BA%A7/</url>
+    <content><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>需求回到上一篇文章，惠普服务器的安装中，因为设备比较旧，对启动的支持有限，即尝试了U盘量产，希望能将U盘量产为USB－CDROM以实现从光驱启动的目的。自己手里有两个U盘，一个16GB的金士顿，还有一个小米家的32GB小米U盘。之前有过量产挂盘的经历后，对于这次的量产，还是比较小心的，从16GB的开始，没想，还真的没之前的问题。将16GB的量产结束了，接着对32GB的U盘也做了量产，都没有问题。记录量产过程如下：</p>
+<h2 id="金士顿16GB量产"><a href="#金士顿16GB量产" class="headerlink" title="金士顿16GB量产"></a>金士顿16GB量产</h2><p>量产的前期准备，需求检测U盘的主控芯片，这个有一个通用的工具，叫<strong>芯片精灵</strong>可以检测到U盘主控相关的信息。下载请戳<a href="http://www.upantool.com/test/xinpian/2011/ChipGenius_V4.html">链接</a>。</p>
+<p>通过芯片精灵检测到主控芯片后，即可以去上面芯片精灵的网站，下载相应的量产工具，如自己16GB的金士顿，主控芯片为群联，即可从网站搜索群联的量产工具，有两个，MPALL和一个傻瓜转换工具ModeConverter。<br>量产方式参考<a href="http://www.upantool.com/jiaocheng/liangchan/Phison/5108.html">链接</a>。</p>
+<h2 id="小米32GB量产"><a href="#小米32GB量产" class="headerlink" title="小米32GB量产"></a>小米32GB量产</h2><p>同上一样，通过使用芯片精灵，读取相应的主控信息。接下来去量产网站下载相应的量产工具，小米32GB的U盘，采用的是慧荣的主控芯片。量产工具为：SM3267AE_2.5.54。</p>
+<p>量产方式参考<a href="http://www.upantool.com/liangchan/SMI/2016/8732.html">链接</a>。</p>
+<hr>
+<p>附上两张量产后的图（小米的量产）：</p>
+<p><img src="https://blog.ywmy.xyz/windows/USB_mass_production.png" alt="USB_MASS_PRODUCTION"></p>
+<p><img src="https://blog.ywmy.xyz/disk_manager.png" alt="DISK_MANAGER"></p>
+<p>U盘量产为一个5GB的光驱和一个28GB的数据盘。数据盘又给我做了多启动，通过多启动来实现系统维护，即AIOBOOT和AIO——UEFI两个分区。</p>
+]]></content>
+      <tags>
+        <tag>windows</tag>
       </tags>
   </entry>
   <entry>
@@ -1682,7 +1682,6 @@
 <li>GSConnect</li>
 <li>Momentum</li>
 <li>PanicButton</li>
-<li>Proxy SwitchyOmega</li>
 <li>Google翻译</li>
 <li>Neater Bookmarks</li>
 <li>Secure Shell Extension</li>
@@ -2482,7 +2481,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#x64;&#x6d;&#x69;&#x6e;&#64;&#x68;&#x75;&#97;&#119;&#x65;&#x69;&#x2e;&#99;&#x6f;&#109;">&#x61;&#x64;&#x6d;&#x69;&#x6e;&#64;&#x68;&#x75;&#97;&#119;&#x65;&#x69;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#x61;&#100;&#109;&#x69;&#110;&#x40;&#x68;&#117;&#97;&#119;&#101;&#105;&#x2e;&#x63;&#111;&#109;">&#x61;&#100;&#109;&#x69;&#110;&#x40;&#x68;&#117;&#97;&#119;&#101;&#105;&#x2e;&#x63;&#111;&#109;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2494,7 +2493,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#97;&#100;&#109;&#105;&#110;&#x40;&#x68;&#x75;&#97;&#x77;&#101;&#105;&#46;&#x63;&#111;&#109;">&#97;&#100;&#109;&#105;&#110;&#x40;&#x68;&#x75;&#97;&#x77;&#101;&#105;&#46;&#x63;&#111;&#109;</a></td>
+<td><a href="mailto:&#97;&#x64;&#x6d;&#105;&#x6e;&#64;&#x68;&#x75;&#97;&#x77;&#x65;&#105;&#x2e;&#x63;&#x6f;&#109;">&#97;&#x64;&#x6d;&#105;&#x6e;&#64;&#x68;&#x75;&#97;&#x77;&#x65;&#105;&#x2e;&#x63;&#x6f;&#109;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
