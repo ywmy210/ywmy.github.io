@@ -1305,6 +1305,32 @@
       </tags>
   </entry>
   <entry>
+    <title>openssh 添加 sha1支持</title>
+    <url>/2021/01/29/openssh-%E6%B7%BB%E5%8A%A0-sha1%E6%94%AF%E6%8C%81/</url>
+    <content><![CDATA[<h2 id="openssh-添加-sha1支持"><a href="#openssh-添加-sha1支持" class="headerlink" title="openssh 添加 sha1支持"></a>openssh 添加 sha1支持</h2><p>ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：</p>
+<blockquote>
+<p>Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1</p>
+</blockquote>
+<p><img src="https://blog.ywmy.xyz/network/diffine-hellman.jpg" alt="diffine-hellman"></p>
+<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
+<li>方法一</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@legacyhost</span><br></pre></td></tr></table></figure>
+<p>如上面示例设备提供的加密算法为diffie-hellman-group14-sha1<br>连接时实际使用：</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 admin@10.10.100.253</span><br></pre></td></tr></table></figure>
+<ul>
+<li>方法二</li>
+</ul>
+<p>编辑家目录下的配置文件(~/.ssh/config)</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host somehost.example.org</span><br><span class="line">    KexAlgorithms +diffie-hellman-group1-sha1</span><br></pre></td></tr></table></figure>
+<p>追加到config文件后面，即可。</p>
+<p>其它的算法支持，参考openssh官方<a href="http://www.openssh.com/legacy.html">文档</a>。</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mysql 常用操作</title>
     <url>/2019/04/21/mysql-%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C/</url>
     <content><![CDATA[<p>记录一些mysql 基本操作的命令，这是少接触，怕用到的那一部分。有需要了，还得回这里看看，以备万一，哪天有时间了，也可以过来学学。这就样。</p>
@@ -1439,32 +1465,6 @@
 ]]></content>
       <tags>
         <tag>database</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>openssh 添加 sha1支持</title>
-    <url>/2021/01/29/openssh-%E6%B7%BB%E5%8A%A0-sha1%E6%94%AF%E6%8C%81/</url>
-    <content><![CDATA[<h2 id="openssh-添加-sha1支持"><a href="#openssh-添加-sha1支持" class="headerlink" title="openssh 添加 sha1支持"></a>openssh 添加 sha1支持</h2><p>ubuntu 20.04 默认的 openssh 版本8.2p1不再支持老的hash加密算法。连接网络设备时报错。提示如下：</p>
-<blockquote>
-<p>Unable to negotiate with 10.10.100.253 port 22: no matching key exchange method found. Their offer: diffie-hellman-group-exchange-sha1,diffie-hellman-group14-sha1</p>
-</blockquote>
-<p><img src="https://blog.ywmy.xyz/network/diffine-hellman.jpg" alt="diffine-hellman"></p>
-<h2 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h2><ul>
-<li>方法一</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 user@legacyhost</span><br></pre></td></tr></table></figure>
-<p>如上面示例设备提供的加密算法为diffie-hellman-group14-sha1<br>连接时实际使用：</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">ssh -oKexAlgorithms=+diffie-hellman-group14-sha1 admin@10.10.100.253</span><br></pre></td></tr></table></figure>
-<ul>
-<li>方法二</li>
-</ul>
-<p>编辑家目录下的配置文件(~/.ssh/config)</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">Host somehost.example.org</span><br><span class="line">    KexAlgorithms +diffie-hellman-group1-sha1</span><br></pre></td></tr></table></figure>
-<p>追加到config文件后面，即可。</p>
-<p>其它的算法支持，参考openssh官方<a href="http://www.openssh.com/legacy.html">文档</a>。</p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
       </tags>
   </entry>
   <entry>
@@ -2498,7 +2498,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#100;&#x6d;&#x69;&#x6e;&#64;&#x68;&#x75;&#97;&#119;&#x65;&#105;&#46;&#99;&#x6f;&#x6d;">&#x61;&#100;&#x6d;&#x69;&#x6e;&#64;&#x68;&#x75;&#97;&#119;&#x65;&#105;&#46;&#99;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#x61;&#100;&#109;&#105;&#110;&#64;&#104;&#117;&#97;&#119;&#101;&#105;&#x2e;&#x63;&#111;&#109;">&#x61;&#100;&#109;&#105;&#110;&#64;&#104;&#117;&#97;&#119;&#101;&#105;&#x2e;&#x63;&#111;&#109;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2510,7 +2510,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#100;&#x6d;&#105;&#x6e;&#64;&#104;&#117;&#97;&#x77;&#101;&#105;&#46;&#99;&#111;&#109;">&#x61;&#100;&#x6d;&#105;&#x6e;&#64;&#104;&#117;&#97;&#x77;&#101;&#105;&#46;&#99;&#111;&#109;</a></td>
+<td><a href="mailto:&#97;&#x64;&#109;&#x69;&#x6e;&#64;&#104;&#117;&#97;&#119;&#x65;&#105;&#46;&#99;&#111;&#x6d;">&#97;&#x64;&#109;&#x69;&#x6e;&#64;&#104;&#117;&#97;&#119;&#x65;&#105;&#46;&#99;&#111;&#x6d;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
