@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>豆豆家</title>
+  <title>ywmy运维日志</title>
   
   <subtitle>network &amp; delicacy</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -319,29 +319,6 @@
   </entry>
   
   <entry>
-    <title>How to Deploy Google BBRon CentOS 7</title>
-    <link href="http://example.com/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/"/>
-    <id>http://example.com/2019/10/06/How-to-Deploy-Google-BBRon-CentOS-7/</id>
-    <published>2019-10-06T14:33:05.000Z</published>
-    <updated>2019-10-06T15:14:03.182Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="How-to-Deploy-Google-BBR-on-CentOS-7"><a href="#How-to-Deploy-Google-BBR-on-CentOS-7" class="headerlink" title="How to Deploy Google BBR on CentOS 7"></a>How to Deploy Google BBR on CentOS 7</h2><p>BBR (Bottleneck Bandwidth and RTT) is a new congestion control algorithm which is contributed to the Linux kernel TCP stack by Google. With BBR in place, a Linux server can get significantly increased throughput and reduced latency for connections. Besides, it’s easy to deploy BBR because this algorithm requires only updates on the sender side, not in the network or on the receiver side.</p><p>In this article, I will show you how to deploy BBR on a Vultr CentOS 7 KVM server instance.</p><h3 id="Prerequisites"><a href="#Prerequisites" class="headerlink" title="Prerequisites"></a>Prerequisites</h3><ul><li>A Vultr CentOS 7 x64 server instance.</li><li>A sudo user.</li></ul><h4 id="Step-1-Upgrade-the-kernel-using-the-ELRepo-RPM-repository"><a href="#Step-1-Upgrade-the-kernel-using-the-ELRepo-RPM-repository" class="headerlink" title="Step 1: Upgrade the kernel using the ELRepo RPM repository"></a>Step 1: Upgrade the kernel using the ELRepo RPM repository</h4><p>In order to use BBR, you need to upgrade the kernel of your CentOS 7 machine to 4.9.0. You can easily get that done using the ELRepo RPM repository.</p><p>Before the upgrade, you can take a look at the current kernel:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure><p>This command should output a string which resembles:</p><blockquote><p>3.10.0-514.2.2.el7.x86_64</p></blockquote><p>As you see, the current kernel is 3.10.0.</p><p>update and install the ELRepo repo:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum update</span><br><span class="line">sudo rpm --import https://www.elrepo.org/RPM-GPG-KEY-elrepo.org</span><br><span class="line">sudo rpm -Uvh http://www.elrepo.org/elrepo-release-7.0-2.el7.elrepo.noarch.rpm</span><br></pre></td></tr></table></figure><p>Install the 4.9.0 kernel using the ELRepo repo:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum --enablerepo=elrepo-kernel install kernel-ml -y</span><br></pre></td></tr></table></figure><p>Confirm the result:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpm -qa | grep kernel</span><br></pre></td></tr></table></figure><p>If the installation is successful, you should see kernel-ml-4.9.0-1.el7.elrepo.x86_64 among the output list:</p><blockquote><p>kernel-ml-4.9.0-1.el7.elrepo.x86_64<br>kernel-3.10.0-514.el7.x86_64<br>kernel-tools-libs-3.10.0-514.2.2.el7.x86_64<br>kernel-tools-3.10.0-514.2.2.el7.x86_64<br>kernel-3.10.0-514.2.2.el7.x86_64<br>Now, you need to enable the 4.9.0 kernel by setting up the default grub2 boot entry.</p></blockquote><p>Show all entries in the grub2 menu:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo egrep ^menuentry /etc/grub2.cfg | cut -f 2 -d \<span class="string">&#x27;</span></span><br></pre></td></tr></table></figure><p>The result should resemble:</p><blockquote><p>CentOS Linux 7 Rescue a0cbf86a6ef1416a8812657bb4f2b860 (4.9.0-1.el7.elrepo.x86_64)<br>CentOS Linux (4.9.0-1.el7.elrepo.x86_64) 7 (Core)<br>CentOS Linux (3.10.0-514.2.2.el7.x86_64) 7 (Core)<br>CentOS Linux (3.10.0-514.el7.x86_64) 7 (Core)<br>CentOS Linux (0-rescue-bf94f46c6bd04792a6a42c91bae645f7) 7 (Core)  </p></blockquote><p>Since the line count starts at 0 and the 4.9.0 kernel entry is on the second line, set the default boot entry as 1:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo grub2-set-default 1</span><br></pre></td></tr></table></figure><p>Reboot the system:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo shutdown -r now</span><br></pre></td></tr></table></figure><p>When the server is back online, log back in and rerun the uname command to confirm that you are using the correct Kernel:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname -r</span><br></pre></td></tr></table></figure><p>You should see the result as below:</p><blockquote><p>4.9.0-1.el7.elrepo.x86_64</p></blockquote><h4 id="Step-2-Enable-BBR"><a href="#Step-2-Enable-BBR" class="headerlink" title="Step 2: Enable BBR"></a>Step 2: Enable BBR</h4><p>In order to enable the BBR algorithm, you need to modify the sysctl configuration as follows:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;net.core.default_qdisc=fq&#x27;</span> | sudo tee -a /etc/sysctl.conf</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;net.ipv4.tcp_congestion_control=bbr&#x27;</span> | sudo tee -a /etc/sysctl.conf</span><br><span class="line">sudo sysctl -p</span><br></pre></td></tr></table></figure><p>Now, you can use the following commands to confirm that BBR is enabled:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl net.ipv4.tcp_available_congestion_control</span><br></pre></td></tr></table></figure><p>The output should resemble:</p><blockquote><p>net.ipv4.tcp_available_congestion_control = bbr cubic reno</p></blockquote><p>Next, verify with:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl -n net.ipv4.tcp_congestion_control</span><br></pre></td></tr></table></figure><p>The output should be:</p><blockquote><p>bbr</p></blockquote><p>Finally, check that the kernel module was loaded:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lsmod | grep bbr</span><br></pre></td></tr></table></figure><p>The output will be similar to:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tcp_bbr                16384  0</span><br></pre></td></tr></table></figure><p><a href="https://baicy.blogspot.com/2017/03/how-to-deploy-google-bbr-on-centos-7.html">reference 1</a></p><p><a href="https://www.linuxrumen.com/fwqdj/875.html">reference 2</a></p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;How-to-Deploy-Google-BBR-on-CentOS-7&quot;&gt;&lt;a href=&quot;#How-to-Deploy-Google-BBR-on-CentOS-7&quot; class=&quot;headerlink&quot; title=&quot;How to Deploy Google
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://example.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
     <title>centos+rsyslog+loganalyzer</title>
     <link href="http://example.com/2019/08/07/centos-rsyslog-loganalyzer/"/>
     <id>http://example.com/2019/08/07/centos-rsyslog-loganalyzer/</id>
@@ -476,6 +453,29 @@
     
     
       <category term="network" scheme="http://example.com/tags/network/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>windows 10 homebasic rdp</title>
+    <link href="http://example.com/2019/05/06/windows-10-homebasic-rdp/"/>
+    <id>http://example.com/2019/05/06/windows-10-homebasic-rdp/</id>
+    <published>2019-05-06T14:44:07.000Z</published>
+    <updated>2019-05-06T15:13:22.816Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="windows-10-家庭版开启远程"><a href="#windows-10-家庭版开启远程" class="headerlink" title="windows 10 家庭版开启远程"></a>windows 10 家庭版开启远程</h2><p>windows 家庭版的系统默认没有远程功能，大多数的预装正版的系统中无法使用windows自带的远程服务。</p><p>虽然通过绝大多数的第三方程序，都可以实现远程，但是自己之前有搭内网穿透，所以，也想把这个用上。于是又找到一个工具:rdpwrap。下载<a href="https://github.com/stascorp/rdpwrap/releases">请戳</a>。</p><p>选择最新zip包下载。</p><h3 id="安装rdpwrap"><a href="#安装rdpwrap" class="headerlink" title="安装rdpwrap"></a>安装rdpwrap</h3><ol><li>解压下载的包装包</li><li>安装程序</li></ol><p>依次运行RDPWinst，install，RDPconf文件。</p><p>RDPconf文件为检测文件，运行后，会发现服务无法启用，会出现Listener state和支持的问题。</p><p>解决办法：使用命令重装安装，比如把文件夹复制到C盘目录下，CMD以管理员身份运行</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> c:\RDPWrap</span><br><span class="line">c:\RDPWrap&gt;RDPWInst.exe -r</span><br></pre></td></tr></table></figure><p>安装后，再次打开RDPConf.exe</p><p>检测已经通过。安装结束。解决方法来自issues。</p><h3 id="验证"><a href="#验证" class="headerlink" title="验证"></a>验证</h3><p>使用内网其它电脑上的RDP工具，远程测试。如果使用的是microsoft账号登录的，则直接使用microsoft认证的信息登录即可。不用使用PIN码登录。</p><p>配置结束。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;windows-10-家庭版开启远程&quot;&gt;&lt;a href=&quot;#windows-10-家庭版开启远程&quot; class=&quot;headerlink&quot; title=&quot;windows 10 家庭版开启远程&quot;&gt;&lt;/a&gt;windows 10 家庭版开启远程&lt;/h2&gt;&lt;p&gt;window
+      
+    
+    </summary>
+    
+    
+      <category term="windows" scheme="http://example.com/tags/windows/"/>
     
   </entry>
   
