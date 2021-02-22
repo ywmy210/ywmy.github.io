@@ -858,6 +858,21 @@
       </tags>
   </entry>
   <entry>
+    <title>history 环境变量</title>
+    <url>/2021/02/22/history-%E7%8E%AF%E5%A2%83%E5%8F%98%E9%87%8F/</url>
+    <content><![CDATA[<h2 id="linux-添加history-环境变量"><a href="#linux-添加history-环境变量" class="headerlink" title="linux 添加history 环境变量"></a>linux 添加history 环境变量</h2><p>在linux下，我们可以通过history命令来查看用户的历史操作记录，在未进行配置的情况下，history只能查看历史操作记录，不记录时间及用户。可以从审计的角度来做一些事情。让history日志记录更细化。</p>
+<p>1、命令历史记录中添加时间、源、用户信息</p>
+<p>在/etc/profile.d目录下创建history.sh文件,不建议直接修改profile文件。</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># history</span></span><br><span class="line">USER_IP=`who -u am i 2&gt;/dev/null | awk <span class="string">&#x27;&#123;print $NF&#125;&#x27;</span> | sed -e <span class="string">&#x27;s/[()]//g&#x27;</span>`</span><br><span class="line"><span class="keyword">if</span> [ -z <span class="variable">$USER_IP</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">USER_IP=`hostname`</span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">export</span> HISTTIMEFORMAT=<span class="string">&quot;[%Y.%m.%d %H:%M:%S][<span class="variable">$&#123;USER_IP&#125;</span>-<span class="variable">$&#123;LOGNAME&#125;</span>]&quot;</span></span><br></pre></td></tr></table></figure>
+<p>2、重新加载新的环境变量</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sour /etc/profile</span><br></pre></td></tr></table></figure>
+<p>更新完成后，执行history命令，即可看到history命令输出日志、时间、源IP、用户，以及运行的命令信息。</p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>iproute2</title>
     <url>/2018/08/05/iproute2/</url>
     <content><![CDATA[<h1 id="iproute2常用"><a href="#iproute2常用" class="headerlink" title="iproute2常用"></a>iproute2常用</h1><ul>
@@ -2143,26 +2158,6 @@
       </tags>
   </entry>
   <entry>
-    <title>ubuntu 配置tftp服务</title>
-    <url>/2019/03/28/ubuntu-%E9%85%8D%E7%BD%AEtftp%E6%9C%8D%E5%8A%A1/</url>
-    <content><![CDATA[<h2 id="ubuntu-18-04-启用TFTP服务"><a href="#ubuntu-18-04-启用TFTP服务" class="headerlink" title="ubuntu 18.04 启用TFTP服务"></a>ubuntu 18.04 启用TFTP服务</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux</span><br></pre></td></tr></table></figure>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
-<li><p>创建tftp服务目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir tftproot</span><br><span class="line">chmod 777 tftproot</span><br></pre></td></tr></table></figure></li>
-<li><p>修改配置文件</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/default/tftpd-hpa /etc/default/tftpd-hpa_backup   //备份配置文件</span><br><span class="line">sudo vim /etc/default/tftpd-hpa         //修改配置文件</span><br><span class="line"></span><br><span class="line">//配置如下</span><br><span class="line"></span><br><span class="line"><span class="comment"># /etc/default/tftpd-hpa</span></span><br><span class="line"></span><br><span class="line">TFTP_USERNAME=<span class="string">&quot;tftp&quot;</span></span><br><span class="line">TFTP_DIRECTORY=<span class="string">&quot;/home/abcd/tftproot&quot;</span></span><br><span class="line">TFTP_ADDRESS=<span class="string">&quot;:69&quot;</span></span><br><span class="line">TFTP_OPTIONS=<span class="string">&quot;-l -c -s&quot;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>启用tftp服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service tftpd-hpa restart</span><br><span class="line">sudo systemctl status tftpd-hpa //查看服务状态</span><br><span class="line"></span><br><span class="line">● tftpd-hpa.service - LSB: HPA<span class="string">&#x27;s tftp server</span></span><br><span class="line"><span class="string">   Loaded: loaded (/etc/init.d/tftpd-hpa; generated)</span></span><br><span class="line"><span class="string">   Active: active (running) since Thu 2019-03-28 19:44:48 CST; 16s ago</span></span><br><span class="line"><span class="string">     Docs: man:systemd-sysv-generator(8)</span></span><br><span class="line"><span class="string">  Process: 11088 ExecStop=/etc/init.d/tftpd-hpa stop (code=exited, status=0/SUCC</span></span><br><span class="line"><span class="string">  Process: 11093 ExecStart=/etc/init.d/tftpd-hpa start (code=exited, status=0/SU</span></span><br><span class="line"><span class="string">    Tasks: 1 (limit: 4915)</span></span><br><span class="line"><span class="string">   CGroup: /system.slice/tftpd-hpa.service</span></span><br><span class="line"><span class="string">           └─11101 /usr/sbin/in.tftpd --listen --user tftp --address :69 -l -c -</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Starting LSB: HPA&#x27;</span>s tftp server...</span><br><span class="line">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:  * Starting HPA<span class="string">&#x27;s tftpd in.tftpd</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:    ...done.</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Started LSB: HPA&#x27;</span>s tftp server.</span><br><span class="line">lines 1-14/14 (END)</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>ubuntu下的一些小折腾</title>
     <url>/2019/04/17/ubuntu%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%98%E8%85%BE/</url>
     <content><![CDATA[<h2 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h2><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul>
@@ -2194,6 +2189,26 @@
 <p>完成设置后，显示效果生效，参考下图：</p>
 <p><img src="https://blog.ywmy.xyz/linux/vs_code_json_set.png" alt="vs_code_json_ser"></p>
 <p><a href="https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7">参考链接</a></p>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ubuntu 配置tftp服务</title>
+    <url>/2019/03/28/ubuntu-%E9%85%8D%E7%BD%AEtftp%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<h2 id="ubuntu-18-04-启用TFTP服务"><a href="#ubuntu-18-04-启用TFTP服务" class="headerlink" title="ubuntu 18.04 启用TFTP服务"></a>ubuntu 18.04 启用TFTP服务</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
+<li><p>创建tftp服务目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir tftproot</span><br><span class="line">chmod 777 tftproot</span><br></pre></td></tr></table></figure></li>
+<li><p>修改配置文件</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/default/tftpd-hpa /etc/default/tftpd-hpa_backup   //备份配置文件</span><br><span class="line">sudo vim /etc/default/tftpd-hpa         //修改配置文件</span><br><span class="line"></span><br><span class="line">//配置如下</span><br><span class="line"></span><br><span class="line"><span class="comment"># /etc/default/tftpd-hpa</span></span><br><span class="line"></span><br><span class="line">TFTP_USERNAME=<span class="string">&quot;tftp&quot;</span></span><br><span class="line">TFTP_DIRECTORY=<span class="string">&quot;/home/abcd/tftproot&quot;</span></span><br><span class="line">TFTP_ADDRESS=<span class="string">&quot;:69&quot;</span></span><br><span class="line">TFTP_OPTIONS=<span class="string">&quot;-l -c -s&quot;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>启用tftp服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service tftpd-hpa restart</span><br><span class="line">sudo systemctl status tftpd-hpa //查看服务状态</span><br><span class="line"></span><br><span class="line">● tftpd-hpa.service - LSB: HPA<span class="string">&#x27;s tftp server</span></span><br><span class="line"><span class="string">   Loaded: loaded (/etc/init.d/tftpd-hpa; generated)</span></span><br><span class="line"><span class="string">   Active: active (running) since Thu 2019-03-28 19:44:48 CST; 16s ago</span></span><br><span class="line"><span class="string">     Docs: man:systemd-sysv-generator(8)</span></span><br><span class="line"><span class="string">  Process: 11088 ExecStop=/etc/init.d/tftpd-hpa stop (code=exited, status=0/SUCC</span></span><br><span class="line"><span class="string">  Process: 11093 ExecStart=/etc/init.d/tftpd-hpa start (code=exited, status=0/SU</span></span><br><span class="line"><span class="string">    Tasks: 1 (limit: 4915)</span></span><br><span class="line"><span class="string">   CGroup: /system.slice/tftpd-hpa.service</span></span><br><span class="line"><span class="string">           └─11101 /usr/sbin/in.tftpd --listen --user tftp --address :69 -l -c -</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Starting LSB: HPA&#x27;</span>s tftp server...</span><br><span class="line">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:  * Starting HPA<span class="string">&#x27;s tftpd in.tftpd</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:    ...done.</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Started LSB: HPA&#x27;</span>s tftp server.</span><br><span class="line">lines 1-14/14 (END)</span><br></pre></td></tr></table></figure></li>
+</ul>
 ]]></content>
       <tags>
         <tag>linux</tag>
@@ -2480,7 +2495,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#97;&#100;&#109;&#x69;&#110;&#x40;&#x68;&#117;&#97;&#x77;&#x65;&#105;&#46;&#x63;&#x6f;&#x6d;">&#97;&#100;&#109;&#x69;&#110;&#x40;&#x68;&#117;&#97;&#x77;&#x65;&#105;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#x61;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#117;&#97;&#x77;&#101;&#x69;&#x2e;&#99;&#x6f;&#x6d;">&#x61;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#117;&#97;&#x77;&#101;&#x69;&#x2e;&#99;&#x6f;&#x6d;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2492,7 +2507,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#100;&#109;&#x69;&#110;&#x40;&#x68;&#x75;&#x61;&#x77;&#101;&#105;&#46;&#x63;&#x6f;&#x6d;">&#x61;&#100;&#109;&#x69;&#110;&#x40;&#x68;&#x75;&#x61;&#x77;&#101;&#105;&#46;&#x63;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#97;&#x64;&#x6d;&#105;&#x6e;&#x40;&#104;&#x75;&#97;&#x77;&#x65;&#x69;&#x2e;&#99;&#x6f;&#109;">&#97;&#x64;&#x6d;&#105;&#x6e;&#x40;&#104;&#x75;&#97;&#x77;&#x65;&#x69;&#x2e;&#99;&#x6f;&#109;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
