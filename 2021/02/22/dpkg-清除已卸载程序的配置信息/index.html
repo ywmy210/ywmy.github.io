@@ -5,12 +5,14 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>华为交换机清除console密码 - ywmy运维日志</title>
+    <title>dpkg 清除已卸载程序的配置信息 - ywmy运维日志</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
-    <meta name="description" content="网络和美食,华为交换机清除console密码昨天下午在准备查看一台交换机配置的时候，发现原来给的登录信息已经不正确了。就想着用console登录试试，发现console登录也设置了用户名和密码，于是只能想到通过,"> 
+    <meta name="description" content="网络和美食,ubuntu清除已卸载程序的配置文件ubuntu 上卸载软件后，后有一些残留的配置文件信息在电脑里面，操作清除配置文件。
+1、使用dpkg -l 列出系统安装包信息
+1234567891011121,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="ywmy运维日志" type="application/atom+xml"> 
     <link rel="icon" href="https://blog.ywmy.xyz/icno"> 
@@ -28,7 +30,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">华为交换机清除console密码</h3>
+    <h3 class="subtitle">dpkg 清除已卸载程序的配置信息</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -43,159 +45,25 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">华为交换机清除console密码</h1>
+        <h1 class="title">dpkg 清除已卸载程序的配置信息</h1>
         <div class="stuff">
-            <span>四月 11, 2019</span>
+            <span>二月 22, 2021</span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/network/" rel="tag">network</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <h2 id="华为交换机清除console密码"><a href="#华为交换机清除console密码" class="headerlink" title="华为交换机清除console密码"></a>华为交换机清除console密码</h2><p>昨天下午在准备查看一台交换机配置的时候，发现原来给的登录信息已经不正确了。就想着用console登录试试，发现console登录也设置了用户名和密码，于是只能想到通过启动菜单来尝试清除密码了。</p>
-<p>操作如下：</p>
-<h2 id="启动菜单默认密码"><a href="#启动菜单默认密码" class="headerlink" title="启动菜单默认密码"></a>启动菜单默认密码</h2><ul>
-<li>Console/telnet登录(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>V1R3C00</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V1R6C00－V1R6C05</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V2R2C00－V2R6C00</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-</tbody></table>
-<ul>
-<li>Web登录(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>V1R3C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R6C05</td>
-<td>admin</td>
-<td><a href="mailto:&#97;&#100;&#x6d;&#105;&#x6e;&#64;&#x68;&#x75;&#97;&#119;&#x65;&#x69;&#46;&#99;&#111;&#109;">&#97;&#100;&#x6d;&#105;&#x6e;&#64;&#x68;&#x75;&#97;&#119;&#x65;&#x69;&#46;&#99;&#111;&#109;</a></td>
-<td>0</td>
-</tr>
-<tr>
-<td>V2R1C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V2R3C00-V2R6C00</td>
-<td>admin</td>
-<td><a href="mailto:&#x61;&#x64;&#109;&#x69;&#110;&#x40;&#x68;&#117;&#97;&#x77;&#x65;&#x69;&#x2e;&#x63;&#x6f;&#109;">&#x61;&#x64;&#109;&#x69;&#110;&#x40;&#x68;&#117;&#97;&#x77;&#x65;&#x69;&#x2e;&#x63;&#x6f;&#109;</a></td>
-<td>0</td>
-</tr>
-</tbody></table>
-<ul>
-<li>BootROM(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>V1R3C00</td>
-<td>N/A</td>
-<td>9300</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>N/A</td>
-<td>huawei</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>N/A</td>
-<td>9300(框式)</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>N/A</td>
-<td>huawei(盒式)</td>
-<td>无</td>
-</tr>
-</tbody></table>
-<h2 id="恢复console密码"><a href="#恢复console密码" class="headerlink" title="恢复console密码"></a>恢复console密码</h2><ol>
-<li><p>设备断电</p>
-</li>
-<li><p>重新加电</p>
-</li>
-<li><p>电脑连CONSOLE口</p>
-</li>
-<li><p>按CTRL＋B键加载BOOT MENU<br>加载图如下：</p>
-<p><img src="https://blog.ywmy.xyz/network/huawei_boot_menu.png" alt="huawei_boot_memu"></p>
-</li>
-<li><p>清除console密码</p>
-<p> 加载图如下：</p>
-<p> <img src="https://blog.ywmy.xyz/network/clean_password_for_console_user.png" alt="clean_passwrod_for_console_user"></p>
-</li>
-<li><p>恢复默认启动项</p>
-<p>加载图如下：</p>
-<p><img src="https://blog.ywmy.xyz/network/boot_with_default_mode.png" alt="boot_with_default_mode"></p>
-</li>
-</ol>
+            <h2 id="ubuntu清除已卸载程序的配置文件"><a href="#ubuntu清除已卸载程序的配置文件" class="headerlink" title="ubuntu清除已卸载程序的配置文件"></a>ubuntu清除已卸载程序的配置文件</h2><p>ubuntu 上卸载软件后，后有一些残留的配置文件信息在电脑里面，操作清除配置文件。</p>
+<p>1、使用dpkg -l 列出系统安装包信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l</span><br><span class="line">期望状态=未知(u)/安装(i)/删除(r)/清除(p)/保持(h)</span><br><span class="line">| 状态=未安装(n)/已安装(i)/仅存配置(c)/仅解压缩(U)/配置失败(F)/不完全安装(H)/触发器等待(W)/触发器未决(T)</span><br><span class="line">|/ 错误?=(无)/须重装(R) (状态，错误：大写=故障)</span><br><span class="line">||/ 名称                                          版本                                     体系结构     描述</span><br><span class="line">+++-=============================================-========================================-============-======================================================================================</span><br><span class="line">================</span><br><span class="line">ii  accountsservice                               0.6.55-0ubuntu12~20.04.4                 amd64        query and manipulate user account information</span><br><span class="line">ii  acl                                           2.2.53-6                                 amd64        access control list - utilities</span><br><span class="line">ii  acpi-support                                  0.143                                    amd64        scripts <span class="keyword">for</span> handling many ACPI events</span><br><span class="line">ii  acpid                                         1:2.0.32-1ubuntu1                        amd64        Advanced Configuration and Power Interface event daemon</span><br><span class="line">ii  adb                                           1:8.1.0+r23-5ubuntu2                     amd64        Android Debug Bridge</span><br><span class="line"><span class="comment">### 示例</span></span><br></pre></td></tr></table></figure>
+<p>2、选出已经删除的但有配置残留的包</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">pkg -l | grep <span class="string">&quot;^rc&quot;</span></span><br><span class="line">rc  spark-typeeasy:i386                           1.0                                      i386         Typeeasy on Deepin Wine</span><br><span class="line">rc  wechat                                        2.0.0                                    amd64        微信</span><br></pre></td></tr></table></figure>
+<p>卸载过的微信uos版客户端的金山打字通。</p>
+<p>3、清除配置文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">dpkg -l | grep <span class="string">&quot;^rc&quot;</span> | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs sudo aptitude -y purge</span><br><span class="line">[sudo] ian 的密码： </span><br><span class="line">下列软件包将被“删除”：           </span><br><span class="line">  spark-typeeasy:i386&#123;p&#125; wechat&#123;p&#125; </span><br><span class="line">0 个软件包被升级，新安装 0 个，2 个将被删除， 同时 0 个将不升级。</span><br><span class="line">需要获取 0 B 的存档。解包后将要使用 0 B。</span><br><span class="line">(正在读取数据库 ... 系统当前共安装有 815779 个文件和目录。)</span><br><span class="line">正在清除 wechat (2.0.0) 的配置文件 ...</span><br><span class="line">正在清除 spark-typeeasy:i386 (1.0) 的配置文件 ...</span><br></pre></td></tr></table></figure>
+<p>如上示例：</p>
+<p>dpkg -l 列出所有包的状态，grep 提取开头为rc的包，awk命令打印这些包的第二个字段，即包的名字，再通过xargs命令传递到 sudo aptitude -y purge后面，purge命令会消除配置文件。-y参数自动对后面aptitude命令提示回答yes。</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
@@ -227,7 +95,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%B8%85%E9%99%A4console%E5%AF%86%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">华为交换机清除console密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E8%8F%9C%E5%8D%95%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">启动菜单默认密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%A2%E5%A4%8Dconsole%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">恢复console密码</span></a></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#ubuntu%E6%B8%85%E9%99%A4%E5%B7%B2%E5%8D%B8%E8%BD%BD%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6"><span class="toc-number">1.</span> <span class="toc-text">ubuntu清除已卸载程序的配置文件</span></a></li></ol>	
         </div>
     
 </div>

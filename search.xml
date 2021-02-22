@@ -546,6 +546,16 @@
       </tags>
   </entry>
   <entry>
+    <title>centos 7 更换阿里源</title>
+    <url>/2018/10/26/centos-7-%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E6%BA%90/</url>
+    <content><![CDATA[<h2 id="操作如下"><a href="#操作如下" class="headerlink" title="操作如下"></a>操作如下</h2><h2 id="备份源"><a href="#备份源" class="headerlink" title="备份源"></a>备份源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br></pre></td></tr></table></figure>
+<h2 id="下载源"><a href="#下载源" class="headerlink" title="下载源"></a>下载源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
+<h3 id="刷新缓存"><a href="#刷新缓存" class="headerlink" title="刷新缓存"></a>刷新缓存</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>centos 7 双网卡共享上网</title>
     <url>/2019/03/27/centos-7-%E5%8F%8C%E7%BD%91%E5%8D%A1%E5%85%B1%E4%BA%AB%E4%B8%8A%E7%BD%91/</url>
     <content><![CDATA[<h2 id="centos-7-为私网提共nat网关服务"><a href="#centos-7-为私网提共nat网关服务" class="headerlink" title="centos 7 为私网提共nat网关服务"></a>centos 7 为私网提共nat网关服务</h2><p>前言，公司的一个项目需要，只有三台服务器和一个上一家中标单位提供的公网IP，除此之外没有其余的硬件。公司的应用部署需求是，一台应用两台数据库，可能还有后期数据库从项目本身内网设备中取数据的需求。在没有网络设备的情况下，想到一个办法，因为服务器都是四网卡，可以从把一台服务器配置双网卡，一网卡配置公司IP，一网卡配置私网IP。私网IP连另外两台服务器接一个小的四口交换机连内网。</p>
@@ -572,16 +582,6 @@
 </blockquote>
 <h3 id="服务器三配置"><a href="#服务器三配置" class="headerlink" title="服务器三配置"></a>服务器三配置</h3><p>参考服务器二，配置网关指向服务器一的私网IP。至此，三台服务器均可上网，服务器配置公司业务。</p>
 ]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>centos 7 更换阿里源</title>
-    <url>/2018/10/26/centos-7-%E6%9B%B4%E6%8D%A2%E9%98%BF%E9%87%8C%E6%BA%90/</url>
-    <content><![CDATA[<h2 id="操作如下"><a href="#操作如下" class="headerlink" title="操作如下"></a>操作如下</h2><h2 id="备份源"><a href="#备份源" class="headerlink" title="备份源"></a>备份源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mv /etc/yum.repos.d/CentOS-Base.repo /etc/yum.repos.d/CentOS-Base.repo.backup</span><br></pre></td></tr></table></figure>
-<h2 id="下载源"><a href="#下载源" class="headerlink" title="下载源"></a>下载源</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br></pre></td></tr></table></figure>
-<h3 id="刷新缓存"><a href="#刷新缓存" class="headerlink" title="刷新缓存"></a>刷新缓存</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">yum makecache</span><br></pre></td></tr></table></figure>]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -831,6 +831,24 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">own_window_argb_visual：布尔值。当为<span class="literal">true</span>时启用真透明特性</span><br><span class="line">own_window_argb_value：当启用真透明时设定不透明度。值的范围是0-255。0是0%不透明度，255是100%不透明</span><br><span class="line">own_window_transparent：布尔值。当该值为<span class="literal">true</span>，并且启用真透明时，设置不透明度为0%</span><br></pre></td></tr></table></figure>
 <p>注意：不要和own_window_type override一起使用。根据conky的文档，这在大多数情况下是无效的，我这里尝试的结果也是如此。<br>所以，如果希望得到完全透明的conky，可以这样设置:</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">own_window_argb_visual <span class="literal">true</span></span><br><span class="line">own_window_transparent <span class="literal">true</span></span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>dpkg 清除已卸载程序的配置信息</title>
+    <url>/2021/02/22/dpkg-%E6%B8%85%E9%99%A4%E5%B7%B2%E5%8D%B8%E8%BD%BD%E7%A8%8B%E5%BA%8F%E7%9A%84%E9%85%8D%E7%BD%AE%E4%BF%A1%E6%81%AF/</url>
+    <content><![CDATA[<h2 id="ubuntu清除已卸载程序的配置文件"><a href="#ubuntu清除已卸载程序的配置文件" class="headerlink" title="ubuntu清除已卸载程序的配置文件"></a>ubuntu清除已卸载程序的配置文件</h2><p>ubuntu 上卸载软件后，后有一些残留的配置文件信息在电脑里面，操作清除配置文件。</p>
+<p>1、使用dpkg -l 列出系统安装包信息</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -l</span><br><span class="line">期望状态=未知(u)/安装(i)/删除(r)/清除(p)/保持(h)</span><br><span class="line">| 状态=未安装(n)/已安装(i)/仅存配置(c)/仅解压缩(U)/配置失败(F)/不完全安装(H)/触发器等待(W)/触发器未决(T)</span><br><span class="line">|/ 错误?=(无)/须重装(R) (状态，错误：大写=故障)</span><br><span class="line">||/ 名称                                          版本                                     体系结构     描述</span><br><span class="line">+++-=============================================-========================================-============-======================================================================================</span><br><span class="line">================</span><br><span class="line">ii  accountsservice                               0.6.55-0ubuntu12~20.04.4                 amd64        query and manipulate user account information</span><br><span class="line">ii  acl                                           2.2.53-6                                 amd64        access control list - utilities</span><br><span class="line">ii  acpi-support                                  0.143                                    amd64        scripts <span class="keyword">for</span> handling many ACPI events</span><br><span class="line">ii  acpid                                         1:2.0.32-1ubuntu1                        amd64        Advanced Configuration and Power Interface event daemon</span><br><span class="line">ii  adb                                           1:8.1.0+r23-5ubuntu2                     amd64        Android Debug Bridge</span><br><span class="line"><span class="comment">### 示例</span></span><br></pre></td></tr></table></figure>
+<p>2、选出已经删除的但有配置残留的包</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">pkg -l | grep <span class="string">&quot;^rc&quot;</span></span><br><span class="line">rc  spark-typeeasy:i386                           1.0                                      i386         Typeeasy on Deepin Wine</span><br><span class="line">rc  wechat                                        2.0.0                                    amd64        微信</span><br></pre></td></tr></table></figure>
+<p>卸载过的微信uos版客户端的金山打字通。</p>
+<p>3、清除配置文件</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">dpkg -l | grep <span class="string">&quot;^rc&quot;</span> | awk <span class="string">&#x27;&#123;print $2&#125;&#x27;</span> | xargs sudo aptitude -y purge</span><br><span class="line">[sudo] ian 的密码： </span><br><span class="line">下列软件包将被“删除”：           </span><br><span class="line">  spark-typeeasy:i386&#123;p&#125; wechat&#123;p&#125; </span><br><span class="line">0 个软件包被升级，新安装 0 个，2 个将被删除， 同时 0 个将不升级。</span><br><span class="line">需要获取 0 B 的存档。解包后将要使用 0 B。</span><br><span class="line">(正在读取数据库 ... 系统当前共安装有 815779 个文件和目录。)</span><br><span class="line">正在清除 wechat (2.0.0) 的配置文件 ...</span><br><span class="line">正在清除 spark-typeeasy:i386 (1.0) 的配置文件 ...</span><br></pre></td></tr></table></figure>
+<p>如上示例：</p>
+<p>dpkg -l 列出所有包的状态，grep 提取开头为rc的包，awk命令打印这些包的第二个字段，即包的名字，再通过xargs命令传递到 sudo aptitude -y purge后面，purge命令会消除配置文件。-y参数自动对后面aptitude命令提示回答yes。</p>
+]]></content>
       <tags>
         <tag>linux</tag>
       </tags>
@@ -2158,6 +2176,26 @@
       </tags>
   </entry>
   <entry>
+    <title>ubuntu 配置tftp服务</title>
+    <url>/2019/03/28/ubuntu-%E9%85%8D%E7%BD%AEtftp%E6%9C%8D%E5%8A%A1/</url>
+    <content><![CDATA[<h2 id="ubuntu-18-04-启用TFTP服务"><a href="#ubuntu-18-04-启用TFTP服务" class="headerlink" title="ubuntu 18.04 启用TFTP服务"></a>ubuntu 18.04 启用TFTP服务</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux</span><br></pre></td></tr></table></figure>
+<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
+<li><p>创建tftp服务目录</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir tftproot</span><br><span class="line">chmod 777 tftproot</span><br></pre></td></tr></table></figure></li>
+<li><p>修改配置文件</p>
+</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/default/tftpd-hpa /etc/default/tftpd-hpa_backup   //备份配置文件</span><br><span class="line">sudo vim /etc/default/tftpd-hpa         //修改配置文件</span><br><span class="line"></span><br><span class="line">//配置如下</span><br><span class="line"></span><br><span class="line"><span class="comment"># /etc/default/tftpd-hpa</span></span><br><span class="line"></span><br><span class="line">TFTP_USERNAME=<span class="string">&quot;tftp&quot;</span></span><br><span class="line">TFTP_DIRECTORY=<span class="string">&quot;/home/abcd/tftproot&quot;</span></span><br><span class="line">TFTP_ADDRESS=<span class="string">&quot;:69&quot;</span></span><br><span class="line">TFTP_OPTIONS=<span class="string">&quot;-l -c -s&quot;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>启用tftp服务</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service tftpd-hpa restart</span><br><span class="line">sudo systemctl status tftpd-hpa //查看服务状态</span><br><span class="line"></span><br><span class="line">● tftpd-hpa.service - LSB: HPA<span class="string">&#x27;s tftp server</span></span><br><span class="line"><span class="string">   Loaded: loaded (/etc/init.d/tftpd-hpa; generated)</span></span><br><span class="line"><span class="string">   Active: active (running) since Thu 2019-03-28 19:44:48 CST; 16s ago</span></span><br><span class="line"><span class="string">     Docs: man:systemd-sysv-generator(8)</span></span><br><span class="line"><span class="string">  Process: 11088 ExecStop=/etc/init.d/tftpd-hpa stop (code=exited, status=0/SUCC</span></span><br><span class="line"><span class="string">  Process: 11093 ExecStart=/etc/init.d/tftpd-hpa start (code=exited, status=0/SU</span></span><br><span class="line"><span class="string">    Tasks: 1 (limit: 4915)</span></span><br><span class="line"><span class="string">   CGroup: /system.slice/tftpd-hpa.service</span></span><br><span class="line"><span class="string">           └─11101 /usr/sbin/in.tftpd --listen --user tftp --address :69 -l -c -</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Starting LSB: HPA&#x27;</span>s tftp server...</span><br><span class="line">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:  * Starting HPA<span class="string">&#x27;s tftpd in.tftpd</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:    ...done.</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Started LSB: HPA&#x27;</span>s tftp server.</span><br><span class="line">lines 1-14/14 (END)</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ubuntu下的一些小折腾</title>
     <url>/2019/04/17/ubuntu%E4%B8%8B%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B0%8F%E6%8A%98%E8%85%BE/</url>
     <content><![CDATA[<h2 id="Ubuntu-18-04-小问题"><a href="#Ubuntu-18-04-小问题" class="headerlink" title="Ubuntu 18.04 小问题"></a>Ubuntu 18.04 小问题</h2><h2 id="ibus候选词方块"><a href="#ibus候选词方块" class="headerlink" title="ibus候选词方块"></a>ibus候选词方块</h2><ul>
@@ -2189,26 +2227,6 @@
 <p>完成设置后，显示效果生效，参考下图：</p>
 <p><img src="https://blog.ywmy.xyz/linux/vs_code_json_set.png" alt="vs_code_json_ser"></p>
 <p><a href="https://dev.to/mattstratton/making-powerline-work-in-visual-studio-code-terminal-1m7">参考链接</a></p>
-]]></content>
-      <tags>
-        <tag>linux</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>ubuntu 配置tftp服务</title>
-    <url>/2019/03/28/ubuntu-%E9%85%8D%E7%BD%AEtftp%E6%9C%8D%E5%8A%A1/</url>
-    <content><![CDATA[<h2 id="ubuntu-18-04-启用TFTP服务"><a href="#ubuntu-18-04-启用TFTP服务" class="headerlink" title="ubuntu 18.04 启用TFTP服务"></a>ubuntu 18.04 启用TFTP服务</h2><h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo apt install tftpd-hpa tftp-hpa tftp-hpa-dbg pxelinux</span><br></pre></td></tr></table></figure>
-<h2 id="配置文件"><a href="#配置文件" class="headerlink" title="配置文件"></a>配置文件</h2><ul>
-<li><p>创建tftp服务目录</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">mkdir tftproot</span><br><span class="line">chmod 777 tftproot</span><br></pre></td></tr></table></figure></li>
-<li><p>修改配置文件</p>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo cp /etc/default/tftpd-hpa /etc/default/tftpd-hpa_backup   //备份配置文件</span><br><span class="line">sudo vim /etc/default/tftpd-hpa         //修改配置文件</span><br><span class="line"></span><br><span class="line">//配置如下</span><br><span class="line"></span><br><span class="line"><span class="comment"># /etc/default/tftpd-hpa</span></span><br><span class="line"></span><br><span class="line">TFTP_USERNAME=<span class="string">&quot;tftp&quot;</span></span><br><span class="line">TFTP_DIRECTORY=<span class="string">&quot;/home/abcd/tftproot&quot;</span></span><br><span class="line">TFTP_ADDRESS=<span class="string">&quot;:69&quot;</span></span><br><span class="line">TFTP_OPTIONS=<span class="string">&quot;-l -c -s&quot;</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>启用tftp服务</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo service tftpd-hpa restart</span><br><span class="line">sudo systemctl status tftpd-hpa //查看服务状态</span><br><span class="line"></span><br><span class="line">● tftpd-hpa.service - LSB: HPA<span class="string">&#x27;s tftp server</span></span><br><span class="line"><span class="string">   Loaded: loaded (/etc/init.d/tftpd-hpa; generated)</span></span><br><span class="line"><span class="string">   Active: active (running) since Thu 2019-03-28 19:44:48 CST; 16s ago</span></span><br><span class="line"><span class="string">     Docs: man:systemd-sysv-generator(8)</span></span><br><span class="line"><span class="string">  Process: 11088 ExecStop=/etc/init.d/tftpd-hpa stop (code=exited, status=0/SUCC</span></span><br><span class="line"><span class="string">  Process: 11093 ExecStart=/etc/init.d/tftpd-hpa start (code=exited, status=0/SU</span></span><br><span class="line"><span class="string">    Tasks: 1 (limit: 4915)</span></span><br><span class="line"><span class="string">   CGroup: /system.slice/tftpd-hpa.service</span></span><br><span class="line"><span class="string">           └─11101 /usr/sbin/in.tftpd --listen --user tftp --address :69 -l -c -</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Starting LSB: HPA&#x27;</span>s tftp server...</span><br><span class="line">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:  * Starting HPA<span class="string">&#x27;s tftpd in.tftpd</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad tftpd-hpa[11093]:    ...done.</span></span><br><span class="line"><span class="string">3月 28 19:44:48 ian-ThinkPad systemd[1]: Started LSB: HPA&#x27;</span>s tftp server.</span><br><span class="line">lines 1-14/14 (END)</span><br></pre></td></tr></table></figure></li>
-</ul>
 ]]></content>
       <tags>
         <tag>linux</tag>
@@ -2495,7 +2513,7 @@
 <tr>
 <td>V1R6C05</td>
 <td>admin</td>
-<td><a href="mailto:&#x61;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#117;&#97;&#x77;&#101;&#x69;&#x2e;&#99;&#x6f;&#x6d;">&#x61;&#100;&#109;&#105;&#x6e;&#x40;&#x68;&#117;&#97;&#x77;&#101;&#x69;&#x2e;&#99;&#x6f;&#x6d;</a></td>
+<td><a href="mailto:&#97;&#100;&#x6d;&#105;&#x6e;&#64;&#x68;&#x75;&#97;&#119;&#x65;&#x69;&#46;&#99;&#111;&#109;">&#97;&#100;&#x6d;&#105;&#x6e;&#64;&#x68;&#x75;&#97;&#119;&#x65;&#x69;&#46;&#99;&#111;&#109;</a></td>
 <td>0</td>
 </tr>
 <tr>
@@ -2507,7 +2525,7 @@
 <tr>
 <td>V2R3C00-V2R6C00</td>
 <td>admin</td>
-<td><a href="mailto:&#97;&#x64;&#x6d;&#105;&#x6e;&#x40;&#104;&#x75;&#97;&#x77;&#x65;&#x69;&#x2e;&#99;&#x6f;&#109;">&#97;&#x64;&#x6d;&#105;&#x6e;&#x40;&#104;&#x75;&#97;&#x77;&#x65;&#x69;&#x2e;&#99;&#x6f;&#109;</a></td>
+<td><a href="mailto:&#x61;&#x64;&#109;&#x69;&#110;&#x40;&#x68;&#117;&#97;&#x77;&#x65;&#x69;&#x2e;&#x63;&#x6f;&#109;">&#x61;&#x64;&#109;&#x69;&#110;&#x40;&#x68;&#117;&#97;&#x77;&#x65;&#x69;&#x2e;&#x63;&#x6f;&#109;</a></td>
 <td>0</td>
 </tr>
 </tbody></table>
