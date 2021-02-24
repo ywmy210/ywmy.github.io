@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-02-22T08:02:52.741Z</updated>
+  <updated>2021-02-24T13:05:28.323Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>zabbix_告警配置</title>
+    <link href="http://example.com/2021/02/24/zabbix-%E5%91%8A%E8%AD%A6%E9%85%8D%E7%BD%AE/"/>
+    <id>http://example.com/2021/02/24/zabbix-告警配置/</id>
+    <published>2021-02-24T13:03:33.000Z</published>
+    <updated>2021-02-24T13:05:28.323Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="zabbix告警配置"><a href="#zabbix告警配置" class="headerlink" title="zabbix告警配置"></a>zabbix告警配置</h2><p>故障{TRIGGER.STATUS},服务器名:{HOSTNAME1}发生: {TRIGGER.NAME}故障!</p><p>告警主机:{HOSTNAME}<br>告警主机IP地址:{HOST.IP}<br>告警时间:{EVENT.DATE} {EVENT.TIME}<br>告警等级:{TRIGGER.SEVERITY}<br>告警信息: {TRIGGER.NAME}<br>告警项目:{TRIGGER.KEY1}<br>问题详情:{ITEM.NAME}:{ITEM.VALUE}<br>当前状态:{TRIGGER.STATUS}:{ITEM.VALUE1}<br>事件ID：{EVENT.ID}</p><p>恢复{TRIGGER.STATUS}, 服务器名:{HOSTNAME1}: {TRIGGER.NAME}已恢复!</p><p>告警主机:{HOSTNAME}<br>告警主机IP地址:{HOST.IP}<br>告警时间:{EVENT.DATE} {EVENT.TIME}<br>告警等级:{TRIGGER.SEVERITY}<br>告警信息: {TRIGGER.NAME}<br>告警项目:{TRIGGER.KEY1}<br>问题详情:{ITEM.NAME}:{ITEM.VALUE}<br>当前状态:{TRIGGER.STATUS}:{ITEM.VALUE1}<br>事件ID：{EVENT.ID}</p><p>确认:{TRIGGER.NAME}</p><p>告警主机:{HOSTNAME}<br>告警主机IP地址:{HOST.IP}<br>{USER.FULLNAME} 已确认问题<br>确认时间:{ACK.DATE} {ACK.TIME}<br>确认信息:{ACK.MESSAGE}</p><p>当前问题状态: {EVENT.STATUS}</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;zabbix告警配置&quot;&gt;&lt;a href=&quot;#zabbix告警配置&quot; class=&quot;headerlink&quot; title=&quot;zabbix告警配置&quot;&gt;&lt;/a&gt;zabbix告警配置&lt;/h2&gt;&lt;p&gt;故障{TRIGGER.STATUS},服务器名:{HOSTNAME1}发生:
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://example.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>dpkg 清除已卸载程序的配置信息</title>
@@ -453,29 +476,6 @@
     
     
       <category term="linux" scheme="http://example.com/tags/linux/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>小新700 触摸板双击右键</title>
-    <link href="http://example.com/2019/05/30/%E5%B0%8F%E6%96%B0700-%E8%A7%A6%E6%91%B8%E6%9D%BF%E5%8F%8C%E5%87%BB%E5%8F%B3%E9%94%AE/"/>
-    <id>http://example.com/2019/05/30/小新700-触摸板双击右键/</id>
-    <published>2019-05-30T14:23:17.000Z</published>
-    <updated>2021-02-03T13:48:10.061Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="联想小新700触摸板双击右键设置"><a href="#联想小新700触摸板双击右键设置" class="headerlink" title="联想小新700触摸板双击右键设置"></a>联想小新700触摸板双击右键设置</h2><p>之前买的联想小新电脑，在设置触摸板时，双击右键的设置是不生效的。在windows下的触摸板设置，如单指、双指、三指、四指操作，使用习惯后，操作起来也是非常高效和舒服的。不过小新的这个synaptics装置，在安装最新驱动后，双击右键依然是不起作用的。在使用过程中就比较尴尬。</p><h3 id="操作方法"><a href="#操作方法" class="headerlink" title="操作方法"></a>操作方法</h3><p>打开注册表编辑器，修改注册表值，路径如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">WIN＋R 运行 regedit，展开路径：</span><br><span class="line">计算机\HKEY_CURRENT_USER\Software\Synaptics\SynTP\</span><br></pre></td></tr></table></figure><p>展开路径，找到TouchPadPS2TM开头的项，如自己的小新为TouchPadPS2TM3105，点击该项，右边的键值，找到2FingerTapAction，双击将默认数据0修改为2。确定修改，重启系统，双击右键设置生效。操作结束。记录备用。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;联想小新700触摸板双击右键设置&quot;&gt;&lt;a href=&quot;#联想小新700触摸板双击右键设置&quot; class=&quot;headerlink&quot; title=&quot;联想小新700触摸板双击右键设置&quot;&gt;&lt;/a&gt;联想小新700触摸板双击右键设置&lt;/h2&gt;&lt;p&gt;之前买的联想小新电脑，在设置
-      
-    
-    </summary>
-    
-    
-      <category term="windows" scheme="http://example.com/tags/windows/"/>
     
   </entry>
   

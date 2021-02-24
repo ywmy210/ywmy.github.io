@@ -5,12 +5,13 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>华为交换机清除console密码 - ywmy运维日志</title>
+    <title>zabbix_告警配置 - ywmy运维日志</title>
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
     <meta name="keywords" content="豆豆家,"> 
-    <meta name="description" content="网络和美食,华为交换机清除console密码昨天下午在准备查看一台交换机配置的时候，发现原来给的登录信息已经不正确了。就想着用console登录试试，发现console登录也设置了用户名和密码，于是只能想到通过,"> 
+    <meta name="description" content="网络和美食,zabbix告警配置故障{TRIGGER.STATUS},服务器名:{HOSTNAME1}发生: {TRIGGER.NAME}故障!
+告警主机:{HOSTNAME}告警主机IP地址:{HOST.IP,"> 
     <meta name="author" content="Ian &amp; Doudou"> 
     <link rel="alternative" href="atom.xml" title="ywmy运维日志" type="application/atom+xml"> 
     <link rel="icon" href="https://blog.ywmy.xyz/icno"> 
@@ -28,7 +29,7 @@
     <div class="bar" style="width: 0;"></div>
     <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
     <div title="播放/暂停" class="iconfont icon-play"></div>
-    <h3 class="subtitle">华为交换机清除console密码</h3>
+    <h3 class="subtitle">zabbix_告警配置</h3>
     <div class="social">
         <div>
             <div class="share">
@@ -43,159 +44,22 @@
     <div class="section">
         <div class="article">
     <div class='main'>
-        <h1 class="title">华为交换机清除console密码</h1>
+        <h1 class="title">zabbix_告警配置</h1>
         <div class="stuff">
-            <span>四月 11, 2019</span>
+            <span>二月 24, 2021</span>
             
-  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/network/" rel="tag">network</a></li></ul>
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/linux/" rel="tag">linux</a></li></ul>
 
 
         </div>
         <div class="content markdown">
-            <h2 id="华为交换机清除console密码"><a href="#华为交换机清除console密码" class="headerlink" title="华为交换机清除console密码"></a>华为交换机清除console密码</h2><p>昨天下午在准备查看一台交换机配置的时候，发现原来给的登录信息已经不正确了。就想着用console登录试试，发现console登录也设置了用户名和密码，于是只能想到通过启动菜单来尝试清除密码了。</p>
-<p>操作如下：</p>
-<h2 id="启动菜单默认密码"><a href="#启动菜单默认密码" class="headerlink" title="启动菜单默认密码"></a>启动菜单默认密码</h2><ul>
-<li>Console/telnet登录(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>V1R3C00</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V1R6C00－V1R6C05</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-<tr>
-<td>V2R2C00－V2R6C00</td>
-<td>N/A</td>
-<td>N/A</td>
-<td>N/A</td>
-</tr>
-</tbody></table>
-<ul>
-<li>Web登录(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>V1R3C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V1R6C05</td>
-<td>admin</td>
-<td><a href="mailto:&#97;&#x64;&#x6d;&#105;&#110;&#x40;&#x68;&#117;&#97;&#x77;&#x65;&#105;&#x2e;&#99;&#111;&#109;">&#97;&#x64;&#x6d;&#105;&#110;&#x40;&#x68;&#117;&#97;&#x77;&#x65;&#105;&#x2e;&#99;&#111;&#109;</a></td>
-<td>0</td>
-</tr>
-<tr>
-<td>V2R1C00</td>
-<td>admin</td>
-<td>admin</td>
-<td>0</td>
-</tr>
-<tr>
-<td>V2R3C00-V2R6C00</td>
-<td>admin</td>
-<td><a href="mailto:&#97;&#100;&#x6d;&#105;&#x6e;&#64;&#x68;&#117;&#x61;&#119;&#101;&#x69;&#46;&#x63;&#111;&#109;">&#97;&#100;&#x6d;&#105;&#x6e;&#64;&#x68;&#117;&#x61;&#119;&#101;&#x69;&#46;&#x63;&#111;&#109;</a></td>
-<td>0</td>
-</tr>
-</tbody></table>
-<ul>
-<li>BootROM(框式/盒式)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th>版本</th>
-<th>缺省用户名</th>
-<th>缺省密码</th>
-<th>缺省级别</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>V1R3C00</td>
-<td>N/A</td>
-<td>9300</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R5C01</td>
-<td>N/A</td>
-<td>huawei</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>N/A</td>
-<td>9300(框式)</td>
-<td>无</td>
-</tr>
-<tr>
-<td>V1R6C00</td>
-<td>N/A</td>
-<td>huawei(盒式)</td>
-<td>无</td>
-</tr>
-</tbody></table>
-<h2 id="恢复console密码"><a href="#恢复console密码" class="headerlink" title="恢复console密码"></a>恢复console密码</h2><ol>
-<li><p>设备断电</p>
-</li>
-<li><p>重新加电</p>
-</li>
-<li><p>电脑连CONSOLE口</p>
-</li>
-<li><p>按CTRL＋B键加载BOOT MENU<br>加载图如下：</p>
-<p><img src="https://blog.ywmy.xyz/network/huawei_boot_menu.png" alt="huawei_boot_memu"></p>
-</li>
-<li><p>清除console密码</p>
-<p> 加载图如下：</p>
-<p> <img src="https://blog.ywmy.xyz/network/clean_password_for_console_user.png" alt="clean_passwrod_for_console_user"></p>
-</li>
-<li><p>恢复默认启动项</p>
-<p>加载图如下：</p>
-<p><img src="https://blog.ywmy.xyz/network/boot_with_default_mode.png" alt="boot_with_default_mode"></p>
-</li>
-</ol>
+            <h2 id="zabbix告警配置"><a href="#zabbix告警配置" class="headerlink" title="zabbix告警配置"></a>zabbix告警配置</h2><p>故障{TRIGGER.STATUS},服务器名:{HOSTNAME1}发生: {TRIGGER.NAME}故障!</p>
+<p>告警主机:{HOSTNAME}<br>告警主机IP地址:{HOST.IP}<br>告警时间:{EVENT.DATE} {EVENT.TIME}<br>告警等级:{TRIGGER.SEVERITY}<br>告警信息: {TRIGGER.NAME}<br>告警项目:{TRIGGER.KEY1}<br>问题详情:{ITEM.NAME}:{ITEM.VALUE}<br>当前状态:{TRIGGER.STATUS}:{ITEM.VALUE1}<br>事件ID：{EVENT.ID}</p>
+<p>恢复{TRIGGER.STATUS}, 服务器名:{HOSTNAME1}: {TRIGGER.NAME}已恢复!</p>
+<p>告警主机:{HOSTNAME}<br>告警主机IP地址:{HOST.IP}<br>告警时间:{EVENT.DATE} {EVENT.TIME}<br>告警等级:{TRIGGER.SEVERITY}<br>告警信息: {TRIGGER.NAME}<br>告警项目:{TRIGGER.KEY1}<br>问题详情:{ITEM.NAME}:{ITEM.VALUE}<br>当前状态:{TRIGGER.STATUS}:{ITEM.VALUE1}<br>事件ID：{EVENT.ID}</p>
+<p>确认:{TRIGGER.NAME}</p>
+<p>告警主机:{HOSTNAME}<br>告警主机IP地址:{HOST.IP}<br>{USER.FULLNAME} 已确认问题<br>确认时间:{ACK.DATE} {ACK.TIME}<br>确认信息:{ACK.MESSAGE}</p>
+<p>当前问题状态: {EVENT.STATUS}</p>
 
             <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
             <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
@@ -227,7 +91,7 @@
     </div>
     
         <div class='side'>
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%8E%E4%B8%BA%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%B8%85%E9%99%A4console%E5%AF%86%E7%A0%81"><span class="toc-number">1.</span> <span class="toc-text">华为交换机清除console密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%90%AF%E5%8A%A8%E8%8F%9C%E5%8D%95%E9%BB%98%E8%AE%A4%E5%AF%86%E7%A0%81"><span class="toc-number">2.</span> <span class="toc-text">启动菜单默认密码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%81%A2%E5%A4%8Dconsole%E5%AF%86%E7%A0%81"><span class="toc-number">3.</span> <span class="toc-text">恢复console密码</span></a></li></ol>	
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#zabbix%E5%91%8A%E8%AD%A6%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">zabbix告警配置</span></a></li></ol>	
         </div>
     
 </div>
