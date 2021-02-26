@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-02-24T13:05:28.323Z</updated>
+  <updated>2021-02-26T04:38:26.715Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux 查看、修改用户密码过期时间</title>
+    <link href="http://example.com/2021/02/26/linux-%E6%9F%A5%E7%9C%8B%E3%80%81%E4%BF%AE%E6%94%B9%E7%94%A8%E6%88%B7%E5%AF%86%E7%A0%81%E8%BF%87%E6%9C%9F%E6%97%B6%E9%97%B4/"/>
+    <id>http://example.com/2021/02/26/linux-查看、修改用户密码过期时间/</id>
+    <published>2021-02-26T03:02:41.000Z</published>
+    <updated>2021-02-26T04:38:26.715Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="linux查看、修改密码过期时间"><a href="#linux查看、修改密码过期时间" class="headerlink" title="linux查看、修改密码过期时间"></a>linux查看、修改密码过期时间</h2><p>示例如下：</p><blockquote><p>ssh <a href="mailto:&#x75;&#115;&#x65;&#114;&#x31;&#x40;&#x31;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#46;&#x30;&#46;&#50;&#x32;">&#x75;&#115;&#x65;&#114;&#x31;&#x40;&#x31;&#57;&#50;&#x2e;&#49;&#54;&#x38;&#46;&#x30;&#46;&#50;&#x32;</a><br><a href="mailto:&#117;&#x73;&#101;&#114;&#49;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#x30;&#46;&#50;&#x32;">&#117;&#x73;&#101;&#114;&#49;&#x40;&#49;&#x39;&#50;&#46;&#x31;&#54;&#x38;&#x2e;&#x30;&#46;&#50;&#x32;</a>‘s password:<br>Your account has expired; please contact your system administrator Connection closed by 192.168.0.22 port 22</p></blockquote><p>设置新用户密码过期时间：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passwd -x 90 euser -&gt; 执行操作后，euser用户的密码时间改为90天有效期</span><br></pre></td></tr></table></figure><p>查看该user1用户过期信息使用chage命令</p><p>chage的参数包括<br>-m 密码可更改的最小天数。为零时代表任何时候都可以更改密码。<br>-M 密码保持有效的最大天数。<br>-W 用户密码到期前，提前收到警告信息的天数。<br>-E 帐号到期的日期。过了这天，此帐号将不可用。<br>-d 上一次更改的日期<br>-i 停滞时期。如果一个密码已过期这些天，那么此帐号将不可用。<br>-l 例出当前的设置。由非特权用户来确定他们的密码或帐号何时过期。</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">chage -l user1</span><br><span class="line">最近一次密码修改时间：2月 23, 2021</span><br><span class="line">密码过期时间：从不</span><br><span class="line">密码失效时间：从不</span><br><span class="line">帐户过期时间：2月 25, 2021</span><br><span class="line">两次改变密码之间相距的最小天数：0</span><br><span class="line">两次改变密码之间相距的最大天数：99999</span><br><span class="line">在密码过期之前警告的天数：7</span><br></pre></td></tr></table></figure><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chage -M 99999 user1</span><br></pre></td></tr></table></figure><p>设置用户euser密码永不过期。</p><p>设置用户user1两天后过期</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chage -E 60 user1</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;linux查看、修改密码过期时间&quot;&gt;&lt;a href=&quot;#linux查看、修改密码过期时间&quot; class=&quot;headerlink&quot; title=&quot;linux查看、修改密码过期时间&quot;&gt;&lt;/a&gt;linux查看、修改密码过期时间&lt;/h2&gt;&lt;p&gt;示例如下：&lt;/p&gt;
+&lt;blo
+      
+    
+    </summary>
+    
+    
+      <category term="linux" scheme="http://example.com/tags/linux/"/>
+    
+  </entry>
   
   <entry>
     <title>zabbix_告警配置</title>
@@ -453,29 +477,6 @@
     
     
       <category term="network" scheme="http://example.com/tags/network/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>python pip</title>
-    <link href="http://example.com/2019/06/17/python-pip/"/>
-    <id>http://example.com/2019/06/17/python-pip/</id>
-    <published>2019-06-17T02:27:48.000Z</published>
-    <updated>2019-06-17T02:44:40.365Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="ubuntu-pip相关小问题"><a href="#ubuntu-pip相关小问题" class="headerlink" title="ubuntu pip相关小问题"></a>ubuntu pip相关小问题</h2><h3 id="ImportError-No-module-named-‘setuptools’"><a href="#ImportError-No-module-named-‘setuptools’" class="headerlink" title="ImportError: No module named ‘setuptools’"></a>ImportError: No module named ‘setuptools’</h3><p>解决办法：安装setuptools</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Python 2.x:    sudo apt-get install python-setuptools</span><br><span class="line">Python 3.x:    sudo apt-get install python3-setuptools</span><br></pre></td></tr></table></figure><p>如果安装出现错误：AttributeError: module ‘setuptools.dist’ has no attribute ‘check_specifier’</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Python 2.x:</span><br><span class="line">pip install --upgrade pip</span><br><span class="line"><span class="built_in">hash</span> -r pip</span><br><span class="line"></span><br><span class="line">Python 3.x:</span><br><span class="line">pip3 install --upgrade pip</span><br><span class="line"><span class="built_in">hash</span> -r pip3</span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> (Mask RCNN root folder)</span><br><span class="line">sudo python3 setup.py install</span><br></pre></td></tr></table></figure><h3 id="pip升级"><a href="#pip升级" class="headerlink" title="pip升级"></a>pip升级</h3><p>pip升级后出现错误：Import Error:cannot import name main</p><p>解决办法：</p><ul><li><p>方法1</p><p>更改from pip import main</p></li></ul><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更改下面行内容</span></span><br><span class="line">from pip import main</span><br><span class="line"><span class="comment"># 更改为</span></span><br><span class="line">from pip._internal import main</span><br></pre></td></tr></table></figure><ul><li>方法2</li></ul><p>更改sys.exit</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 原内容：</span></span><br><span class="line">from pip import main</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    sys.exit(main())</span><br><span class="line"><span class="comment"># 更改后内容</span></span><br><span class="line">from pip import __main__</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    sys.exit(__main__._main())</span><br></pre></td></tr></table></figure><p>注意__main__左右的下划线是两个下划线。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h2 id=&quot;ubuntu-pip相关小问题&quot;&gt;&lt;a href=&quot;#ubuntu-pip相关小问题&quot; class=&quot;headerlink&quot; title=&quot;ubuntu pip相关小问题&quot;&gt;&lt;/a&gt;ubuntu pip相关小问题&lt;/h2&gt;&lt;h3 id=&quot;ImportError-N
-      
-    
-    </summary>
-    
-    
-      <category term="linux" scheme="http://example.com/tags/linux/"/>
     
   </entry>
   
